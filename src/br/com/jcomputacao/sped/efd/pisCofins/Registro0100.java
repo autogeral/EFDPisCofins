@@ -37,12 +37,12 @@ public class Registro0100 extends LineArchetype {
         addFieldArchetype(CNPJ, new FieldIntegerFixedLengthArchetype(14));
         addFieldArchetype(CEP, new FieldIntegerFixedLengthArchetype(8));
         addFieldArchetype(END, new FieldStringFixedLengthArchetype(60));
-        addFieldArchetype(NUM, new FieldStringFixedLengthArchetype(20));
+        addFieldArchetype(NUM, new FieldStringFixedLengthArchetype(255));
         addFieldArchetype(COMPL, new FieldStringFixedLengthArchetype(60));
         addFieldArchetype(BAIRRO, new FieldStringFixedLengthArchetype(60));
         addFieldArchetype(FONE, new FieldStringFixedLengthArchetype(10));
         addFieldArchetype(FAX, new FieldStringFixedLengthArchetype(10));
-        addFieldArchetype(EMAIL, new FieldStringFixedLengthArchetype(20));
+        addFieldArchetype(EMAIL, new FieldStringFixedLengthArchetype(255));
         addFieldArchetype(COD_MUN, new FieldIntegerFixedLengthArchetype(7));
     }
 }

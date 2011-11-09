@@ -49,12 +49,12 @@ public class Registro0100Test {
         line.setFieldValue(Registro0100.CNPJ, 11111111111111L);
         line.setFieldValue(Registro0100.CEP, 22222222L);
         line.setFieldValue(Registro0100.END, "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-        line.setFieldValue(Registro0100.NUM, "cccccccccccccccccccc");
+        line.setFieldValue(Registro0100.NUM, "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
         line.setFieldValue(Registro0100.COMPL, "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
         line.setFieldValue(Registro0100.BAIRRO, "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
         line.setFieldValue(Registro0100.FONE, "EEEEEEEEEE");
         line.setFieldValue(Registro0100.FAX, "ffffffffff");
-        line.setFieldValue(Registro0100.EMAIL, "dddddddddddddddddddd");
+        line.setFieldValue(Registro0100.EMAIL, "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
         line.setFieldValue(Registro0100.COD_MUN, 1234576L);
 
         StringBuffer sb = line.getRepresentation();
