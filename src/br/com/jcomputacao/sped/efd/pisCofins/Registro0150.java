@@ -42,7 +42,7 @@ public class Registro0150 extends LineArchetype {
         addFieldArchetype(COD_MUN, new FieldIntegerFixedLengthArchetype(7));
         addFieldArchetype(SUFRAMA, new FieldStringFixedLengthArchetype(9));
         addFieldArchetype(END, new FieldStringFixedLengthArchetype(60));
-        addFieldArchetype(NUM1, new FieldStringFixedLengthArchetype(20));
+        addFieldArchetype(NUM1, new FieldStringFixedLengthArchetype(255));
         addFieldArchetype(NUM2, new FieldStringFixedLengthArchetype(60));
         addFieldArchetype(BAIRRO, new FieldStringFixedLengthArchetype(60));
 
