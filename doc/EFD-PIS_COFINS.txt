@@ -1,0 +1,44 @@
+Bloco	Descrição
+0	Abertura, Identificação e Referências
+A	Documentos Fiscais - Serviços (ISS)
+C	Documentos Fiscais I – Mercadorias (ICMS/IPI)
+D	Documentos Fiscais II – Serviços (ICMS)
+F	Demais Documentos e Operações
+M	Apuração da Contribuição e Crédito de PIS/PASEP e da COFINS
+1	Complemento da Escrituração – Controle de Saldos de Créditos e de Retenções, Operações Extemporâneas e Outras Informações
+9	Controle e Encerramento do Arquivo Digital
+
+
+Bloco	Descrição	Registro	Nível	Ocorrência	Obrigatoriedade do Registro
+0	Abertura do Arquivo Digital e Identificação da Pessoa Jurídica	0000	0	1	O
+0	Abertura do Bloco 0	0001	1	1	O	
+0	Dados do Contabilista	0100	2	V	OC
+0	Regimes de Apuração da Contribuição Social e de Apropriação de Crédito	0110	2	1	O	
+0	Tabela de Receita Bruta Mensal para Fins de Rateio de Créditos Comuns	0111	3	1:1	O (se no registro 0110 o Campo “COD_INC_TRIB” = 1 ou 3 e o Campo “IND_APRO_CRED” = 2) N (se no registro 0110 o Campo “COD_INC_TRIB” = 2 ou o Campo “IND_APRO_CRED” = 1)
+0	Tabela de Cadastro de Estabelecimento	0140	2	V	O
+0	Tabela de Cadastro do Participante	0150	3	1:N	OC
+0	Identificação das Unidades de Medida	0190	3	1:N	OC
+0	Tabela de Identificação do Item (Produtos e Serviços)	0200	3	1:N	OC
+0	Alteração do Item	0205	4	1:N	OC
+0	Código de Produto conforme Tabela ANP (Combustíveis)	0206	4	1:1	OC
+0	Código de Grupos por Marca Comercial – REFRI (Bebidas Frias)	0208	4	1:1	OC
+0	Tabela de Natureza da Operação/ Prestação	0400	3	1:N	OC
+0	Tabela de Informação Complementar do Documento Fiscal	0450	3	1:N	OC
+0	Plano de Contas Contábeis – Contas Informadas	0500	2	V	OC
+0	Centro de Custos	0600	2	V	OC
+0	Encerramento do Bloco 0	0990	1	1	O
+
+
+Bloco	Bloco	Registro	Nível	Ocorrência
+A	Abertura do Bloco A	A001	1	1O-
+A	Identificação do Estabelecimento	A010	2	V O(seemA001 - IND_MOV = 0)
+A	Documento – Nota Fiscal de Serviço	A100	3	1:N
+A	Complemento de Documento – Informação Complementar da NF	A110	4	1:N
+A	Processo Referenciado	A111	4	1:N
+A	Informação Complementar – Operações de Importação 	A120	4	1:N
+A	Complemento de Documento – Itens do Documento	A170	4	1:N
+A	Encerramento do Bloco A	A990	1	1O-
+
+
+
+
