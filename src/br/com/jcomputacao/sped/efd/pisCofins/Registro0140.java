@@ -36,8 +36,8 @@ public class Registro0140 extends LineArchetype {
         addFieldArchetype(UF, new FieldStringFixedLengthArchetype(2));
         addFieldArchetype(IE, new FieldStringFixedLengthArchetype(14));
         addFieldArchetype(COD_MUN, new FieldIntegerFixedLengthArchetype(7));
-        addFieldArchetype(SUFRAMA, new FieldStringFixedLengthArchetype(20));
-        addFieldArchetype(REG, new FieldStringFixedLengthArchetype(9));
+        addFieldArchetype(IM, new FieldStringFixedLengthArchetype(255));
+        addFieldArchetype(SUFRAMA, new FieldStringFixedLengthArchetype(9));
 
     }
     
