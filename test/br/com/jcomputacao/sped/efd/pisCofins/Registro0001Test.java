@@ -41,7 +41,7 @@ public class Registro0001Test {
         LineModel line = reg.createModel();
         
         line.setFieldValue(Registro0001.REG, "0001");
-        line.setFieldValue(Registro0001.IND_MOV, 0l);
+        line.setFieldValue(Registro0001.IND_MOV, "0");
         
         StringBuffer r = line.getRepresentation();
         System.out.print(r);
