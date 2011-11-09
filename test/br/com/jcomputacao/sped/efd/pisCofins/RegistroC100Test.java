@@ -50,6 +50,9 @@ public class RegistroC100Test {
         line.setFieldValue(RegistroC100.SER, "100");
         line.setFieldValue(RegistroC100.NUM_DOC, 123456789L);
         line.setFieldValue(RegistroC100.CHV_NFE, " asdfghjklçqwertyuiopzxcvbnm,.lkjhgfdsaqwe   ");
+        /**
+         * CHV_NFE é Integer, porém para validar foi modificado para String
+         */
         line.setFieldValue(RegistroC100.DT_DOC, 12345678L);
         line.setFieldValue(RegistroC100.DT_E_S, 12345678L);
         line.setFieldValue(RegistroC100.VL_DOC, 12345678912345678912.22);
