@@ -6,19 +6,22 @@ package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.field.FieldIntegerFixedLengthArchetype;
 import br.com.jcomputacao.aristoteles.field.FieldStringFixedLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.FieldStringMaximumLengthArchetype;
 import br.com.jcomputacao.aristoteles.line.LineArchetype;
 /**
  * 09/11/2011 20:11:35
  * @author Jonas
  */
-public class RegistroA110 {
-      public static String REG = "REG";
-     public static String IND_OPER = "IND_OPER";
-     public static String IND_EMIT = "IND_EMIT";
-     public static String COD_PART = "COD_PART";
-     public static String COD_SIT = "COD_SIT";
-     public static String SER = "SER";
-     public static String SUB = "SUB";
-     public static String NUM_DOC = "NUM_DOC";
+public class RegistroA110 extends LineArchetype{
+     public static String REG = "REG";
+     public static String COD_INF = "COD_INF";
+     public static String TXT_COMPL = "TXT_COMPL";
     
+    
+     public RegistroA110(){
+     
+         addFieldArchetype(REG, new FieldStringFixedLengthArchetype(4));
+         addFieldArchetype(COD_INF, new FieldStringMaximumLengthArchetype(6));
+         addFieldArchetype(TXT_COMPL, new FieldStringMaximumLengthArchetype(255));
+     }
 }

@@ -50,7 +50,7 @@ public class RegistroA100Test {
 
         while (Str60.length() <= 60) {
             Random r = new Random();
-            Str60 += Integer.toString(r.nextInt());
+            Str60 += (char) r.nextInt();
         }
 
         line.setFieldValue(RegistroA100.REG, "0001");
