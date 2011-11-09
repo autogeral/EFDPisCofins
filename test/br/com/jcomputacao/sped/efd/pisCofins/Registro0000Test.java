@@ -5,6 +5,9 @@
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,17 +20,18 @@ import org.junit.Test;
  */
 public class Registro0000Test {
     
-    public Registro0000Test() {
+    public Registro0000Test() throws ParseException {
         Registro0000 reg = new Registro0000();
         LineModel line = reg.createModel();
-
+SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
+        Date data = sdf.parse("17121986");
         line.setFieldValue(Registro0000.REG, "1323");
         line.setFieldValue(Registro0000.COD_VER, 123L);
         line.setFieldValue(Registro0000.TIPO_ESCRIT, 1L);
         line.setFieldValue(Registro0000.IND_SIT_ESP, 4L);
         line.setFieldValue(Registro0000.NUM_REC_ANTERIOR, "12345678901234567890123456789012345678901");
-        line.setFieldValue(Registro0000.DT_INI, 12345678L);
-        line.setFieldValue(Registro0000.DT_FIN, 98765432L);
+        line.setFieldValue(Registro0000.DT_INI, data);
+        line.setFieldValue(Registro0000.DT_FIN, data);
         line.setFieldValue(Registro0000.NOME, "ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJ");
         line.setFieldValue(Registro0000.CNPJ, 12345678901234L);
         line.setFieldValue(Registro0000.UF, "RJ");
