@@ -33,8 +33,8 @@ public class RegistroC380Test {
         line.setFieldValue(RegistroC380.DT_DOC_FIN, data);
         line.setFieldValue(RegistroC380.NUM_DOC_INI, 123456L);
         line.setFieldValue(RegistroC380.NUM_DOC_FIN, 123456L);
-        line.setFieldValue(RegistroC380.VL_DOC, 11111111111111111111D);
-        line.setFieldValue(RegistroC380.VL_DOC_CANC, 11111111111111111111D);
+        line.setFieldValue(RegistroC380.VL_DOC, 12345678912345678911.11);
+        line.setFieldValue(RegistroC380.VL_DOC_CANC, 12345678912345678911.11);
 
         StringBuffer r = line.getRepresentation();
         System.out.print(r);
