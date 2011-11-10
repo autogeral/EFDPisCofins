@@ -42,7 +42,7 @@ public class RegistroA120Test {
     }
 
     @Test
-    public void registroA110test() throws ParseException{
+    public void registroA120test() throws ParseException{
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
         Date d =  sdf.parse("10101987");
         
