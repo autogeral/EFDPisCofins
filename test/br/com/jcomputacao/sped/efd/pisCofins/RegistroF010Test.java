@@ -4,7 +4,6 @@
  */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
-
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,11 +14,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 /**
- * 10/11/2011 21:23:39
+ * 10/11/2011 21:36:39
  * @author Jonas
  */
-public class RegistroF001Test {
-     public RegistroF001Test() {
+public class RegistroF010Test {
+    
+    public RegistroF010Test() {
     }
 
     @BeforeClass
@@ -39,13 +39,14 @@ public class RegistroF001Test {
     }
 
     @Test
-    public void registroF001test() throws ParseException {
-         RegistroF001 reg = new RegistroF001();
+    public void registroF010test() throws ParseException {
+        
+         RegistroF010 reg = new RegistroF010();
         LineModel line = reg.createModel();
-        line.setFieldValue(RegistroF001.REG, "0001");
-        line.setFieldValue(RegistroF001.IND_MOV, "1");
+        line.setFieldValue(RegistroF010.REG, "0001");
+        line.setFieldValue(RegistroF010.CNPJ, 123456789101112l);
          StringBuffer r = line.getRepresentation();
         System.out.print(r);
     }
-        
+    
 }

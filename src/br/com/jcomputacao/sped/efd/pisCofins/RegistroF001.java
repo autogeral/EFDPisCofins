@@ -16,11 +16,12 @@ import br.com.jcomputacao.aristoteles.line.LineArchetype;
  * @author Jonas
  */
 public class RegistroF001 extends LineArchetype {
-    
-     public static String REG = "REG";
-       public static String IND_MOV = "QTD_LIN_A";
-    public RegistroF001(){
-         addFieldArchetype(REG, new FieldStringFixedLengthArchetype(4));
-           addFieldArchetype(IND_MOV , new FieldStringMaximumLengthArchetype(1)); 
+
+    public static String REG = "REG";
+    public static String IND_MOV = "QTD_LIN_A";
+
+    public RegistroF001() {
+        addFieldArchetype(REG, new FieldStringFixedLengthArchetype(4));
+        addFieldArchetype(IND_MOV, new FieldStringMaximumLengthArchetype(1));
     }
 }
