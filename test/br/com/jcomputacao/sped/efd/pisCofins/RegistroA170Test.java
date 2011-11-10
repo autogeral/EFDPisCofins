@@ -43,7 +43,7 @@ public class RegistroA170Test {
     public void registroA170test() throws ParseException {
 
 
-        StringRandom stringRandom = new StringRandom();
+        Randomize stringRandom = new Randomize();
         RegistroA170 reg = new RegistroA170();
         LineModel line = reg.createModel();
         line.setFieldValue(RegistroA170.REG, "0001");
