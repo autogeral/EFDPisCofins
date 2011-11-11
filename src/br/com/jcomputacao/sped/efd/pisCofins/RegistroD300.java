@@ -4,9 +4,11 @@
  */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
-import br.com.jcomputacao.aristoteles.field.FieldDecimalFixedLengthArchetype;
-import br.com.jcomputacao.aristoteles.field.FieldIntegerFixedLengthArchetype;
-import br.com.jcomputacao.aristoteles.field.FieldStringFixedLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.FieldDateFixedLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.FieldDateTimeFixedLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.FieldDecimalMaximumLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.FieldIntegerMaximumLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.FieldStringMaximumLengthArchetype;
 import br.com.jcomputacao.aristoteles.line.LineArchetype;
 
 /**
@@ -36,24 +38,24 @@ public class RegistroD300 extends LineArchetype {
     public static String COD_CTA = "COD_CTA";
 
     public RegistroD300() {
-        addFieldArchetype(REG, new FieldStringFixedLengthArchetype(4));
-        addFieldArchetype(COD_MOD, new FieldStringFixedLengthArchetype(2));
-        addFieldArchetype(SER, new FieldStringFixedLengthArchetype(4));
-        addFieldArchetype(SUB, new FieldIntegerFixedLengthArchetype(3));
-        addFieldArchetype(NUM_DOC_INI, new FieldIntegerFixedLengthArchetype(6));
-        addFieldArchetype(NUM_DOC_FIN, new FieldIntegerFixedLengthArchetype(6));
-        addFieldArchetype(CFOP, new FieldIntegerFixedLengthArchetype(4));
-        addFieldArchetype(DT_REF, new FieldIntegerFixedLengthArchetype(8));
-        addFieldArchetype(VL_DOC, new FieldDecimalFixedLengthArchetype(20, 2));
-        addFieldArchetype(VL_DESC, new FieldDecimalFixedLengthArchetype(20, 2));
-        addFieldArchetype(CST_PIS, new FieldIntegerFixedLengthArchetype(2));
-        addFieldArchetype(VL_BC_PIS, new FieldDecimalFixedLengthArchetype(20, 2));
-        addFieldArchetype(ALIQ_PIS, new FieldDecimalFixedLengthArchetype(8,4));
-        addFieldArchetype(VL_PIS, new FieldDecimalFixedLengthArchetype(20, 2));
-        addFieldArchetype(CST_COFINS, new FieldIntegerFixedLengthArchetype(2));
-        addFieldArchetype(VL_BC_COFINS, new FieldDecimalFixedLengthArchetype(20, 2));
-        addFieldArchetype(ALIQ_COFINS, new FieldDecimalFixedLengthArchetype(8, 4));
-        addFieldArchetype(VL_COFINS, new FieldDecimalFixedLengthArchetype(20, 2));
-        addFieldArchetype(COD_CTA, new FieldStringFixedLengthArchetype(60));
+        addFieldArchetype(REG, new FieldStringMaximumLengthArchetype(4));
+        addFieldArchetype(COD_MOD, new FieldStringMaximumLengthArchetype(2));
+        addFieldArchetype(SER, new FieldStringMaximumLengthArchetype(4));
+        addFieldArchetype(SUB, new FieldIntegerMaximumLengthArchetype(3));
+        addFieldArchetype(NUM_DOC_INI, new FieldIntegerMaximumLengthArchetype(6));
+        addFieldArchetype(NUM_DOC_FIN, new FieldIntegerMaximumLengthArchetype(6));
+        addFieldArchetype(CFOP, new FieldIntegerMaximumLengthArchetype(4));
+        addFieldArchetype(DT_REF, new FieldDateTimeFixedLengthArchetype("dd/mm/yyyy"));
+        addFieldArchetype(VL_DOC, new FieldDecimalMaximumLengthArchetype(20, 2));
+        addFieldArchetype(VL_DESC, new FieldDecimalMaximumLengthArchetype(20, 2));
+        addFieldArchetype(CST_PIS, new FieldIntegerMaximumLengthArchetype(2));
+        addFieldArchetype(VL_BC_PIS, new FieldDecimalMaximumLengthArchetype(20, 2));
+        addFieldArchetype(ALIQ_PIS, new FieldDecimalMaximumLengthArchetype(8,4));
+        addFieldArchetype(VL_PIS, new FieldDecimalMaximumLengthArchetype(20, 2));
+        addFieldArchetype(CST_COFINS, new FieldIntegerMaximumLengthArchetype(2));
+        addFieldArchetype(VL_BC_COFINS, new FieldDecimalMaximumLengthArchetype(20, 2));
+        addFieldArchetype(ALIQ_COFINS, new FieldDecimalMaximumLengthArchetype(8, 4));
+        addFieldArchetype(VL_COFINS, new FieldDecimalMaximumLengthArchetype(20, 2));
+        addFieldArchetype(COD_CTA, new FieldStringMaximumLengthArchetype(60));
     }
 }

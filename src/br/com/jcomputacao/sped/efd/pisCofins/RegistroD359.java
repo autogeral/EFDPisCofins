@@ -4,7 +4,7 @@
  */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
-import br.com.jcomputacao.aristoteles.field.FieldStringFixedLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.FieldStringMaximumLengthArchetype;
 import br.com.jcomputacao.aristoteles.line.LineArchetype;
 
 /**
@@ -18,8 +18,8 @@ public class RegistroD359 extends LineArchetype {
     public static String IND_PROC = "IND_PROC";
 
     public RegistroD359() {
-        addFieldArchetype(REG, new FieldStringFixedLengthArchetype(4));
-        addFieldArchetype(NUM_PROC, new FieldStringFixedLengthArchetype(20));
-        addFieldArchetype(IND_PROC, new FieldStringFixedLengthArchetype(1));
+        addFieldArchetype(REG, new FieldStringMaximumLengthArchetype(4));
+        addFieldArchetype(NUM_PROC, new FieldStringMaximumLengthArchetype(20));
+        addFieldArchetype(IND_PROC, new FieldStringMaximumLengthArchetype(1));
     }
 }

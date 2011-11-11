@@ -4,9 +4,9 @@ package br.com.jcomputacao.sped.efd.pisCofins;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-import br.com.jcomputacao.aristoteles.field.FieldDecimalFixedLengthArchetype;
-import br.com.jcomputacao.aristoteles.field.FieldIntegerFixedLengthArchetype;
-import br.com.jcomputacao.aristoteles.field.FieldStringFixedLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.FieldDecimalMaximumLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.FieldIntegerMaximumLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.FieldStringMaximumLengthArchetype;
 import br.com.jcomputacao.aristoteles.line.LineArchetype;
 
 /**
@@ -24,12 +24,12 @@ public class RegistroD205 extends LineArchetype {
     public static String COD_CTA = "COD_CTA";
 
     public RegistroD205() {
-        addFieldArchetype(REG, new FieldStringFixedLengthArchetype(4));
-        addFieldArchetype(CST_COFINS, new FieldIntegerFixedLengthArchetype(2));
-        addFieldArchetype(VL_ITEM, new FieldDecimalFixedLengthArchetype(20, 2));
-        addFieldArchetype(VL_BC_COFINS, new FieldDecimalFixedLengthArchetype(20, 2));
-        addFieldArchetype(ALIQ_COFINS, new FieldDecimalFixedLengthArchetype(8, 4));
-        addFieldArchetype(VL_COFINS, new FieldDecimalFixedLengthArchetype(20, 2));
-        addFieldArchetype(COD_CTA, new FieldStringFixedLengthArchetype(60));
+        addFieldArchetype(REG, new FieldStringMaximumLengthArchetype(4));
+        addFieldArchetype(CST_COFINS, new FieldIntegerMaximumLengthArchetype(2));
+        addFieldArchetype(VL_ITEM, new FieldDecimalMaximumLengthArchetype(20, 2));
+        addFieldArchetype(VL_BC_COFINS, new FieldDecimalMaximumLengthArchetype(20, 2));
+        addFieldArchetype(ALIQ_COFINS, new FieldDecimalMaximumLengthArchetype(8, 4));
+        addFieldArchetype(VL_COFINS, new FieldDecimalMaximumLengthArchetype(20, 2));
+        addFieldArchetype(COD_CTA, new FieldStringMaximumLengthArchetype(60));
     }
 }
