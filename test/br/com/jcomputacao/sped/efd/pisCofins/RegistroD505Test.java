@@ -5,6 +5,7 @@
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
+import br.com.jcomputacao.sped.efd.COFINSCofins.RegistroD505;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,8 +16,8 @@ import org.junit.Test;
  *
  * @author Ana Cláudia
  */
-public class RegistroC601Test {
-      public RegistroC601Test() {
+public class RegistroD505Test {
+    public RegistroD505Test() {
     }
 
     @BeforeClass
@@ -26,30 +27,30 @@ public class RegistroC601Test {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     @Test
-    public void RegistroC601Test(){
-        RegistroC601 reg = new RegistroC601();
+    public void RegistroD505Test() {
+        RegistroD505 reg = new RegistroD505();
         LineModel line = reg.createModel();
-        
-        line.setFieldValue(RegistroC601.REG, "0001");
-        line.setFieldValue(RegistroC601.CST_PIS, 93L);
-        line.setFieldValue(RegistroC601.VL_ITEM, 222.76);
-        line.setFieldValue(RegistroC601.VL_BC_PIS, 493.45);
-        line.setFieldValue(RegistroC601.ALIQ_PIS, 11111111.4444);
-        line.setFieldValue(RegistroC601.VL_PIS, 234.34);
-        line.setFieldValue(RegistroC601.COD_CTA, "aaaaaaaaaaaaa");
+
+        line.setFieldValue(RegistroD505.REG, "0100");
+        line.setFieldValue(RegistroD505.CST_COFINS, 34L);
+        line.setFieldValue(RegistroD505.VL_ITEM, 302.23);
+        line.setFieldValue(RegistroD505.NAT_BC_CRED, "WD");
+        line.setFieldValue(RegistroD505.VL_BC_COFINS, 30232.23);
+        line.setFieldValue(RegistroD505.ALIQ_COFINS, 12345302.1234);
+        line.setFieldValue(RegistroD505.VL_COFINS, 352.33);
+        line.setFieldValue(RegistroD505.COD_CTA, "ASDASDDDD30223");
         
         StringBuffer r = line.getRepresentation();
         System.out.print(r);
     }
 }
-

@@ -37,12 +37,12 @@ public class RegistroD001Test {
     }
 
     @Test
-    public void RegistroC001Test() {
-        RegistroC001 reg = new RegistroC001();
+    public void RegistroD001Test() {
+        RegistroD001 reg = new RegistroD001();
         LineModel line = reg.createModel();
 
-        line.setFieldValue(RegistroC001.REG, "0001");
-        line.setFieldValue(RegistroC001.IND_MOV, "1");
+        line.setFieldValue(RegistroD001.REG, "0001");
+        line.setFieldValue(RegistroD001.IND_MOV, "1");
 
         StringBuffer r = line.getRepresentation();
         System.out.print(r);

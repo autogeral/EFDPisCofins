@@ -5,6 +5,9 @@
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -37,9 +40,11 @@ public class RegistroD200Test {
     }
 
     @Test
-    public void RegistroD200Test() {
+    public void RegistroD200Test() throws ParseException {
         RegistroD200 reg = new RegistroD200();
         LineModel line = reg.createModel();
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
+        Date data = sdf.parse("17121986");
 
         line.setFieldValue(RegistroD200.REG, "0100");
         line.setFieldValue(RegistroD200.COD_MOD, "41");
@@ -49,7 +54,7 @@ public class RegistroD200Test {
         line.setFieldValue(RegistroD200.NUM_DOC_INI, 123456789L);
         line.setFieldValue(RegistroD200.NUM_DOC_FIN, 123456789L);
         line.setFieldValue(RegistroD200.CFOP, 1234L);
-        line.setFieldValue(RegistroD200.DT_REF, 12345678L);
+        line.setFieldValue(RegistroD200.DT_REF, data);
         line.setFieldValue(RegistroD200.VL_DOC, 873.12);
         line.setFieldValue(RegistroD200.VL_DESC, 122.43);
 

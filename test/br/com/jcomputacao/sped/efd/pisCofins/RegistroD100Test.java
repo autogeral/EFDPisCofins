@@ -5,6 +5,9 @@
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -37,9 +40,11 @@ public class RegistroD100Test {
     }
 
     @Test
-    public void RegistroD100Test() {
+    public void RegistroD100Test() throws ParseException {
         RegistroD100 reg = new RegistroD100();
         LineModel line = reg.createModel();
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
+        Date data = sdf.parse("05102010");
 
         line.setFieldValue(RegistroD100.REG, "0100");
         line.setFieldValue(RegistroD100.IND_OPER, "1");
@@ -51,8 +56,8 @@ public class RegistroD100Test {
         line.setFieldValue(RegistroD100.SUB, "123");
         line.setFieldValue(RegistroD100.NUM_DOC, 123456789L);
         line.setFieldValue(RegistroD100.CHV_CTE, 6654564654L);
-        line.setFieldValue(RegistroD100.DT_DOC, 12345678L);
-        line.setFieldValue(RegistroD100.DT_A_P, 12345678L);
+        line.setFieldValue(RegistroD100.DT_DOC, data);
+        line.setFieldValue(RegistroD100.DT_A_P, data);
         line.setFieldValue(RegistroD100.TP_CTe, 3L);
         line.setFieldValue(RegistroD100.CHV_CTE_REF, 324324234L);
         line.setFieldValue(RegistroD100.VL_DOC, 123.34);

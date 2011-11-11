@@ -5,6 +5,9 @@
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,7 +19,7 @@ import org.junit.Test;
  * @author Ana Cláudia
  */
 public class RegistroD350Test {
-  
+
     public RegistroD350Test() {
     }
 
@@ -37,15 +40,17 @@ public class RegistroD350Test {
     }
 
     @Test
-    public void RegistroD350Test() {
+    public void RegistroD350Test() throws ParseException {
         RegistroD350 reg = new RegistroD350();
         LineModel line = reg.createModel();
-
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
+        Date data = sdf.parse("17121986");
+                
         line.setFieldValue(RegistroD350.REG, "0100");
         line.setFieldValue(RegistroD350.COD_MOD, "12");
         line.setFieldValue(RegistroD350.ECF_MOD, "1234567890123456789");
         line.setFieldValue(RegistroD350.ECF_FAB, "1234567891234567890");
-        line.setFieldValue(RegistroD350.DT_DOC, 12345678L);
+        line.setFieldValue(RegistroD350.DT_DOC, data);
         line.setFieldValue(RegistroD350.CRO, 123L);
         line.setFieldValue(RegistroD350.CRZ, 123456L);
         line.setFieldValue(RegistroD350.NUM_COO_FIN, 123456L);
@@ -67,5 +72,5 @@ public class RegistroD350Test {
 
         StringBuffer r = line.getRepresentation();
         System.out.print(r);
-    }  
+    }
 }
