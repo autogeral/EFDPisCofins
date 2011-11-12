@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
  * @author rafael.galvao
  */
 public class RegistroM620Test extends Randomize {
-    
+
     public RegistroM620Test() {
     }
 
@@ -31,11 +31,11 @@ public class RegistroM620Test extends Randomize {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -45,7 +45,7 @@ public class RegistroM620Test extends Randomize {
      */
     @Test
     public void RegistroM620Test() throws ParseException {
-         RegistroM620 reg = new RegistroM620();
+        RegistroM620 reg = new RegistroM620();
         LineModel line = reg.createModel();
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
         Date data = sdf.parse("17121986");
@@ -53,19 +53,19 @@ public class RegistroM620Test extends Randomize {
         line.setFieldValue(RegistroM620.IND_AJ, "d");
         line.setFieldValue(RegistroM620.VL_AJ, 123456789123456789.22);
         line.setFieldValue(RegistroM620.COD_AJ, "12");
-        line.setFieldValue(RegistroM620.NUM_DOC,  GeraStringRandom(255));
+        line.setFieldValue(RegistroM620.NUM_DOC, GeraStringRandom(255));
         line.setFieldValue(RegistroM620.DESCR_AJ, GeraStringRandom(255));
         line.setFieldValue(RegistroM620.DT_REF, data);
 
         StringBuffer r = line.getRepresentation();
         System.out.print(r);
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
     }
 }
