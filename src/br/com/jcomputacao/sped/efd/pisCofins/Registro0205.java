@@ -5,6 +5,7 @@
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.field.FieldDateFixedLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.FieldDateTimeFixedLengthArchetype;
 import br.com.jcomputacao.aristoteles.field.FieldDecimalFixedLengthArchetype;
 import br.com.jcomputacao.aristoteles.field.FieldDefaultArchetype;
 import br.com.jcomputacao.aristoteles.field.FieldFillerArchetype;
@@ -26,8 +27,8 @@ public class Registro0205 extends LineArchetype {
         public Registro0205(){
         addFieldArchetype(REG, new FieldStringFixedLengthArchetype(4));
         addFieldArchetype(DESCR_ANT_ITEM, new FieldStringFixedLengthArchetype(255));
-        addFieldArchetype(DT_INI, new FieldIntegerFixedLengthArchetype(8));
-        addFieldArchetype(DT_FIM, new FieldIntegerFixedLengthArchetype(8));
+        addFieldArchetype(DT_INI, new FieldDateTimeFixedLengthArchetype("ddMMyyyy"));
+        addFieldArchetype(DT_FIM, new FieldDateTimeFixedLengthArchetype("ddMMyyyy"));
         addFieldArchetype(COD_ANT_ITEM, new FieldStringFixedLengthArchetype(60));
     }
 }
