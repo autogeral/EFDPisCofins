@@ -5,6 +5,9 @@
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -35,14 +38,16 @@ public class Registro0205Test {
     }
 
     @Test
-    public void registro0205test(){
+    public void registro0205test() throws ParseException{
         Registro0205 reg = new Registro0205();
         LineModel line = reg.createModel();
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
+        Date data = sdf.parse("17121986");
         
         line.setFieldValue(Registro0205.REG, "0001");
         line.setFieldValue(Registro0205.DESCR_ANT_ITEM, "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
-        line.setFieldValue(Registro0205.DT_INI, 11111111l);
-        line.setFieldValue(Registro0205.DT_FIM, 11111l);
+        line.setFieldValue(Registro0205.DT_INI, data);
+        line.setFieldValue(Registro0205.DT_FIM, data);
         line.setFieldValue(Registro0205.COD_ANT_ITEM, "111111111111111111111111111111111111111111111111111111111111");
         
         StringBuffer r = line.getRepresentation();
