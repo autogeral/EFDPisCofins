@@ -17,7 +17,7 @@ import br.com.jcomputacao.aristoteles.line.LineArchetype;
 public class RegistroC395 extends LineArchetype implements EfdPisCofinsRegistro {
 
     public String getNome() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return "NOTAS FISCAIS DE VENDA A CONSUMIDOR (CÓDIGOS 02, 2D, 2E e 59) – AQUISIÇÕES/ENTRADAS COM CRÉDITO";
     }
     public final static String REG = "REG";
     public final static String COD_MOD = "COD_MOD";
