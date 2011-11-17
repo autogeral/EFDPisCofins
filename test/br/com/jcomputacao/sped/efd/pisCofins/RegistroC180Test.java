@@ -18,7 +18,7 @@ import org.junit.Test;
  * 10/11/2011 21:21:26
  * @author rafael.galvao
  */
-public class RegistroC180Test extends StringRandom {
+public class RegistroC180Test {
     
     public RegistroC180Test() {
     }
@@ -48,12 +48,13 @@ public class RegistroC180Test extends StringRandom {
         LineModel line = reg.createModel();
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
         Date data = sdf.parse("17121986");
+        Randomize rm = new Randomize();
         line.setFieldValue(RegistroC180.REG, "1234");
         line.setFieldValue(RegistroC180.COD_MOD, "fd");
         line.setFieldValue(RegistroC180.DT_DOC_INI, data);
         line.setFieldValue(RegistroC180.DT_DOC_FIN, data);
-        line.setFieldValue(RegistroC180.COD_ITEM, GeraStringRandom(60) );
-        line.setFieldValue(RegistroC180.COD_NCM, GeraStringRandom(8) );
+        line.setFieldValue(RegistroC180.COD_ITEM, rm.GeraStringRandom(60) );
+        line.setFieldValue(RegistroC180.COD_NCM, rm.GeraStringRandom(8) );
         line.setFieldValue(RegistroC180.EX_IPI, "asd");
         line.setFieldValue(RegistroC180.VL_TOT_ITEM, 12345678912345678912.35);
         
