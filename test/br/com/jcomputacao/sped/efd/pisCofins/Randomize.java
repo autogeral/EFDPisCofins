@@ -44,7 +44,7 @@ public class Randomize {
         String Str = "";
         while (Str.length() < tamanho) {
             Random r = new Random();
-            Str +=  r.nextDouble();
+            Str +=  r.nextLong();
         }    
       return Double.parseDouble(Str);
     }
