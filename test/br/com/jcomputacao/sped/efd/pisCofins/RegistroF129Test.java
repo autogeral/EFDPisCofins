@@ -48,8 +48,7 @@ public class RegistroF129Test {
         
         line.setFieldValue(RegistroF129.REG, "F001");
         line.setFieldValue(RegistroF129.NUM_PROC, rm.GeraStringRandom(20));
-        line.setFieldValue(RegistroF129.IND_PROC, "e");
-        
+        line.setFieldValue(RegistroF129.IND_PROC, "e");        
         
         StringBuffer r = line.getRepresentation();
         System.out.print(r);

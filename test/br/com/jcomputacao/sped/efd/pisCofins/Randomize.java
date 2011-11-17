@@ -31,14 +31,14 @@ public class Randomize {
       return Long.parseLong(Str);
     }
      
-      public int GeraIntRandom(int tamanho){
-        String Str = "";
-        while (Str.length() < tamanho) {
-            Random r = new Random();
-            Str +=  r.nextInt();
-        }    
-      return Integer.parseInt(Str);
-    }
+//      public int GeraIntRandom(int tamanho){
+//        String Str = "";
+//        while (Str.length() < tamanho) {
+//            Random r = new Random();
+//            Str +=  r.nextInt();
+//        }    
+//      return Integer.parseInt(Str);
+//    }
       
        public double GeraDoubleRandom(int tamanho){
         String Str = "";
