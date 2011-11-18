@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><nfeProc versao="1.10" xmlns="http://www.portalfiscal.inf.br/nfe"><NFe xmlns="http://www.portalfiscal.inf.br/nfe"><infNFe Id="NFe35110205437537000218550010000106738605009008" versao="1.10" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ide><cUF>35</cUF><cNF>860500900</cNF><natOp>MOVIMENTO JA REGISTRA EM ECF (INTERESTADUAL)</natOp><indPag>0</indPag><mod>55</mod><serie>1</serie><nNF>10673</nNF><dEmi>2011-02-21</dEmi><dSaiEnt>2011-02-21</dSaiEnt><tpNF>1</tpNF><cMunFG>3545209</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><cDV>8</cDV><tpAmb>1</tpAmb><finNFe>1</finNFe><procEmi>3</procEmi><verProc>1.4.4</verProc></ide><emit><CNPJ>05437537000218</CNPJ><xNome>Auto Geral de Itu Ltda</xNome><xFant>Auto Geral Ltda</xFant><enderEmit><xLgr>av Dom Pedro ii</xLgr><nro>1090</nro><xCpl>0</xCpl><xBairro>CENTRO</xBairro><cMun>3545209</cMun><xMun>Salto</xMun><UF>SP</UF><CEP>13320000</CEP><cPais>1058</cPais><xPais>BRASIL</xPais><fone>1140287777</fone></enderEmit><IE>600020735116</IE><IM>11976</IM><CNAE>4530701</CNAE></emit><dest><CNPJ>03299955000180</CNPJ><xNome>J B TRANSPORTES DE CARGAS LTDA</xNome><enderDest><xLgr>Rua do Babacu 181</xLgr><nro>0</nro><xBairro>SETOR RODOVIARIO</xBairro><cMun>5208707</cMun><xMun>Goiania</xMun><UF>GO</UF><CEP>74430050</CEP><cPais>1058</cPais><xPais>BRASIL</xPais><fone>40212957</fone></enderDest><IE>102553432</IE></dest><det nItem="1"><prod><cProd>023442</cProd><cEAN/><xProd>RETENTOR VIRABR.</xProd><NCM>40169300</NCM><CFOP>6929</CFOP><uCom>PC</uCom><qCom>1.0000</qCom><vUnCom>38.0200</vUnCom><vProd>38.02</vProd><cEANTrib/><uTrib>PC</uTrib><qTrib>1.0000</qTrib><vUnTrib>38.0200</vUnTrib></prod><imposto><ICMS><ICMS40><orig>0</orig><CST>40</CST></ICMS40></ICMS><IPI><cEnq>99</cEnq><IPINT><CST>52</CST></IPINT></IPI><PIS><PISNT><CST>07</CST></PISNT></PIS><COFINS><COFINSNT><CST>07</CST></COFINSNT></COFINS></imposto></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS><vBCST>0.00</vBCST><vST>0.00</vST><vProd>38.02</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>38.02</vNF></ICMSTot></total><transp><modFrete>0</modFrete></transp><infAdic><infCpl>VENDEDOR PEDRO COMPRADOR MARRON</infCpl></infAdic></infNFe><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI="#NFe35110205437537000218550010000106738605009008"><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>rNsWwrrxJnysIm/TTNEnB6LyAcI=</DigestValue></Reference></SignedInfo><SignatureValue>YtfQ67y4JrWDzg9omBW9pkdFgx0/QZIMo4WBhVs2WPeTHORRzF4MYvBKCroOumBIfOU9ZpiMjcM+
+PJyhatmTmig/PyT6krI7Awv1ZaS/S8rnXHWBQdkd6gMw0F+zTKZ3uWppU7H5Boyniib74VPPM9eY
+ytA+AweiHIi/2bs4PGM=</SignatureValue><KeyInfo><X509Data><X509Certificate>MIIGJjCCBQ6gAwIBAgIIFHe5SfYsfEcwDQYJKoZIhvcNAQEFBQAwTDELMAkGA1UEBhMCQlIxEzAR
+BgNVBAoTCklDUC1CcmFzaWwxKDAmBgNVBAMTH1NFUkFTQSBDZXJ0aWZpY2Fkb3JhIERpZ2l0YWwg
+djEwHhcNMTAwMzEyMjExMTM1WhcNMTEwMzEyMjExMTM1WjCB4TELMAkGA1UEBhMCQlIxEzARBgNV
+BAoTCklDUC1CcmFzaWwxFDASBgNVBAsTCyhFTSBCUkFOQ08pMRgwFgYDVQQLEw8wMDAwMDEwMDA5
+MTExOTMxFDASBgNVBAsTCyhFTSBCUkFOQ08pMRQwEgYDVQQLEwsoRU0gQlJBTkNPKTEUMBIGA1UE
+CxMLKEVNIEJSQU5DTykxFDASBgNVBAsTCyhFTSBCUkFOQ08pMRQwEgYDVQQLEwsoRU0gQlJBTkNP
+KTEfMB0GA1UEAxMWQVVUTyBHRVJBTCBERSBJVFUgTFREQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAw
+gYkCgYEA1qcsLp0E1e/aqSim7lKR61PjSowrO0gp5KSlVkQFDOz9nbnb+2l7Kbp85ych3zfW8S+B
+7Qgx5e6sr3o2fKo0hyG8ZP8VDySrM/vrd/53srndBRza6mSvCw7u8HZA8jaDOBZAtZL4ldjBkxE5
+WVzk7zdNKqxohN2qJWxnSAsQDHECAwEAAaOCAvgwggL0MA4GA1UdDwEB/wQEAwIF4DAdBgNVHSUE
+FjAUBggrBgEFBQcDAgYIKwYBBQUHAwQwHwYDVR0jBBgwFoAUt2CoW/mypq4A7XTr1UrJlmhm9Vww
+gbsGA1UdEQSBszCBsIEXTVVSSUxPQEFVVE9HRVJBTC5DT00uQlKgPQYFYEwBAwSgNBMyMjYxMTE5
+ODAyNzkzMzk5MjgwMzAwMDAwMDAwMDAwMDAwMDAwMjMwOTQzOTc0U1NQU1CgIgYFYEwBAwKgGRMX
+TVVSSUxPIERFIE1PUkFFUyBUVVZBTkmgGQYFYEwBAwOgEBMOMDU0Mzc1MzcwMDAxMzegFwYFYEwB
+AwegDhMMMDAwMDAwMDAwMDAwMFcGA1UdIARQME4wTAYGYEwBAgEGMEIwQAYIKwYBBQUHAgEWNGh0
+dHA6Ly93d3cuY2VydGlmaWNhZG9kaWdpdGFsLmNvbS5ici9yZXBvc2l0b3Jpby9kcGMwgfAGA1Ud
+HwSB6DCB5TBJoEegRYZDaHR0cDovL3d3dy5jZXJ0aWZpY2Fkb2RpZ2l0YWwuY29tLmJyL3JlcG9z
+aXRvcmlvL2xjci9zZXJhc2FjZHYxLmNybDBDoEGgP4Y9aHR0cDovL2xjci5jZXJ0aWZpY2Fkb3Mu
+Y29tLmJyL3JlcG9zaXRvcmlvL2xjci9zZXJhc2FjZHYxLmNybDBToFGgT4ZNaHR0cDovL3JlcG9z
+aXRvcmlvLmljcGJyYXNpbC5nb3YuYnIvbGNyL1NlcmFzYS9yZXBvc2l0b3Jpby9sY3Ivc2VyYXNh
+Y2R2MS5jcmwwgZcGCCsGAQUFBwEBBIGKMIGHMDwGCCsGAQUFBzABhjBodHRwOi8vb2NzcC5jZXJ0
+aWZpY2Fkb2RpZ2l0YWwuY29tLmJyL3NlcmFzYWNkdjEwRwYIKwYBBQUHMAKGO2h0dHA6Ly93d3cu
+Y2VydGlmaWNhZG9kaWdpdGFsLmNvbS5ici9jYWRlaWFzL3NlcmFzYWNkdjEucDdiMA0GCSqGSIb3
+DQEBBQUAA4IBAQBcZG8qVTqDsuB7Z5VGxVddEN4r47p/J3h9ZJGfxkA8Q17EkLH6rDG0tvI+WFqn
+NcFeAs8PbHRNS7gO2CPcl72bzAg6Ks7ngO11FC63bOmNYC9E7H3hylxNqxiZVfwP+AUi2G1awxWg
+KjTLLQQyB+WspJfZil3deTYqUMtalbELH0dWike3dnmOEwSYa/dPug7pK0jS0fsK3ISn/Vi8YYmH
+vHhFEftHsMhM/vTfJZQY3197b1HgxaOqmMnwpYDS5RFfQSsFofO9Z45Pudwx2BW2ciMg46C7gNZl
+KeSJqQzfX14YwVlZuThcqrl0NgZX6CX4ej8MTdu5hN/bXxhAeyT1</X509Certificate></X509Data></KeyInfo></Signature></NFe><protNFe versao="1.10"><infProt><tpAmb>1</tpAmb><verAplic>SP_NFE_PL_005e</verAplic><chNFe>35110205437537000218550010000106738605009008</chNFe><dhRecbto>2011-02-21T09:57:09</dhRecbto><nProt>135110086469895</nProt><digVal>rNsWwrrxJnysIm/TTNEnB6LyAcI=</digVal><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo></infProt></protNFe></nfeProc>

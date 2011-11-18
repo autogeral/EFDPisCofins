@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><nfeProc versao="2.00" xmlns="http://www.portalfiscal.inf.br/nfe"><NFe xmlns="http://www.portalfiscal.inf.br/nfe"><infNFe Id="NFe35110505437537000480550010000112581000504643" versao="2.00"><ide><cUF>35</cUF><cNF>00050464</cNF><natOp>TRANSFERENCIA DE SALDO DEVEDOR DE ICMS</natOp><indPag>0</indPag><mod>55</mod><serie>1</serie><nNF>11258</nNF><dEmi>2011-05-05</dEmi><tpNF>1</tpNF><cMunFG>3523909</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><cDV>3</cDV><tpAmb>1</tpAmb><finNFe>1</finNFe><procEmi>3</procEmi><verProc>2.0.9</verProc></ide><emit><CNPJ>05437537000480</CNPJ><xNome>AUTO GERAL DE ITU LTDA</xNome><xFant>AUTO GERAL</xFant><enderEmit><xLgr>AV. CAETANO RUGGIERI</xLgr><nro>3000</nro><xBairro>PQ NOSSA SRA DA CANDELARIA</xBairro><cMun>3523909</cMun><xMun>Itu</xMun><UF>SP</UF><CEP>13310160</CEP><cPais>1058</cPais><xPais>BRASIL</xPais><fone>1140227777</fone></enderEmit><IE>387163805114</IE><IM>32452</IM><CNAE>4530701</CNAE><CRT>3</CRT></emit><dest><CNPJ>05437537000137</CNPJ><xNome>Auto Geral de Itu LTDA</xNome><enderDest><xLgr>Av. Dr. Octivano Pereira Mendes</xLgr><nro>1333</nro><xBairro>Liberdade</xBairro><cMun>3523909</cMun><xMun>Itu</xMun><UF>SP</UF><CEP>13301909</CEP><cPais>1058</cPais><xPais>BRASIL</xPais><fone>1140137777</fone></enderDest><IE>387034155115</IE><email>nfe@autogeral.com.br</email></dest><det nItem="1"><prod><cProd>0</cProd><cEAN/><xProd>R$ 346,20 TREZENTOS E QUARENTA E SEIS REAIS E VINTE CENTAVOS</xProd><NCM>99999999</NCM><CFOP>5605</CFOP><uCom>VL</uCom><qCom>0.0000</qCom><vUnCom>0.0000000000</vUnCom><vProd>0.00</vProd><cEANTrib/><uTrib>VL</uTrib><qTrib>0.0000</qTrib><vUnTrib>0.0000000000</vUnTrib><indTot>1</indTot></prod><imposto><ICMS><ICMS90><orig>0</orig><CST>90</CST><modBC>3</modBC><vBC>0.00</vBC><pICMS>0.00</pICMS><vICMS>0.00</vICMS></ICMS90></ICMS><IPI><cEnq>999</cEnq><IPITrib><CST>99</CST><vBC>0.00</vBC><pIPI>0.00</pIPI><vIPI>0.00</vIPI></IPITrib></IPI><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS><vBCST>0.00</vBCST><vST>0.00</vST><vProd>0.00</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>0.00</vNF></ICMSTot></total><transp><modFrete>9</modFrete></transp><infAdic><infAdFisco>TRANSFERENCIA DE SALDO DEVEDOR - APURACAO DO MES DE MARCO, 2011.</infAdFisco></infAdic></infNFe><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI="#NFe35110505437537000480550010000112581000504643"><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>fIJqXpVEkAmXGVLz7Ay5B/2j4EU=</DigestValue></Reference></SignedInfo><SignatureValue>6zojqXqoF+aJJIkDtNXgh+mx2yXLt1c3N845x6SVItzjwk9a9hXQU/jDpOJ1lZ8EQxzN5YmvRaGb
+ITPcUW3ZRScQzJs/E21pHsKOynXh5+eCTAaWmD2B+yUQPJQhoQ42HzlZow+oHY3I1JjeOw8q/TGG
+e+BMMveoTZ705xSMGLM=</SignatureValue><KeyInfo><X509Data><X509Certificate>MIIGJjCCBQ6gAwIBAgIIVms7VyvB0AswDQYJKoZIhvcNAQEFBQAwTDELMAkGA1UEBhMCQlIxEzAR
+BgNVBAoTCklDUC1CcmFzaWwxKDAmBgNVBAMTH1NFUkFTQSBDZXJ0aWZpY2Fkb3JhIERpZ2l0YWwg
+djEwHhcNMTEwMzExMTkyNTEwWhcNMTIwMzEwMTkyNTEwWjCB4TELMAkGA1UEBhMCQlIxEzARBgNV
+BAoTCklDUC1CcmFzaWwxFDASBgNVBAsTCyhFTSBCUkFOQ08pMRgwFgYDVQQLEw8wMDAwMDEwMDE3
+MTk5OTYxFDASBgNVBAsTCyhFTSBCUkFOQ08pMRQwEgYDVQQLEwsoRU0gQlJBTkNPKTEUMBIGA1UE
+CxMLKEVNIEJSQU5DTykxFDASBgNVBAsTCyhFTSBCUkFOQ08pMRQwEgYDVQQLEwsoRU0gQlJBTkNP
+KTEfMB0GA1UEAxMWQVVUTyBHRVJBTCBERSBJVFUgTFREQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAw
+gYkCgYEA7xhh1KFu6Lb5ZSVYIQJhrA0k8aEV2AVedUNCry8Z+/cuwYibv8mqgmJixMPvT/5rYTcK
++w6AQBPUAhhStRnqMLZvJkb1n4otEAhyf2Q4vnz6ICspNq2na28XoPc3y24jdTxEV/wMSo7Q5cD2
+GGE29uEbtXWjtGb3rdbbT50MWY8CAwEAAaOCAvgwggL0MA4GA1UdDwEB/wQEAwIF4DAdBgNVHSUE
+FjAUBggrBgEFBQcDAgYIKwYBBQUHAwQwHwYDVR0jBBgwFoAUt2CoW/mypq4A7XTr1UrJlmhm9Vww
+gbsGA1UdEQSBszCBsIEXTVVSSUxPQEFVVE9HRVJBTC5DT00uQlKgPQYFYEwBAwSgNBMyMjYxMTE5
+ODAyNzkzMzk5MjgwMzAwMDAwMDAwMDAwMDAwMDAwMjMwOTQzOTc0U1NQU1CgIgYFYEwBAwKgGRMX
+TVVSSUxPIERFIE1PUkFFUyBUVVZBTkmgGQYFYEwBAwOgEBMOMDU0Mzc1MzcwMDAxMzegFwYFYEwB
+AwegDhMMMDAwMDAwMDAwMDAwMFcGA1UdIARQME4wTAYGYEwBAgEGMEIwQAYIKwYBBQUHAgEWNGh0
+dHA6Ly93d3cuY2VydGlmaWNhZG9kaWdpdGFsLmNvbS5ici9yZXBvc2l0b3Jpby9kcGMwgfAGA1Ud
+HwSB6DCB5TBJoEegRYZDaHR0cDovL3d3dy5jZXJ0aWZpY2Fkb2RpZ2l0YWwuY29tLmJyL3JlcG9z
+aXRvcmlvL2xjci9zZXJhc2FjZHYxLmNybDBDoEGgP4Y9aHR0cDovL2xjci5jZXJ0aWZpY2Fkb3Mu
+Y29tLmJyL3JlcG9zaXRvcmlvL2xjci9zZXJhc2FjZHYxLmNybDBToFGgT4ZNaHR0cDovL3JlcG9z
+aXRvcmlvLmljcGJyYXNpbC5nb3YuYnIvbGNyL1NlcmFzYS9yZXBvc2l0b3Jpby9sY3Ivc2VyYXNh
+Y2R2MS5jcmwwgZcGCCsGAQUFBwEBBIGKMIGHMEcGCCsGAQUFBzAChjtodHRwOi8vd3d3LmNlcnRp
+ZmljYWRvZGlnaXRhbC5jb20uYnIvY2FkZWlhcy9zZXJhc2FjZHYxLnA3YjA8BggrBgEFBQcwAYYw
+aHR0cDovL29jc3AuY2VydGlmaWNhZG9kaWdpdGFsLmNvbS5ici9zZXJhc2FjZHYxMA0GCSqGSIb3
+DQEBBQUAA4IBAQBFSBBMsvx8IgSISFOdQPfUXG/YzlEOrvo9j0oTAn5pTL/IJ6QE1BMtHRliAGgc
+jpGjJ3unyspxNg2XBbhtLWXor8TVUkW+9Hk9FNVcsKJ5x3Xm7/zuu/RXFndcqTN4+wtw6xbBU2l9
+vl6BfwhPWstEP7XYaOyfovuRYpy6Y5QI0atgHHYfYCRAkoUHc1iwq4ELSBD7omI0oB+mONwTQALw
+fkJVk3pGbjsZW3OiqhFB8qg8/+u8FEDypniaeLWdfMr4ZSY1bwtAFuCAccoAaTaBGLGCXfguDMef
+NZYWdT/VidsjDMhBd4390VO8apybvvcMSjCiOsrNumGpjfxCdtqj</X509Certificate></X509Data></KeyInfo></Signature></NFe><protNFe versao="2.00"><infProt><tpAmb>1</tpAmb><verAplic>SP_NFE_PL_006e</verAplic><chNFe>35110505437537000480550010000112581000504643</chNFe><dhRecbto>2011-05-05T14:34:32</dhRecbto><nProt>135110223217246</nProt><digVal>fIJqXpVEkAmXGVLz7Ay5B/2j4EU=</digVal><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo></infProt></protNFe></nfeProc>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><nfeProc versao="2.00" xmlns="http://www.portalfiscal.inf.br/nfe"><NFe xmlns="http://www.portalfiscal.inf.br/nfe"><infNFe Id="NFe35110705437537000218550010000154301300000002" versao="2.00"><ide><cUF>35</cUF><cNF>30000000</cNF><natOp>DEVOLUCAO DO CLIENTE INTERESTADUAL</natOp><indPag>0</indPag><mod>55</mod><serie>1</serie><nNF>15430</nNF><dEmi>2011-07-05</dEmi><dSaiEnt>2011-08-02</dSaiEnt><hSaiEnt>15:09:01</hSaiEnt><tpNF>0</tpNF><cMunFG>3545209</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><cDV>2</cDV><tpAmb>1</tpAmb><finNFe>1</finNFe><procEmi>3</procEmi><verProc>2.0.9</verProc></ide><emit><CNPJ>05437537000218</CNPJ><xNome>AUTO GERAL DE ITU LTDA</xNome><xFant>AUTO GERAL LTDA</xFant><enderEmit><xLgr>AV DOM PEDRO II</xLgr><nro>1090</nro><xCpl>0</xCpl><xBairro>CENTRO</xBairro><cMun>3545209</cMun><xMun>Salto</xMun><UF>SP</UF><CEP>13320000</CEP><cPais>1058</cPais><xPais>BRASIL</xPais><fone>1140287777</fone></enderEmit><IE>600020735116</IE><IM>11976</IM><CNAE>4530701</CNAE><CRT>3</CRT></emit><dest><CNPJ>09566373000107</CNPJ><xNome>VALE SUPRIMENTOS LTDA</xNome><enderDest><xLgr>RUA GOUVEA DE BARROS 87</xLgr><nro>0</nro><xBairro>SANTO AMARO</xBairro><cMun>2611606</cMun><xMun>Recife</xMun><UF>PE</UF><CEP>50100030</CEP><cPais>1058</cPais><xPais>BRASIL</xPais><fone>08133267684</fone></enderDest><IE>013209981</IE><email>luisleitejunior@hotmail.com</email></dest><det nItem="1"><prod><cProd>035703</cProd><cEAN/><xProd>TAMPA TANQUE</xProd><NCM>87089990</NCM><CFOP>2411</CFOP><uCom>PC</uCom><qCom>1.0000</qCom><vUnCom>25.45</vUnCom><vProd>25.45</vProd><cEANTrib/><uTrib>PC</uTrib><qTrib>1.0000</qTrib><vUnTrib>25.45</vUnTrib><indTot>1</indTot></prod><imposto><ICMS><ICMS60><orig>0</orig><CST>60</CST><vBCSTRet>0.00</vBCSTRet><vICMSSTRet>0.00</vICMSSTRet></ICMS60></ICMS><IPI><cEnq>999</cEnq><IPINT><CST>53</CST></IPINT></IPI><PIS><PISNT><CST>04</CST></PISNT></PIS><COFINS><COFINSNT><CST>04</CST></COFINSNT></COFINS></imposto></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS><vBCST>0.00</vBCST><vST>0.00</vST><vProd>25.45</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>25.45</vNF></ICMSTot></total><transp><modFrete>9</modFrete></transp><infAdic><infAdFisco>ALIQUOTA REDUZIDA A 0 (ZERO) % PARA PIS E COFINS CONFORME ARTIGO 3o DA LEI 10485 DE 07/2002. SUBSTITUICAO TRIBUTARIA CONFORME ARTIGO 313/O DO DECRETO 52804/08.</infAdFisco><infCpl>DEVOLUCAO TOTAL NFE 15425 05/07/2011 VENDEDOR JONATHAN</infCpl></infAdic></infNFe><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI="#NFe35110705437537000218550010000154301300000002"><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>yfQBDD6Xi8Vo/FmHP03/Td6dfAE=</DigestValue></Reference></SignedInfo><SignatureValue>oTlAAOncuyWHI3ps/r7vT+XOZdDXb48RCU23QsSbsraXLCFfXywrm2v3bgZmaZKaHyNCoyRBb4uA
+KSjUGVYal8uR1F+EM1sS+lCUN6MwjlSFHzg7YPCDS7Z/4WWa25BceI7ouXMHiSo8OV2sAjs0n0Xn
+ZZa5h/2GEgdFjxq4KpM=</SignatureValue><KeyInfo><X509Data><X509Certificate>MIIGJjCCBQ6gAwIBAgIIVms7VyvB0AswDQYJKoZIhvcNAQEFBQAwTDELMAkGA1UEBhMCQlIxEzAR
+BgNVBAoTCklDUC1CcmFzaWwxKDAmBgNVBAMTH1NFUkFTQSBDZXJ0aWZpY2Fkb3JhIERpZ2l0YWwg
+djEwHhcNMTEwMzExMTkyNTEwWhcNMTIwMzEwMTkyNTEwWjCB4TELMAkGA1UEBhMCQlIxEzARBgNV
+BAoTCklDUC1CcmFzaWwxFDASBgNVBAsTCyhFTSBCUkFOQ08pMRgwFgYDVQQLEw8wMDAwMDEwMDE3
+MTk5OTYxFDASBgNVBAsTCyhFTSBCUkFOQ08pMRQwEgYDVQQLEwsoRU0gQlJBTkNPKTEUMBIGA1UE
+CxMLKEVNIEJSQU5DTykxFDASBgNVBAsTCyhFTSBCUkFOQ08pMRQwEgYDVQQLEwsoRU0gQlJBTkNP
+KTEfMB0GA1UEAxMWQVVUTyBHRVJBTCBERSBJVFUgTFREQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAw
+gYkCgYEA7xhh1KFu6Lb5ZSVYIQJhrA0k8aEV2AVedUNCry8Z+/cuwYibv8mqgmJixMPvT/5rYTcK
++w6AQBPUAhhStRnqMLZvJkb1n4otEAhyf2Q4vnz6ICspNq2na28XoPc3y24jdTxEV/wMSo7Q5cD2
+GGE29uEbtXWjtGb3rdbbT50MWY8CAwEAAaOCAvgwggL0MA4GA1UdDwEB/wQEAwIF4DAdBgNVHSUE
+FjAUBggrBgEFBQcDAgYIKwYBBQUHAwQwHwYDVR0jBBgwFoAUt2CoW/mypq4A7XTr1UrJlmhm9Vww
+gbsGA1UdEQSBszCBsIEXTVVSSUxPQEFVVE9HRVJBTC5DT00uQlKgPQYFYEwBAwSgNBMyMjYxMTE5
+ODAyNzkzMzk5MjgwMzAwMDAwMDAwMDAwMDAwMDAwMjMwOTQzOTc0U1NQU1CgIgYFYEwBAwKgGRMX
+TVVSSUxPIERFIE1PUkFFUyBUVVZBTkmgGQYFYEwBAwOgEBMOMDU0Mzc1MzcwMDAxMzegFwYFYEwB
+AwegDhMMMDAwMDAwMDAwMDAwMFcGA1UdIARQME4wTAYGYEwBAgEGMEIwQAYIKwYBBQUHAgEWNGh0
+dHA6Ly93d3cuY2VydGlmaWNhZG9kaWdpdGFsLmNvbS5ici9yZXBvc2l0b3Jpby9kcGMwgfAGA1Ud
+HwSB6DCB5TBJoEegRYZDaHR0cDovL3d3dy5jZXJ0aWZpY2Fkb2RpZ2l0YWwuY29tLmJyL3JlcG9z
+aXRvcmlvL2xjci9zZXJhc2FjZHYxLmNybDBDoEGgP4Y9aHR0cDovL2xjci5jZXJ0aWZpY2Fkb3Mu
+Y29tLmJyL3JlcG9zaXRvcmlvL2xjci9zZXJhc2FjZHYxLmNybDBToFGgT4ZNaHR0cDovL3JlcG9z
+aXRvcmlvLmljcGJyYXNpbC5nb3YuYnIvbGNyL1NlcmFzYS9yZXBvc2l0b3Jpby9sY3Ivc2VyYXNh
+Y2R2MS5jcmwwgZcGCCsGAQUFBwEBBIGKMIGHMEcGCCsGAQUFBzAChjtodHRwOi8vd3d3LmNlcnRp
+ZmljYWRvZGlnaXRhbC5jb20uYnIvY2FkZWlhcy9zZXJhc2FjZHYxLnA3YjA8BggrBgEFBQcwAYYw
+aHR0cDovL29jc3AuY2VydGlmaWNhZG9kaWdpdGFsLmNvbS5ici9zZXJhc2FjZHYxMA0GCSqGSIb3
+DQEBBQUAA4IBAQBFSBBMsvx8IgSISFOdQPfUXG/YzlEOrvo9j0oTAn5pTL/IJ6QE1BMtHRliAGgc
+jpGjJ3unyspxNg2XBbhtLWXor8TVUkW+9Hk9FNVcsKJ5x3Xm7/zuu/RXFndcqTN4+wtw6xbBU2l9
+vl6BfwhPWstEP7XYaOyfovuRYpy6Y5QI0atgHHYfYCRAkoUHc1iwq4ELSBD7omI0oB+mONwTQALw
+fkJVk3pGbjsZW3OiqhFB8qg8/+u8FEDypniaeLWdfMr4ZSY1bwtAFuCAccoAaTaBGLGCXfguDMef
+NZYWdT/VidsjDMhBd4390VO8apybvvcMSjCiOsrNumGpjfxCdtqj</X509Certificate></X509Data></KeyInfo></Signature></NFe><protNFe versao="2.00"><infProt><tpAmb>1</tpAmb><verAplic>SP_NFE_PL_006e</verAplic><chNFe>35110705437537000218550010000154301300000002</chNFe><dhRecbto>2011-08-02T15:15:27</dhRecbto><nProt>135110394672509</nProt><digVal>yfQBDD6Xi8Vo/FmHP03/Td6dfAE=</digVal><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo></infProt></protNFe></nfeProc>
