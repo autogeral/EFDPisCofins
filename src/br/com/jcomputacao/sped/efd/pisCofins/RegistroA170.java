@@ -1,10 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.field.FieldDecimalMaximumLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.FieldDefaultArchetype;
 import br.com.jcomputacao.aristoteles.field.FieldIntegerFixedLengthArchetype;
 import br.com.jcomputacao.aristoteles.field.FieldIntegerMaximumLengthArchetype;
 import br.com.jcomputacao.aristoteles.field.FieldStringFixedLengthArchetype;
@@ -38,7 +35,7 @@ public class RegistroA170 extends LineArchetype {
 
     public RegistroA170() {
 
-        addFieldArchetype(REG, new FieldStringFixedLengthArchetype(4));
+        addFieldArchetype(REG, new FieldDefaultArchetype("A170"));
         addFieldArchetype(NUM_ITEM , new FieldIntegerMaximumLengthArchetype(4)); 
         addFieldArchetype(COD_ITEM , new FieldStringMaximumLengthArchetype(60));
         addFieldArchetype(DESCR_COMPL , new FieldStringMaximumLengthArchetype(255));

@@ -1,10 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.field.FieldDateTimeFixedLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.FieldDefaultArchetype;
 import br.com.jcomputacao.aristoteles.field.FieldIntegerFixedLengthArchetype;
 import br.com.jcomputacao.aristoteles.field.FieldStringFixedLengthArchetype;
 import br.com.jcomputacao.aristoteles.line.LineArchetype;
@@ -16,7 +13,7 @@ import br.com.jcomputacao.aristoteles.line.LineArchetype;
 public class Registro0000 extends LineArchetype implements EfdPisCofinsRegistro {
 
     public String getNome() {
-        return "ABERTURA DO ARQUIVO DIGITAL E IDENTIFICAÃ‡ÃƒO DA PESSOA JURÃ�DICA";
+        return "ABERTURA DO ARQUIVO DIGITAL E IDENTIFICACAO DA PESSOA JURIDICA";
     }
     public final static String REG = "REG";
     public final static String COD_VER = "COD_VER";
@@ -34,7 +31,7 @@ public class Registro0000 extends LineArchetype implements EfdPisCofinsRegistro 
     public final static String IND_ATIV = "IND_ATIV";
 
     public Registro0000() {
-        addFieldArchetype(REG, new FieldStringFixedLengthArchetype(4));
+        addFieldArchetype(REG, new FieldDefaultArchetype("0000"));
         addFieldArchetype(COD_VER, new FieldIntegerFixedLengthArchetype(3));
         addFieldArchetype(TIPO_ESCRIT, new FieldIntegerFixedLengthArchetype(1));
         addFieldArchetype(IND_SIT_ESP, new FieldIntegerFixedLengthArchetype(1));
