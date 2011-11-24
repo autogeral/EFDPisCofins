@@ -39,7 +39,7 @@ public class RegistroF210Test {
     }
 
     @Test
-    public void registroF200test() throws ParseException {
+    public void registroF210test() throws ParseException {
 
       RegistroF210 reg = new RegistroF210();
         LineModel line = reg.createModel();
