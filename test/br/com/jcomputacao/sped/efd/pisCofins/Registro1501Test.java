@@ -49,7 +49,7 @@ public class Registro1501Test{
         line.setFieldValue(Registro1501.SUB_SER, rm.GeraStringRandom(3));
         line.setFieldValue(Registro1501.NUM_DOC, rm.GeraLongRandom(9));
         line.setFieldValue(Registro1501.DT_OPER, rm.GeraLongRandom(8));
-        line.setFieldValue(Registro1501.CHV_NFE, 4525664675452566467l);
+        line.setFieldValue(Registro1501.CHV_NFE, rm.GeraStringRandom(44));
         line.setFieldValue(Registro1501.VL_OPER, rm.GeraDoubleRandom(2));
         line.setFieldValue(Registro1501.CFOP, rm.GeraLongRandom(4));
         line.setFieldValue(Registro1501.NAT_BC_CRED, rm.GeraStringRandom(2));

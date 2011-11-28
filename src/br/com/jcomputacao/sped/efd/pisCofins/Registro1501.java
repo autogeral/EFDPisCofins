@@ -50,7 +50,7 @@ public class Registro1501 extends LineArchetype {
         addFieldArchetype(SUB_SER, new FieldStringMaximumLengthArchetype(3));
         addFieldArchetype(NUM_DOC, new FieldIntegerMaximumLengthArchetype(9));
         addFieldArchetype(DT_OPER, new FieldIntegerFixedLengthArchetype(8));
-        addFieldArchetype(CHV_NFE, new FieldIntegerFixedLengthArchetype(44));
+        addFieldArchetype(CHV_NFE, new FieldStringFixedLengthArchetype(44));
         addFieldArchetype(VL_OPER, new FieldDecimalMaximumLengthArchetype(20,2));
         addFieldArchetype(CFOP, new FieldIntegerFixedLengthArchetype(4));
         addFieldArchetype(NAT_BC_CRED, new FieldStringFixedLengthArchetype(2));
