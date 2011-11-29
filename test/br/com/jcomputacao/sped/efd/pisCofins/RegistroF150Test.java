@@ -56,12 +56,12 @@ public class RegistroF150Test {
         line.setFieldValue(RegistroF150.VL_BC_MEN_EST, rm.GeraDoubleRandom(19));
         line.setFieldValue(RegistroF150.CST_PIS, 23l);
         line.setFieldValue(RegistroF150.ALIQ_PIS, rm.GeraDoubleRandom(8));
-//        line.setFieldValue(RegistroF150.VL_CRED_PIS, );
-//        line.setFieldValue(RegistroF150.CST_COFINS, new FieldIntegerFixedLengthArchetype(2));
-//        line.setFieldValue(RegistroF150.ALIQ_COFINS, new FieldDecimalMaximumLengthArchetype(8, 2));
-//        line.setFieldValue(RegistroF150.VL_CRED_COFINS, new FieldDecimalMaximumLengthArchetype(20, 2));
-//        line.setFieldValue(RegistroF150.DESC_EST, new FieldStringMaximumLengthArchetype(100));
-//        line.setFieldValue(RegistroF150.COD_CTA, new FieldStringMaximumLengthArchetype(60));
+        line.setFieldValue(RegistroF150.VL_CRED_PIS, rm.GeraDoubleRandom(2));
+        line.setFieldValue(RegistroF150.CST_COFINS, rm.GeraLongRandom(2));
+        line.setFieldValue(RegistroF150.ALIQ_COFINS, rm.GeraDoubleRandom(8));
+        line.setFieldValue(RegistroF150.VL_CRED_COFINS, rm.GeraDoubleRandom(2));
+        line.setFieldValue(RegistroF150.DESC_EST, rm.GeraStringRandom(60));
+        line.setFieldValue(RegistroF150.COD_CTA, rm.GeraStringRandom(60));
 
         StringBuffer r = line.getRepresentation();
         System.out.print(r);
