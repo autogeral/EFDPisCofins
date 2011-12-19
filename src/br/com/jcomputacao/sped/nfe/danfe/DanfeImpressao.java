@@ -23,7 +23,9 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,15 +46,14 @@ public class DanfeImpressao {
     private Font itemFont = new Font(FontFamily.HELVETICA, 5, Font.NORMAL);
     private Font smallFont = new Font(FontFamily.HELVETICA, 4, Font.NORMAL);
     private Font subTitle = new Font(FontFamily.HELVETICA, 7, Font.BOLD);
-    
     private List<TNfeProc> nfes = null;
     private TNfeProc atual;
-    
+
     public DanfeImpressao(TNfeProc nfe) {
         this.nfes = new ArrayList<TNfeProc>();
         this.nfes.add(nfe);
     }
-    
+
     public DanfeImpressao(List<TNfeProc> nfes) {
         this.nfes = nfes;
     }
@@ -66,22 +67,22 @@ public class DanfeImpressao {
         document.open();
         document.addTitle("DANFE");
         document.addSubject("Documento Auxiliar da Nota Fiscal Eletronica");
-        
-        for(TNfeProc nfe:nfes) {
+
+        for (TNfeProc nfe : nfes) {
             this.atual = nfe;
             printNfe();
         }
-        
+
         document.close();
         return baos;
     }
-    
+
     private void printNfe() throws DocumentException {
-        if(this.document == null || this.writer == null) {
+        if (this.document == null || this.writer == null) {
             throw new IllegalStateException("Documento pdf e writer em estados inválidos");
         }
-        
-        if(this.atual == null) {
+
+        if (this.atual == null) {
             throw new IllegalStateException("Sem nfe atual");
         }
 
@@ -164,10 +165,10 @@ public class DanfeImpressao {
         table.setWidthPercentage(100);
         PdfPTable table2 = new PdfPTable(new float[]{0.2f, 0.8f});
         PdfPCell cell2 = new PdfPCell();
-        PdfPCell cell3 = new PdfPCell(new Phrase("\n\n" + getNomeEmpresa(), normalBold));
+        PdfPCell cell3 = new PdfPCell(new Phrase("\n\n" + getNomeEmit(), normalBold));
 
 
-        Phrase frase1 = new Phrase(getNomeEmpresa(), normalBold);
+        Phrase frase1 = new Phrase(getNomeEmit(), normalBold);
         cell3.setHorizontalAlignment(Phrase.ALIGN_CENTER);
         cell3.setVerticalAlignment(Phrase.ALIGN_CENTER);
 
@@ -178,11 +179,11 @@ public class DanfeImpressao {
         table2.addCell(cell3);
         table.setWidthPercentage(100);
 
-        Phrase frase2 = new Phrase(getEnderecoEmpresa(), normalBold);
+        Phrase frase2 = new Phrase(getEnderEmit(), normalBold);
         Paragraph p2 = new Paragraph(frase2);
         p2.setAlignment(Phrase.ALIGN_CENTER);
 
-        frase1 = new Phrase("\n\n\n\n\n" + getNomeEmpresa(), normalBold);
+        frase1 = new Phrase("\n\n\n\n\n" + getNomeEmit(), normalBold);
         Paragraph p1 = new Paragraph(frase1);
         Paragraph spc = new Paragraph(" ");
         p1.setAlignment(Phrase.ALIGN_LEFT);
@@ -217,7 +218,7 @@ public class DanfeImpressao {
 
         Phrase frase4 = new Phrase("Nº " + getNum() + "\n" + "Série: " + getSerie(), subTitle);
         Paragraph p4 = new Paragraph(frase4);
-        Phrase frase5 = new Phrase(getPagina(), subTitle);
+        Phrase frase5 = new Phrase(atual.getNFe().getInfNFe().getIde().getIndPag(), subTitle);
         Paragraph p5 = new Paragraph(frase5);
         p5.setAlignment(Phrase.ALIGN_CENTER);
         p2.setAlignment(Phrase.ALIGN_CENTER);
@@ -274,14 +275,14 @@ public class DanfeImpressao {
         table = new PdfPTable(new float[]{0.25f, 0.25f, 0.50f});
         table.setWidthPercentage(100);
         Phrase frase = new Phrase("INSCRIÇÃO ESTADUAL\n", upperFont);
-        frase.add(new Chunk(getInscricaoEstadualEmpresa(), itemFont));
+        frase.add(new Chunk(getInscricaoEstadualEmit(), itemFont));
         cell = new PdfPCell(frase);
         table.addCell(frase);
         frase = new Phrase("INSCRIÇÃO ESTADUAL DO SUBST. TRIB.\n ", upperFont);
         frase.add(new Chunk(getInscricaoEstadualSubst(), itemFont));
         table.addCell(frase);
         frase = new Phrase("CNPJ\n", upperFont);
-        frase.add(new Chunk(getCNPJEmpresa(), itemFont));
+        frase.add(new Chunk(getCNPJEmit(), itemFont));
         table.addCell(frase);
         document.add(table);
 
@@ -294,13 +295,13 @@ public class DanfeImpressao {
         table = new PdfPTable(new float[]{0.70f, 0.1339f, 0.1671f});
         table.setWidthPercentage(100);
         frase = new Phrase("NOME/RAZÃO SOCIAL\n", upperFont);
-        frase.add(new Chunk(getNomeEmpresa(), itemFont));
+        frase.add(new Chunk(getNomeEmit(), itemFont));
         table.addCell(frase);
         frase = new Phrase("CNPJ/CPF\n", upperFont);
-        frase.add(new Chunk(getCpfCnpjDestinatarioRemetente(), itemFont));
+        frase.add(new Chunk(getCpfCnpjRemetente(), itemFont));
         table.addCell(frase);
         frase = new Phrase("DATA DA EMISSÃO\n", upperFont);
-        frase.add(new Chunk(getDataAtual(), itemFont));
+        frase.add(new Chunk(getDataEmissao(), itemFont));
         table.addCell(frase);
         document.add(table);
 
@@ -308,7 +309,7 @@ public class DanfeImpressao {
         table = new PdfPTable(new float[]{0.50f, 0.15f, 0.1f, 0.15f});
         table.setWidthPercentage(100);
         frase = new Phrase("ENDEREÇO\n ", upperFont);
-        frase.add(new Chunk(getEndereco(), itemFont));
+        frase.add(new Chunk(getEnderecoDest(), itemFont));
         table.addCell(frase);
         frase = new Phrase("BAIRRO/DISTRITO\n ", upperFont);
         frase.add(new Chunk(getBairro(), itemFont));
@@ -317,26 +318,26 @@ public class DanfeImpressao {
         frase.add(new Chunk(getCEP(), itemFont));
         table.addCell(frase);
         frase = new Phrase("DATA DE ENTRADA/SAÍDA\n", upperFont);
-        frase.add(new Chunk(getDataAtual(), itemFont));
+        frase.add(new Chunk(getDataEntradaSaida(), itemFont));
         table.addCell(frase);
         document.add(table);
 
         table = new PdfPTable(new float[]{0.40f, 0.15f, 0.05f, 0.15f, 0.15f});
         table.setWidthPercentage(100);
         frase = new Phrase("MUNÍCIPIO\n", upperFont);
-        frase.add(new Chunk(getMunicipio(), itemFont));
+        frase.add(new Chunk(getMunicipioDest(), itemFont));
         table.addCell(frase);
         frase = new Phrase("FONE/FAX\n", upperFont);
         frase.add(new Chunk(getFoneFax(), itemFont));
         table.addCell(frase);
         frase = new Phrase("UF\n", upperFont);
-        frase.add(new Chunk(getUF(), itemFont));
+        frase.add(new Chunk(getUFDest(), itemFont));
         table.addCell(frase);
         frase = new Phrase("INSCRIÇÃO ESTADUAL\n", upperFont);
-        frase.add(new Chunk(getInscricaoEstadual(), itemFont));
+        frase.add(new Chunk(getInscricaoEstadualDest(), itemFont));
         table.addCell(frase);
         frase = new Phrase("HORA DE ENTRADA/SAÍDA\n", upperFont);
-        frase.add(new Chunk(getHoraAtual(), itemFont));
+        frase.add(new Chunk(getHoraEntradaSaida(), itemFont));
         table.addCell(frase);
         document.add(table);
 
@@ -348,7 +349,7 @@ public class DanfeImpressao {
         document.add(p);
         table = new PdfPTable(new float[]{1f});
         table.setWidthPercentage(100);
-        cell = new PdfPCell(new Phrase(getTipodePagamento(), normalFont));
+        cell = new PdfPCell(new Phrase(getFatura(), normalFont));
         table.addCell(cell);
         document.add(table);
 
@@ -404,7 +405,7 @@ public class DanfeImpressao {
         table = new PdfPTable(new float[]{0.3f, 0.15f, 0.15f, 0.15f, 0.05f, 0.20f});
         table.setWidthPercentage(100);
         frase = new Phrase("RAZÃO SOCIAL\n", upperFont);
-        frase.add(new Chunk(getRazaoSocial(), itemFont));
+        frase.add(new Chunk(getRazaoSocialTransp(), itemFont));
         table.addCell(frase);
         frase = new Phrase("FRETE POR CONTA\n", upperFont);
         frase.add(new Chunk(getFrete(), itemFont));
@@ -416,7 +417,7 @@ public class DanfeImpressao {
         frase.add(new Chunk(getPlacaVeiculo(), itemFont));
         table.addCell(frase);
         frase = new Phrase("UF\n", upperFont);
-        frase.add(new Chunk(getUF(), itemFont));
+        frase.add(new Chunk(getUFTransporta(), itemFont));
         table.addCell(frase);
         frase = new Phrase("CNPJ/CPF\n", upperFont);
         frase.add(new Chunk(getCNPJTransportador(), itemFont));
@@ -427,16 +428,16 @@ public class DanfeImpressao {
         cell = new PdfPCell(new Phrase(" "));
         table.setWidthPercentage(100);
         frase = new Phrase("ENDEREÇO\n", upperFont);
-        frase.add(new Chunk(getEnderecoTransportador(), itemFont));
+        frase.add(new Chunk(getEnderecoTransporta(), itemFont));
         table.addCell(frase);
         frase = new Phrase("MUNICÍPIO\n", upperFont);
-        frase.add(new Chunk(getMunicipioTransportador(), itemFont));
+        frase.add(new Chunk(getMunicipioTransporta(), itemFont));
         table.addCell(frase);
         frase = new Phrase("UF\n", upperFont);
-        frase.add(new Chunk(getUFTransportador(), itemFont));
+        frase.add(new Chunk(getUFVolumeTransporta(), itemFont));
         table.addCell(frase);
         frase = new Phrase("INSCRIÇÃO ESTADUAL\n", upperFont);
-        frase.add(new Chunk(getInscricaoTransportador(), itemFont));
+        frase.add(new Chunk(getInscricaoTransporta(), itemFont));
         table.addCell(frase);
         document.add(table);
 
@@ -446,10 +447,10 @@ public class DanfeImpressao {
         frase.add(new Chunk(getQuantidadeVolume(), itemFont));
         table.addCell(frase);
         frase = new Phrase("ESPÉCIE\n", upperFont);
-        frase.add(new Chunk(getEspecie(), itemFont));
+        frase.add(new Chunk(getEspecieVolume(), itemFont));
         table.addCell(frase);
         frase = new Phrase("MARCA\n", upperFont);
-        frase.add(new Chunk(getMarca(), itemFont));
+        frase.add(new Chunk(getMarcaVolume(), itemFont));
         table.addCell(frase);
         frase = new Phrase("NUMERAÇÃO\n", upperFont);
         frase.add(new Chunk(getNumeracao(), itemFont));
@@ -591,10 +592,321 @@ public class DanfeImpressao {
     }
 
     private String getSpace() {
-        return "";
+        return "                                                                  ";
     }
 
     private String getNum() {
         return atual.getNFe().getInfNFe().getIde().getNNF();
+    }
+
+    private String getNomeEmit() {
+        return atual.getNFe().getInfNFe().getEmit().getXNome();
+    }
+
+    public String getSerie() {
+        return atual.getNFe().getInfNFe().getIde().getSerie();
+    }
+
+    public String getEnderEmit() {
+        return atual.getNFe().getInfNFe().getEmit().getEnderEmit().getXLgr() + ", " + atual.getNFe().getInfNFe().getEmit().getEnderEmit().getNro() + "\n" + atual.getNFe().getInfNFe().getEmit().getEnderEmit().getXBairro() + ", " + atual.getNFe().getInfNFe().getEmit().getEnderEmit().getXMun() + ", " + atual.getNFe().getInfNFe().getEmit().getEnderEmit().getUF() + " - " + "CEP: " + atual.getNFe().getInfNFe().getEmit().getEnderEmit().getCEP();
+
+
+    }
+
+    public String getTipo() {
+        return atual.getNFe().getInfNFe().getIde().getTpEmis();
+    }
+
+//   public String getFatura()
+//   {
+//      return atual.getNFe().getInfNFe().getCobr().getFat().getNFat();
+//   } NFat é o tipo da fatura?
+    
+    
+    public String getNaturezaOperacao() {
+        return atual.getNFe().getInfNFe().getIde().getNatOp();
+    }
+
+//   public String getProtocoloAutorizacao()
+//   {
+//// Protocolo de autorização
+//   }
+    public String getInscricaoEstadualEmit() {
+        return atual.getNFe().getInfNFe().getEmit().getIE();
+    }
+
+//   public String getInscricaoEstadualSubst()
+//   {
+////Inscrição estadual do subs de trabalho
+//   }
+    public String getCNPJEmit() {
+        return atual.getNFe().getInfNFe().getEmit().getCNPJ();
+    }
+
+    public String getCpfCnpjRemetente() {
+        return atual.getNFe().getInfNFe().getEmit().getCNPJ();
+    }
+   
+     public String getDataEmissao()
+   {
+         return atual.getNFe().getInfNFe().getIde().getDEmi();
+   }
+
+    public String getBairro() {
+        return atual.getNFe().getInfNFe().getDest().getEnderDest().getXBairro();
+    }
+
+    public String getCEP() {
+        return atual.getNFe().getInfNFe().getDest().getEnderDest().getCEP();
+    }
+
+    public String getMunicipioEmit() {
+        return atual.getNFe().getInfNFe().getDest().getEnderDest().getXMun();
+    }
+
+    public String getFoneFax() {
+        return atual.getNFe().getInfNFe().getDest().getEnderDest().getFone();
+    }
+
+    public String getUFEmit() {
+        return atual.getNFe().getInfNFe().getEmit().getEnderEmit().getUF().value();
+
+    }
+
+   public String getDataEntradaSaida()
+   {
+     return atual.getNFe().getInfNFe().getIde().getDSaiEnt();
+   }
+   
+    public String getBaseCalculoICMS() {
+        return atual.getNFe().getInfNFe().getTotal().getICMSTot().getVBC();
+    }
+
+    public String getValorICMS() {
+        return atual.getNFe().getInfNFe().getTotal().getICMSTot().getVICMS();
+    }
+
+    public String getBaseCalculoICMSST() {
+        return atual.getNFe().getInfNFe().getTotal().getICMSTot().getVBCST();
+    }
+
+    public String getValorICMSST() {
+        return atual.getNFe().getInfNFe().getTotal().getICMSTot().getVST();
+    }
+
+    public String getValorTotalProdutos() {
+        return atual.getNFe().getInfNFe().getTotal().getICMSTot().getVProd();
+    }
+
+    public String getValorFrete() {
+        return atual.getNFe().getInfNFe().getTotal().getICMSTot().getVFrete();
+    }
+
+    public String getValorSeguro() {
+        return atual.getNFe().getInfNFe().getTotal().getICMSTot().getVSeg();
+    }
+
+    public String getDesconto() {
+        return atual.getNFe().getInfNFe().getTotal().getICMSTot().getVDesc();
+    }
+
+    public String getOutrasDespesas() {
+        return atual.getNFe().getInfNFe().getTotal().getICMSTot().getVOutro();
+    }
+
+    public String getValorIPI() {
+        return atual.getNFe().getInfNFe().getTotal().getICMSTot().getVIPI();
+    }
+
+    public String getValorTotalNota() {
+        return atual.getNFe().getInfNFe().getTotal().getICMSTot().getVNF();
+    }
+
+    public String getFrete() {
+        return atual.getNFe().getInfNFe().getTransp().getModFrete();
+    }
+
+    public String getRazaoSocialTransp() {
+        return atual.getNFe().getInfNFe().getTransp().getTransporta().getXNome();
+    }
+
+//   public String getCodigoANTT()
+//   {
+//       return atual.getNFe().getInfNFe().getTransp().getTransporta().
+//   }
+    //Ver com o Murilo
+    public String getPlacaVeiculo() {
+        return atual.getNFe().getInfNFe().getTransp().getVeicTransp().getPlaca();
+    }
+
+    public String getCNPJTransportador() {
+        return atual.getNFe().getInfNFe().getTransp().getTransporta().getCNPJ();
+    }
+
+    public String getEnderecoDest() {
+        return atual.getNFe().getInfNFe().getDest().getEnderDest().getXLgr() + ", " + atual.getNFe().getInfNFe().getDest().getEnderDest().getNro();
+    }
+
+    public String getEnderecoTransporta() {
+        return atual.getNFe().getInfNFe().getTransp().getTransporta().getXEnder();
+    }
+
+    public String getMunicipioTransporta() {
+        return atual.getNFe().getInfNFe().getTransp().getTransporta().getXMun();
+    }
+
+    public String getUFTransporta() {
+        return atual.getNFe().getInfNFe().getTransp().getTransporta().getUF().value();
+
+    }
+
+    public String getInscricaoTransporta() {
+        return atual.getNFe().getInfNFe().getTransp().getTransporta().getIE();
+    }
+
+    public String getUFDest() {
+        return atual.getNFe().getInfNFe().getDest().getEnderDest().getUF().value();
+
+    }
+ 
+
+    public String getMunicipioDest() {
+        return atual.getNFe().getInfNFe().getDest().getEnderDest().getXMun();
+    }
+
+    public String getInscricaoEstadualDest() {
+        return atual.getNFe().getInfNFe().getDest().getIE();
+    }
+
+//    public List getQuantidadeVolume() {
+//        return atual.getNFe().getInfNFe().getTransp().getVol();
+//    }
+
+    public String getQuantidadeProduto() {
+        return "1,0000";
+    }
+
+    public String getEspecie() {
+        return " ";
+    }
+
+    public String getMarca() {
+        return " ";
+    }
+
+    public String getNumeracao() {
+        return " ";
+    }
+
+    public String getPesoBruto() {
+        return " ";
+    }
+
+    public String getPesoLiquido() {
+        return " ";
+    }
+
+    public String getCodigo() {
+        return "000123";
+    }
+
+    public String getDescricaoProdutoServico() {
+        return "Relógio Pontto 110V  ";
+    }
+
+    public String getNCMSH() {
+        return "91061000";
+    }
+
+    public String getCST() {
+        return "000";
+    }
+
+    public String getCFOP() {
+        return "5102";
+    }
+
+    public String getUnid() {
+        return "UN";
+    }
+
+    public String getQtd() {
+        return "1.0000";
+    }
+
+    public String getVlrUnit() {
+        return "727.4000";
+    }
+
+    public String getVlrTotal() {
+        return "727.00";
+    }
+
+    public String getBCICMS() {
+        return "727.00";
+    }
+
+    public String getVlrICMS() {
+        return "130,93";
+    }
+
+    public String getVlrIPI()
+    {
+        return " ";
+    }
+
+    public String getVlrAliqICMS() {
+        return "18,00";
+    }
+
+    public String getAliqIPI()
+    {
+        return " ";
+    }
+
+    public String getInscricaoMunicipal() {
+        return atual.getNFe().getInfNFe().getEmit().getIM();
+    }
+
+    public String getValorTotalServicos()
+    {
+        return atual.getNFe().getInfNFe().getTotal().getISSQNtot().getVServ();
+    }
+
+    public String getBaseCalculoISSQN()
+    {
+        return atual.getNFe().getInfNFe().getTotal().getISSQNtot().getVBC();
+    }
+
+    public String getValorISSQN()
+    {
+        return atual.getNFe().getInfNFe().getTotal().getISSQNtot().getVISS();
+    }
+
+    public String getInformacoes() {
+        return atual.getNFe().getInfNFe().getInfAdic().getInfCpl();
+    }
+
+    public String getReservadoAoFisco() {
+        return atual.getNFe().getInfNFe().getInfAdic().getInfAdFisco();
+    }
+
+
+
+//    public String getCodigodeBarras() {
+//        return "01234567823456789087654323456789876543";
+//    }
+//
+//    public String getChaveAcesso() {
+//        return "3511 1009 3460 5200 0199 5500 1000 0000 1210 0003 0066";
+//    }
+
+    public String getEntradaSaida() {
+        return atual.getNFe().getInfNFe().getIde().getTpEmis();
+    }
+    
+    public String getHoraEntradaSaida()
+    {
+        return " ";
     }
 }
