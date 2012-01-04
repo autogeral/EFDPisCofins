@@ -447,10 +447,10 @@ public class DanfeImpressao {
         frase.add(new Chunk(getQuantidadeVolume(), itemFont));
         table.addCell(frase);
         frase = new Phrase("ESPÉCIE\n", upperFont);
-        frase.add(new Chunk(getEspecieVolume(), itemFont));
+        frase.add(new Chunk(getEspecie(), itemFont));
         table.addCell(frase);
         frase = new Phrase("MARCA\n", upperFont);
-        frase.add(new Chunk(getMarcaVolume(), itemFont));
+        frase.add(new Chunk(getMarca(), itemFont));
         table.addCell(frase);
         frase = new Phrase("NUMERAÇÃO\n", upperFont);
         frase.add(new Chunk(getNumeracao(), itemFont));
@@ -512,7 +512,7 @@ public class DanfeImpressao {
         table.addCell(cell);
         cell = new PdfPCell(new Phrase(getUnid(), smallFont));
         table.addCell(cell);
-        cell = new PdfPCell(new Phrase(getQuantidadeProduto(), smallFont));
+        cell = new PdfPCell(new Phrase(getQtd(), smallFont));
         table.addCell(cell);
         cell = new PdfPCell(new Phrase(getVlrUnit(), smallFont));
         table.addCell(cell);
@@ -617,28 +617,28 @@ public class DanfeImpressao {
         return atual.getNFe().getInfNFe().getIde().getTpEmis();
     }
 
-//   public String getFatura()
-//   {
-//      return atual.getNFe().getInfNFe().getCobr().getFat().getNFat();
-//   } NFat é o tipo da fatura?
+   public String getFatura()
+   {
+      return atual.getNFe().getInfNFe().getCobr().getFat().getNFat();
+   } 
     
     
     public String getNaturezaOperacao() {
         return atual.getNFe().getInfNFe().getIde().getNatOp();
     }
 
-//   public String getProtocoloAutorizacao()
-//   {
-//// Protocolo de autorização
-//   }
+   public String getProtocoloAutorizacao()
+   {
+     return atual.getProtNFe().getInfProt().getNProt();
+   }
     public String getInscricaoEstadualEmit() {
         return atual.getNFe().getInfNFe().getEmit().getIE();
     }
 
-//   public String getInscricaoEstadualSubst()
-//   {
-////Inscrição estadual do subs de trabalho
-//   }
+   public String getInscricaoEstadualSubst()
+   {
+      return atual.getNFe().getInfNFe().getEmit().getIEST();
+   }
     public String getCNPJEmit() {
         return atual.getNFe().getInfNFe().getEmit().getCNPJ();
     }
@@ -730,11 +730,11 @@ public class DanfeImpressao {
         return atual.getNFe().getInfNFe().getTransp().getTransporta().getXNome();
     }
 
-//   public String getCodigoANTT()
-//   {
-//       return atual.getNFe().getInfNFe().getTransp().getTransporta().
-//   }
-    //Ver com o Murilo
+   public String getCodigoANTT()
+   {
+       return atual.getNFe().getInfNFe().getTransp().getVeicTransp().getRNTC();
+   }
+    
     public String getPlacaVeiculo() {
         return atual.getNFe().getInfNFe().getTransp().getVeicTransp().getPlaca();
     }
@@ -778,12 +778,8 @@ public class DanfeImpressao {
         return atual.getNFe().getInfNFe().getDest().getIE();
     }
 
-//    public List getQuantidadeVolume() {
-//        return atual.getNFe().getInfNFe().getTransp().getVol();
-//    }
-
-    public String getQuantidadeProduto() {
-        return "1,0000";
+    public List getQuantidadeVolume() {
+        return atual.getNFe().getInfNFe().getTransp().getVol().;
     }
 
     public String getEspecie() {
@@ -897,9 +893,9 @@ public class DanfeImpressao {
 //        return "01234567823456789087654323456789876543";
 //    }
 //
-//    public String getChaveAcesso() {
-//        return "3511 1009 3460 5200 0199 5500 1000 0000 1210 0003 0066";
-//    }
+    public String getChaveAcesso() {
+        return atual.getProtNFe().getInfProt().getChNFe();
+    }
 
     public String getEntradaSaida() {
         return atual.getNFe().getInfNFe().getIde().getTpEmis();
