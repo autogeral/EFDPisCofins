@@ -4,7 +4,8 @@
  */
 package br.com.jcomputacao.sped.nfe.danfe;
 
-import br.inf.portalfiscal.nfe.TNFe;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Transp.Vol;
 import br.inf.portalfiscal.nfe.TNfeProc;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -23,9 +24,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -434,14 +433,14 @@ public class DanfeImpressao {
         frase.add(new Chunk(getMunicipioTransporta(), itemFont));
         table.addCell(frase);
         frase = new Phrase("UF\n", upperFont);
-        frase.add(new Chunk(getUFVolumeTransporta(), itemFont));
+        frase.add(new Chunk(getUFDest(), itemFont));
         table.addCell(frase);
         frase = new Phrase("INSCRIÇÃO ESTADUAL\n", upperFont);
         frase.add(new Chunk(getInscricaoTransporta(), itemFont));
         table.addCell(frase);
         document.add(table);
 
-        table = new PdfPTable(new float[]{0.10f, 0.19f, 0.19f, 0.10f, 0.10f});
+        table = new PdfPTable(new float[]{0.10f, 0.19f, 0.19f, 0.10f, 0.10f, 0.10f});
         table.setWidthPercentage(100);
         frase = new Phrase("QUANTIDADE\n", upperFont);
         frase.add(new Chunk(getQuantidadeVolume(), itemFont));
@@ -617,28 +616,26 @@ public class DanfeImpressao {
         return atual.getNFe().getInfNFe().getIde().getTpEmis();
     }
 
-   public String getFatura()
-   {
-      return atual.getNFe().getInfNFe().getCobr().getFat().getNFat();
-   } 
-    
-    
+    public String getFatura() {
+        return atual.getNFe().getInfNFe().getCobr().getFat().getNFat();
+    }
+
     public String getNaturezaOperacao() {
         return atual.getNFe().getInfNFe().getIde().getNatOp();
     }
 
-   public String getProtocoloAutorizacao()
-   {
-     return atual.getProtNFe().getInfProt().getNProt();
-   }
+    public String getProtocoloAutorizacao() {
+        return atual.getProtNFe().getInfProt().getNProt();
+    }
+
     public String getInscricaoEstadualEmit() {
         return atual.getNFe().getInfNFe().getEmit().getIE();
     }
 
-   public String getInscricaoEstadualSubst()
-   {
-      return atual.getNFe().getInfNFe().getEmit().getIEST();
-   }
+    public String getInscricaoEstadualSubst() {
+        return atual.getNFe().getInfNFe().getEmit().getIEST();
+    }
+
     public String getCNPJEmit() {
         return atual.getNFe().getInfNFe().getEmit().getCNPJ();
     }
@@ -646,11 +643,10 @@ public class DanfeImpressao {
     public String getCpfCnpjRemetente() {
         return atual.getNFe().getInfNFe().getEmit().getCNPJ();
     }
-   
-     public String getDataEmissao()
-   {
-         return atual.getNFe().getInfNFe().getIde().getDEmi();
-   }
+
+    public String getDataEmissao() {
+        return atual.getNFe().getInfNFe().getIde().getDEmi();
+    }
 
     public String getBairro() {
         return atual.getNFe().getInfNFe().getDest().getEnderDest().getXBairro();
@@ -673,11 +669,10 @@ public class DanfeImpressao {
 
     }
 
-   public String getDataEntradaSaida()
-   {
-     return atual.getNFe().getInfNFe().getIde().getDSaiEnt();
-   }
-   
+    public String getDataEntradaSaida() {
+        return atual.getNFe().getInfNFe().getIde().getDSaiEnt();
+    }
+
     public String getBaseCalculoICMS() {
         return atual.getNFe().getInfNFe().getTotal().getICMSTot().getVBC();
     }
@@ -730,11 +725,10 @@ public class DanfeImpressao {
         return atual.getNFe().getInfNFe().getTransp().getTransporta().getXNome();
     }
 
-   public String getCodigoANTT()
-   {
-       return atual.getNFe().getInfNFe().getTransp().getVeicTransp().getRNTC();
-   }
-    
+    public String getCodigoANTT() {
+        return atual.getNFe().getInfNFe().getTransp().getVeicTransp().getRNTC();
+    }
+
     public String getPlacaVeiculo() {
         return atual.getNFe().getInfNFe().getTransp().getVeicTransp().getPlaca();
     }
@@ -768,7 +762,6 @@ public class DanfeImpressao {
         return atual.getNFe().getInfNFe().getDest().getEnderDest().getUF().value();
 
     }
- 
 
     public String getMunicipioDest() {
         return atual.getNFe().getInfNFe().getDest().getEnderDest().getXMun();
@@ -778,104 +771,247 @@ public class DanfeImpressao {
         return atual.getNFe().getInfNFe().getDest().getIE();
     }
 
-    public List getQuantidadeVolume() {
-        return atual.getNFe().getInfNFe().getTransp().getVol().;
+    public String getQuantidadeVolume() {
+        List<Vol> volumes = atual.getNFe().getInfNFe().getTransp().getVol();
+        int qtdVolumes = 0;
+        if (volumes != null && !volumes.isEmpty()) {
+            for (Vol vol : volumes) {
+                qtdVolumes += Integer.parseInt(vol.getQVol());
+            }
+        }
+        return Integer.toString(qtdVolumes);
     }
 
     public String getEspecie() {
-        return " ";
+        List<Vol> volumes = atual.getNFe().getInfNFe().getTransp().getVol();
+        String esp = " ";
+        if (volumes != null && !volumes.isEmpty()) {
+            for (Vol vol : volumes) {
+                esp = vol.getEsp();
+            }
+        }
+
+        return esp;
     }
 
     public String getMarca() {
-        return " ";
+        List<Vol> volumes = atual.getNFe().getInfNFe().getTransp().getVol();
+        String marca = " ";
+        if (volumes != null && !volumes.isEmpty()) {
+            for (Vol vol : volumes) {
+                marca = vol.getMarca();
+            }
+        }
+
+        return marca;
+
+
     }
 
     public String getNumeracao() {
-        return " ";
+        List<Vol> volumes = atual.getNFe().getInfNFe().getTransp().getVol();
+        String nVol = " ";
+        if (volumes != null && !volumes.isEmpty()) {
+            for (Vol vol : volumes) {
+                nVol = vol.getNVol();
+            }
+        }
+
+        return nVol;
     }
 
     public String getPesoBruto() {
-        return " ";
+        List<Vol> volumes = atual.getNFe().getInfNFe().getTransp().getVol();
+        double pesoB = 0;
+        if (volumes != null && !volumes.isEmpty()) {
+            for (Vol vol : volumes) {
+                pesoB += Integer.parseInt(vol.getPesoB());
+            }
+        }
+        return Double.toString(pesoB);
     }
 
     public String getPesoLiquido() {
-        return " ";
+        List<Vol> volumes = atual.getNFe().getInfNFe().getTransp().getVol();
+        double pesoL = 0;
+        if (volumes != null && !volumes.isEmpty()) {
+            for (Vol vol : volumes) {
+                pesoL += Integer.parseInt(vol.getPesoL());
+            }
+        }
+        return Double.toString(pesoL);
+
+
     }
 
     public String getCodigo() {
-        return "000123";
+        List<Det> detalhes = atual.getNFe().getInfNFe().getDet();
+        String cProd = " ";
+        if (detalhes != null && !detalhes.isEmpty()) {
+            for (Det det : detalhes) {
+                cProd = det.getProd().getCProd();
+            }
+        }
+        return cProd;
+
     }
 
     public String getDescricaoProdutoServico() {
-        return "Relógio Pontto 110V  ";
+        List<Det> detalhes = atual.getNFe().getInfNFe().getDet();
+        String cProd = " ";
+        if (detalhes != null && !detalhes.isEmpty()) {
+            for (Det det : detalhes) {
+                cProd = det.getProd().getCProd();
+            }
+        }
+        return cProd;
     }
 
     public String getNCMSH() {
-        return "91061000";
+        List<Det> detalhes = atual.getNFe().getInfNFe().getDet();
+        String NCM = " ";
+        if (detalhes != null && !detalhes.isEmpty()) {
+            for (Det det : detalhes) {
+                NCM = det.getProd().getNCM();
+            }
+        }
+        return NCM;
     }
 
     public String getCST() {
-        return "000";
+        List<Det> detalhes = atual.getNFe().getInfNFe().getDet();
+        String CST = " ";
+        if (detalhes != null && !detalhes.isEmpty()) {
+            for (Det det : detalhes) {
+                CST = det.getImposto().getICMS().getICMS00().getCST();
+            }
+        }
+        return CST;
     }
 
     public String getCFOP() {
-        return "5102";
+        List<Det> detalhes = atual.getNFe().getInfNFe().getDet();
+        String CFOP = " ";
+        if (detalhes != null && !detalhes.isEmpty()) {
+            for (Det det : detalhes) {
+                CFOP = det.getProd().getCFOP();
+            }
+        }
+        return CFOP;
     }
 
     public String getUnid() {
-        return "UN";
+        List<Det> detalhes = atual.getNFe().getInfNFe().getDet();
+        String uCom = " ";
+        if (detalhes != null && !detalhes.isEmpty()) {
+            for (Det det : detalhes) {
+                uCom = det.getProd().getUCom();
+            }
+        }
+        return uCom;
     }
 
     public String getQtd() {
-        return "1.0000";
+        List<Det> detalhes = atual.getNFe().getInfNFe().getDet();
+        String qCom = " ";
+        if (detalhes != null && !detalhes.isEmpty()) {
+            for (Det det : detalhes) {
+                qCom = det.getProd().getQCom();
+            }
+        }
+        return qCom;
     }
 
     public String getVlrUnit() {
-        return "727.4000";
+        List<Det> detalhes = atual.getNFe().getInfNFe().getDet();
+        String vUnCom = " ";
+        if (detalhes != null && !detalhes.isEmpty()) {
+            for (Det det : detalhes) {
+                vUnCom = det.getProd().getVUnCom();
+            }
+        }
+        return vUnCom;
     }
 
     public String getVlrTotal() {
-        return "727.00";
+        List<Det> detalhes = atual.getNFe().getInfNFe().getDet();
+        String vProd = " ";
+        if (detalhes != null && !detalhes.isEmpty()) {
+            for (Det det : detalhes) {
+                vProd = det.getProd().getVProd();
+            }
+        }
+        return vProd;
     }
 
     public String getBCICMS() {
-        return "727.00";
+        List<Det> detalhes = atual.getNFe().getInfNFe().getDet();
+        String vBC = " ";
+        if (detalhes != null && !detalhes.isEmpty()) {
+            for (Det det : detalhes) {
+                vBC = det.getImposto().getICMS().getICMS00().getVBC();
+            }
+        }
+        return vBC;
     }
 
     public String getVlrICMS() {
-        return "130,93";
+        List<Det> detalhes = atual.getNFe().getInfNFe().getDet();
+        String vICMS = " ";
+        if (detalhes != null && !detalhes.isEmpty()) {
+            for (Det det : detalhes) {
+                vICMS = det.getImposto().getICMS().getICMS00().getVICMS();
+            }
+        }
+        return vICMS;
     }
 
-    public String getVlrIPI()
-    {
-        return " ";
+    public String getVlrIPI() {
+        List<Det> detalhes = atual.getNFe().getInfNFe().getDet();
+        String vIPI = " ";
+        if (detalhes != null && !detalhes.isEmpty()) {
+            for (Det det : detalhes) {
+                vIPI = det.getImposto().getIPI().getIPITrib().getVIPI();
+            }
+        }
+        return vIPI;
     }
 
     public String getVlrAliqICMS() {
-        return "18,00";
+        List<Det> detalhes = atual.getNFe().getInfNFe().getDet();
+        String pICMS = " ";
+        if (detalhes != null && !detalhes.isEmpty()) {
+            for (Det det : detalhes) {
+                pICMS = det.getImposto().getICMS().getICMS00().getPICMS();
+            }
+        }
+        return pICMS;
     }
 
-    public String getAliqIPI()
-    {
-        return " ";
+    public String getAliqIPI() {
+         List<Det> detalhes = atual.getNFe().getInfNFe().getDet();
+         String pIPI = " ";
+         if(detalhes != null && !detalhes.isEmpty()) {
+             for(Det det:detalhes) {
+                 pIPI = det.getImposto().getIPI().getIPITrib().getPIPI();
+             }
+         }
+         return pIPI;
     }
 
     public String getInscricaoMunicipal() {
         return atual.getNFe().getInfNFe().getEmit().getIM();
     }
 
-    public String getValorTotalServicos()
-    {
+    public String getValorTotalServicos() {
         return atual.getNFe().getInfNFe().getTotal().getISSQNtot().getVServ();
     }
 
-    public String getBaseCalculoISSQN()
-    {
+    public String getBaseCalculoISSQN() {
         return atual.getNFe().getInfNFe().getTotal().getISSQNtot().getVBC();
     }
 
-    public String getValorISSQN()
-    {
+    public String getValorISSQN() {
         return atual.getNFe().getInfNFe().getTotal().getISSQNtot().getVISS();
     }
 
@@ -887,22 +1023,21 @@ public class DanfeImpressao {
         return atual.getNFe().getInfNFe().getInfAdic().getInfAdFisco();
     }
 
-
-
-//    public String getCodigodeBarras() {
-//        return "01234567823456789087654323456789876543";
-//    }
-//
-    public String getChaveAcesso() {
+        public String getChaveAcesso() {
         return atual.getProtNFe().getInfProt().getChNFe();
     }
+    
+    public String getCodigodeBarras() {
+        return getChaveAcesso();
+    }
+
+
 
     public String getEntradaSaida() {
         return atual.getNFe().getInfNFe().getIde().getTpEmis();
     }
-    
-    public String getHoraEntradaSaida()
-    {
-        return " ";
+
+    public String getHoraEntradaSaida() {
+        return atual.getNFe().getInfNFe().getIde().getHSaiEnt();
     }
 }
