@@ -1,6 +1,7 @@
 package br.com.jcomputacao.sped.nfe.danfe;
 
 import br.inf.portalfiscal.nfe.TNfeProc;
+import com.itextpdf.text.DocumentException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FilenameFilter;
@@ -58,8 +59,13 @@ public class DanfeImpressaoTest {
                 Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).log(Level.SEVERE, null, ex);
             }
         }
+        DanfeImpressao di = new DanfeImpressao(procs);
+        try {
+            di.execute();
+        } catch (DocumentException ex) {
+            Logger.getLogger(DanfeImpressaoTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(DanfeImpressaoTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
-    DanfeImpressao di = new DanfeImpressao(procs);
-    di.execute();
 }
