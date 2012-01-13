@@ -597,31 +597,48 @@ public class DanfeImpressao {
     }
 
     private String getNum() {
-        return getIde().getNNF();
+        if (getIde().getNNF() == null) {
+            return "";
+        } else {
+            return getIde().getNNF();
+        }
     }
 
     private String getNomeEmit() {
-        return getInfNFe().getEmit().getXNome();
+        if (getInfNFe().getEmit() == null || getInfNFe().getEmit().getXNome() == null) {
+            return "";
+        } else {
+            return getInfNFe().getEmit().getXNome();
+        }
     }
 
     public String getSerie() {
-        return getIde().getSerie();
+        if (getIde().getSerie() == null) {
+            return "";
+        } else {
+            return getIde().getSerie();
+        }
     }
 
     public String getEnderEmit() {
+        
         return getInfNFe().getEmit().getEnderEmit().getXLgr() + ", " + getInfNFe().getEmit().getEnderEmit().getNro() + "\n" + getInfNFe().getEmit().getEnderEmit().getXBairro() + ", " + getInfNFe().getEmit().getEnderEmit().getXMun() + ", " + getInfNFe().getEmit().getEnderEmit().getUF() + " - " + "CEP: " + getInfNFe().getEmit().getEnderEmit().getCEP();
 
 
     }
 
     public String getTipo() {
-        return getIde().getTpEmis();
+        if (getIde().getTpEmis() == null) {
+            return "";
+        } else {
+            return getIde().getTpEmis();
+        }
     }
 
     public String getFatura() {
-        if(getInfNFe().getCobr()!=null &&
-                getInfNFe().getCobr().getFat()!=null &&
-                getInfNFe().getCobr().getFat().getNFat()!=null) {
+        if (getInfNFe().getCobr() != null
+                && getInfNFe().getCobr().getFat() != null
+                && getInfNFe().getCobr().getFat().getNFat() != null) {
             return getInfNFe().getCobr().getFat().getNFat();
         } else {
             return "";
@@ -629,15 +646,27 @@ public class DanfeImpressao {
     }
 
     public String getNaturezaOperacao() {
-        return getIde().getNatOp();
+        if (getIde().getNatOp() == null) {
+            return "";
+        } else {
+            return getIde().getNatOp();
+        }
     }
 
     public String getProtocoloAutorizacao() {
-        return atual.getProtNFe().getInfProt().getNProt();
+        if (atual.getProtNFe().getInfProt().getNProt() == null) {
+            return "";
+        } else {
+            return atual.getProtNFe().getInfProt().getNProt();
+        }
     }
 
     public String getInscricaoEstadualEmit() {
-        return getInfNFe().getEmit().getIE();
+        if (getInfNFe().getEmit().getIE() == null || getInfNFe().getEmit() == null) {
+            return "";
+        } else {
+            return getInfNFe().getEmit().getIE();
+        }
     }
 
     public String getInscricaoEstadualSubst() {
@@ -649,88 +678,174 @@ public class DanfeImpressao {
     }
 
     public String getCNPJEmit() {
-        return getInfNFe().getEmit().getCNPJ();
+        if (getInfNFe().getEmit() == null || getInfNFe().getEmit().getCNPJ() == null) {
+            return "";
+        } else {
+            return getInfNFe().getEmit().getCNPJ();
+        }
     }
 
     public String getCpfCnpjRemetente() {
-        return getInfNFe().getEmit().getCNPJ();
+        if (getInfNFe().getEmit() == null || getInfNFe().getEmit().getCNPJ() == null) {
+            return "";
+        } else {
+            return getInfNFe().getEmit().getCNPJ();
+        }
     }
 
     public String getDataEmissao() {
-        return getIde().getDEmi();
+        if (getIde().getDEmi() == null) {
+            return "";
+        } else {
+            return getIde().getDEmi();
+        }
     }
 
     public String getBairro() {
-        return getInfNFe().getDest().getEnderDest().getXBairro();
+        if (getInfNFe().getDest().getEnderDest().getXBairro() == null || getInfNFe().getDest().getEnderDest() == null || getInfNFe().getDest().getEnderDest().getXBairro() == null) {
+            return "";
+        } else {
+            return getInfNFe().getDest().getEnderDest().getXBairro();
+        }
     }
 
     public String getCEP() {
-        return getInfNFe().getDest().getEnderDest().getCEP();
+
+        if (getInfNFe().getDest().getEnderDest().getCEP() == null || getInfNFe().getDest().getEnderDest() == null || getInfNFe().getDest() == null) {
+            return "";
+        } else {
+            return getInfNFe().getDest().getEnderDest().getCEP();
+        }
     }
 
     public String getMunicipioEmit() {
-        return getInfNFe().getDest().getEnderDest().getXMun();
+
+        if (getInfNFe().getDest().getEnderDest().getXMun() == null || getInfNFe().getDest().getEnderDest() == null || getInfNFe().getDest() == null) {
+            return "";
+        } else {
+            return getInfNFe().getDest().getEnderDest().getXMun();
+        }
     }
 
     public String getFoneFax() {
-        return getInfNFe().getDest().getEnderDest().getFone();
+        if (getInfNFe().getDest().getEnderDest().getFone() == null || getInfNFe().getDest().getEnderDest() == null || getInfNFe().getDest() == null) {
+            return "";
+        } else {
+            return getInfNFe().getDest().getEnderDest().getFone();
+        }
     }
 
     public String getUFEmit() {
-        return getInfNFe().getEmit().getEnderEmit().getUF().value();
+        if (getInfNFe().getEmit().getEnderEmit().getUF().value() == null || getInfNFe().getEmit().getEnderEmit() == null) {
+            return "";
+        } else {
+            return getInfNFe().getEmit().getEnderEmit().getUF().value();
 
+        }
     }
 
     public String getDataEntradaSaida() {
-        return getIde().getDSaiEnt();
+        if (getIde().getDSaiEnt() == null) {
+            return "";
+        } else {
+            return getIde().getDSaiEnt();
+        }
     }
 
     public String getBaseCalculoICMS() {
-        return getInfNFe().getTotal().getICMSTot().getVBC();
+        if (getInfNFe().getTotal().getICMSTot().getVBC() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTotal().getICMSTot().getVBC();
+        }
     }
 
     public String getValorICMS() {
-        return getInfNFe().getTotal().getICMSTot().getVICMS();
+        if (getInfNFe().getTotal().getICMSTot().getVICMS() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTotal().getICMSTot().getVICMS();
+        }
     }
 
     public String getBaseCalculoICMSST() {
-        return getInfNFe().getTotal().getICMSTot().getVBCST();
+        if (getInfNFe().getTotal().getICMSTot().getVBCST() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTotal().getICMSTot().getVBCST();
+        }
     }
 
     public String getValorICMSST() {
-        return getInfNFe().getTotal().getICMSTot().getVST();
+        if (getInfNFe().getTotal().getICMSTot().getVST() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTotal().getICMSTot().getVST();
+        }
     }
 
     public String getValorTotalProdutos() {
-        return getInfNFe().getTotal().getICMSTot().getVProd();
+        if (getInfNFe().getTotal().getICMSTot().getVProd() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTotal().getICMSTot().getVProd();
+        }
     }
 
     public String getValorFrete() {
-        return getInfNFe().getTotal().getICMSTot().getVFrete();
+        if (getInfNFe().getTotal().getICMSTot().getVFrete() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTotal().getICMSTot().getVFrete();
+        }
     }
 
     public String getValorSeguro() {
-        return getInfNFe().getTotal().getICMSTot().getVSeg();
+        if (getInfNFe().getTotal().getICMSTot().getVSeg() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTotal().getICMSTot().getVSeg();
+        }
     }
 
     public String getDesconto() {
-        return getInfNFe().getTotal().getICMSTot().getVDesc();
+        if (getInfNFe().getTotal().getICMSTot().getVDesc() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTotal().getICMSTot().getVDesc();
+        }
     }
 
     public String getOutrasDespesas() {
-        return getInfNFe().getTotal().getICMSTot().getVOutro();
+        if (getInfNFe().getTotal().getICMSTot().getVOutro() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTotal().getICMSTot().getVOutro();
+        }
     }
 
     public String getValorIPI() {
-        return getInfNFe().getTotal().getICMSTot().getVIPI();
+        if (getInfNFe().getTotal().getICMSTot().getVIPI() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTotal().getICMSTot().getVIPI();
+        }
     }
 
     public String getValorTotalNota() {
-        return getInfNFe().getTotal().getICMSTot().getVNF();
+        if (getInfNFe().getTotal().getICMSTot().getVNF() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTotal().getICMSTot().getVNF();
+        }
     }
 
     public String getFrete() {
-        return getInfNFe().getTransp().getModFrete();
+        if (getInfNFe().getTransp().getModFrete() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTransp().getModFrete();
+        }
     }
 
     public String getRazaoSocialTransp() {
@@ -743,15 +858,27 @@ public class DanfeImpressao {
     }
 
     public String getCodigoANTT() {
-        return getInfNFe().getTransp().getVeicTransp().getRNTC();
+        if (getInfNFe().getTransp().getVeicTransp().getRNTC() == null || getInfNFe().getTransp().getVeicTransp() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTransp().getVeicTransp().getRNTC();
+        }
     }
 
     public String getPlacaVeiculo() {
-        return getInfNFe().getTransp().getVeicTransp().getPlaca();
+        if (getInfNFe().getTransp().getVeicTransp().getPlaca() == null || getInfNFe().getTransp().getVeicTransp() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTransp().getVeicTransp().getPlaca();
+        }
     }
 
     public String getCNPJTransportador() {
-        return getInfNFe().getTransp().getTransporta().getCNPJ();
+        if (getInfNFe().getTransp().getTransporta().getCNPJ() == null || getInfNFe().getTransp().getTransporta() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTransp().getTransporta().getCNPJ();
+        }
     }
 
     public String getEnderecoDest() {
@@ -759,33 +886,61 @@ public class DanfeImpressao {
     }
 
     public String getEnderecoTransporta() {
-        return getInfNFe().getTransp().getTransporta().getXEnder();
+        if (getInfNFe().getTransp().getTransporta().getXEnder() == null || getInfNFe().getTransp().getTransporta() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTransp().getTransporta().getXEnder();
+        }
     }
 
     public String getMunicipioTransporta() {
-        return getInfNFe().getTransp().getTransporta().getXMun();
+        if (getInfNFe().getTransp().getTransporta().getXMun() == null || getInfNFe().getTransp().getTransporta() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTransp().getTransporta().getXMun();
+        }
     }
 
     public String getUFTransporta() {
-        return getInfNFe().getTransp().getTransporta().getUF().value();
+        if (getInfNFe().getTransp().getTransporta().getUF().value() == null || getInfNFe().getTransp().getTransporta() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTransp().getTransporta().getUF().value();
 
+        }
     }
 
     public String getInscricaoTransporta() {
-        return getInfNFe().getTransp().getTransporta().getIE();
+        if (getInfNFe().getTransp().getTransporta().getIE() == null || getInfNFe().getTransp().getTransporta() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTransp().getTransporta().getIE();
+        }
     }
 
     public String getUFDest() {
-        return getInfNFe().getDest().getEnderDest().getUF().value();
+        if (getInfNFe().getDest().getEnderDest().getUF().value() == null || getInfNFe().getDest().getEnderDest() == null || getInfNFe().getDest() == null) {
+            return "";
+        } else {
+            return getInfNFe().getDest().getEnderDest().getUF().value();
 
+        }
     }
 
     public String getMunicipioDest() {
-        return getInfNFe().getDest().getEnderDest().getXMun();
+        if (getInfNFe().getDest().getEnderDest().getXMun() == null || getInfNFe().getDest().getEnderDest() == null || getInfNFe().getDest() == null) {
+            return "";
+        } else {
+            return getInfNFe().getDest().getEnderDest().getXMun();
+        }
     }
 
     public String getInscricaoEstadualDest() {
-        return getInfNFe().getDest().getIE();
+        if (getInfNFe().getDest().getIE() == null || getInfNFe().getDest() == null) {
+            return "";
+        } else {
+            return getInfNFe().getDest().getIE();
+        }
     }
 
     public String getQuantidadeVolume() {
@@ -1006,60 +1161,115 @@ public class DanfeImpressao {
     }
 
     public String getAliqIPI() {
-         List<Det> detalhes = getInfNFe().getDet();
-         String pIPI = " ";
-         if(detalhes != null && !detalhes.isEmpty()) {
-             for(Det det:detalhes) {
-                 pIPI = det.getImposto().getIPI().getIPITrib().getPIPI();
-             }
-         }
-         return pIPI;
+        List<Det> detalhes = getInfNFe().getDet();
+        String pIPI = " ";
+        if (detalhes != null && !detalhes.isEmpty()) {
+            for (Det det : detalhes) {
+                pIPI = det.getImposto().getIPI().getIPITrib().getPIPI();
+            }
+        }
+        return pIPI;
     }
 
     public String getInscricaoMunicipal() {
-        return getInfNFe().getEmit().getIM();
+        if (getInfNFe().getEmit().getIM() == null || getInfNFe().getEmit() == null) {
+            return "";
+        } else {
+            return getInfNFe().getEmit().getIM();
+        }
     }
 
     public String getValorTotalServicos() {
-        return getInfNFe().getTotal().getISSQNtot().getVServ();
+        if (getInfNFe().getTotal().getISSQNtot().getVServ() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTotal().getISSQNtot().getVServ();
+        }
     }
 
     public String getBaseCalculoISSQN() {
-        return getInfNFe().getTotal().getISSQNtot().getVBC();
+        if (getInfNFe().getTotal().getISSQNtot().getVBC() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTotal().getISSQNtot().getVBC();
+        }
     }
 
     public String getValorISSQN() {
-        return getInfNFe().getTotal().getISSQNtot().getVISS();
+        if (getInfNFe().getTotal().getISSQNtot().getVISS() == null) {
+            return "";
+        } else {
+            return getInfNFe().getTotal().getISSQNtot().getVISS();
+        }
     }
 
     public String getInformacoes() {
-        return getInfNFe().getInfAdic().getInfCpl();
+        if (getInfNFe().getInfAdic().getInfCpl() == null) {
+            return "";
+        } else {
+            return getInfNFe().getInfAdic().getInfCpl();
+        }
     }
 
     public String getReservadoAoFisco() {
-        return getInfNFe().getInfAdic().getInfAdFisco();
+        if (getInfNFe().getInfAdic().getInfAdFisco() == null) {
+            return "";
+        } else {
+            return getInfNFe().getInfAdic().getInfAdFisco();
+        }
     }
 
     public String getChaveAcesso() {
+        if(atual.getProtNFe().getInfProt().getChNFe() == null)
+        {
+            return "";
+        }
+        
+        else
+        {
         return atual.getProtNFe().getInfProt().getChNFe();
+        }
     }
-    
+
     public String getCodigodeBarras() {
+        if(atual.getProtNFe().getInfProt().getChNFe() == null)
+        {
+            return "";
+        }
+        
+        else
+        {
         return getChaveAcesso();
+        }
     }
 
     public String getEntradaSaida() {
+        if(getIde().getTpEmis() == null)
+        {
+            return "";
+        }
+        else
+        {
         return getIde().getTpEmis();
+        }
     }
 
     public String getHoraEntradaSaida() {
+        if(getIde().getHSaiEnt() == null)
+        {
+           return "";
+        }
+        else
+        {
         return getIde().getHSaiEnt();
+        }
     }
-    
+
     private Ide getIde() {
+        
         return getInfNFe().getIde();
     }
-    
+
     private InfNFe getInfNFe() {
         return atual.getNFe().getInfNFe();
     }
