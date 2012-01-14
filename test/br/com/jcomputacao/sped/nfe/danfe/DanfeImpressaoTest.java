@@ -25,7 +25,7 @@ public class DanfeImpressaoTest {
     }
 
     public static void main(String a[]) {
-        String dir = "../exemplos/";
+        String dir = "exemplos/";
         File fdir = new File(dir);
         if (!fdir.exists()) {
             System.out.println("Diretório não encontrado : " + fdir.getAbsolutePath());

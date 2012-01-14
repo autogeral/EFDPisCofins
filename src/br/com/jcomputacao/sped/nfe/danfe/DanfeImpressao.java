@@ -4,6 +4,7 @@
  */
 package br.com.jcomputacao.sped.nfe.danfe;
 
+import br.inf.portalfiscal.nfe.TEndereco;
 import br.inf.portalfiscal.nfe.TNFe.InfNFe;
 import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det;
 import br.inf.portalfiscal.nfe.TNFe.InfNFe.Ide;
@@ -858,7 +859,9 @@ public class DanfeImpressao {
     }
 
     public String getCodigoANTT() {
-        if (getInfNFe().getTransp().getVeicTransp().getRNTC() == null || getInfNFe().getTransp().getVeicTransp() == null) {
+        if (getInfNFe().getTransp() == null ||
+                getInfNFe().getTransp().getVeicTransp() == null ||
+                getInfNFe().getTransp().getVeicTransp().getRNTC() == null) {
             return "";
         } else {
             return getInfNFe().getTransp().getVeicTransp().getRNTC();
@@ -866,7 +869,9 @@ public class DanfeImpressao {
     }
 
     public String getPlacaVeiculo() {
-        if (getInfNFe().getTransp().getVeicTransp().getPlaca() == null || getInfNFe().getTransp().getVeicTransp() == null) {
+        if (getInfNFe().getTransp() == null ||
+                getInfNFe().getTransp().getVeicTransp() == null ||
+                getInfNFe().getTransp().getVeicTransp().getPlaca() == null) {
             return "";
         } else {
             return getInfNFe().getTransp().getVeicTransp().getPlaca();
@@ -874,7 +879,9 @@ public class DanfeImpressao {
     }
 
     public String getCNPJTransportador() {
-        if (getInfNFe().getTransp().getTransporta().getCNPJ() == null || getInfNFe().getTransp().getTransporta() == null) {
+        if (getInfNFe().getTransp() == null ||
+                getInfNFe().getTransp().getTransporta() == null ||
+                getInfNFe().getTransp().getTransporta().getCNPJ() == null) {
             return "";
         } else {
             return getInfNFe().getTransp().getTransporta().getCNPJ();
@@ -882,7 +889,8 @@ public class DanfeImpressao {
     }
 
     public String getEnderecoDest() {
-        return getInfNFe().getDest().getEnderDest().getXLgr() + ", " + getInfNFe().getDest().getEnderDest().getNro();
+        TEndereco endDest = getInfNFe().getDest().getEnderDest();
+        return endDest.getXLgr() + (endDest.getNro()!=null?", " + endDest.getNro():"");
     }
 
     public String getEnderecoTransporta() {
