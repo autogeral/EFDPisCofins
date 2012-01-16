@@ -622,9 +622,8 @@ public class DanfeImpressao {
     }
 
     public String getEnderEmit() {
-        
-        return getInfNFe().getEmit().getEnderEmit().getXLgr() + ", " + getInfNFe().getEmit().getEnderEmit().getNro() + "\n" + getInfNFe().getEmit().getEnderEmit().getXBairro() + ", " + getInfNFe().getEmit().getEnderEmit().getXMun() + ", " + getInfNFe().getEmit().getEnderEmit().getUF() + " - " + "CEP: " + getInfNFe().getEmit().getEnderEmit().getCEP();
 
+           return getInfNFe().getEmit().getEnderEmit().getXLgr() + ", " + getInfNFe().getEmit().getEnderEmit().getNro() + "\n" + getInfNFe().getEmit().getEnderEmit().getXBairro() + ", " + getInfNFe().getEmit().getEnderEmit().getXMun() + ", " + getInfNFe().getEmit().getEnderEmit().getUF() + " - " + "CEP: " + getInfNFe().getEmit().getEnderEmit().getCEP();
 
     }
 
@@ -663,7 +662,7 @@ public class DanfeImpressao {
     }
 
     public String getInscricaoEstadualEmit() {
-        if (getInfNFe().getEmit().getIE() == null || getInfNFe().getEmit() == null) {
+        if (getInfNFe().getEmit() == null || getInfNFe().getEmit().getIE() == null) {
             return "";
         } else {
             return getInfNFe().getEmit().getIE();
@@ -703,7 +702,7 @@ public class DanfeImpressao {
     }
 
     public String getBairro() {
-        if (getInfNFe().getDest().getEnderDest().getXBairro() == null || getInfNFe().getDest().getEnderDest() == null || getInfNFe().getDest().getEnderDest().getXBairro() == null) {
+        if (getInfNFe().getDest().getEnderDest() == null || getInfNFe().getDest().getEnderDest().getXBairro() == null) {
             return "";
         } else {
             return getInfNFe().getDest().getEnderDest().getXBairro();
@@ -712,24 +711,15 @@ public class DanfeImpressao {
 
     public String getCEP() {
 
-        if (getInfNFe().getDest().getEnderDest().getCEP() == null || getInfNFe().getDest().getEnderDest() == null || getInfNFe().getDest() == null) {
+        if (getInfNFe().getDest() == null || getInfNFe().getDest().getEnderDest() == null || getInfNFe().getDest().getEnderDest().getCEP() == null) {
             return "";
         } else {
             return getInfNFe().getDest().getEnderDest().getCEP();
         }
     }
 
-    public String getMunicipioEmit() {
-
-        if (getInfNFe().getDest().getEnderDest().getXMun() == null || getInfNFe().getDest().getEnderDest() == null || getInfNFe().getDest() == null) {
-            return "";
-        } else {
-            return getInfNFe().getDest().getEnderDest().getXMun();
-        }
-    }
-
     public String getFoneFax() {
-        if (getInfNFe().getDest().getEnderDest().getFone() == null || getInfNFe().getDest().getEnderDest() == null || getInfNFe().getDest() == null) {
+        if (getInfNFe().getDest().getEnderDest() == null || getInfNFe().getDest() == null || getInfNFe().getDest().getEnderDest().getFone() == null) {
             return "";
         } else {
             return getInfNFe().getDest().getEnderDest().getFone();
@@ -737,7 +727,7 @@ public class DanfeImpressao {
     }
 
     public String getUFEmit() {
-        if (getInfNFe().getEmit().getEnderEmit().getUF().value() == null || getInfNFe().getEmit().getEnderEmit() == null) {
+        if (getInfNFe().getEmit().getEnderEmit() == null || getInfNFe().getEmit().getEnderEmit().getUF().value() == null) {
             return "";
         } else {
             return getInfNFe().getEmit().getEnderEmit().getUF().value();
@@ -859,9 +849,9 @@ public class DanfeImpressao {
     }
 
     public String getCodigoANTT() {
-        if (getInfNFe().getTransp() == null ||
-                getInfNFe().getTransp().getVeicTransp() == null ||
-                getInfNFe().getTransp().getVeicTransp().getRNTC() == null) {
+        if (getInfNFe().getTransp() == null
+                || getInfNFe().getTransp().getVeicTransp() == null
+                || getInfNFe().getTransp().getVeicTransp().getRNTC() == null) {
             return "";
         } else {
             return getInfNFe().getTransp().getVeicTransp().getRNTC();
@@ -869,9 +859,9 @@ public class DanfeImpressao {
     }
 
     public String getPlacaVeiculo() {
-        if (getInfNFe().getTransp() == null ||
-                getInfNFe().getTransp().getVeicTransp() == null ||
-                getInfNFe().getTransp().getVeicTransp().getPlaca() == null) {
+        if (getInfNFe().getTransp() == null
+                || getInfNFe().getTransp().getVeicTransp() == null
+                || getInfNFe().getTransp().getVeicTransp().getPlaca() == null) {
             return "";
         } else {
             return getInfNFe().getTransp().getVeicTransp().getPlaca();
@@ -879,9 +869,9 @@ public class DanfeImpressao {
     }
 
     public String getCNPJTransportador() {
-        if (getInfNFe().getTransp() == null ||
-                getInfNFe().getTransp().getTransporta() == null ||
-                getInfNFe().getTransp().getTransporta().getCNPJ() == null) {
+        if (getInfNFe().getTransp() == null
+                || getInfNFe().getTransp().getTransporta() == null
+                || getInfNFe().getTransp().getTransporta().getCNPJ() == null) {
             return "";
         } else {
             return getInfNFe().getTransp().getTransporta().getCNPJ();
@@ -890,11 +880,11 @@ public class DanfeImpressao {
 
     public String getEnderecoDest() {
         TEndereco endDest = getInfNFe().getDest().getEnderDest();
-        return endDest.getXLgr() + (endDest.getNro()!=null?", " + endDest.getNro():"");
+        return endDest.getXLgr() + (endDest.getNro() != null ? ", " + endDest.getNro() : "");
     }
 
     public String getEnderecoTransporta() {
-        if (getInfNFe().getTransp().getTransporta().getXEnder() == null || getInfNFe().getTransp().getTransporta() == null) {
+        if (getInfNFe().getTransp().getTransporta() == null || getInfNFe().getTransp().getTransporta().getXEnder() == null) {
             return "";
         } else {
             return getInfNFe().getTransp().getTransporta().getXEnder();
@@ -902,7 +892,7 @@ public class DanfeImpressao {
     }
 
     public String getMunicipioTransporta() {
-        if (getInfNFe().getTransp().getTransporta().getXMun() == null || getInfNFe().getTransp().getTransporta() == null) {
+        if (getInfNFe().getTransp().getTransporta() == null || getInfNFe().getTransp().getTransporta().getXMun() == null) {
             return "";
         } else {
             return getInfNFe().getTransp().getTransporta().getXMun();
@@ -910,7 +900,7 @@ public class DanfeImpressao {
     }
 
     public String getUFTransporta() {
-        if (getInfNFe().getTransp().getTransporta().getUF().value() == null || getInfNFe().getTransp().getTransporta() == null) {
+        if (getInfNFe().getTransp().getTransporta() == null || getInfNFe().getTransp().getTransporta().getUF().value() == null) {
             return "";
         } else {
             return getInfNFe().getTransp().getTransporta().getUF().value();
@@ -919,7 +909,7 @@ public class DanfeImpressao {
     }
 
     public String getInscricaoTransporta() {
-        if (getInfNFe().getTransp().getTransporta().getIE() == null || getInfNFe().getTransp().getTransporta() == null) {
+        if (getInfNFe().getTransp().getTransporta() == null || getInfNFe().getTransp().getTransporta().getIE() == null) {
             return "";
         } else {
             return getInfNFe().getTransp().getTransporta().getIE();
@@ -927,7 +917,7 @@ public class DanfeImpressao {
     }
 
     public String getUFDest() {
-        if (getInfNFe().getDest().getEnderDest().getUF().value() == null || getInfNFe().getDest().getEnderDest() == null || getInfNFe().getDest() == null) {
+        if (getInfNFe().getDest() == null || getInfNFe().getDest().getEnderDest() == null || getInfNFe().getDest().getEnderDest().getUF().value() == null) {
             return "";
         } else {
             return getInfNFe().getDest().getEnderDest().getUF().value();
@@ -936,7 +926,7 @@ public class DanfeImpressao {
     }
 
     public String getMunicipioDest() {
-        if (getInfNFe().getDest().getEnderDest().getXMun() == null || getInfNFe().getDest().getEnderDest() == null || getInfNFe().getDest() == null) {
+        if (getInfNFe().getDest() == null || getInfNFe().getDest().getEnderDest() == null || getInfNFe().getDest().getEnderDest().getXMun() == null) {
             return "";
         } else {
             return getInfNFe().getDest().getEnderDest().getXMun();
@@ -944,7 +934,7 @@ public class DanfeImpressao {
     }
 
     public String getInscricaoEstadualDest() {
-        if (getInfNFe().getDest().getIE() == null || getInfNFe().getDest() == null) {
+        if (getInfNFe().getDest() == null || getInfNFe().getDest().getIE() == null) {
             return "";
         } else {
             return getInfNFe().getDest().getIE();
@@ -1228,53 +1218,39 @@ public class DanfeImpressao {
     }
 
     public String getChaveAcesso() {
-        if(atual.getProtNFe().getInfProt().getChNFe() == null)
-        {
+        if (atual.getProtNFe().getInfProt().getChNFe() == null) {
             return "";
-        }
-        
-        else
-        {
-        return atual.getProtNFe().getInfProt().getChNFe();
+        } else {
+            return atual.getProtNFe().getInfProt().getChNFe();
         }
     }
 
     public String getCodigodeBarras() {
-        if(atual.getProtNFe().getInfProt().getChNFe() == null)
-        {
+        if (atual.getProtNFe().getInfProt().getChNFe() == null) {
             return "";
-        }
-        
-        else
-        {
-        return getChaveAcesso();
+        } else {
+            return getChaveAcesso();
         }
     }
 
     public String getEntradaSaida() {
-        if(getIde().getTpEmis() == null)
-        {
+        if (getIde().getTpEmis() == null) {
             return "";
-        }
-        else
-        {
-        return getIde().getTpEmis();
+        } else {
+            return getIde().getTpEmis();
         }
     }
 
     public String getHoraEntradaSaida() {
-        if(getIde().getHSaiEnt() == null)
-        {
-           return "";
-        }
-        else
-        {
-        return getIde().getHSaiEnt();
+        if (getIde().getHSaiEnt() == null) {
+            return "";
+        } else {
+            return getIde().getHSaiEnt();
         }
     }
 
     private Ide getIde() {
-        
+
         return getInfNFe().getIde();
     }
 
