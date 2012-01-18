@@ -623,7 +623,7 @@ public class DanfeImpressao {
 
     public String getEnderEmit() {
 
-           return getInfNFe().getEmit().getEnderEmit().getXLgr() + ", " + getInfNFe().getEmit().getEnderEmit().getNro() + "\n" + getInfNFe().getEmit().getEnderEmit().getXBairro() + ", " + getInfNFe().getEmit().getEnderEmit().getXMun() + ", " + getInfNFe().getEmit().getEnderEmit().getUF() + " - " + "CEP: " + getInfNFe().getEmit().getEnderEmit().getCEP();
+        return getInfNFe().getEmit().getEnderEmit().getXLgr() + ", " + getInfNFe().getEmit().getEnderEmit().getNro() + "\n" + getInfNFe().getEmit().getEnderEmit().getXBairro() + ", " + getInfNFe().getEmit().getEnderEmit().getXMun() + ", " + getInfNFe().getEmit().getEnderEmit().getUF() + " - " + "CEP: " + getInfNFe().getEmit().getEnderEmit().getCEP();
 
     }
 
@@ -934,11 +934,8 @@ public class DanfeImpressao {
     }
 
     public String getInscricaoEstadualDest() {
-        if (getInfNFe().getDest() == null || getInfNFe().getDest().getIE() == null) {
-            return "";
-        } else {
-            return getInfNFe().getDest().getIE();
-        }
+        return getInfNFe().getDest().getIE();
+
     }
 
     public String getQuantidadeVolume() {
@@ -969,7 +966,7 @@ public class DanfeImpressao {
         String marca = " ";
         if (volumes != null && !volumes.isEmpty()) {
             for (Vol vol : volumes) {
-                marca = vol.getMarca();
+                   marca = vol.getMarca();
             }
         }
 
@@ -1053,7 +1050,27 @@ public class DanfeImpressao {
         String CST = " ";
         if (detalhes != null && !detalhes.isEmpty()) {
             for (Det det : detalhes) {
-                CST = det.getImposto().getICMS().getICMS00().getCST();
+                if (det.getImposto().getICMS().getICMS00() != null) {
+                    CST = det.getImposto().getICMS().getICMS00().getCST();
+                }
+                if (det.getImposto().getICMS().getICMS20() != null) {
+                    CST = det.getImposto().getICMS().getICMS20().getCST();
+                }
+                if (det.getImposto().getICMS().getICMS30() != null) {
+                    CST = det.getImposto().getICMS().getICMS30().getCST();
+                }
+                if (det.getImposto().getICMS().getICMS40() != null) {
+                    CST = det.getImposto().getICMS().getICMS40().getCST();
+                }
+                if (det.getImposto().getICMS().getICMS51() != null) {
+                    CST = det.getImposto().getICMS().getICMS51().getCST();
+                }
+                if (det.getImposto().getICMS().getICMS60() != null) {
+                    CST = det.getImposto().getICMS().getICMS70().getCST();
+                }
+                if (det.getImposto().getICMS().getICMS90() != null) {
+                    CST = det.getImposto().getICMS().getICMS90().getCST();
+                }
             }
         }
         return CST;
@@ -1119,7 +1136,22 @@ public class DanfeImpressao {
         String vBC = " ";
         if (detalhes != null && !detalhes.isEmpty()) {
             for (Det det : detalhes) {
-                vBC = det.getImposto().getICMS().getICMS00().getVBC();
+                if (det.getImposto().getICMS().getICMS00() != null) {
+                    vBC = det.getImposto().getICMS().getICMS00().getVBC();
+                }
+                if (det.getImposto().getICMS().getICMS20() != null) {
+                    vBC = det.getImposto().getICMS().getICMS20().getVBC();
+                }
+                if (det.getImposto().getICMS().getICMS51() != null) {
+                    vBC = det.getImposto().getICMS().getICMS51().getVBC();
+                }
+
+                if (det.getImposto().getICMS().getICMS70() != null) {
+                    vBC = det.getImposto().getICMS().getICMS70().getVBC();
+                }
+                if (det.getImposto().getICMS().getICMS90() != null) {
+                    vBC = det.getImposto().getICMS().getICMS90().getVBC();
+                }
             }
         }
         return vBC;
@@ -1130,7 +1162,21 @@ public class DanfeImpressao {
         String vICMS = " ";
         if (detalhes != null && !detalhes.isEmpty()) {
             for (Det det : detalhes) {
-                vICMS = det.getImposto().getICMS().getICMS00().getVICMS();
+                if (det.getImposto().getICMS().getICMS00() != null) {
+                    vICMS = det.getImposto().getICMS().getICMS00().getVICMS();
+                }
+                if (det.getImposto().getICMS().getICMS20() != null) {
+                    vICMS = det.getImposto().getICMS().getICMS20().getVICMS();
+                }
+                if (det.getImposto().getICMS().getICMS51() != null) {
+                    vICMS = det.getImposto().getICMS().getICMS51().getVICMS();
+                }
+                if (det.getImposto().getICMS().getICMS70() != null) {
+                    vICMS = det.getImposto().getICMS().getICMS70().getVICMS();
+                }
+                if (det.getImposto().getICMS().getICMS90() != null) {
+                    vICMS = det.getImposto().getICMS().getICMS90().getVICMS();
+                }
             }
         }
         return vICMS;
@@ -1141,7 +1187,9 @@ public class DanfeImpressao {
         String vIPI = " ";
         if (detalhes != null && !detalhes.isEmpty()) {
             for (Det det : detalhes) {
-                vIPI = det.getImposto().getIPI().getIPITrib().getVIPI();
+                if (det.getImposto().getIPI() != null) {
+                    vIPI = det.getImposto().getIPI().getIPITrib().getVIPI();
+                }
             }
         }
         return vIPI;
@@ -1152,7 +1200,21 @@ public class DanfeImpressao {
         String pICMS = " ";
         if (detalhes != null && !detalhes.isEmpty()) {
             for (Det det : detalhes) {
-                pICMS = det.getImposto().getICMS().getICMS00().getPICMS();
+                if (det.getImposto().getICMS().getICMS00() != null) {
+                    pICMS = det.getImposto().getICMS().getICMS00().getPICMS();
+                }
+                if (det.getImposto().getICMS().getICMS20() != null) {
+                    pICMS = det.getImposto().getICMS().getICMS20().getPICMS();
+                }
+                if (det.getImposto().getICMS().getICMS51() != null) {
+                    pICMS = det.getImposto().getICMS().getICMS51().getPICMS();
+                }
+                if (det.getImposto().getICMS().getICMS70() != null) {
+                    pICMS = det.getImposto().getICMS().getICMS70().getPICMS();
+                }
+                if (det.getImposto().getICMS().getICMS90() != null) {
+                    pICMS = det.getImposto().getICMS().getICMS90().getPICMS();
+                }
             }
         }
         return pICMS;
@@ -1163,7 +1225,10 @@ public class DanfeImpressao {
         String pIPI = " ";
         if (detalhes != null && !detalhes.isEmpty()) {
             for (Det det : detalhes) {
+                if(det.getImposto().getIPI() != null)
+                {
                 pIPI = det.getImposto().getIPI().getIPITrib().getPIPI();
+                }
             }
         }
         return pIPI;
@@ -1178,7 +1243,7 @@ public class DanfeImpressao {
     }
 
     public String getValorTotalServicos() {
-        if (getInfNFe().getTotal().getISSQNtot().getVServ() == null) {
+        if (getInfNFe().getTotal() == null || getInfNFe().getTotal().getISSQNtot() == null || getInfNFe().getTotal().getISSQNtot().getVServ() == null) {
             return "";
         } else {
             return getInfNFe().getTotal().getISSQNtot().getVServ();
@@ -1186,7 +1251,7 @@ public class DanfeImpressao {
     }
 
     public String getBaseCalculoISSQN() {
-        if (getInfNFe().getTotal().getISSQNtot().getVBC() == null) {
+        if (getInfNFe().getTotal() == null || getInfNFe().getTotal().getISSQNtot() == null || getInfNFe().getTotal().getISSQNtot().getVBC() == null) {
             return "";
         } else {
             return getInfNFe().getTotal().getISSQNtot().getVBC();
@@ -1194,7 +1259,7 @@ public class DanfeImpressao {
     }
 
     public String getValorISSQN() {
-        if (getInfNFe().getTotal().getISSQNtot().getVISS() == null) {
+        if (getInfNFe().getTotal() == null || getInfNFe().getTotal().getISSQNtot() == null ||  getInfNFe().getTotal().getISSQNtot().getVISS() == null) {
             return "";
         } else {
             return getInfNFe().getTotal().getISSQNtot().getVISS();
