@@ -502,34 +502,38 @@ public class DanfeImpressao {
 
         table = new PdfPTable(new float[]{0.05f, 0.4f, 0.06f, 0.03f, 0.03f, 0.03f, 0.03f, 0.06f, 0.06f, 0.06f, 0.06f, 0.06f, 0.03f, 0.03f});
         table.setWidthPercentage(100);
-        cell = new PdfPCell(new Phrase(getCodigo(), smallFont));
-        table.addCell(cell);
-        cell = new PdfPCell(new Phrase(getDescricaoProdutoServico(), smallFont));
-        table.addCell(cell);
-        cell = new PdfPCell(new Phrase(getNCMSH(), smallFont));
-        table.addCell(cell);
-        cell = new PdfPCell(new Phrase(getCST(), smallFont));
-        table.addCell(cell);
-        cell = new PdfPCell(new Phrase(getCFOP(), smallFont));
-        table.addCell(cell);
-        cell = new PdfPCell(new Phrase(getUnid(), smallFont));
-        table.addCell(cell);
-        cell = new PdfPCell(new Phrase(getQtd(), smallFont));
-        table.addCell(cell);
-        cell = new PdfPCell(new Phrase(getVlrUnit(), smallFont));
-        table.addCell(cell);
-        cell = new PdfPCell(new Phrase(getVlrTotal(), smallFont));
-        table.addCell(cell);
-        cell = new PdfPCell(new Phrase(getBCICMS(), smallFont));
-        table.addCell(cell);
-        cell = new PdfPCell(new Phrase(getVlrICMS(), smallFont));
-        table.addCell(cell);
-        cell = new PdfPCell(new Phrase(getVlrIPI(), smallFont));
-        table.addCell(cell);
-        cell = new PdfPCell(new Phrase(getVlrAliqICMS(), smallFont));
-        table.addCell(cell);
-        cell = new PdfPCell(new Phrase(getAliqIPI(), smallFont));
-        table.addCell(cell);
+
+        List<Det> dets = this.atual.getNFe().getInfNFe().getDet();
+        for (Det det : dets) {
+            cell = new PdfPCell(new Phrase(getCodigo(), smallFont));
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase(getDescricaoProdutoServico(), smallFont));
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase(getNCMSH(), smallFont));
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase(getCST(), smallFont));
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase(getCFOP(), smallFont));
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase(getUnid(), smallFont));
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase(getQtd(), smallFont));
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase(getVlrUnit(), smallFont));
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase(getVlrTotal(), smallFont));
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase(getBCICMS(), smallFont));
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase(getVlrICMS(), smallFont));
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase(getVlrIPI(), smallFont));
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase(getVlrAliqICMS(), smallFont));
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase(getAliqIPI(), smallFont));
+            table.addCell(cell);
+        }
 
         document.add(table);
 
@@ -1019,7 +1023,7 @@ public class DanfeImpressao {
         double pesoL = 0;
         if (volumes != null && !volumes.isEmpty()) {
             for (Vol vol : volumes) {
-                pesoL += Integer.parseInt(vol.getPesoL());
+                pesoL += Double.parseDouble(vol.getPesoL());
             }
         }
         return Double.toString(pesoL);
