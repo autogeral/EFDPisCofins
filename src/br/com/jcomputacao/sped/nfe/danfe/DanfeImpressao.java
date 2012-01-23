@@ -962,11 +962,22 @@ public class DanfeImpressao {
     }
 
     public String getMarca() {
-        List<Vol> volumes = getInfNFe().getTransp().getVol();
-        String marca = " ";
-        if (volumes != null && !volumes.isEmpty()) {
-            for (Vol vol : volumes) {
-                   marca = vol.getMarca();
+        String marca = "";
+        if (getInfNFe() != null && getInfNFe().getTransp() != null
+                && getInfNFe().getTransp().getVol() != null) {
+            List<Vol> volumes = getInfNFe().getTransp().getVol();
+            if (!volumes.isEmpty()) {
+                boolean first = true;
+                for (Vol vol : volumes) {
+                    if (vol.getMarca() != null && "".equals(vol.getMarca().trim())) {
+                        if (first) {
+                            first = false;
+                        } else {
+                            marca += ",";
+                        }
+                        marca += vol.getMarca();
+                    }
+                }
             }
         }
 
@@ -976,14 +987,19 @@ public class DanfeImpressao {
     }
 
     public String getNumeracao() {
-        List<Vol> volumes = getInfNFe().getTransp().getVol();
-        String nVol = " ";
-        if (volumes != null && !volumes.isEmpty()) {
-            for (Vol vol : volumes) {
-                nVol = vol.getNVol();
+        String nVol = "";
+        if (getInfNFe() != null && getInfNFe().getTransp() != null
+                && getInfNFe().getTransp().getVol() != null) {
+            List<Vol> volumes = getInfNFe().getTransp().getVol();
+            int numeroVolumes = 0;
+            if (!volumes.isEmpty()) {
+                for (Vol vol : volumes) {
+                    if (vol.getNVol() != null && "".equals(vol.getNVol().trim())) {
+                        numeroVolumes += Integer.parseInt(vol.getNVol());
+                    }
+                }
             }
         }
-
         return nVol;
     }
 
@@ -992,7 +1008,7 @@ public class DanfeImpressao {
         double pesoB = 0;
         if (volumes != null && !volumes.isEmpty()) {
             for (Vol vol : volumes) {
-                pesoB += Integer.parseInt(vol.getPesoB());
+                pesoB += Double.parseDouble(vol.getPesoB());
             }
         }
         return Double.toString(pesoB);
