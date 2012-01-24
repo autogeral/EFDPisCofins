@@ -954,11 +954,22 @@ public class DanfeImpressao {
     }
 
     public String getEspecie() {
-        List<Vol> volumes = getInfNFe().getTransp().getVol();
         String esp = " ";
-        if (volumes != null && !volumes.isEmpty()) {
-            for (Vol vol : volumes) {
-                esp = vol.getEsp();
+        if (getInfNFe() != null && getInfNFe().getTransp() != null && getInfNFe().getTransp().getVol() != null) {
+
+            List<Vol> volumes = getInfNFe().getTransp().getVol();
+            if (!volumes.isEmpty()) {
+                boolean first = true;
+                for (Vol vol : volumes) {
+                    if (vol.getEsp() != null && "".equals(vol.getEsp().trim())) {
+                        if (first) {
+                            first = false;
+                        } else {
+                            esp += ",";
+                        }
+                        esp += vol.getEsp();
+                    }
+                }
             }
         }
 
@@ -986,8 +997,6 @@ public class DanfeImpressao {
         }
 
         return marca;
-
-
     }
 
     public String getNumeracao() {
@@ -1086,7 +1095,7 @@ public class DanfeImpressao {
                     CST = det.getImposto().getICMS().getICMS51().getCST();
                 }
                 if (det.getImposto().getICMS().getICMS60() != null) {
-                    CST = det.getImposto().getICMS().getICMS70().getCST();
+                    CST = det.getImposto().getICMS().getICMS60().getCST();
                 }
                 if (det.getImposto().getICMS().getICMS90() != null) {
                     CST = det.getImposto().getICMS().getICMS90().getCST();
@@ -1203,19 +1212,28 @@ public class DanfeImpressao {
     }
 
     public String getVlrIPI() {
-        List<Det> detalhes = getInfNFe().getDet();
         String vIPI = " ";
-        if (detalhes != null && !detalhes.isEmpty()) {
-            for (Det det : detalhes) {
-                if (det.getImposto().getIPI() != null) {
-                    vIPI = det.getImposto().getIPI().getIPITrib().getVIPI();
+        if (getInfNFe() != null && getInfNFe().getDet() != null) {
+            List<Det> detalhes = getInfNFe().getDet();
+            if (!detalhes.isEmpty()) {
+                boolean first = true;
+                for (Det det : detalhes) {
+                    if (det.getImposto().getIPI().getIPITrib().getVIPI() != null && "".equals(det.getImposto().getIPI().getIPITrib().getVIPI().trim())) {
+                        if (first) {
+                            first = false;
+                        } else {
+                            vIPI += ",";
+                        }
+                        vIPI += det.getImposto().getIPI().getIPITrib().getVIPI();
+                    }
                 }
             }
         }
         return vIPI;
     }
 
-    public String getVlrAliqICMS() {
+ 
+public String getVlrAliqICMS() {
         List<Det> detalhes = getInfNFe().getDet();
         String pICMS = " ";
         if (detalhes != null && !detalhes.isEmpty()) {
