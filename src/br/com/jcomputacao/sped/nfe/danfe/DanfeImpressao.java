@@ -7,6 +7,7 @@ package br.com.jcomputacao.sped.nfe.danfe;
 import br.inf.portalfiscal.nfe.TEndereco;
 import br.inf.portalfiscal.nfe.TNFe.InfNFe;
 import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Imposto;
 import br.inf.portalfiscal.nfe.TNFe.InfNFe.Ide;
 import br.inf.portalfiscal.nfe.TNFe.InfNFe.Transp.Vol;
 import br.inf.portalfiscal.nfe.TNfeProc;
@@ -50,6 +51,7 @@ public class DanfeImpressao {
     private Font subTitle = new Font(FontFamily.HELVETICA, 7, Font.BOLD);
     private List<TNfeProc> nfes = null;
     private TNfeProc atual;
+    private Det detalhe;
 
     public DanfeImpressao(TNfeProc nfe) {
         this.nfes = new ArrayList<TNfeProc>();
@@ -72,11 +74,28 @@ public class DanfeImpressao {
 
         for (TNfeProc nfe : nfes) {
             this.atual = nfe;
-            printNfe();
+            if(validar()) {
+                printNfe();
+            } else {
+                System.out.println("Não conseguiu validar a NFe " + 
+                        (nfe.getProtNFe() != null ? 
+                        (nfe.getProtNFe().getInfProt() != null ? nfe.getProtNFe().getInfProt().getChNFe() : "")
+                        : ""));
+            }
         }
 
         document.close();
         return baos;
+    }
+    
+    private boolean validar() {
+        if(atual == null) {
+            return false;
+        }
+        if (atual.getNFe() == null) {
+            return false;
+        }
+        return true;
     }
 
     private void printNfe() throws DocumentException {
@@ -136,7 +155,7 @@ public class DanfeImpressao {
 
         table = new PdfPTable(new float[]{0.22f, 0.56f, 0.22f});
         table.setWidthPercentage(100);
-        cell = new PdfPCell(new Phrase(" "));
+        cell = new PdfPCell(new Phrase(""));
         cell = new PdfPCell(new Phrase("DATA DE RECEBIMENTO\n\n\n", upperFont));
         cell.setVerticalAlignment(Element.ALIGN_TOP);
         table.addCell(cell);
@@ -187,7 +206,7 @@ public class DanfeImpressao {
 
         frase1 = new Phrase("\n\n\n\n\n" + getNomeEmit(), normalBold);
         Paragraph p1 = new Paragraph(frase1);
-        Paragraph spc = new Paragraph(" ");
+        Paragraph spc = new Paragraph("");
         p1.setAlignment(Phrase.ALIGN_LEFT);
 
         cell2.addElement(p1);
@@ -211,7 +230,7 @@ public class DanfeImpressao {
         table1.setWidthPercentage(100);
         PdfPCell cell1 = new PdfPCell(new Phrase("0 - Entrada\n1 - Saída", itemFont));
         PdfPCell cell4 = new PdfPCell(new Phrase("  " + getEntradaSaida(), subTitle));
-        PdfPCell cell5 = new PdfPCell(new Phrase(" "));
+        PdfPCell cell5 = new PdfPCell(new Phrase(""));
         cell1.setBorder(0);
         table1.addCell(cell1);
         table1.addCell(cell4);
@@ -427,7 +446,7 @@ public class DanfeImpressao {
         document.add(table);
 
         table = new PdfPTable(new float[]{0.40f, 0.35f, 0.05f, 0.2f});
-        cell = new PdfPCell(new Phrase(" "));
+        cell = new PdfPCell(new Phrase(""));
         table.setWidthPercentage(100);
         frase = new Phrase("ENDEREÇO\n", upperFont);
         frase.add(new Chunk(getEnderecoTransporta(), itemFont));
@@ -505,6 +524,7 @@ public class DanfeImpressao {
 
         List<Det> dets = this.atual.getNFe().getInfNFe().getDet();
         for (Det det : dets) {
+            setDetalhe(det);
             cell = new PdfPCell(new Phrase(getCodigo(), smallFont));
             table.addCell(cell);
             cell = new PdfPCell(new Phrase(getDescricaoProdutoServico(), smallFont));
@@ -539,7 +559,7 @@ public class DanfeImpressao {
 
 
 
-        p = new Paragraph(" ");
+        p = new Paragraph("");
         document.add(p);
         document.add(p);
         document.add(p);
@@ -954,7 +974,7 @@ public class DanfeImpressao {
     }
 
     public String getEspecie() {
-        String esp = " ";
+        String esp = "";
         if (getInfNFe() != null && getInfNFe().getTransp() != null && getInfNFe().getTransp().getVol() != null) {
 
             List<Vol> volumes = getInfNFe().getTransp().getVol();
@@ -1042,11 +1062,10 @@ public class DanfeImpressao {
 
     public String getCodigo() {
         List<Det> detalhes = getInfNFe().getDet();
-        String cProd = " ";
-        if (detalhes != null && !detalhes.isEmpty()) {
-            for (Det det : detalhes) {
-                cProd = det.getProd().getCProd();
-            }
+        String cProd = "";
+        //if (detalhes != null && !detalhes.isEmpty()) {
+        if (detalhe != null) {
+            cProd = detalhe.getProd().getCProd();
         }
         return cProd;
 
@@ -1054,60 +1073,64 @@ public class DanfeImpressao {
 
     public String getDescricaoProdutoServico() {
         List<Det> detalhes = getInfNFe().getDet();
-        String cProd = " ";
-        if (detalhes != null && !detalhes.isEmpty()) {
-            for (Det det : detalhes) {
-                cProd = det.getProd().getCProd();
-            }
+        String cProd = "";
+//        if (detalhes != null && !detalhes.isEmpty()) {
+//            for (Det det : detalhes) {
+        if (detalhe != null) {
+                cProd = detalhe.getProd().getCProd();
+//            }
         }
         return cProd;
     }
 
     public String getNCMSH() {
         List<Det> detalhes = getInfNFe().getDet();
-        String NCM = " ";
-        if (detalhes != null && !detalhes.isEmpty()) {
-            for (Det det : detalhes) {
-                NCM = det.getProd().getNCM();
+        String NCM = "";
+//        if (detalhes != null && !detalhes.isEmpty()) {
+//            for (Det det : detalhes) {
+        if (detalhe != null) {
+                NCM = detalhe.getProd().getNCM();
             }
-        }
+//        }
         return NCM;
     }
 
     public String getCST() {
         List<Det> detalhes = getInfNFe().getDet();
-        String CST = " ";
-        if (detalhes != null && !detalhes.isEmpty()) {
-            for (Det det : detalhes) {
-                if (det.getImposto().getICMS().getICMS00() != null) {
-                    CST = det.getImposto().getICMS().getICMS00().getCST();
-                }
-                if (det.getImposto().getICMS().getICMS20() != null) {
-                    CST = det.getImposto().getICMS().getICMS20().getCST();
-                }
-                if (det.getImposto().getICMS().getICMS30() != null) {
-                    CST = det.getImposto().getICMS().getICMS30().getCST();
-                }
-                if (det.getImposto().getICMS().getICMS40() != null) {
-                    CST = det.getImposto().getICMS().getICMS40().getCST();
-                }
-                if (det.getImposto().getICMS().getICMS51() != null) {
-                    CST = det.getImposto().getICMS().getICMS51().getCST();
-                }
-                if (det.getImposto().getICMS().getICMS60() != null) {
-                    CST = det.getImposto().getICMS().getICMS60().getCST();
-                }
-                if (det.getImposto().getICMS().getICMS90() != null) {
-                    CST = det.getImposto().getICMS().getICMS90().getCST();
-                }
+        String CST = "";
+//        if (detalhes != null && !detalhes.isEmpty()) {
+//            for (Det det : detalhes) {
+        if (detalhe != null) {
+            Imposto imposto = detalhe.getImposto();
+            if (imposto.getICMS().getICMS00() != null) {
+                CST = imposto.getICMS().getICMS00().getCST();
+            }
+            if (imposto.getICMS().getICMS20() != null) {
+                CST = imposto.getICMS().getICMS20().getCST();
+            }
+            if (imposto.getICMS().getICMS30() != null) {
+                CST = imposto.getICMS().getICMS30().getCST();
+            }
+            if (imposto.getICMS().getICMS40() != null) {
+                CST = imposto.getICMS().getICMS40().getCST();
+            }
+            if (imposto.getICMS().getICMS51() != null) {
+                CST = imposto.getICMS().getICMS51().getCST();
+            }
+            if (imposto.getICMS().getICMS60() != null) {
+                CST = imposto.getICMS().getICMS60().getCST();
+            }
+            if (imposto.getICMS().getICMS90() != null) {
+                CST = imposto.getICMS().getICMS90().getCST();
             }
         }
+//        }
         return CST;
     }
 
     public String getCFOP() {
         List<Det> detalhes = getInfNFe().getDet();
-        String CFOP = " ";
+        String CFOP = "";
         if (detalhes != null && !detalhes.isEmpty()) {
             for (Det det : detalhes) {
                 CFOP = det.getProd().getCFOP();
@@ -1118,7 +1141,7 @@ public class DanfeImpressao {
 
     public String getUnid() {
         List<Det> detalhes = getInfNFe().getDet();
-        String uCom = " ";
+        String uCom = "";
         if (detalhes != null && !detalhes.isEmpty()) {
             for (Det det : detalhes) {
                 uCom = det.getProd().getUCom();
@@ -1129,7 +1152,7 @@ public class DanfeImpressao {
 
     public String getQtd() {
         List<Det> detalhes = getInfNFe().getDet();
-        String qCom = " ";
+        String qCom = "";
         if (detalhes != null && !detalhes.isEmpty()) {
             for (Det det : detalhes) {
                 qCom = det.getProd().getQCom();
@@ -1140,7 +1163,7 @@ public class DanfeImpressao {
 
     public String getVlrUnit() {
         List<Det> detalhes = getInfNFe().getDet();
-        String vUnCom = " ";
+        String vUnCom = "";
         if (detalhes != null && !detalhes.isEmpty()) {
             for (Det det : detalhes) {
                 vUnCom = det.getProd().getVUnCom();
@@ -1151,7 +1174,7 @@ public class DanfeImpressao {
 
     public String getVlrTotal() {
         List<Det> detalhes = getInfNFe().getDet();
-        String vProd = " ";
+        String vProd = "";
         if (detalhes != null && !detalhes.isEmpty()) {
             for (Det det : detalhes) {
                 vProd = det.getProd().getVProd();
@@ -1161,50 +1184,42 @@ public class DanfeImpressao {
     }
 
     public String getBCICMS() {
-        List<Det> detalhes = getInfNFe().getDet();
-        String vBC = " ";
-        if (detalhes != null && !detalhes.isEmpty()) {
-            for (Det det : detalhes) {
-                if (det.getImposto().getICMS().getICMS00() != null) {
-                    vBC = det.getImposto().getICMS().getICMS00().getVBC();
-                }
-                if (det.getImposto().getICMS().getICMS20() != null) {
-                    vBC = det.getImposto().getICMS().getICMS20().getVBC();
-                }
-                if (det.getImposto().getICMS().getICMS51() != null) {
-                    vBC = det.getImposto().getICMS().getICMS51().getVBC();
-                }
-
-                if (det.getImposto().getICMS().getICMS70() != null) {
-                    vBC = det.getImposto().getICMS().getICMS70().getVBC();
-                }
-                if (det.getImposto().getICMS().getICMS90() != null) {
-                    vBC = det.getImposto().getICMS().getICMS90().getVBC();
-                }
-            }
+        String vBC = "";
+        Imposto imposto = detalhe.getImposto();
+        if (imposto.getICMS().getICMS00() != null) {
+            vBC = imposto.getICMS().getICMS00().getVBC();
+        } else if (imposto.getICMS().getICMS20() != null) {
+            vBC = imposto.getICMS().getICMS20().getVBC();
+        } else if (imposto.getICMS().getICMS51() != null) {
+            vBC = imposto.getICMS().getICMS51().getVBC();
+        } else if (imposto.getICMS().getICMS70() != null) {
+            vBC = imposto.getICMS().getICMS70().getVBC();
+        } else if (imposto.getICMS().getICMS90() != null) {
+            vBC = imposto.getICMS().getICMS90().getVBC();
         }
         return vBC;
     }
 
     public String getVlrICMS() {
         List<Det> detalhes = getInfNFe().getDet();
-        String vICMS = " ";
+        String vICMS = "";
         if (detalhes != null && !detalhes.isEmpty()) {
             for (Det det : detalhes) {
-                if (det.getImposto().getICMS().getICMS00() != null) {
-                    vICMS = det.getImposto().getICMS().getICMS00().getVICMS();
+                Imposto imposto = det.getImposto();
+                if (imposto.getICMS().getICMS00() != null) {
+                    vICMS = imposto.getICMS().getICMS00().getVICMS();
                 }
-                if (det.getImposto().getICMS().getICMS20() != null) {
-                    vICMS = det.getImposto().getICMS().getICMS20().getVICMS();
+                if (imposto.getICMS().getICMS20() != null) {
+                    vICMS = imposto.getICMS().getICMS20().getVICMS();
                 }
-                if (det.getImposto().getICMS().getICMS51() != null) {
-                    vICMS = det.getImposto().getICMS().getICMS51().getVICMS();
+                if (imposto.getICMS().getICMS51() != null) {
+                    vICMS = imposto.getICMS().getICMS51().getVICMS();
                 }
-                if (det.getImposto().getICMS().getICMS70() != null) {
-                    vICMS = det.getImposto().getICMS().getICMS70().getVICMS();
+                if (imposto.getICMS().getICMS70() != null) {
+                    vICMS = imposto.getICMS().getICMS70().getVICMS();
                 }
-                if (det.getImposto().getICMS().getICMS90() != null) {
-                    vICMS = det.getImposto().getICMS().getICMS90().getVICMS();
+                if (imposto.getICMS().getICMS90() != null) {
+                    vICMS = imposto.getICMS().getICMS90().getVICMS();
                 }
             }
         }
@@ -1212,19 +1227,24 @@ public class DanfeImpressao {
     }
 
     public String getVlrIPI() {
-        String vIPI = " ";
+        String vIPI = "";
         if (getInfNFe() != null && getInfNFe().getDet() != null) {
             List<Det> detalhes = getInfNFe().getDet();
             if (!detalhes.isEmpty()) {
                 boolean first = true;
                 for (Det det : detalhes) {
-                    if (det.getImposto().getIPI().getIPITrib().getVIPI() != null && "".equals(det.getImposto().getIPI().getIPITrib().getVIPI().trim())) {
+                    Imposto imposto = det.getImposto();
+                    if (imposto!=null && 
+                            imposto.getIPI() != null && 
+                            imposto.getIPI().getIPITrib() != null && 
+                            imposto.getIPI().getIPITrib().getVIPI() != null && 
+                            "".equals(imposto.getIPI().getIPITrib().getVIPI().trim())) {
                         if (first) {
                             first = false;
                         } else {
                             vIPI += ",";
                         }
-                        vIPI += det.getImposto().getIPI().getIPITrib().getVIPI();
+                        vIPI += imposto.getIPI().getIPITrib().getVIPI();
                     }
                 }
             }
@@ -1232,26 +1252,26 @@ public class DanfeImpressao {
         return vIPI;
     }
 
- 
-public String getVlrAliqICMS() {
-        List<Det> detalhes = getInfNFe().getDet();
-        String pICMS = " ";
-        if (detalhes != null && !detalhes.isEmpty()) {
-            for (Det det : detalhes) {
-                if (det.getImposto().getICMS().getICMS00() != null) {
-                    pICMS = det.getImposto().getICMS().getICMS00().getPICMS();
+    public String getVlrAliqICMS() {
+        String pICMS = "";
+        if (detalhe != null) {
+            Imposto imposto = detalhe.getImposto();
+            if (imposto != null
+                    && imposto.getICMS() != null) {
+                if (imposto.getICMS().getICMS00() != null) {
+                    pICMS = imposto.getICMS().getICMS00().getPICMS();
                 }
-                if (det.getImposto().getICMS().getICMS20() != null) {
-                    pICMS = det.getImposto().getICMS().getICMS20().getPICMS();
+                if (imposto.getICMS().getICMS20() != null) {
+                    pICMS = imposto.getICMS().getICMS20().getPICMS();
                 }
-                if (det.getImposto().getICMS().getICMS51() != null) {
-                    pICMS = det.getImposto().getICMS().getICMS51().getPICMS();
+                if (imposto.getICMS().getICMS51() != null) {
+                    pICMS = imposto.getICMS().getICMS51().getPICMS();
                 }
-                if (det.getImposto().getICMS().getICMS70() != null) {
-                    pICMS = det.getImposto().getICMS().getICMS70().getPICMS();
+                if (imposto.getICMS().getICMS70() != null) {
+                    pICMS = imposto.getICMS().getICMS70().getPICMS();
                 }
-                if (det.getImposto().getICMS().getICMS90() != null) {
-                    pICMS = det.getImposto().getICMS().getICMS90().getPICMS();
+                if (imposto.getICMS().getICMS90() != null) {
+                    pICMS = imposto.getICMS().getICMS90().getPICMS();
                 }
             }
         }
@@ -1259,14 +1279,14 @@ public String getVlrAliqICMS() {
     }
 
     public String getAliqIPI() {
-        List<Det> detalhes = getInfNFe().getDet();
-        String pIPI = " ";
-        if (detalhes != null && !detalhes.isEmpty()) {
-            for (Det det : detalhes) {
-                if(det.getImposto().getIPI() != null)
-                {
-                pIPI = det.getImposto().getIPI().getIPITrib().getPIPI();
-                }
+        String pIPI = "";
+        if (detalhe != null) {
+            Imposto imposto = detalhe.getImposto();
+            if (imposto.getIPI() != null
+                    && imposto.getIPI().getIPITrib() != null
+                    && imposto.getIPI().getIPITrib().getPIPI() != null
+                    && "".equals(imposto.getIPI().getIPITrib().getPIPI())) {
+                pIPI = imposto.getIPI().getIPITrib().getPIPI();
             }
         }
         return pIPI;
@@ -1353,11 +1373,20 @@ public String getVlrAliqICMS() {
     }
 
     private Ide getIde() {
-
         return getInfNFe().getIde();
     }
 
     private InfNFe getInfNFe() {
+        if (atual == null) {
+            throw new IllegalStateException("Nota atual indefinida!");
+        }
+        if (atual.getNFe() == null) {
+            throw new IllegalStateException("Nota atual indefinida - processamento sem conteudo!");
+        }
         return atual.getNFe().getInfNFe();
+    }
+
+    private void setDetalhe(Det det) {
+        this.detalhe = det;
     }
 }

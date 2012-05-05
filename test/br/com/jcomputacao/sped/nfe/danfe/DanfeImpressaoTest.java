@@ -2,10 +2,7 @@ package br.com.jcomputacao.sped.nfe.danfe;
 
 import br.inf.portalfiscal.nfe.TNfeProc;
 import com.itextpdf.text.DocumentException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FilenameFilter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -61,7 +58,11 @@ public class DanfeImpressaoTest {
         }
         DanfeImpressao di = new DanfeImpressao(procs);
         try {
-            di.execute();
+            ByteArrayOutputStream resultado = di.execute();
+            FileOutputStream fos = new FileOutputStream("notas.pdf");
+            fos.write(resultado.toByteArray());
+            fos.close();
+            resultado.close();
         } catch (DocumentException ex) {
             Logger.getLogger(DanfeImpressaoTest.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
