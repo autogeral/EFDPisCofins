@@ -1,11 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import br.com.jcomputacao.sped.efd.COFINSCofins.RegistroD605;
 import br.com.jcomputacao.sped.efd.COFINSCofins.RegistroD605;
 import org.junit.After;
 import org.junit.AfterClass;
