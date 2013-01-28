@@ -17,14 +17,23 @@ import br.com.jcomputacao.aristoteles.line.LineArchetype;
  * @author WILL
  */
 public class Registro0001 extends LineArchetype
-{
-    
+{ 
+     //01 - Texto fixo contendo “0001”
      public static final String REG = "REG";
+     //02
+     /**Indicador de movimento:
+      * 0 - Bloco com dados informados
+      * 1 - Bloco sem dados informados
+      */
      public static final String IND_MOV = "IND_MOV";
 
 
     public Registro0001(){
-        addFieldArchetype(REG, new FieldStringFixedLengthArchetype(4));
+        setName("Abertura do bloco 0");
+        setDelimiter("|");
+        //01
+        addFieldArchetype(REG, new FieldDefaultArchetype("0001"));
+        //02
         addFieldArchetype(IND_MOV, new FieldIntegerFixedLengthArchetype(1));
 
     }
