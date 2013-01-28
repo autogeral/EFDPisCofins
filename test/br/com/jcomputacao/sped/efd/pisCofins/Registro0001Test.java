@@ -10,6 +10,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  * 09/11/2011 08:23:46
@@ -39,12 +40,13 @@ public class Registro0001Test {
     public void registro0001test(){
         Registro0001 reg = new Registro0001();
         LineModel line = reg.createModel();
+        //02
+        line.setFieldValue(Registro0001.IND_MOV, 0);
         
-        line.setFieldValue(Registro0001.REG, "0001");
-        line.setFieldValue(Registro0001.IND_MOV, "0");
-        
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+        String expected = "|0001|0|";
+        assertEquals (expected, sb.toString());
         
     }
 
