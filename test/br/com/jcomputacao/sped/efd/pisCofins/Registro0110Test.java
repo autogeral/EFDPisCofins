@@ -25,10 +25,13 @@ public class Registro0110Test {
         Registro0110 reg = new Registro0110();
         LineModel line = reg.createModel();
         
-        line.setFieldValue(Registro0110.REG, "0110");
+        //02
         line.setFieldValue(Registro0110.COD_INC_TRIB, 2L);
+        //03
         line.setFieldValue(Registro0110.IND_APRO_CRED, 2L);
+        //04
         line.setFieldValue(Registro0110.COD_TIPO_CONT, 2L);
+        //05
         line.setFieldValue(Registro0110.IND_REG_CUM, 2L);
         
        StringBuffer sb = line.getRepresentation();
