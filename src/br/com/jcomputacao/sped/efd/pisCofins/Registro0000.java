@@ -74,6 +74,7 @@ public class Registro0000 extends LineArchetype implements EfdPisCofinsRegistro 
     public final static String IND_ATIV = "IND_ATIV";
 
     public Registro0000() {
+        setName("Abertura do arquivo digital e identificação da pessoa jurídica");
         setDelimiter("|");
         //01
         addFieldArchetype(REG, new FieldDefaultArchetype("0000"));
