@@ -18,9 +18,25 @@ import static org.junit.Assert.*;
  */
 public class Registro0110Test {
     
-    public Registro0110Test() {
+    public Registro0110Test (){
     }
-
+    
+    public String linhaRegistro0110Test(){
+        Registro0110 reg = new Registro0110();
+        LineModel line = reg.createModel();
+        
+        line.setFieldValue(Registro0110.REG, "0110");
+        line.setFieldValue(Registro0110.COD_INC_TRIB, 2L);
+        line.setFieldValue(Registro0110.IND_APRO_CRED, 2L);
+        line.setFieldValue(Registro0110.COD_TIPO_CONT, 2L);
+        line.setFieldValue(Registro0110.IND_REG_CUM, 2L);
+        
+       StringBuffer sb = line.getRepresentation();
+       //System.out.print(sb);
+        //String expected = "|0110|2|2|2|2|";
+        //assertEquals (expected, sb.toString());
+       return sb.toString();
+    }
     @BeforeClass
     public static void setUpClass() throws Exception {
     }
@@ -36,21 +52,8 @@ public class Registro0110Test {
     @After
     public void tearDown() {
     }
-
+    
     @Test
-    public void Registro0110Test(){
-         Registro0110 reg = new Registro0110();
-        LineModel line = reg.createModel();
-        
-        line.setFieldValue(Registro0110.REG, "0001");
-        line.setFieldValue(Registro0110.COD_INC_TRIB, 2L);
-        line.setFieldValue(Registro0110.IND_APRO_CRED, 2L);
-        line.setFieldValue(Registro0110.COD_TIPO_CONT, 2L);
-        line.setFieldValue(Registro0110.IND_REG_CUM, 2L);
-
-        
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
-        
+    public void testSomeMethod() {
     }
 }
