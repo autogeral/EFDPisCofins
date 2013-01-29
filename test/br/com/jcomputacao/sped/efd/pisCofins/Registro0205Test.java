@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
@@ -13,14 +9,34 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 /**
  * 09/11/2011 11:36:04
  * @author WILL
  */
 public class Registro0205Test {
      public Registro0205Test() {
-    }
+     }
 
+    public String linhaRegistro0205Test() throws ParseException{
+        Registro0205 reg = new Registro0205();
+        LineModel line = reg.createModel();
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
+                
+        line.setFieldValue(Registro0205.DESCR_ANT_ITEM, "Descrição anterior do item");
+        Date data = sdf.parse("29012013");
+        line.setFieldValue(Registro0205.DT_INI, data);
+        data = sdf.parse("31012013");
+        line.setFieldValue(Registro0205.DT_FIM, data);
+        line.setFieldValue(Registro0205.COD_ANT_ITEM, "Código anterior do item.");
+        
+        StringBuffer sb = line.getRepresentation();
+        //System.out.print(sb);
+        //String expected = "|0205|Descrição anterior do item|29012013|31012013|Código anterior do item.|";
+        //assertEquals (expected, sb.toString());
+        return sb.toString();
+    }
+    
     @BeforeClass
     public static void setUpClass() throws Exception {
     }
@@ -36,23 +52,9 @@ public class Registro0205Test {
     @After
     public void tearDown() {
     }
-
+    
     @Test
-    public void registro0205test() throws ParseException{
-        Registro0205 reg = new Registro0205();
-        LineModel line = reg.createModel();
-        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
-        Date data = sdf.parse("17121986");
-        
-        line.setFieldValue(Registro0205.REG, "0001");
-        line.setFieldValue(Registro0205.DESCR_ANT_ITEM, "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
-        line.setFieldValue(Registro0205.DT_INI, data);
-        line.setFieldValue(Registro0205.DT_FIM, data);
-        line.setFieldValue(Registro0205.COD_ANT_ITEM, "111111111111111111111111111111111111111111111111111111111111");
-        
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
-        
+    public void testSomeMethod() {
     }
     
 }
