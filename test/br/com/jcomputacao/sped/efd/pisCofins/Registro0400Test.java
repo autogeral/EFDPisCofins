@@ -1,16 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import sun.font.CreatedFontTracker;
+import org.junit.*;
 import static org.junit.Assert.*;
 
 /**
@@ -22,6 +13,21 @@ public class Registro0400Test {
     public Registro0400Test() {
     }
 
+    public String linhaRegistro0400Test(){
+        Registro0400 reg = new Registro0400();
+        LineModel line = reg.createModel();
+        
+        //02
+        line.setFieldValue(Registro0400.COD_NAT, "CodNatOper");
+        //03
+        line.setFieldValue(Registro0400.DESCR_NAT, "Descrição da natureza da operação/prestação");
+        StringBuffer sb = line.getRepresentation();
+//        System.out.print(sb);
+//        String expected = "|0400|CodNatOper|Descrição da natureza da operação/prestação|";
+//        assertEquals (expected, sb.toString());
+        return sb.toString();
+    }
+    
     @BeforeClass
     public static void setUpClass() throws Exception {
     }
@@ -29,25 +35,16 @@ public class Registro0400Test {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
-
+    
     @Test
-    public void Registro0400Test(){
-        Registro0400 reg = new Registro0400();
-        LineModel line = reg.createModel();
-        
-        line.setFieldValue(Registro0400.REG, "0001");
-        line.setFieldValue(Registro0400.COD_NAT, "aaaaaaaaaa");
-        line.setFieldValue(Registro0400.DESCR_NAT, "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
-);
-        StringBuffer as = line.getRepresentation();
-        System.out.print(as);
+    public void testSomeMethod() {
     }
 }
