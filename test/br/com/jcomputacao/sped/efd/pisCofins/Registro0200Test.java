@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
@@ -20,7 +16,41 @@ public class Registro0200Test {
     
     public Registro0200Test() {
     }
-
+    
+    public String linhaRegistro0200Test(){
+        Registro0200 reg = new Registro0200();
+        LineModel line = reg.createModel();
+        
+         //02
+         line.setFieldValue(Registro0200.COD_ITEM, "Código do item");
+         //03
+         line.setFieldValue(Registro0200.DESCR_ITEM, "Descricao do item");
+         //04
+         line.setFieldValue(Registro0200.COD_BARRA, "Representação alfanumérico do código de barra do produto, se houver.");
+         //05
+         line.setFieldValue(Registro0200.COD_ANT_ITEM, "Código anterior do item com relação à última informação");
+         //06
+         line.setFieldValue(Registro0200.UNID_INV, "UN");
+         //07
+         line.setFieldValue(Registro0200.TIPO_ITEM, 02);
+         //08
+         line.setFieldValue(Registro0200.COD_NCM, "cod_ncm");
+         //09
+         line.setFieldValue(Registro0200.EX_IPI, "abc");
+         //10
+         line.setFieldValue(Registro0200.COD_GEN, 13);
+         //11
+         line.setFieldValue(Registro0200.COD_LST, 1234);
+         //12
+         line.setFieldValue(Registro0200.ALIQ_ICMS, 123456.12);
+         
+         StringBuffer sb = line.getRepresentation();
+         //System.out.println(sb);
+         //String expected = "|0200|Código do item|Descricao do item|Representação alfanumérico do código de barra do produto, se houver.|Código anterior do item com relação à última informação|UN|02|cod_ncm|abc|13|1234|123456,12|";
+         //assertEquals (expected, sb.toString());
+         
+         return sb.toString();
+    }
     @BeforeClass
     public static void setUpClass() throws Exception {
     }
@@ -28,41 +58,16 @@ public class Registro0200Test {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
-
+    
     @Test
-    public void Registro0200Test(){
-        Registro0200 reg = new Registro0200();
-        LineModel line = reg.createModel();
-        
-         line.setFieldValue(Registro0200.REG, "0001");
-         line.setFieldValue(Registro0200.COD_ITEM, "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-         line.setFieldValue(Registro0200.DESCR_ITEM, "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-         line.setFieldValue(Registro0200.COD_BARRA, "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-         line.setFieldValue(Registro0200.COD_ANT_ITEM, "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-         line.setFieldValue(Registro0200.UNID_INV, "kkkkkk");
-         line.setFieldValue(Registro0200.TIPO_ITEM, 01L);
-         line.setFieldValue(Registro0200.COD_NCM, "ssssssss");
-         line.setFieldValue(Registro0200.EX_IPI, "kkk");
-         line.setFieldValue(Registro0200.COD_GEN, 01L);
-         line.setFieldValue(Registro0200.COD_LST, 0001L);
-         line.setFieldValue(Registro0200.ALIQ_ICMS, 123456.12);
-         
-         StringBuffer as = line.getRepresentation();
-         System.out.print(as);
-         
-         
-         
-         
-         
-         
-         
+    public void testSomeMethod() {
     }
 }
