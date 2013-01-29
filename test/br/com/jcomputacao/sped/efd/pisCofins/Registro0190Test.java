@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
@@ -10,15 +6,32 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
+import static org.junit.Assert.*;
 /**
  * 09/11/2011 11:06:06
  * @author WILL
  */
 public class Registro0190Test {
-            public Registro0190Test() {
+    public Registro0190Test() {
     }
 
+    public String linhaRegistro0190Test(){
+        Registro0190 reg = new Registro0190();
+        LineModel line = reg.createModel();
+        
+        //02
+        line.setFieldValue(Registro0190.UNID, "UN");
+        //03
+        line.setFieldValue(Registro0190.DESCR, "Descrição da unidade de medida");
+
+        
+        StringBuffer sb = line.getRepresentation();
+        //System.out.println(sb);
+        //String expected = "|0190|UN|Descrição da unidade de medida|";
+        //assertEquals (expected, sb.toString());
+        
+        return sb.toString();
+    }
     @BeforeClass
     public static void setUpClass() throws Exception {
     }
@@ -34,20 +47,8 @@ public class Registro0190Test {
     @After
     public void tearDown() {
     }
-
-    @Test
-    public void registro0190test(){
-        Registro0190 reg = new Registro0190();
-        LineModel line = reg.createModel();
-        
-        line.setFieldValue(Registro0190.REG, "0001");
-        line.setFieldValue(Registro0190.UNID, "111111");
-        line.setFieldValue(Registro0190.DESCR, "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
-
-        
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
-        
-    }
     
+    @Test
+    public void testSomeMethod() {
+    }
 }
