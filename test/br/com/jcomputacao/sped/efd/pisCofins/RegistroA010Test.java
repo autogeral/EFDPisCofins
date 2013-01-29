@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 /**
  * 09/11/2011 19:33:43
  * @author Jonas
@@ -17,10 +10,23 @@ import org.junit.Test;
 public class RegistroA010Test {
     
      public RegistroA010Test(){
-        
     }
     
 
+    public String linhaRegistroA010Test(){
+        RegistroA010 reg = new RegistroA010();
+        LineModel line = reg.createModel();
+        
+        //02
+        line.setFieldValue(RegistroA010.CNPJ, 12345678910123L);
+        
+        StringBuffer sb = line.getRepresentation();
+//        System.out.print(sb);
+//        String expected = "|A010|12345678910123|";
+//        assertEquals (expected, sb.toString());
+        return sb.toString();
+    }
+    
     @BeforeClass
     public static void setUpClass() throws Exception {
     }
@@ -36,16 +42,8 @@ public class RegistroA010Test {
     @After
     public void tearDown() {
     }
-
+    
     @Test
-    public void registroA010test(){
-        RegistroA010 reg = new RegistroA010();
-        LineModel line = reg.createModel();
-        
-        line.setFieldValue(RegistroA010.REG, "0001");
-        line.setFieldValue(RegistroA010.CNPJ, 12345678910123l);
-        
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+    public void testSomeMethod() {
     }
 }
