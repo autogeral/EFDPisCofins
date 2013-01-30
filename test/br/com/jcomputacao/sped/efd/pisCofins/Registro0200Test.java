@@ -16,7 +16,23 @@ public class Registro0200Test {
     
     public Registro0200Test() {
     }
-    
+        @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Test
     public String linhaRegistro0200Test(){
         Registro0200 reg = new Registro0200();
         LineModel line = reg.createModel();
@@ -51,23 +67,5 @@ public class Registro0200Test {
          
          return sb.toString();
     }
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
     
-    @Test
-    public void testSomeMethod() {
-    }
 }

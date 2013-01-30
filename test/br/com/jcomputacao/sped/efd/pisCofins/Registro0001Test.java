@@ -21,21 +21,7 @@ public class Registro0001Test {
     
     public Registro0001Test (){
     }
-   
-        public String linhaRegistro0001Test()  throws ParseException {
-        Registro0001 reg = new Registro0001();
-        LineModel line = reg.createModel();
-        //02
-        line.setFieldValue(Registro0001.IND_MOV, 0);
-        
-        StringBuffer sb = line.getRepresentation();
-        //System.out.print(sb);
-        //String expected = "|0001|0|";
-        //assertEquals (expected, sb.toString());
-        return sb.toString();
-    }
-
-    @BeforeClass
+       @BeforeClass
     public static void setUpClass() throws Exception {
     }
 
@@ -50,8 +36,19 @@ public class Registro0001Test {
     @After
     public void tearDown() {
     }
-    
+
     @Test
-    public void testSomeMethod() {
+        public String linhaRegistro0001Test()  throws ParseException {
+        Registro0001 reg = new Registro0001();
+        LineModel line = reg.createModel();
+        //02
+        line.setFieldValue(Registro0001.IND_MOV, 0);
+        
+        StringBuffer sb = line.getRepresentation();
+        //System.out.print(sb);
+        //String expected = "|0001|0|";
+        //assertEquals (expected, sb.toString());
+        return sb.toString();
     }
+
 }

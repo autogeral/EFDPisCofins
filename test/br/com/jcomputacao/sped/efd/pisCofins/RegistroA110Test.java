@@ -9,7 +9,23 @@ public class RegistroA110Test {
      public RegistroA110Test(){
         
     }
-     
+        @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Test
     public String linhaRegistroA110Test(){
         
         RegistroA110 reg = new RegistroA110();
@@ -27,23 +43,5 @@ public class RegistroA110Test {
         return sb.toString();
     }
     
-        @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
     
-    @Test
-    public void testSomeMethod() {
-    }
 }

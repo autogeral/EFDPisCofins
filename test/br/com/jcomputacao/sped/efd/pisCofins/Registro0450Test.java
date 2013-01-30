@@ -16,22 +16,6 @@ public class Registro0450Test {
     
     public Registro0450Test() {
     }
-
-    public String linhaRegistro0450Test(){
-        Registro0450 reg = new Registro0450();
-        LineModel line = reg.createModel();
-        
-        //02
-        line.setFieldValue(Registro0450.COD_INF, "123456");
-        //03
-        line.setFieldValue(Registro0450.TXT, "Texto livre da informação complementar existente no documento fiscal, inclusive espécie de normas legais, poder normativo, número, capitulação, data e demais referências pertinentes com indicação referentes ao tributo.");
-        
-        StringBuffer sb = line.getRepresentation();
-//        System.out.print(sb);
-//        String expected = "|0450|123456|Texto livre da informação complementar existente no documento fiscal, inclusive espécie de normas legais, poder normativo, número, capitulação, data e demais referências pertinentes com indicação referentes ao tributo.|";
-//        assertEquals (expected, sb.toString());
-        return sb.toString();
-    }
         @BeforeClass
     public static void setUpClass() throws Exception {
     }
@@ -47,8 +31,21 @@ public class Registro0450Test {
     @After
     public void tearDown() {
     }
-    
+
     @Test
-    public void testSomeMethod() {
+    public String linhaRegistro0450Test(){
+        Registro0450 reg = new Registro0450();
+        LineModel line = reg.createModel();
+        
+        //02
+        line.setFieldValue(Registro0450.COD_INF, "123456");
+        //03
+        line.setFieldValue(Registro0450.TXT, "Texto livre da informação complementar existente no documento fiscal, inclusive espécie de normas legais, poder normativo, número, capitulação, data e demais referências pertinentes com indicação referentes ao tributo.");
+        
+        StringBuffer sb = line.getRepresentation();
+//        System.out.print(sb);
+//        String expected = "|0450|123456|Texto livre da informação complementar existente no documento fiscal, inclusive espécie de normas legais, poder normativo, número, capitulação, data e demais referências pertinentes com indicação referentes ao tributo.|";
+//        assertEquals (expected, sb.toString());
+        return sb.toString();
     }
 }

@@ -15,7 +15,23 @@ import static org.junit.Assert.*;
 public class Registro0150Test {
     public Registro0150Test() {
     }
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
 
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Test
     public String linhaRegistro0150Test(){
         Registro0150 reg = new Registro0150();
         LineModel line = reg.createModel();
@@ -50,24 +66,5 @@ public class Registro0150Test {
         //String expected = "|0150|Codigo Participante 007|Nome pessoal ou empresarial do participante|01058|11111111111111|22222222222|33333333333333|1111111|444444444|Av. Dr. Octaviano Pereira Mendes|33|Primeiro Andar|Centro|";
         //assertEquals (expected, sb.toString());
         return sb.toString();
-    }
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-    
-     @Test
-    public void testSomeMethod() {
     }
 }

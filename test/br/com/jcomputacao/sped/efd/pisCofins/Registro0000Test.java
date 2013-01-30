@@ -23,7 +23,23 @@ public class Registro0000Test {
     
     public Registro0000Test (){
     }
-    
+        @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Test
     public String linhaRegistro0000Test() throws ParseException {
         Registro0000 reg = new Registro0000();
         LineModel line = reg.createModel();
@@ -64,23 +80,4 @@ public class Registro0000Test {
         return sb.toString();
     }
 
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    @Test
-    public void testSomeMethod() {
-    }
 }

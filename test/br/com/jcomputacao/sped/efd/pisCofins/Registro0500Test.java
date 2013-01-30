@@ -15,7 +15,23 @@ public class Registro0500Test {
     
     public Registro0500Test() {
     }
+        @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
 
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Test
     public String linhaRegistro0500Test() throws ParseException{
         Registro0500 reg = new Registro0500();
         LineModel line = reg.createModel();
@@ -45,25 +61,5 @@ public class Registro0500Test {
 //        String expected = "|0500|14012013|09|A|00004|Código da conta analítica/grupo de contas.|Nome da conta analítica/grupo de contas.|Código da conta correlacionada - Pl. de Contas Referenciado|11111111111111|";
 //        assertEquals (expected, sb.toString());
         return sb.toString();
-    }
-    
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-    
-    @Test
-    public void testSomeMethod() {
     }
 }

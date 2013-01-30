@@ -32,8 +32,7 @@ public class GerarDocumentoEFDPisCofinsTest {
         Registro0400Test registro0400Test = new Registro0400Test();
         Registro0450Test registro0450Test = new Registro0450Test();
         Registro0500Test registro0500Test = new Registro0500Test();
-        Registro0600Test registro0600Test = new Registro0600Test();
-        //ENCERRAMENTO DO BLOCO 0
+        Registro0600Test registro0600Test = new Registro0600Test();        //ENCERRAMENTO DO BLOCO 0
         Registro0990Test registro0990Test = new Registro0990Test();
         //BLOCO A
         RegistroA001Test registroA001Test = new RegistroA001Test();
@@ -43,6 +42,14 @@ public class GerarDocumentoEFDPisCofinsTest {
         RegistroA111Test registroA111Test = new RegistroA111Test();
         RegistroA120Test registroA120Test = new RegistroA120Test();
         RegistroA170Test registroA170Test = new RegistroA170Test();
+        RegistroA990Test registroA990Test = new RegistroA990Test();
+        //BLOCO C
+        RegistroC001Test registroC001Test = new RegistroC001Test();
+        RegistroC010Test registroC010Test = new RegistroC010Test();
+        RegistroC100Test registroC100Test = new RegistroC100Test();
+        RegistroC110Test registroC110Test = new RegistroC110Test();
+        RegistroC111Test registroC111Test = new RegistroC111Test();
+        RegistroC120Test registroC120Test = new RegistroC120Test();
         
         //linhas do documento 
         //Bloco 0
@@ -98,6 +105,7 @@ public class GerarDocumentoEFDPisCofinsTest {
             fileWriter.write(registro0990Test.linhaRegistro0990Test(numLinhas));
             bf.newLine();
             bf.flush();
+            
         //Bloco A
         fileWriter.write(registroA001Test.linhaRegistroA001Test());
         bf.newLine();
@@ -120,7 +128,30 @@ public class GerarDocumentoEFDPisCofinsTest {
         fileWriter.write(registroA170Test.linhaRegistroA170Test());
         bf.newLine();
         bf.flush();
-        
+            numLinhas = contaLinhasBloco(nomeArquivo, extensaoArquivo, "A");
+            fileWriter.write(registroA990Test.linhaRegistroA990Test(numLinhas));
+            bf.newLine();
+            bf.flush();
+            
+        //Bloco C
+        fileWriter.write(registroC001Test.linhaRegistroC001Test());
+        bf.newLine();
+        bf.flush();
+        fileWriter.write(registroC010Test.linhaRegistroC010Test());
+        bf.newLine();
+        bf.flush();
+        fileWriter.write(registroC100Test.linhaRegistroC100Test());
+        bf.newLine();
+        bf.flush();
+        fileWriter.write(registroC110Test.linhaRegistroC110Test());
+        bf.newLine();
+        bf.flush();
+        fileWriter.write(registroC111Test.linhaRegistroC111Test());
+        bf.newLine();
+        bf.flush();
+        fileWriter.write(registroC120Test.linhaRegistroC120Test());
+        bf.newLine();
+        bf.flush();
         
         fileWriter.flush();
         fileWriter.close();
@@ -132,10 +163,11 @@ public class GerarDocumentoEFDPisCofinsTest {
         String linha;
         int count=0;
         
-        while ((linha = leitor.readLine()) != null && linha.startsWith("|"+bloco)){
+        while ((linha = leitor.readLine()) != null){
+            if (linha.startsWith("|"+bloco))
             count++;
         }        
-        return count;
+        return count+1;
     }
 
 }

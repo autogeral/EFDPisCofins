@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 09/11/2011 21:42:39
@@ -37,15 +30,19 @@ public class RegistroC110Test {
     }
 
     @Test
-    public void RegistroC110(){
+    public String linhaRegistroC110Test(){
         RegistroC110 reg = new RegistroC110();
         LineModel line = reg.createModel();
         
-        line.setFieldValue(RegistroC110.REG, "0001");
-        line.setFieldValue(RegistroC110.COD_INF, " 0000 ");
-        line.setFieldValue(RegistroC110.TXT_COMPL, " lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb "
+        //02
+        line.setFieldValue(RegistroC110.COD_INF, "123456");
+        //03
+        line.setFieldValue(RegistroC110.TXT_COMPL, "Descrição complementar do código de referência."
 );
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
+        StringBuffer sb = line.getRepresentation();
+//        System.out.print(sb);
+//        String expected = "|C110|123456|Descrição complementar do código de referência.|";
+//        assertEquals (expected, sb.toString());
+        return sb.toString();
     }
 }

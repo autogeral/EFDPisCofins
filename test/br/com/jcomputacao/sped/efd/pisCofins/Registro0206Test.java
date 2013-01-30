@@ -16,21 +16,7 @@ public class Registro0206Test {
     
     public Registro0206Test() {
     }
-    public String linhaRegistro0206Test(){
-        Registro0206 reg = new Registro0206();
-        LineModel line = reg.createModel();
-        
-        //02
-        line.setFieldValue(Registro0206.COD_COMB, "Código do combustível, conforme tabela publicada pela ANP");
-        
-        StringBuffer sb = line.getRepresentation();
-//        System.out.print(sb);
-//        String expected = "|0206|Código do combustível, conforme tabela publicada pela ANP|";
-//        assertEquals (expected, sb.toString());
-        return sb.toString();
-    }
-    
-    @BeforeClass
+        @BeforeClass
     public static void setUpClass() throws Exception {
     }
 
@@ -45,8 +31,19 @@ public class Registro0206Test {
     @After
     public void tearDown() {
     }
-    
+
     @Test
-    public void testSomeMethod() {
+    public String linhaRegistro0206Test(){
+        Registro0206 reg = new Registro0206();
+        LineModel line = reg.createModel();
+        
+        //02
+        line.setFieldValue(Registro0206.COD_COMB, "Código do combustível, conforme tabela publicada pela ANP");
+        
+        StringBuffer sb = line.getRepresentation();
+//        System.out.print(sb);
+//        String expected = "|0206|Código do combustível, conforme tabela publicada pela ANP|";
+//        assertEquals (expected, sb.toString());
+        return sb.toString();
     }
 }

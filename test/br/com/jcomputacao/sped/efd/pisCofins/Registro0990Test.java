@@ -19,18 +19,6 @@ public class Registro0990Test {
     
     public Registro0990Test() {
     }
-
-    public String linhaRegistro0990Test(int numLinhas){
-        Registro0990 reg = new Registro0990();
-        LineModel line = reg.createModel();
-        //02
-        line.setFieldValue(Registro0990.QTD_LIN_0,numLinhas);
-        StringBuffer sb = line.getRepresentation();
-//        System.out.print(sb);
-//        String expected = "|0990|200|";
-//        assertEquals (expected, sb.toString());
-        return sb.toString();
-    }
     @BeforeClass
     public static void setUpClass() throws Exception {
     }
@@ -46,8 +34,17 @@ public class Registro0990Test {
     @After
     public void tearDown() {
     }
-    
+
     @Test
-    public void testSomeMethod() {
+    public String linhaRegistro0990Test(int numLinhas){
+        Registro0990 reg = new Registro0990();
+        LineModel line = reg.createModel();
+        //02
+        line.setFieldValue(Registro0990.QTD_LIN_0,numLinhas);
+        StringBuffer sb = line.getRepresentation();
+//        System.out.print(sb);
+//        String expected = "|0990|200|";
+//        assertEquals (expected, sb.toString());
+        return sb.toString();
     }
 }

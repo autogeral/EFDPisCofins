@@ -22,8 +22,24 @@ public class RegistroA120Test {
     
      public RegistroA120Test(){
     }
-     
-    public String linhaRegistroA120Test() throws ParseException{
+         @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Test
+     public String linhaRegistroA120Test() throws ParseException{
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
         Date data =  sdf.parse("29012013");
         
@@ -51,25 +67,5 @@ public class RegistroA120Test {
 //        String expected = "|A120|123,15|23,12|13,15|29012013|3,12|5487,65|29012013|0|";
 //        assertEquals (expected, sb.toString());
         return sb.toString();
-    }
-    
-         @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-    
-    @Test
-    public void testSomeMethod() {
     }
 }

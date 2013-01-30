@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
@@ -38,18 +34,24 @@ public class RegistroC120Test  {
     }
 
     @Test
-    public void RegistroC120Test(){
+    public String linhaRegistroC120Test(){
         RegistroC120 reg = new RegistroC120();
         LineModel line = reg.createModel();
+        //02
+        line.setFieldValue(RegistroC120.COD_DOC_IMP, "1");
+        //03
+        line.setFieldValue(RegistroC120.NUM_DOC_IMP, "1548711");
+        //04
+        line.setFieldValue(RegistroC120.VL_PIS_IMP, 78978.12);
+        //05
+        line.setFieldValue(RegistroC120.VL_COFINS_IMP, 7893.23);
+        //06
+        line.setFieldValue(RegistroC120.NUM_ACDRAW, "56648115");
         
-        line.setFieldValue(RegistroC120.REG, "1234");
-        line.setFieldValue(RegistroC120.COD_DOC_IMP, "f");
-        line.setFieldValue(RegistroC120.NUM_DOC_IMP, "asdfghjklç");
-        line.setFieldValue(RegistroC120.VL_PIS_IMP, 12345678912345678978.12);
-        line.setFieldValue(RegistroC120.VL_COFINS_IMP, 78945612378945612783.23);
-        line.setFieldValue(RegistroC120.NUM_ACDRAW, "asdfghjklçqwertyuiop");
-        
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
+        StringBuffer sb = line.getRepresentation();
+//        System.out.print(sb);
+//        String expected = "|C120|1|1548711|78978,12|7893,23|56648115|";
+//        assertEquals (expected, sb.toString());
+        return sb.toString();
     }
 }

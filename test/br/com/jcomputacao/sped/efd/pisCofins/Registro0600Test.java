@@ -14,7 +14,23 @@ public class Registro0600Test {
     
     public Registro0600Test() {
     }
+        @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
 
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Test
     public String linhaRegistro0600Test() throws ParseException{
         Registro0600 reg = new Registro0600();
         LineModel line = reg.createModel();
@@ -35,24 +51,5 @@ public class Registro0600Test {
 //        String expected = "|0600|29012013|Código do centro de custos.|Nome do centro de custos.|";
 //        assertEquals (expected, sb.toString());   
         return sb.toString();
-    }
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-    
-    @Test
-    public void testSomeMethod() {
     }
 }

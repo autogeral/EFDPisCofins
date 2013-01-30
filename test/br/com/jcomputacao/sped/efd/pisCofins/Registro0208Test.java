@@ -11,7 +11,23 @@ public class Registro0208Test {
     
     public Registro0208Test() {
     }
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
 
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Test
     public String linhaRegistro0208Test(){
         Registro0208 reg = new Registro0208();
         LineModel line = reg.createModel();
@@ -28,24 +44,5 @@ public class Registro0208Test {
 //        String expected = "|0208|01|SN|Marca comercial|";
 //        assertEquals (expected, sb.toString());
         return sb.toString();                
-    }
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-    
-    @Test
-    public void testSomeMethod() {
     }
 }

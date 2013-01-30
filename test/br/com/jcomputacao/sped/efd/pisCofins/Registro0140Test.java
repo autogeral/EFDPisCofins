@@ -20,7 +20,23 @@ import static org.junit.Assert.*;
 public class Registro0140Test {
      public Registro0140Test() {
      }
+        @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
 
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Test
     public String linhaRegistro0140Test() throws ParseException{
         Registro0140 reg = new Registro0140();
         LineModel line = reg.createModel();
@@ -49,25 +65,5 @@ public class Registro0140Test {
         //System.out.print(expected);
         //assertEquals (expected, sb.toString());
         return sb.toString();
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-    
-     @Test
-    public void testSomeMethod() {
     }
 }

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
@@ -13,13 +9,14 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 /**
  * 10/11/2011 20:44:01
  * @author Jonas
  */
 public class RegistroA990Test {
     
-     public RegistroA990Test() {
+    public RegistroA990Test() {
     }
 
     @BeforeClass
@@ -39,13 +36,18 @@ public class RegistroA990Test {
     }
 
     @Test
-    public void registroA990test() throws ParseException {
+    public String linhaRegistroA990Test(int numLinhas) throws ParseException {
         
-         RegistroA990 reg = new RegistroA990();
+        RegistroA990 reg = new RegistroA990();
         LineModel line = reg.createModel();
-        line.setFieldValue(RegistroA990.REG, "0001");
-        line.setFieldValue(RegistroA990.QTD_LIN_A, 2135l);
-    }
-
-    
+        //02
+        line.setFieldValue(RegistroA990.QTD_LIN_A, numLinhas);
+        
+        StringBuffer sb = line.getRepresentation();
+//        System.out.print(sb);
+//        String expected = "|A990|213599|";
+//        assertEquals (expected, sb.toString());
+        
+        return sb.toString();
+    } 
 }

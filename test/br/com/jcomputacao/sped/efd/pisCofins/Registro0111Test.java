@@ -19,7 +19,23 @@ public class Registro0111Test {
     
     public Registro0111Test() {
     }
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
 
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Test
     public String linhaRegistro0111Test(){
         Registro0111 reg = new Registro0111();
         LineModel line = reg.createModel();
@@ -41,24 +57,5 @@ public class Registro0111Test {
         //System.out.print(expected);
         //assertEquals (expected, sb.toString());
         return sb.toString();
-    }
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-    
-    @Test
-    public void testSomeMethod() {
     }
 }

@@ -11,23 +11,7 @@ public class RegistroA010Test {
     
      public RegistroA010Test(){
     }
-    
-
-    public String linhaRegistroA010Test(){
-        RegistroA010 reg = new RegistroA010();
-        LineModel line = reg.createModel();
-        
-        //02
-        line.setFieldValue(RegistroA010.CNPJ, 12345678910123L);
-        
-        StringBuffer sb = line.getRepresentation();
-//        System.out.print(sb);
-//        String expected = "|A010|12345678910123|";
-//        assertEquals (expected, sb.toString());
-        return sb.toString();
-    }
-    
-    @BeforeClass
+        @BeforeClass
     public static void setUpClass() throws Exception {
     }
 
@@ -42,8 +26,20 @@ public class RegistroA010Test {
     @After
     public void tearDown() {
     }
-    
+
     @Test
-    public void testSomeMethod() {
+    public String linhaRegistroA010Test(){
+        RegistroA010 reg = new RegistroA010();
+        LineModel line = reg.createModel();
+        
+        //02
+        line.setFieldValue(RegistroA010.CNPJ, 12345678910123L);
+        
+        StringBuffer sb = line.getRepresentation();
+//        System.out.print(sb);
+//        String expected = "|A010|12345678910123|";
+//        assertEquals (expected, sb.toString());
+        return sb.toString();
     }
+
 }

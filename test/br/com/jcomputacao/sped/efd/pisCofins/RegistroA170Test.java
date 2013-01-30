@@ -19,8 +19,23 @@ public class RegistroA170Test {
 
     public RegistroA170Test() {
     }
+        @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
 
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
 
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Test
     public String linhaRegistroA170Test() throws ParseException {
 
         RegistroA170 reg = new RegistroA170();
@@ -67,23 +82,5 @@ public class RegistroA170Test {
 //        assertEquals (expected, sb.toString());
         return sb.toString();
     }
-         @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
     
-    @Test
-    public void testSomeMethod() {
-    }
 }

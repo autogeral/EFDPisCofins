@@ -14,7 +14,23 @@ import static org.junit.Assert.*;
 public class Registro0190Test {
     public Registro0190Test() {
     }
+        @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
 
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Test
     public String linhaRegistro0190Test(){
         Registro0190 reg = new Registro0190();
         LineModel line = reg.createModel();
@@ -31,24 +47,5 @@ public class Registro0190Test {
         //assertEquals (expected, sb.toString());
         
         return sb.toString();
-    }
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-    
-    @Test
-    public void testSomeMethod() {
     }
 }

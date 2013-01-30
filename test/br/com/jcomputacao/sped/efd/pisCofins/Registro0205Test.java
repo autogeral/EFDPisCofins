@@ -17,7 +17,23 @@ import static org.junit.Assert.*;
 public class Registro0205Test {
      public Registro0205Test() {
      }
+         @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
 
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Test
     public String linhaRegistro0205Test() throws ParseException{
         Registro0205 reg = new Registro0205();
         LineModel line = reg.createModel();
@@ -35,26 +51,5 @@ public class Registro0205Test {
         //String expected = "|0205|Descrição anterior do item|29012013|31012013|Código anterior do item.|";
         //assertEquals (expected, sb.toString());
         return sb.toString();
-    }
-    
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-    
-    @Test
-    public void testSomeMethod() {
-    }
-    
+    }    
 }
