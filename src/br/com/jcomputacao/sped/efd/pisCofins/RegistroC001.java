@@ -1,9 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
+import br.com.jcomputacao.aristoteles.field.FieldDefaultArchetype;
 import br.com.jcomputacao.aristoteles.field.FieldStringFixedLengthArchetype;
 import br.com.jcomputacao.aristoteles.line.LineArchetype;
 
@@ -13,11 +10,21 @@ import br.com.jcomputacao.aristoteles.line.LineArchetype;
  */
 public class RegistroC001 extends LineArchetype{
 
+    //01 - Fixo
     public static final String REG = "REG";
+    //02
+    /**Indicador de movimento: 
+     * 0 - Bloco com dados informados
+     * 1 - Bloco sem dados informados
+     */
     public static final String IND_MOV = "IND_MOV";
 
     public RegistroC001() {
-        addFieldArchetype(REG, new FieldStringFixedLengthArchetype(4));
+        setName("Abertura do bloco C");
+        setDelimiter("|");
+        //01
+        addFieldArchetype(REG, new FieldDefaultArchetype("C001"));
+        //02
         addFieldArchetype(IND_MOV, new FieldStringFixedLengthArchetype(1));
 
     }
