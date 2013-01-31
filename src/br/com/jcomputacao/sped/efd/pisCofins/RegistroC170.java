@@ -1,9 +1,6 @@
 package br.com.jcomputacao.sped.efd.pisCofins;
 
-import br.com.jcomputacao.aristoteles.field.FieldDecimalMaximumLengthArchetype;
-import br.com.jcomputacao.aristoteles.field.FieldDefaultArchetype;
-import br.com.jcomputacao.aristoteles.field.FieldIntegerMaximumLengthArchetype;
-import br.com.jcomputacao.aristoteles.field.FieldStringMaximumLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.*;
 import br.com.jcomputacao.aristoteles.format.FormatFactory;
 import br.com.jcomputacao.aristoteles.format.FormatType;
 import br.com.jcomputacao.aristoteles.format.FormatWrapper;
@@ -108,51 +105,181 @@ public class RegistroC170 extends LineArchetype{
         //03
         addFieldArchetype(COD_ITEM, new FieldStringMaximumLengthArchetype(60));
         //04
-        addFieldArchetype(DESCR_COMPL, new FieldStringMaximumLengthArchetype(255));
+        FieldStringMaximumLengthArchetype f04 = new FieldStringMaximumLengthArchetype(255);
+        f04.setNullableRepresentation("");
+        f04.setFullFillingNullable(false);
+        addFieldArchetype(DESCR_COMPL, f04);
         //05
-        FieldDecimalMaximumLengthArchetype fdf = new FieldDecimalMaximumLengthArchetype(15,5);
-        fdf.setFormat(fw);
-        addFieldArchetype(QTD, fdf);
+        FieldDecimalMaximumLengthArchetype f05 = new FieldDecimalMaximumLengthArchetype(15,5);
+        f05.setFormat(fw);
+        f05.setNullableRepresentation("");
+        f05.setFullFillingNullable(false);
+        addFieldArchetype(QTD, f05);
         //06
-        addFieldArchetype(UNID, new FieldStringMaximumLengthArchetype(6));
+        FieldStringMaximumLengthArchetype f06 = new FieldStringMaximumLengthArchetype(6);
+        f06.setNullableRepresentation("");
+        f06.setFullFillingNullable(false);
+        addFieldArchetype(UNID, f06);
         //07
-        FieldDecimalMaximumLengthArchetype fdf2 = new FieldDecimalMaximumLengthArchetype(15,5);
-        fdf2.setFormat(fw);
-        addFieldArchetype(VL_ITEM, fdf2);
+        FieldDecimalMaximumLengthArchetype f07 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f07.setFormat(fw);
+        addFieldArchetype(VL_ITEM, f07);
         //08
-        addFieldArchetype(VL_DESC, fdf2);
+        FieldDecimalMaximumLengthArchetype f08 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f08.setFormat(fw);
+        f08.setNullableRepresentation("");
+        f08.setFullFillingNullable(false);
+        addFieldArchetype(VL_DESC, f08);
         //09
-        addFieldArchetype(IND_MOV, new FieldStringMaximumLengthArchetype(1));
+        FieldStringMaximumLengthArchetype f09 = new FieldStringMaximumLengthArchetype(1);
+        f09.setNullableRepresentation("");
+        f09.setFullFillingNullable(false);
+        addFieldArchetype(IND_MOV, f09);
         //10
-        addFieldArchetype(CST_ICMS, new FieldIntegerMaximumLengthArchetype(3));
+        FieldIntegerFixedLengthArchetype f10 = new FieldIntegerFixedLengthArchetype(3);
+        f10.setNullableRepresentation("");
+        f10.setFullFillingNullable(false);
+        addFieldArchetype(CST_ICMS, f10);
         //11
-        addFieldArchetype(CFOP, new FieldIntegerMaximumLengthArchetype(4));
-        addFieldArchetype(COD_NAT, new FieldStringMaximumLengthArchetype(10));
-        addFieldArchetype(VL_BC_ICMS, new FieldDecimalMaximumLengthArchetype(20, 2));
-        addFieldArchetype(ALIQ_ICMS, new FieldDecimalMaximumLengthArchetype(6, 2));
-        addFieldArchetype(VL_ICMS, new FieldDecimalMaximumLengthArchetype(20, 2));
-        addFieldArchetype(VL_BC_ICMS_ST, new FieldDecimalMaximumLengthArchetype(20, 2));
-        addFieldArchetype(ALIQ_ST, new FieldDecimalMaximumLengthArchetype(6, 2));
-        addFieldArchetype(VL_ICMS_ST, new FieldDecimalMaximumLengthArchetype(20, 2));
-        addFieldArchetype(IND_APUR, new FieldStringMaximumLengthArchetype(1));
-        addFieldArchetype(CST_IPI, new FieldStringMaximumLengthArchetype(2));
-        addFieldArchetype(COD_ENQ, new FieldStringMaximumLengthArchetype(3));
-        addFieldArchetype(VL_BC_IPI, new FieldDecimalMaximumLengthArchetype(20, 2));
-        addFieldArchetype(ALIQ_IPI, new FieldDecimalMaximumLengthArchetype(6, 2));
-        addFieldArchetype(VL_IPI, new FieldDecimalMaximumLengthArchetype(20, 2));
-        addFieldArchetype(CST_PIS, new FieldIntegerMaximumLengthArchetype(2));
-        addFieldArchetype(VL_BC_PIS, new FieldDecimalMaximumLengthArchetype(20, 2));
-        addFieldArchetype(ALIQ_PIS, new FieldDecimalMaximumLengthArchetype(8, 4));
-        addFieldArchetype(QUANT_BC_PIS, new FieldDecimalMaximumLengthArchetype(20, 3));
-        addFieldArchetype(ALIQ_PIS_QUANT, new FieldDecimalMaximumLengthArchetype(20, 4));
-        addFieldArchetype(VL_PIS, new FieldDecimalMaximumLengthArchetype(20, 2));
-        addFieldArchetype(CST_COFINS, new FieldIntegerMaximumLengthArchetype(2));
-        addFieldArchetype(VL_BC_COFINS, new FieldDecimalMaximumLengthArchetype(20, 2));
-        addFieldArchetype(ALIQ_COFINS, new FieldDecimalMaximumLengthArchetype(8, 4));
-        addFieldArchetype(QUANT_BC_COFINS, new FieldDecimalMaximumLengthArchetype(20, 3));
-        addFieldArchetype(ALIQ_COFINS_QUANT, new FieldDecimalMaximumLengthArchetype(20, 4));
-        addFieldArchetype(VL_COFINS, new FieldDecimalMaximumLengthArchetype(20, 2));
-        addFieldArchetype(COD_CTA, new FieldStringMaximumLengthArchetype(60));
+        addFieldArchetype(CFOP, new FieldIntegerFixedLengthArchetype(4));
+        //12
+        FieldStringMaximumLengthArchetype f12 = new FieldStringMaximumLengthArchetype(10);
+        addFieldArchetype(COD_NAT, f12);
+        //13
+        FieldDecimalMaximumLengthArchetype f13 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f13.setFormat(fw);
+        f13.setNullableRepresentation("");
+        f13.setFullFillingNullable(false);
+        addFieldArchetype(VL_BC_ICMS, f13);
+        //14
+        FieldDecimalMaximumLengthArchetype f14 = new FieldDecimalMaximumLengthArchetype(8,2);
+        f14.setFormat(fw);
+        f14.setNullableRepresentation("");
+        f14.setFullFillingNullable(false);
+        addFieldArchetype(ALIQ_ICMS, f14);
+        //15
+        FieldDecimalMaximumLengthArchetype f15 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f15.setFormat(fw);
+        f15.setNullableRepresentation("");
+        f15.setFullFillingNullable(false);
+        addFieldArchetype(VL_ICMS, f15);
+        //16
+        FieldDecimalMaximumLengthArchetype f16 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f16.setFormat(fw);
+        f16.setNullableRepresentation("");
+        f16.setFullFillingNullable(false);
+        addFieldArchetype(VL_BC_ICMS_ST, f16);
+        //17
+        FieldDecimalMaximumLengthArchetype f17 = new FieldDecimalMaximumLengthArchetype(8,2);
+        f17.setFormat(fw);
+        f17.setNullableRepresentation("");
+        f17.setFullFillingNullable(false);
+        addFieldArchetype(ALIQ_ST, f17);
+        //18
+        FieldDecimalMaximumLengthArchetype f18 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f18.setFormat(fw);
+        f18.setNullableRepresentation("");
+        f18.setFullFillingNullable(false);
+        addFieldArchetype(VL_ICMS_ST, f18);
+        //19
+        FieldStringFixedLengthArchetype f19 = new FieldStringFixedLengthArchetype(1);
+        f19.setNullableRepresentation("");
+        f19.setFullFillingNullable(false);
+        addFieldArchetype(IND_APUR, f19);
+        //20
+        FieldStringFixedLengthArchetype f20 = new FieldStringFixedLengthArchetype(2);
+        f20.setNullableRepresentation("");
+        f20.setFullFillingNullable(false);
+        addFieldArchetype(CST_IPI, f20);
+        //21
+        FieldStringFixedLengthArchetype f21 = new FieldStringFixedLengthArchetype(3);
+        f21.setNullableRepresentation("");
+        f21.setFullFillingNullable(false);
+        addFieldArchetype(COD_ENQ, f21);
+        //22
+        FieldDecimalMaximumLengthArchetype f22 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f22.setFormat(fw);
+        f22.setNullableRepresentation("");
+        f22.setFullFillingNullable(false);
+        addFieldArchetype(VL_BC_IPI, f22);
+        //23
+        FieldDecimalMaximumLengthArchetype f23 = new FieldDecimalMaximumLengthArchetype(8,2);
+        f23.setFormat(fw);
+        f23.setNullableRepresentation("");
+        f23.setFullFillingNullable(false);
+        addFieldArchetype(ALIQ_IPI, f23);
+        //24
+        FieldDecimalMaximumLengthArchetype f24 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f24.setFormat(fw);
+        f24.setNullableRepresentation("");
+        f24.setFullFillingNullable(false);
+        addFieldArchetype(VL_IPI, f24);
+        //25
+        addFieldArchetype(CST_PIS, new FieldIntegerFixedLengthArchetype(2));
+        //26
+        FieldDecimalMaximumLengthArchetype f26 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f26.setFormat(fw);
+        f26.setNullableRepresentation("");
+        f26.setFullFillingNullable(false);
+        addFieldArchetype(VL_BC_PIS, f26);
+        //27
+        FieldDecimalMaximumLengthArchetype f27 = new FieldDecimalMaximumLengthArchetype(12,4);
+        f27.setFormat(fw);
+        f27.setNullableRepresentation("");
+        f27.setFullFillingNullable(false);
+        addFieldArchetype(ALIQ_PIS, f27);
+        //28
+        FieldDecimalMaximumLengthArchetype f28 = new FieldDecimalMaximumLengthArchetype(15,3);
+        f28.setFormat(fw);
+        f28.setNullableRepresentation("");
+        f28.setFullFillingNullable(false);
+        addFieldArchetype(QUANT_BC_PIS, f28);
+        //29
+        FieldDecimalMaximumLengthArchetype f29 = new FieldDecimalMaximumLengthArchetype(17,4);
+        f29.setFormat(fw);
+        f29.setNullableRepresentation("");
+        f29.setFullFillingNullable(false);
+        addFieldArchetype(ALIQ_PIS_QUANT, f29);
+        //30
+        FieldDecimalMaximumLengthArchetype f30 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f30.setFormat(fw);
+        f30.setNullableRepresentation("");
+        f30.setFullFillingNullable(false);
+        addFieldArchetype(VL_PIS, f30);
+        //31
+        addFieldArchetype(CST_COFINS, new FieldIntegerFixedLengthArchetype(2));
+        //32
+        FieldDecimalMaximumLengthArchetype f32 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f32.setFormat(fw);
+        f32.setNullableRepresentation("");
+        f32.setFullFillingNullable(false);
+        addFieldArchetype(VL_BC_COFINS, f32);
+        //33
+        FieldDecimalMaximumLengthArchetype f33 = new FieldDecimalMaximumLengthArchetype(12,4);
+        f33.setFormat(fw);
+        f33.setNullableRepresentation("");
+        f33.setFullFillingNullable(false);
+        addFieldArchetype(ALIQ_COFINS, f33);
+        //34
+        FieldDecimalMaximumLengthArchetype f34 =  new FieldDecimalMaximumLengthArchetype(16,3);
+        f34.setFormat(fw);
+        f34.setNullableRepresentation("");
+        f34.setFullFillingNullable(false);
+        addFieldArchetype(QUANT_BC_COFINS, f34);
+        //35
+        FieldDecimalMaximumLengthArchetype f35 = new FieldDecimalMaximumLengthArchetype(17,4);
+        f35.setFormat(fw);
+        f35.setNullableRepresentation("");
+        f35.setFullFillingNullable(false);
+        addFieldArchetype(ALIQ_COFINS_QUANT, f35);
+        //36
+        FieldDecimalMaximumLengthArchetype f36 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f36.setFormat(fw);
+        f36.setNullableRepresentation("");
+        f36.setFullFillingNullable(false);
+        addFieldArchetype(VL_COFINS, f36);
+        //37
+        addFieldArchetype(COD_CTA, new FieldStringMaximumLengthArchetype(255));
 
     }
 
