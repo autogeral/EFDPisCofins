@@ -32,7 +32,7 @@ public class GerarDocumentoEFDPisCofinsTest {
         Registro0400Test registro0400Test = new Registro0400Test();
         Registro0450Test registro0450Test = new Registro0450Test();
         Registro0500Test registro0500Test = new Registro0500Test();
-        Registro0600Test registro0600Test = new Registro0600Test();        //ENCERRAMENTO DO BLOCO 0
+        Registro0600Test registro0600Test = new Registro0600Test();        
         Registro0990Test registro0990Test = new Registro0990Test();
         //BLOCO A
         RegistroA001Test registroA001Test = new RegistroA001Test();
@@ -50,6 +50,10 @@ public class GerarDocumentoEFDPisCofinsTest {
         RegistroC110Test registroC110Test = new RegistroC110Test();
         RegistroC111Test registroC111Test = new RegistroC111Test();
         RegistroC120Test registroC120Test = new RegistroC120Test();
+        RegistroC170Test registroC170Test = new RegistroC170Test();
+        RegistroC180Test registroC180Test = new RegistroC180Test();
+        RegistroC181Test registroC181Test = new RegistroC181Test();
+        RegistroC185Test registroC185Test = new RegistroC185Test();
         
         //linhas do documento 
         //Bloco 0
@@ -150,6 +154,18 @@ public class GerarDocumentoEFDPisCofinsTest {
         bf.newLine();
         bf.flush();
         fileWriter.write(registroC120Test.linhaRegistroC120Test());
+        bf.newLine();
+        bf.flush();
+        fileWriter.write(registroC170Test.linhaRegistroC170Test());
+        bf.newLine();
+        bf.flush();
+        fileWriter.write(registroC180Test.linhaRegistroC180Test());
+        bf.newLine();
+        bf.flush();
+        fileWriter.write(registroC181Test.linhaRegistroC181Test());
+        bf.newLine();
+        bf.flush();
+        fileWriter.write(registroC185Test.linhaRegistroC185Test());
         bf.newLine();
         bf.flush();
         
