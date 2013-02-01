@@ -5,6 +5,7 @@ import br.com.jcomputacao.aristoteles.format.FormatFactory;
 import br.com.jcomputacao.aristoteles.format.FormatType;
 import br.com.jcomputacao.aristoteles.format.FormatWrapper;
 import br.com.jcomputacao.aristoteles.line.LineArchetype;
+import java.text.NumberFormat;
 
 /**
  * 11/11/2011 18:22:14
@@ -41,6 +42,9 @@ public class RegistroC185 extends LineArchetype{
        
        FormatWrapper fw = FormatFactory.getFormat(FormatType.DECIMAL);
        fw.setReplaceComa(false);
+//       ((NumberFormat)fw.getInternalFormat()).setMinimumFractionDigits(4);
+//       ((NumberFormat)fw.getInternalFormat()).setMinimumFractionDigits(4);
+       
        
        //01
        addFieldArchetype(REG, new FieldDefaultArchetype("C185"));
