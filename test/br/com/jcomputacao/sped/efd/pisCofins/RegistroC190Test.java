@@ -1,19 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
-import java.text.ParseException;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.junit.*;
 
 /**
  * 11/11/2011 19:23:19
@@ -49,20 +40,25 @@ public class RegistroC190Test extends Randomize{
         LineModel line = reg.createModel();
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
         Date data = sdf.parse("17121986");
-        line.setFieldValue(RegistroC190.REG, "1234");
-        line.setFieldValue(RegistroC190.COD_MOD, "jj");
+        
+        //03
         line.setFieldValue(RegistroC190.DT_REF_INI, data);
+        //04
         line.setFieldValue(RegistroC190.DT_REF_FIN, data);
-        line.setFieldValue(RegistroC190.COD_ITEM, GeraStringRandom(60));
+        //05
+        line.setFieldValue(RegistroC190.COD_ITEM, "Código do item (campo 02 do Registro 0200)");
+        //06
         line.setFieldValue(RegistroC190.COD_NCM, "zxcvbnm,");
+        //07
         line.setFieldValue(RegistroC190.EX_IPI, "123");
-        line.setFieldValue(RegistroC190.VL_TOT_ITEM, 12345678912345678912.33);
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
+        //08
+        line.setFieldValue(RegistroC190.VL_TOT_ITEM, 8912.33);
         
-        
-        
-        
-        
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+//        
+//        String expected = "|C190|55|17121986|17121986|Código do item (campo 02 do Registro 0200)|zxcvbnm,|123|8912,33|";
+//        assertEquals(expected, sb.toString());
+ 
     }
 }

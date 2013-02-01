@@ -32,7 +32,7 @@ public class RegistroC185Test extends Randomize {
      * Test of getNome method, of class RegistroC185.
      */
     @Test
-    public String linhaRegistroC185Test(){
+    public void linhaRegistroC185Test(){
     RegistroC185 reg = new RegistroC185();
     LineModel line = reg.createModel();
     
@@ -58,9 +58,10 @@ public class RegistroC185Test extends Randomize {
     line.setFieldValue(RegistroC185.COD_CTA, "Código da conta analítica contábil debitada/creditada");
     
     StringBuffer sb = line.getRepresentation();
-//    System.out.print(sb);
-//    String expected = "|C185|12|1234|18912,33|789456345,66|45623,99|1238.6611|678912,363|123412,1234|128912,36|Código da conta analítica contábil debitada/creditada|";
-//    assertEquals (expected, sb.toString());
-    return sb.toString();
+    System.out.println(sb);
+    String expected = "|C185|12|1234|18912,33|789456345,66|45623,99|1238,6611|678912,363|123412,1234|128912,36|Código da conta analítica contábil debitada/creditada|";
+    System.out.println(expected);
+    //assertEquals (expected, sb.toString());
+//    return sb.toString();
     }
 }

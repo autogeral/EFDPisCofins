@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * $[date] $[time]
@@ -44,28 +37,32 @@ public class RegistroC191Test extends Randomize{
         RegistroC191 reg = new RegistroC191();
         LineModel line = reg.createModel();
         
-        line.setFieldValue(RegistroC191.REG, "1234");
-        line.setFieldValue(RegistroC191.CNPJ_CPF_PART, GeraStringRandom(14));
+        //02
+        line.setFieldValue(RegistroC191.CNPJ_CPF_PART, "12345678912345");
+        //03
         line.setFieldValue(RegistroC191.CST_PIS, 12L);
+        //04
         line.setFieldValue(RegistroC191.CFOP, 1234L );
-        line.setFieldValue(RegistroC191.VL_ITEM, 12345678912345678912.33 );
-        line.setFieldValue(RegistroC191.VL_DESC, 12345678912345678912.33 );
-        line.setFieldValue(RegistroC191.VL_BC_PIS, 12345678912345678912.33 );
-        line.setFieldValue(RegistroC191.ALIQ_PIS, 12345678.4567 );
-        line.setFieldValue(RegistroC191.QUANT_BC_PIS, 12345678912345678912.333 );
-        line.setFieldValue(RegistroC191.ALIQ_PIS_QUANT, 12345678912345678912.3344 );
-        line.setFieldValue(RegistroC191.VL_PIS, 12345678912345678912.33 );
-        line.setFieldValue(RegistroC191.COD_CTA, GeraStringRandom(60) );
-        
-        
-        
-        
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
-        
-        
-        
-        
-        
+        //05
+        line.setFieldValue(RegistroC191.VL_ITEM, 78912.33 );
+        //06
+        line.setFieldValue(RegistroC191.VL_DESC, 78912.33 );
+        //07
+        line.setFieldValue(RegistroC191.VL_BC_PIS, 678912.33 );
+        //08
+        line.setFieldValue(RegistroC191.ALIQ_PIS, 1678.4567 );
+        //09
+        line.setFieldValue(RegistroC191.QUANT_BC_PIS, 56912.333 );
+        //10
+        line.setFieldValue(RegistroC191.ALIQ_PIS_QUANT, 1262.3344 );
+        //11
+        line.setFieldValue(RegistroC191.VL_PIS, 1456.33 );
+        //12
+        line.setFieldValue(RegistroC191.COD_CTA, "Código da conta analítica contábil debitada/creditada");
+
+        StringBuffer sb = line.getRepresentation();
+//        System.out.print(sb);
+//        String expected = "|C191|12345678912345|12|1234|78912,33|78912,33|678912,33|1678,4567|56912,333|1262,3344|1456,33|Código da conta analítica contábil debitada/creditada|";
+//        assertEquals(expected, sb.toString());
     }
 }
