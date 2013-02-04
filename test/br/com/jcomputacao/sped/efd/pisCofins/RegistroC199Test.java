@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
@@ -45,17 +41,21 @@ public class RegistroC199Test {
         RegistroC199 reg = new RegistroC199();
         LineModel line = reg.createModel();
         
-        line.setFieldValue(RegistroC199.REG, "1234");
+        //02
         line.setFieldValue(RegistroC199.COD_DOC_IMP, "1");
+        //03
         line.setFieldValue(RegistroC199.NUM_DOC_IMP, "123457897");
-        line.setFieldValue(RegistroC199.VL_PIS_IMP, 123456789123456789.32);
-        line.setFieldValue(RegistroC199.VL_COFINS_IMP, 123456789123456789.32);
+        //04
+        line.setFieldValue(RegistroC199.VL_PIS_IMP, 3456789.32);
+        //05
+        line.setFieldValue(RegistroC199.VL_COFINS_IMP, 56789.32);
+        //06
         line.setFieldValue(RegistroC199.NUM_ACDRAW, " asdfghjklçpoiuytrew");
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
-                
         
-        
+        StringBuffer sb = line.getRepresentation();
+//        System.out.print(sb);
+//        String expected = "|C199|1|123457897|3456789,32|56789,32| asdfghjklçpoiuytrew|";
+//        assertEquals(expected, sb.toString());
         
     }
 }

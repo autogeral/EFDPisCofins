@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.*;
+import org.junit.*;
 
 /**
  * 10/11/2011 20:23:46
@@ -18,14 +11,6 @@ import org.junit.Test;
 public class RegistroC489Test {
 
     public RegistroC489Test() {
-        RegistroC489 reg = new RegistroC489();
-        LineModel line = reg.createModel();
-        line.setFieldValue(RegistroC489.REG, "C489");
-        line.setFieldValue(RegistroC489.NUM_PROC, "AAAAABBBBBAAAAABBBBB");
-        line.setFieldValue(RegistroC489.IND_PROC, "K");
-
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
     }
 
     @BeforeClass
@@ -44,10 +29,19 @@ public class RegistroC489Test {
     public void tearDown() {
     }
 
-    /**
-     * Test of getNome method, of class RegistroC489.
-     */
     @Test
-    public void testGetNome() {
+    public void RegistroC489Test() {
+        RegistroC489 reg = new RegistroC489();
+        LineModel line = reg.createModel();
+        
+        //02
+        line.setFieldValue(RegistroC489.NUM_PROC, "Identific. do proces");
+        //03
+        line.setFieldValue(RegistroC489.IND_PROC, "2");
+
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+//        String expected = "|C489|Identific. do proces|2|";
+//        assertEquals (expected, sb.toString());
     }
 }

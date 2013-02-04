@@ -1,16 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 /**
  * 10/11/2011 19:33:42
  * @author John
@@ -18,16 +10,6 @@ import org.junit.Test;
 public class RegistroC400Test {
 
     public RegistroC400Test() {
-
-        RegistroC400 reg = new RegistroC400();
-        LineModel line = reg.createModel();
-        line.setFieldValue(RegistroC400.REG, "C400");
-        line.setFieldValue(RegistroC400.COD_MOD, "AA");
-        line.setFieldValue(RegistroC400.ECF_MOD, "QWEQWEQWERQWEQWEQWER");
-        line.setFieldValue(RegistroC400.ECF_FAB, "QWEQWEQWER");
-        line.setFieldValue(RegistroC400.ECF_CX, 123L);
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
     }
 
     @BeforeClass
@@ -50,6 +32,22 @@ public class RegistroC400Test {
      * Test of getNome method, of class RegistroC400.
      */
     @Test
-    public void testGetNome() {
+    public void RegistroC400Test() {
+        RegistroC400 reg = new RegistroC400();
+        LineModel line = reg.createModel();
+        
+        //02
+        line.setFieldValue(RegistroC400.COD_MOD, "12");
+        //03
+        line.setFieldValue(RegistroC400.ECF_MOD, "Mod. equipamento");
+        //04
+        line.setFieldValue(RegistroC400.ECF_FAB, "Serie Fab. ECF");
+        //05
+        line.setFieldValue(RegistroC400.ECF_CX, 123L);
+        
+        StringBuffer sb = line.getRepresentation();
+        System.out.println(sb);
+        String expected = "|C400|12|Mod. equipamento|Serie Fab. ECF|123|";
+        assertEquals (expected,sb.toString());
     }
 }

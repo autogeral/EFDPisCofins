@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
@@ -19,21 +15,6 @@ import static org.junit.Assert.*;
 public class RegistroC381Test {
     
     public RegistroC381Test() {
-        RegistroC381 reg = new RegistroC381();
-        LineModel line = reg.createModel();
-        line.setFieldValue(RegistroC381.REG, "0001");
-        line.setFieldValue(RegistroC381.CST_PIS, 11L);
-        line.setFieldValue(RegistroC381.COD_ITEM, "ABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDE");
-        line.setFieldValue(RegistroC381.VL_ITEM, 12345678901234567890.55);
-        line.setFieldValue(RegistroC381.VL_BC_PIS, 12345678901234567890.55);
-        line.setFieldValue(RegistroC381.ALIQ_PIS, 12345678.99);
-        line.setFieldValue(RegistroC381.QUANT_BC_PIS, 12345678912345678911.113);
-        line.setFieldValue(RegistroC381.ALIQ_PIS_QUANT, 12345678912345678911.1133);
-        line.setFieldValue(RegistroC381.VL_PIS, 12345678912345678911.11);
-        line.setFieldValue(RegistroC381.COD_CTA, "ABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDEABCDE");
-
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
     }
 
     @BeforeClass
@@ -56,6 +37,32 @@ public class RegistroC381Test {
      * Test of getNome method, of class RegistroC381.
      */
     @Test
-    public void testGetNome() {
+    public void RegistroC381Test() {
+        RegistroC381 reg = new RegistroC381();
+        LineModel line = reg.createModel();
+        
+        //02
+        line.setFieldValue(RegistroC381.CST_PIS, 11L);
+        //03
+        line.setFieldValue(RegistroC381.COD_ITEM, "Código do item (campo 02 do Registro 0200)");
+        //04
+        line.setFieldValue(RegistroC381.VL_ITEM, 7890.55);
+        //05
+        line.setFieldValue(RegistroC381.VL_BC_PIS, null);
+        //06
+        line.setFieldValue(RegistroC381.ALIQ_PIS, null);
+        //07
+        line.setFieldValue(RegistroC381.QUANT_BC_PIS, null);
+        //08
+        line.setFieldValue(RegistroC381.ALIQ_PIS_QUANT, null);
+        //09
+        line.setFieldValue(RegistroC381.VL_PIS, 8911.11);
+        //10
+        line.setFieldValue(RegistroC381.COD_CTA, null);
+
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+        String expected = "|C381|11|Código do item (campo 02 do Registro 0200)|7890,55|||||8911,11||";
+        assertEquals (expected, sb.toString());
     }
 }

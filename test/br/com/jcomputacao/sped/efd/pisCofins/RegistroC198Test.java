@@ -1,17 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 /**
  * 12/11/2011 11:03:29
  * @author rafael.galvao
@@ -45,12 +36,16 @@ public class RegistroC198Test extends Randomize {
         RegistroC198 reg = new RegistroC198();
         LineModel line = reg.createModel();
         
-        line.setFieldValue(RegistroC198.REG, "1234");
-        line.setFieldValue(RegistroC198.NUM_PROC, GeraStringRandom(20));
-        line.setFieldValue(RegistroC198.IND_PROC, "f");
+        //02
+        line.setFieldValue(RegistroC198.NUM_PROC, "Identif do processo");
+        //03
+        line.setFieldValue(RegistroC198.IND_PROC, "2");
         
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
-        
+        StringBuffer sb = line.getRepresentation();
+//        System.out.print(sb);
+//        
+//        String expected = "|C198|Identif do processo|2|";
+//        assertEquals (expected,sb.toString());
+//        
     }
 }
