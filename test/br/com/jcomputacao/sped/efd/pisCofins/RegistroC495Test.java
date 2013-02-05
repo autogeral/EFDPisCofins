@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 10/11/2011 21:24:01
@@ -17,22 +10,7 @@ import org.junit.Test;
  */
 public class RegistroC495Test {
 
-    public RegistroC495Test() {
-        RegistroC495 reg = new RegistroC495();
-        LineModel line = reg.createModel();
-        line.setFieldValue(RegistroC495.REG, "C495");
-        line.setFieldValue(RegistroC495.COD_ITEM, "QASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTG");
-        line.setFieldValue(RegistroC495.CST_COFINS, 22L);
-        line.setFieldValue(RegistroC495.CFOP, 1234L);
-        line.setFieldValue(RegistroC495.VL_ITEM, 12345678912345678911.11);
-        line.setFieldValue(RegistroC495.VL_BC_COFINS, 12345678912345678911.11);
-        line.setFieldValue(RegistroC495.ALIQ_COFINS, 12345678.1122);
-        line.setFieldValue(RegistroC495.QUANT_BC_COFINS, 12345678912345678911.111);
-        line.setFieldValue(RegistroC495.ALIQ_COFINS_QUANT, 12345678912345678911.1111);
-        line.setFieldValue(RegistroC495.VL_COFINS, 12345678912345678911.11);
-        line.setFieldValue(RegistroC495.COD_CTA, "QASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTG");
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+    public RegistroC495Test() {        
     }
 
     @BeforeClass
@@ -51,10 +29,35 @@ public class RegistroC495Test {
     public void tearDown() {
     }
 
-    /**
-     * Test of getNome method, of class RegistroC495.
-     */
     @Test
-    public void testGetNome() {
+    public void RegistroC495Test() {
+        RegistroC495 reg = new RegistroC495();
+        LineModel line = reg.createModel();
+
+        //02
+        line.setFieldValue(RegistroC495.COD_ITEM, "Código do item (campo 02 do Registro 0200)");
+        //03
+        line.setFieldValue(RegistroC495.CST_COFINS, 22L);
+        //04
+        line.setFieldValue(RegistroC495.CFOP, 1234L);
+        //05
+        line.setFieldValue(RegistroC495.VL_ITEM, 678911.11);
+        //06
+        line.setFieldValue(RegistroC495.VL_BC_COFINS, 678911.11);
+        //07
+        line.setFieldValue(RegistroC495.ALIQ_COFINS, 345678.1121);
+        //08
+        line.setFieldValue(RegistroC495.QUANT_BC_COFINS, 678911.111);
+        //09
+        line.setFieldValue(RegistroC495.ALIQ_COFINS_QUANT, 678911.1111);
+        //10
+        line.setFieldValue(RegistroC495.VL_COFINS, 678911.11);
+        //11
+        line.setFieldValue(RegistroC495.COD_CTA, "Código da conta analítica contábil debitada/creditada");
+        
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+        //String expected = "|C495|Código do item (campo 02 do Registro 0200)|22|1234|678911,11|678911,11|345678,1121|678911,111|678911,1111|678911,11|Código da conta analítica contábil debitada/creditada|";
+        //assertEquals (expected, sb.toString());
     }
 }

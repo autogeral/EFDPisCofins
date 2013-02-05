@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
+import static org.junit.Assert.*;
 
 /**
  * 10/11/2011 21:59:44
@@ -18,18 +11,7 @@ import org.junit.Test;
 public class RegistroC501Test {
 
     public RegistroC501Test() {
-        RegistroC501 reg = new RegistroC501();
-        LineModel line = reg.createModel();
-        line.setFieldValue(RegistroC501.REG, "C501");
-        line.setFieldValue(RegistroC501.CST_PIS, 99L);
-        line.setFieldValue(RegistroC501.VL_ITEM, 12345678912345678911.11);
-        line.setFieldValue(RegistroC501.NAT_BC_CRED, "AB");
-        line.setFieldValue(RegistroC501.VL_BC_PIS, 12345678912345678911.11);
-        line.setFieldValue(RegistroC501.ALIQ_PIS, 12345678.1111);
-        line.setFieldValue(RegistroC501.VL_PIS, 12345678912345678911.11);
-        line.setFieldValue(RegistroC501.COD_CTA, "QASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTGQASWEDFRTG");
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+
     }
 
     @BeforeClass
@@ -48,10 +30,30 @@ public class RegistroC501Test {
     public void tearDown() {
     }
 
-    /**
-     * Test of getNome method, of class RegistroC501.
-     */
     @Test
-    public void testGetNome() {
+    public void RegistroC501Test() {
+                RegistroC501 reg = new RegistroC501();
+        LineModel line = reg.createModel();
+        
+        //02
+        line.setFieldValue(RegistroC501.CST_PIS, 99L);
+        //03
+        line.setFieldValue(RegistroC501.VL_ITEM, 45678911.11);
+        //04
+        line.setFieldValue(RegistroC501.NAT_BC_CRED, "AB");
+        //05
+        line.setFieldValue(RegistroC501.VL_BC_PIS, 45678911.11);
+        //06
+        line.setFieldValue(RegistroC501.ALIQ_PIS, 1234567.1111);
+        //07
+        line.setFieldValue(RegistroC501.VL_PIS, 45678911.11);
+        //08
+        line.setFieldValue(RegistroC501.COD_CTA, "Código da conta analítica contábil debitada/creditada");
+        
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+        
+//        String expected = "|C501|99|45678911,11|AB|45678911,11|1234567,1111|45678911,11|Código da conta analítica contábil debitada/creditada|";
+//        assertEquals (expected, sb.toString());
     }
 }
