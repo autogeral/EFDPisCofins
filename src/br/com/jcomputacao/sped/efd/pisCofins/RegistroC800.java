@@ -1,5 +1,7 @@
 package br.com.jcomputacao.sped.efd.pisCofins;
 
+import br.com.jcomputacao.aristoteles.field.FieldDateFixedLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.FieldDecimalMaximumLengthArchetype;
 import br.com.jcomputacao.aristoteles.field.FieldDefaultArchetype;
 import br.com.jcomputacao.aristoteles.field.FieldIntegerMaximumLengthArchetype;
 import br.com.jcomputacao.aristoteles.format.FormatFactory;
@@ -50,7 +52,7 @@ public class RegistroC800 extends LineArchetype{
     public RegistroC800(){
         setName("Cupom fiscal eletrônico (código 59)");
         setDelimiter("|");
-        
+               
         FormatWrapper fw = FormatFactory.getFormat(FormatType.DECIMAL);
         fw.setReplaceComa(false);
         //01
@@ -58,8 +60,26 @@ public class RegistroC800 extends LineArchetype{
         //02
         addFieldArchetype(COD_MOD, new FieldIntegerMaximumLengthArchetype(2));
         //03
-        addFieldArchetype(NUM_CFE, new FieldIntegerMaximumLengthArchetype(2));
+        addFieldArchetype(COD_SIT, new FieldIntegerMaximumLengthArchetype(2));
         //04
-        
+        addFieldArchetype(NUM_CFE, new FieldIntegerMaximumLengthArchetype(2));
+        //05
+        addFieldArchetype(DT_DOC, new FieldDateFixedLengthArchetype("ddMMyyyy"));
+        //06
+        FieldDecimalMaximumLengthArchetype f06 = new FieldDecimalMaximumLengthArchetype(15,3);
+        f06.setFormat(fw);
+        addFieldArchetype(VL_CFE, f06);
+        //07
+        FieldDecimalMaximumLengthArchetype f07 = new FieldDecimalMaximumLengthArchetype(15,3);
+        f07.setFormat(fw);
+        f07.setNullableRepresentation("");
+        f07.setFullFillingNullable(false);
+        addFieldArchetype(VL_CFE, f07);
+        //08
+        FieldDecimalMaximumLengthArchetype f08 = new FieldDecimalMaximumLengthArchetype(15,3);
+        f08.setFormat(fw);
+        f08.setNullableRepresentation("");
+        f08.setFullFillingNullable(false);
+        addFieldArchetype(VL_CFE, f08);
     }
 }
