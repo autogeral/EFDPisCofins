@@ -1,9 +1,6 @@
 package br.com.jcomputacao.sped.efd.pisCofins;
 
-import br.com.jcomputacao.aristoteles.field.FieldDateFixedLengthArchetype;
-import br.com.jcomputacao.aristoteles.field.FieldDecimalMaximumLengthArchetype;
-import br.com.jcomputacao.aristoteles.field.FieldDefaultArchetype;
-import br.com.jcomputacao.aristoteles.field.FieldIntegerMaximumLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.*;
 import br.com.jcomputacao.aristoteles.format.FormatFactory;
 import br.com.jcomputacao.aristoteles.format.FormatType;
 import br.com.jcomputacao.aristoteles.format.FormatWrapper;
@@ -58,11 +55,11 @@ public class RegistroC800 extends LineArchetype{
         //01
         addFieldArchetype(REG, new FieldDefaultArchetype("C800"));
         //02
-        addFieldArchetype(COD_MOD, new FieldIntegerMaximumLengthArchetype(2));
+        addFieldArchetype(COD_MOD, new FieldStringMaximumLengthArchetype(2));
         //03
         addFieldArchetype(COD_SIT, new FieldIntegerMaximumLengthArchetype(2));
         //04
-        addFieldArchetype(NUM_CFE, new FieldIntegerMaximumLengthArchetype(2));
+        addFieldArchetype(NUM_CFE, new FieldIntegerMaximumLengthArchetype(9));
         //05
         addFieldArchetype(DT_DOC, new FieldDateFixedLengthArchetype("ddMMyyyy"));
         //06
@@ -74,12 +71,63 @@ public class RegistroC800 extends LineArchetype{
         f07.setFormat(fw);
         f07.setNullableRepresentation("");
         f07.setFullFillingNullable(false);
-        addFieldArchetype(VL_CFE, f07);
+        addFieldArchetype(VL_PIS, f07);
         //08
         FieldDecimalMaximumLengthArchetype f08 = new FieldDecimalMaximumLengthArchetype(15,3);
         f08.setFormat(fw);
         f08.setNullableRepresentation("");
         f08.setFullFillingNullable(false);
-        addFieldArchetype(VL_CFE, f08);
+        addFieldArchetype(VL_COFINS, f08);
+        //09
+        FieldIntegerMaximumLengthArchetype f09 = new FieldIntegerMaximumLengthArchetype(14);
+        f09.setNullableRepresentation("");
+        f09.setFullFillingNullable(false);
+        addFieldArchetype(CNPJ_CPF, f09);
+        //10
+        FieldIntegerMaximumLengthArchetype f10 = new FieldIntegerMaximumLengthArchetype(9);
+        f09.setNullableRepresentation("");
+        f09.setFullFillingNullable(false);
+        addFieldArchetype(NR_SAT, f10);
+        //11
+        FieldStringMaximumLengthArchetype f11 = new FieldStringMaximumLengthArchetype(44);
+        f11.setNullableRepresentation("");
+        f11.setFullFillingNullable(false);
+        addFieldArchetype(CHV_CFE, f11);
+        //12
+        FieldDecimalMaximumLengthArchetype f12 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f12.setFormat(fw);
+        f11.setNullableRepresentation("");
+        f11.setFullFillingNullable(false);
+        addFieldArchetype(VL_DESC, f12);
+        //13
+        FieldDecimalMaximumLengthArchetype f13 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f13.setFormat(fw);
+        f13.setNullableRepresentation("");
+        f13.setFullFillingNullable(false);
+        addFieldArchetype(VL_MERC, f13);
+        //14
+        FieldDecimalMaximumLengthArchetype f14 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f14.setFormat(fw);
+        f14.setNullableRepresentation("");
+        f14.setFullFillingNullable(false);
+        addFieldArchetype(VL_OUT_DA, f14);
+        //15
+        FieldDecimalMaximumLengthArchetype f15 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f15.setFormat(fw);
+        f15.setNullableRepresentation("");
+        f15.setFullFillingNullable(false);
+        addFieldArchetype(VL_ICMS, f15);
+        //16
+        FieldDecimalMaximumLengthArchetype f16 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f16.setFormat(fw);
+        f16.setNullableRepresentation("");
+        f16.setFullFillingNullable(false);
+        addFieldArchetype(VL_PIS_ST, f16);
+        //17
+        FieldDecimalMaximumLengthArchetype f17 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f17.setFormat(fw);
+        f17.setNullableRepresentation("");
+        f17.setFullFillingNullable(false);
+        addFieldArchetype(VL_COFINS_ST, f17);
     }
 }
