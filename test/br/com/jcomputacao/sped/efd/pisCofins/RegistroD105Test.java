@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  *
@@ -41,20 +34,27 @@ public class RegistroD105Test {
         RegistroD105 reg = new RegistroD105();
         LineModel line = reg.createModel();
 
-        line.setFieldValue(RegistroD105.REG, "0100");
+        //02
         line.setFieldValue(RegistroD105.IND_NAT_FRT, "1");
+        //03
         line.setFieldValue(RegistroD105.VL_ITEM, 123.98);
+        //04
         line.setFieldValue(RegistroD105.CST_COFINS, 12L);
+        //05
         line.setFieldValue(RegistroD105.NAT_BC_CRED, "12");
+        //06
         line.setFieldValue(RegistroD105.VL_BC_COFINS, 95.65);
+        //07
         line.setFieldValue(RegistroD105.ALIQ_COFINS, 12345678.7654);
+        //08
         line.setFieldValue(RegistroD105.VL_COFINS, 123.98);
-        line.setFieldValue(RegistroD105.COD_CTA, "12Ldsadsa2q");
+        //09
+        line.setFieldValue(RegistroD105.COD_CTA, "Código da conta analítica contábil debitada/creditada");
+        
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
 
-
-
-
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+//        String expected = "|D105|1|123,98|12|12|95,65|12345678,7654|123,98|Código da conta analítica contábil debitada/creditada|";
+//        assertEquals (expected, sb.toString());
     }
 }
