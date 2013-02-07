@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  *
@@ -40,11 +33,14 @@ public class RegistroD359Test {
         RegistroD359 reg = new RegistroD359();
         LineModel line = reg.createModel();
 
-        line.setFieldValue(RegistroD359.REG, "0100");
-        line.setFieldValue(RegistroD359.NUM_PROC, "1234567891234567890");
-        line.setFieldValue(RegistroD359.IND_PROC, "1");
-     
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+        //02
+        line.setFieldValue(RegistroC830.NUM_PROC, "Identif do process");
+        //03
+        line.setFieldValue(RegistroC830.IND_PROC, "9");
+        
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+        String expected = "|D359|Identif do process|9|";
+        assertEquals(expected, sb.toString());
     }
 }
