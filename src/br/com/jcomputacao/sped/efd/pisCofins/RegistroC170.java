@@ -255,7 +255,7 @@ public class RegistroC170 extends LineArchetype{
         f32.setFullFillingNullable(false);
         addFieldArchetype(VL_BC_COFINS, f32);
         //33
-        FieldDecimalMaximumLengthArchetype f33 = new FieldDecimalMaximumLengthArchetype(12,4);
+        FieldDecimalMaximumLengthArchetype f33 = new FieldDecimalMaximumLengthArchetype(13,4);
         f33.setFormat(fw);
         f33.setNullableRepresentation("");
         f33.setFullFillingNullable(false);
