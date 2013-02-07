@@ -1,6 +1,5 @@
 package br.com.jcomputacao.sped.efd.pisCofins;
 
-import br.com.jcomputacao.aristoteles.field.FieldDecimalMaximumLengthArchetype;
 import br.com.jcomputacao.aristoteles.field.FieldDefaultArchetype;
 import br.com.jcomputacao.aristoteles.field.FieldStringFixedLengthArchetype;
 import br.com.jcomputacao.aristoteles.field.FieldStringMaximumLengthArchetype;
@@ -12,7 +11,7 @@ import br.com.jcomputacao.aristoteles.line.LineArchetype;
  */
 public class RegistroD111 extends LineArchetype {
 
-       //01 - Fixo
+    //01 - Fixo
     public static String REG = "REG";
     //02 - Identificação do processo ou ato concessório
     public static String NUM_PROC = "NUM_PROC";
