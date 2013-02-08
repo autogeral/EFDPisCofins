@@ -1,7 +1,6 @@
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import static org.junit.Assert.assertEquals;
 import org.junit.*;
 
 /**
