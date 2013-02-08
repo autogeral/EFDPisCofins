@@ -35,9 +35,9 @@ public class RegistroD111Test {
         LineModel line = reg.createModel();
 
         //02
-        line.setFieldValue(RegistroC830.NUM_PROC, "Identif do process");
+        line.setFieldValue(RegistroD111.NUM_PROC, "Identif do process");
         //03
-        line.setFieldValue(RegistroC830.IND_PROC, "9");
+        line.setFieldValue(RegistroD111.IND_PROC, "9");
         
         StringBuffer sb = line.getRepresentation();
         System.out.print(sb);

@@ -1,18 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 17/11/2011 21:30:02
@@ -46,34 +39,52 @@ public class RegistroF130Test {
 
         RegistroF130 reg = new RegistroF130();
         LineModel line = reg.createModel();
-        Randomize rm = new Randomize();
+        SimpleDateFormat sdf = new SimpleDateFormat("MMyyyy");
         
+        Date data = sdf.parse("022013");
         
-        line.setFieldValue(RegistroF130.REG, "F130");
-        line.setFieldValue(RegistroF130.NAT_BC_CRED, "w4");
-        line.setFieldValue(RegistroF130.IDENT_BEM_IMOB, 99l);
+        //03
+        line.setFieldValue(RegistroF130.IDENT_BEM_IMOB, 99);
+        //04
         line.setFieldValue(RegistroF130.IND_ORIG_CRED, "1"); 
-        line.setFieldValue(RegistroF130.IND_UTIL_BEM_IMOB, 3l );   
-        line.setFieldValue(RegistroF130.MES_OPER_AQUIS, rm.GeraLongRandom(6));      
-        line.setFieldValue(RegistroF130.VL_OPER_AQUIS, rm.GeraDoubleRandom(19)); 
-        line.setFieldValue(RegistroF130.PARC_OPER_NAO_BC_CRED, rm.GeraDoubleRandom(19));
-        line.setFieldValue(RegistroF130.VL_BC_CRED, rm.GeraDoubleRandom(19)); 
-        line.setFieldValue(RegistroF130.IND_NR_PARC, 2l);    
-        line.setFieldValue(RegistroF130.CST_PIS, 24l);  
-        line.setFieldValue(RegistroF130.VL_BC_PIS, rm.GeraDoubleRandom(19));   
-        line.setFieldValue(RegistroF130.ALIQ_PIS, rm.GeraDoubleRandom(8));      
-        line.setFieldValue(RegistroF130.VL_PIS, rm.GeraDoubleRandom(19));   
-        line.setFieldValue(RegistroF130.CST_COFINS, 57l);     
-        line.setFieldValue(RegistroF130.VL_BC_COFINS, rm.GeraDoubleRandom(19));         
-        line.setFieldValue(RegistroF130.ALIQ_COFINS, rm.GeraDoubleRandom(8));   
-        line.setFieldValue(RegistroF130.VL_COFINS, rm.GeraDoubleRandom(19));      
-        line.setFieldValue(RegistroF130.COD_CTA, rm.GeraStringRandom(60)); 
-        line.setFieldValue(RegistroF130.COD_CCUS, rm.GeraStringRandom(60)); 
-        line.setFieldValue(RegistroF130.DESC_BEM_IMOB, rm.GeraStringRandom(60)); 
+        //05
+        line.setFieldValue(RegistroF130.IND_UTIL_BEM_IMOB, 3);
+        //06
+        line.setFieldValue(RegistroF130.MES_OPER_AQUIS, data);
+        //07
+        line.setFieldValue(RegistroF130.VL_OPER_AQUIS, 123456.12); 
+        //08
+        line.setFieldValue(RegistroF130.PARC_OPER_NAO_BC_CRED, 123456.12);
+        //09
+        line.setFieldValue(RegistroF130.VL_BC_CRED, 123456.12); 
+        //10
+        line.setFieldValue(RegistroF130.IND_NR_PARC, 2);
+        //11
+        line.setFieldValue(RegistroF130.CST_PIS, 24);  
+        //12
+        line.setFieldValue(RegistroF130.VL_BC_PIS, 123456.12);  
+        //13
+        line.setFieldValue(RegistroF130.ALIQ_PIS, 123456.1234);  
+        //14
+        line.setFieldValue(RegistroF130.VL_PIS, 123456.12);  
+        //15
+        line.setFieldValue(RegistroF130.CST_COFINS, 57);     
+        //16
+        line.setFieldValue(RegistroF130.VL_BC_COFINS, 123456.12); 
+        //17
+        line.setFieldValue(RegistroF130.ALIQ_COFINS, 123456.1234); 
+        //18
+        line.setFieldValue(RegistroF130.VL_COFINS, 123456.12);  
+        //19
+        line.setFieldValue(RegistroF130.COD_CTA, "Código da conta analítica contábil debitada/creditada"); 
+        line.setFieldValue(RegistroF130.COD_CCUS, "Código do Centro de Custos"); 
+        line.setFieldValue(RegistroF130.DESC_BEM_IMOB, "Descrição complementar do bem ou grupo de bens, com crédito apurado com base no valor de aquisição."); 
         
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
-        
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+
+//        String expected = "|F130|10|99|1|3|022013|123456,12|123456,12|123456,12|2|24|123456,12|123456,1234|123456,12|57|123456,12|123456,1234|123456,12|Código da conta analítica contábil debitada/creditada|Código do Centro de Custos|Descrição complementar do bem ou grupo de bens, com crédito apurado com base no valor de aquisição.|";
+//        assertEquals (expected, sb.toString());       
         
     }
     

@@ -1,18 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 /**
  * 10/11/2011 21:36:39
  * @author Jonas
@@ -43,10 +34,14 @@ public class RegistroF010Test {
         
          RegistroF010 reg = new RegistroF010();
         LineModel line = reg.createModel();
-        line.setFieldValue(RegistroF010.REG, "0001");
-        line.setFieldValue(RegistroF010.CNPJ, 123456789101112l);
-         StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+        //02
+        line.setFieldValue(RegistroF010.CNPJ, 12345678910111L);
+        
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+
+//        String expected = "|F010|12345678910111|";
+//        assertEquals (expected, sb.toString());
     }
     
 }

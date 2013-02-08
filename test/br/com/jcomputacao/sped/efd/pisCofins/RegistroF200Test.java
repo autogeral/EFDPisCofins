@@ -5,11 +5,8 @@ import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 18/11/2011 11:48:53
@@ -44,34 +41,57 @@ public class RegistroF200Test {
 
         RegistroF200 reg = new RegistroF200();
         LineModel line = reg.createModel();
-        Randomize rm = new Randomize();
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
+        Date data = sdf.parse("08022013");
+        
+        //02
+        line.setFieldValue(RegistroF200.IND_OPER, 4);
+        //03
+        line.setFieldValue(RegistroF200.UNID_IMOB, 5);
+        //04
+        line.setFieldValue(RegistroF200.IDENT_EMP, "Identificação/Nome do Empreendimento");
+        //05
+        line.setFieldValue(RegistroF200.DESC_UNID_IMOB, "Descrição resumida da unidade imobiliária vendida");
+        //06
+        line.setFieldValue(RegistroF200.NUM_CONT, "Número do Contrato/Documento que formaliza a Venda da Unidade Imobiliária");
+        //07
+        line.setFieldValue(RegistroF200.CPF_CNPJ_ADQU, "12345678911111");
+        //08
+        line.setFieldValue(RegistroF200.DT_OPER, data);
+        //09
+        line.setFieldValue(RegistroF200.VL_TOT_VEND, 53000.00);
+        //10
+        line.setFieldValue(RegistroF200.VL_REC_ACUM, 11000.00);
+        //11
+        line.setFieldValue(RegistroF200.VL_TOT_REC, 112000.00);
+        //12
+        line.setFieldValue(RegistroF200.CST_PIS, 12);
+        //13
+        line.setFieldValue(RegistroF200.VL_BC_PIS, 1.99);
+        //14
+        line.setFieldValue(RegistroF200.ALIQ_PIS, 123456.1234);
+        //15
+        line.setFieldValue(RegistroF200.VL_PIS, 123456.12);
+        //16
+        line.setFieldValue(RegistroF200.CST_COFINS, 13);
+        //17
+        line.setFieldValue(RegistroF200.VL_BC_COFINS, 123456.12);
+        //18
+        line.setFieldValue(RegistroF200.ALIQ_COFINS, 123456.1234);
+        //19
+        line.setFieldValue(RegistroF200.VL_COFINS, 123456.12);
+        //20
+        line.setFieldValue(RegistroF200.PERC_REC_RECEB, 123456.12);
+        //21
+        line.setFieldValue(RegistroF200.IND_NAT_EMP, 1);
+        //21
+        line.setFieldValue(RegistroF200.INF_COMP, "Informações Complementares");
 
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
 
-        line.setFieldValue(RegistroF200.REG, "F200");
-        line.setFieldValue(RegistroF200.IND_OPER, rm.GeraLongRandom(2));
-        line.setFieldValue(RegistroF200.UNID_IMOB, rm.GeraLongRandom(2));
-        line.setFieldValue(RegistroF200.IDENT_EMP, rm.GeraStringRandom(255));
-        line.setFieldValue(RegistroF200.DESC_UNID_IMOB, rm.GeraStringRandom(90));
-        line.setFieldValue(RegistroF200.NUM_CONT, rm.GeraStringRandom(90));
-        line.setFieldValue(RegistroF200.CPF_CNPJ_ADQU, rm.GeraStringRandom(14));
-        line.setFieldValue(RegistroF200.DT_OPER, rm.GeraLongRandom(8));
-        line.setFieldValue(RegistroF200.VL_TOT_VEND, rm.GeraDoubleRandom(2));
-        line.setFieldValue(RegistroF200.VL_REC_ACUM, rm.GeraDoubleRandom(2));
-        line.setFieldValue(RegistroF200.VL_TOT_REC, rm.GeraDoubleRandom(2));
-        line.setFieldValue(RegistroF200.CST_PIS, rm.GeraLongRandom(2));
-        line.setFieldValue(RegistroF200.VL_BC_PIS, rm.GeraDoubleRandom(2));
-        line.setFieldValue(RegistroF200.ALIQ_PIS, rm.GeraDoubleRandom(8));
-        line.setFieldValue(RegistroF200.VL_PIS, rm.GeraDoubleRandom(8));
-        line.setFieldValue(RegistroF200.CST_COFINS, rm.GeraLongRandom(2));
-        line.setFieldValue(RegistroF200.VL_BC_COFINS, rm.GeraDoubleRandom(2));
-        line.setFieldValue(RegistroF200.ALIQ_COFINS, rm.GeraDoubleRandom(8));
-        line.setFieldValue(RegistroF200.VL_COFINS, rm.GeraDoubleRandom(2));
-        line.setFieldValue(RegistroF200.PERC_REC_RECEB, rm.GeraDoubleRandom(6));
-        line.setFieldValue(RegistroF200.IND_NAT_EMP, rm.GeraLongRandom(1));
-        line.setFieldValue(RegistroF200.INF_COMP, rm.GeraStringRandom(90));
+//        String expected = "|F200|04|05|Identificação/Nome do Empreendimento|Descrição resumida da unidade imobiliária vendida|Número do Contrato/Documento que formaliza a Venda da Unidade Imobiliária|12345678911111|08022013|53000,00|11000,00|112000,00|12|1,99|123456,1234|123456,12|13|123456,12|123456,1234|123456,12|123456,|1|Informações Complementares|";
+//        assertEquals (expected, sb.toString());
 
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
-
-}
+    }
 }

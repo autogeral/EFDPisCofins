@@ -1,19 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 /**
  * 10/11/2011 22:08:04
  * @author Jonas
@@ -47,31 +39,49 @@ public class RegistroF100Test {
         LineModel line = reg.createModel();
         Randomize rm = new Randomize();
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
-        Date d = sdf.parse("10101987");
+        Date data = sdf.parse("08022013");
 
-        line.setFieldValue(RegistroF100.REG, "F001");
+        //02
         line.setFieldValue(RegistroF100.IND_OPER, "1");
-        line.setFieldValue(RegistroF100.COD_PART, rm.GeraStringRandom(60));
-        line.setFieldValue(RegistroF100.COD_ITEM, rm.GeraStringRandom(60));
-        line.setFieldValue(RegistroF100.DT_ITEM, d);
-        line.setFieldValue(RegistroF100.VL_OPER, rm.GeraDoubleRandom(19));
-        line.setFieldValue(RegistroF100.CST_PIS, rm.GeraLongRandom(2));
-        line.setFieldValue(RegistroF100.VL_BC_PIS, 54654564654654.87);
+        //03
+        line.setFieldValue(RegistroF100.COD_PART,"(Campo 02 do Registro 0150)");
+        //04
+        line.setFieldValue(RegistroF100.COD_ITEM, "Código do item (campo 02 do Registro 0200)");
+        //05
+        line.setFieldValue(RegistroF100.DT_ITEM, data);
+        //06
+        line.setFieldValue(RegistroF100.VL_OPER, 12345678.12);
+        //07
+        line.setFieldValue(RegistroF100.CST_PIS, 12);
+        //08
+        line.setFieldValue(RegistroF100.VL_BC_PIS, 12345678.1234);
+        //09
         line.setFieldValue(RegistroF100.ALIQ_PIS, 12345678.1234);
-        line.setFieldValue(RegistroF100.VL_PIS, 54654546456456456654.02);
-        line.setFieldValue(RegistroF100.CST_COFINS, rm.GeraLongRandom(2));
-        line.setFieldValue(RegistroF100.VL_BC_COFINS, 5564564654654.2315);
-        line.setFieldValue(RegistroF100.ALIQ_COFINS, 56456487.2132);
-        line.setFieldValue(RegistroF100.VL_COFINS, 21132168944.23);
-        line.setFieldValue(RegistroF100.NAT_BC_CRED, rm.GeraStringRandom(2));
-        line.setFieldValue(RegistroF100.IND_Orig_CRED, "t");
-        line.setFieldValue(RegistroF100.COD_CTA, rm.GeraStringRandom(60));
-        line.setFieldValue(RegistroF100.COD_CCUS, rm.GeraStringRandom(60));
-        line.setFieldValue(RegistroF100.DESC_DOC_OPER, rm.GeraStringRandom(255));
+        //10
+        line.setFieldValue(RegistroF100.VL_PIS, 12345678.12);
+        //11
+        line.setFieldValue(RegistroF100.CST_COFINS, 12);
+        //12
+        line.setFieldValue(RegistroF100.VL_BC_COFINS, 12345678.1234);
+        //13
+        line.setFieldValue(RegistroF100.ALIQ_COFINS, 12345678.1234);
+        //14
+        line.setFieldValue(RegistroF100.VL_COFINS, 12345678.12);
+        //15
+        line.setFieldValue(RegistroF100.NAT_BC_CRED, "12");
+        //16
+        line.setFieldValue(RegistroF100.IND_ORIG_CRED, "0");
+        //17
+        line.setFieldValue(RegistroF100.COD_CTA, "Código da conta analítica contábil debitada/creditada");
+        //18
+        line.setFieldValue(RegistroF100.COD_CCUS, "Código do Centro de Custos");
+        //19
+        line.setFieldValue(RegistroF100.DESC_DOC_OPER, "Descrição do Documento/Operação");
 
+        StringBuffer sb = line.getRepresentation();
+                System.out.print(sb);
 
-
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+//        String expected = "|F100|1|(Campo 02 do Registro 0150)|Código do item (campo 02 do Registro 0200)|08022013|12345678,12|12|12345678,1234|12345678,1234|12345678,12|12|12345678,1234|12345678,1234|12345678,12|12|0|Código da conta analítica contábil debitada/creditada|Código do Centro de Custos|Descrição do Documento/Operação|";
+//        assertEquals (expected, sb.toString());
     }
 }

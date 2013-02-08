@@ -1,16 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import br.com.jcomputacao.sped.efd.COFINSCofins.RegistroD505;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  *
@@ -41,16 +33,25 @@ public class RegistroD505Test {
         RegistroD505 reg = new RegistroD505();
         LineModel line = reg.createModel();
 
-        line.setFieldValue(RegistroD505.REG, "0100");
-        line.setFieldValue(RegistroD505.CST_COFINS, 34L);
-        line.setFieldValue(RegistroD505.VL_ITEM, 302.23);
-        line.setFieldValue(RegistroD505.NAT_BC_CRED, "WD");
-        line.setFieldValue(RegistroD505.VL_BC_COFINS, 30232.23);
-        line.setFieldValue(RegistroD505.ALIQ_COFINS, 12345302.1234);
-        line.setFieldValue(RegistroD505.VL_COFINS, 352.33);
-        line.setFieldValue(RegistroD505.COD_CTA, "ASDASDDDD30223");
+        //02
+        line.setFieldValue(RegistroD505.CST_COFINS, 99L);
+        //03
+        line.setFieldValue(RegistroD505.VL_ITEM, 345678911.11);
+        //04
+        line.setFieldValue(RegistroD505.NAT_BC_CRED, "12");
+        //05
+        line.setFieldValue(RegistroD505.VL_BC_COFINS, 5678911.11);
+        //06
+        line.setFieldValue(RegistroD505.ALIQ_COFINS, 12345678.1111);
+        //07
+        line.setFieldValue(RegistroD505.VL_COFINS, 345678911.11);
+        //08
+        line.setFieldValue(RegistroD505.COD_CTA, "Código da conta analítica contábil debitada/creditada");
         
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+        
+//        String expected = "|D505|99|345678911,11|12|5678911,11|12345678,1111|345678911,11|Código da conta analítica contábil debitada/creditada|";
+//        assertEquals (expected, sb.toString());
     }
 }

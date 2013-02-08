@@ -1,18 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 17/11/2011 20:52:13
@@ -44,14 +35,16 @@ public class RegistroF129Test {
         
         RegistroF129 reg = new RegistroF129();
         LineModel line = reg.createModel();
-        Randomize rm = new Randomize();
         
-        line.setFieldValue(RegistroF129.REG, "F001");
-        line.setFieldValue(RegistroF129.NUM_PROC, rm.GeraStringRandom(20));
-        line.setFieldValue(RegistroF129.IND_PROC, "e");        
+        //02
+        line.setFieldValue(RegistroF129.NUM_PROC, "Identif do process");
+        //03
+        line.setFieldValue(RegistroF129.IND_PROC, "9");
         
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+//        String expected = "|F129|Identif do process|9|";
+//        assertEquals(expected, sb.toString());
     }
     
 }

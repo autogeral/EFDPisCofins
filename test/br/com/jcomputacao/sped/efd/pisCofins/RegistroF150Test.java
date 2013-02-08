@@ -1,18 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 17/11/2011 22:42:59
@@ -45,25 +36,36 @@ public class RegistroF150Test {
 
         RegistroF150 reg = new RegistroF150();
         LineModel line = reg.createModel();
-        Randomize rm = new Randomize();
 
+        //03
+        line.setFieldValue(RegistroF150.VL_TOT_EST, 123456.12);
+        //04
+        line.setFieldValue(RegistroF150.EST_IMP, 123456.12);
+        //05
+        line.setFieldValue(RegistroF150.VL_BC_EST, 123456.12);
+        //06
+        line.setFieldValue(RegistroF150.VL_BC_MEN_EST, 123456.12);
+        //07
+        line.setFieldValue(RegistroF150.CST_PIS, 23);
+        //08
+        line.setFieldValue(RegistroF150.ALIQ_PIS, 123456.1234);
+        //09
+        line.setFieldValue(RegistroF150.VL_CRED_PIS, 123456.12);
+        //10
+        line.setFieldValue(RegistroF150.CST_COFINS, 12);
+        //11
+        line.setFieldValue(RegistroF150.ALIQ_COFINS, 123456.1234);
+        //12
+        line.setFieldValue(RegistroF150.VL_CRED_COFINS, 123456.12);
+        //13
+        line.setFieldValue(RegistroF150.DESC_EST, "Descrição do estoque");
+        //14
+        line.setFieldValue(RegistroF150.COD_CTA, "Código da conta analítica contábil debitada/creditada");
 
-        line.setFieldValue(RegistroF150.REG, "F001");
-        line.setFieldValue(RegistroF150.NAT_BC_CRED, "18");
-        line.setFieldValue(RegistroF150.VL_TOT_EST, rm.GeraDoubleRandom(19));
-        line.setFieldValue(RegistroF150.EST_IMP, rm.GeraDoubleRandom(19));
-        line.setFieldValue(RegistroF150.VL_BC_EST, rm.GeraDoubleRandom(19));
-        line.setFieldValue(RegistroF150.VL_BC_MEN_EST, rm.GeraDoubleRandom(19));
-        line.setFieldValue(RegistroF150.CST_PIS, 23l);
-        line.setFieldValue(RegistroF150.ALIQ_PIS, rm.GeraDoubleRandom(8));
-        line.setFieldValue(RegistroF150.VL_CRED_PIS, rm.GeraDoubleRandom(2));
-        line.setFieldValue(RegistroF150.CST_COFINS, rm.GeraLongRandom(2));
-        line.setFieldValue(RegistroF150.ALIQ_COFINS, rm.GeraDoubleRandom(8));
-        line.setFieldValue(RegistroF150.VL_CRED_COFINS, rm.GeraDoubleRandom(2));
-        line.setFieldValue(RegistroF150.DESC_EST, rm.GeraStringRandom(60));
-        line.setFieldValue(RegistroF150.COD_CTA, rm.GeraStringRandom(60));
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
 
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+        String expected = "|F150|18|123456,12|123456,12|123456,12|123456,12|23|123456,1234|123456,12|12|123456,1234|123456,12|Descrição do estoque|Código da conta analítica contábil debitada/creditada|";
+        assertEquals (expected, sb.toString());
     }
 }

@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  *
@@ -40,16 +33,25 @@ public class RegistroD501Test {
         RegistroD501 reg = new RegistroD501();
         LineModel line = reg.createModel();
 
-        line.setFieldValue(RegistroD501.REG, "0100");
+        //02
         line.setFieldValue(RegistroD501.CST_PIS, 34L);
+        //03
         line.setFieldValue(RegistroD501.VL_ITEM, 302.23);
+        //04
         line.setFieldValue(RegistroD501.NAT_BC_CRED, "WD");
+        //05
         line.setFieldValue(RegistroD501.VL_BC_PIS, 30232.23);
+        //06
         line.setFieldValue(RegistroD501.ALIQ_PIS, 12345302.1234);
+        //07
         line.setFieldValue(RegistroD501.VL_PIS, 352.33);
+        //08
         line.setFieldValue(RegistroD501.COD_CTA, "ASDASDDDD3023");
         
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+//
+//        String expected = "|D501|34|302,23|WD|30232,23|12345302,1234|352,33|ASDASDDDD3023|";
+//        assertEquals (expected, sb.toString());
     }
 }

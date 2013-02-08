@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  *
@@ -41,17 +34,26 @@ public class RegistroD601Test {
         RegistroD601 reg = new RegistroD601();
         LineModel line = reg.createModel();
 
-        line.setFieldValue(RegistroD601.REG, "0100");
+        //02
         line.setFieldValue(RegistroD601.COD_CLASS, 1234L);
+        //03
         line.setFieldValue(RegistroD601.VL_ITEM, 1432.12);
+        //04
         line.setFieldValue(RegistroD601.VL_DESC, 1234.53);
+        //05
         line.setFieldValue(RegistroD601.CST_PIS, 14L);
+        //06
         line.setFieldValue(RegistroD601.VL_BC_PIS, 1234.64);
+        //07
         line.setFieldValue(RegistroD601.ALIQ_PIS, 14321234.1234);
+        //08
         line.setFieldValue(RegistroD601.VL_PIS, 1234.34);
-        line.setFieldValue(RegistroD601.COD_CTA, "SF3242FDSAS");
+        //09
+        line.setFieldValue(RegistroD601.COD_CTA, "Código da conta contábil debitada/creditada");
 
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+//        String expected = "|D601|1234|1432,12|1234,53|14|1234,64|14321234,1234|1234,34|Código da conta contábil debitada/creditada|";
+//        assertEquals (expected, sb.toString());
     }
 }
