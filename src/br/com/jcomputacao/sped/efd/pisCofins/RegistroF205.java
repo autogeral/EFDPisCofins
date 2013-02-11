@@ -63,25 +63,48 @@ public class RegistroF205 extends LineArchetype {
         FormatWrapper fw4 = FormatFactory.getDecimalFormatWithPrecision(4);
         fw4.setReplaceComa(false);
         
+        FieldDecimalMaximumLengthArchetype fdm = new FieldDecimalMaximumLengthArchetype(15,2);
+        fdm.setFormat(fw);
+        FieldDecimalMaximumLengthArchetype fdm4 = new FieldDecimalMaximumLengthArchetype(13,4);
+        fdm4.setFormat(fw4);
+        
         //01
         addFieldArchetype(REG, new FieldDefaultArchetype("F205"));
-        addFieldArchetype(VL_CUS_INC_ACUM_ANT, new FieldDecimalMaximumLengthArchetype(20,2));
-        addFieldArchetype(VL_CUS_INC_PER_ESC, new FieldDecimalMaximumLengthArchetype(20,2));
-        addFieldArchetype(VL_CUS_INC_ACUM, new FieldDecimalMaximumLengthArchetype(20,2));
-        addFieldArchetype(VL_EXC_BC_CUS_INC_ACUM, new FieldDecimalMaximumLengthArchetype(20,2));
-        addFieldArchetype(VL_BC_CUS_INC, new FieldDecimalMaximumLengthArchetype(20,2));
+        //02
+                
+        addFieldArchetype(VL_CUS_INC_ACUM_ANT, fdm);
+        //03
+        addFieldArchetype(VL_CUS_INC_PER_ESC, fdm);
+        //04
+        addFieldArchetype(VL_CUS_INC_ACUM, fdm);
+        //05
+        addFieldArchetype(VL_EXC_BC_CUS_INC_ACUM, fdm);
+        //06
+        addFieldArchetype(VL_BC_CUS_INC, fdm);
+        //07
         addFieldArchetype(CST_PIS, new FieldIntegerFixedLengthArchetype(2));
-        addFieldArchetype(ALIQ_PIS, new FieldDecimalMaximumLengthArchetype(8,4));
-        addFieldArchetype(VL_CRED_PIS_ACUM, new FieldDecimalMaximumLengthArchetype(20,2));
-        addFieldArchetype(VL_CRED_PIS_DESC_ANT, new FieldDecimalMaximumLengthArchetype(20,2));
-        addFieldArchetype(VL_CRED_PIS_DESC, new FieldDecimalMaximumLengthArchetype(20,2));
-        addFieldArchetype(VL_CRED_PIS_DESC_FUT, new FieldDecimalMaximumLengthArchetype(20,2));
+        //08
+        addFieldArchetype(ALIQ_PIS, fdm4);
+        //09
+        addFieldArchetype(VL_CRED_PIS_ACUM, fdm);
+        //10
+        addFieldArchetype(VL_CRED_PIS_DESC_ANT, fdm);
+        //11
+        addFieldArchetype(VL_CRED_PIS_DESC, fdm);
+        //12
+        addFieldArchetype(VL_CRED_PIS_DESC_FUT, fdm);
+        //13
         addFieldArchetype(CST_COFINS, new FieldIntegerFixedLengthArchetype(2));
-        addFieldArchetype(ALIQ_COFINS, new FieldDecimalMaximumLengthArchetype(8,4));
-        addFieldArchetype(VL_CRED_COFINS_ACUM, new FieldDecimalMaximumLengthArchetype(20,2));
-        addFieldArchetype(VL_CRED_COFINS_DESC_ANT, new FieldDecimalMaximumLengthArchetype(20,2));
-        addFieldArchetype(VL_CRED_COFINS_DESC, new FieldDecimalMaximumLengthArchetype(20,2));
-        addFieldArchetype(VL_CRED_COFINS_DESC_FUT, new FieldDecimalMaximumLengthArchetype(20,2));
+        //14
+        addFieldArchetype(ALIQ_COFINS, fdm4);
+        //15
+        addFieldArchetype(VL_CRED_COFINS_ACUM, fdm);
+        //16
+        addFieldArchetype(VL_CRED_COFINS_DESC_ANT, fdm);
+        //17
+        addFieldArchetype(VL_CRED_COFINS_DESC, fdm);
+        //18
+        addFieldArchetype(VL_CRED_COFINS_DESC_FUT, fdm);
        
     }
 }
