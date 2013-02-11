@@ -17,7 +17,7 @@ public class RegistroF001 extends LineArchetype {
      *0- Bloco com dados informados;
      * 1- Bloco sem dados informados
      */
-    public static String IND_MOV = "QTD_LIN_A";
+    public static String IND_MOV = "IND_MOV";
 
     public RegistroF001() {
         setName("Abertura do bloco F");
