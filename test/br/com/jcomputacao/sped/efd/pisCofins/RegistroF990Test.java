@@ -3,13 +3,8 @@ package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 24/11/2011 12:00:27
@@ -43,14 +38,15 @@ public class RegistroF990Test {
 
       RegistroF990 reg = new RegistroF990();
         LineModel line = reg.createModel();
-        Randomize rm = new Randomize();
 
 
-        line.setFieldValue(RegistroF990.REG, "F990");
-        line.setFieldValue(RegistroF990.QTD_LIN_F, rm.GeraLongRandom(19));
+        //02
+        line.setFieldValue(RegistroF990.QTD_LIN_F, 150);
+        
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
 
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
-
+//        String expected = "|F990|150|";
+//        assertEquals (expected, sb.toString());
     }
 }

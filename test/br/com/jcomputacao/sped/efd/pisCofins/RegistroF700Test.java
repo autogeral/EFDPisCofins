@@ -3,13 +3,8 @@ package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 24/11/2011 11:12:19
@@ -43,21 +38,27 @@ public class RegistroF700Test {
 
       RegistroF700 reg = new RegistroF700();
         LineModel line = reg.createModel();
-        Randomize rm = new Randomize();
 
+        //02
+        line.setFieldValue(RegistroF700.IND_ORI_DED, 99);
+        //03
+        line.setFieldValue(RegistroF700.IND_NAT_DED, 1);
+        //04
+        line.setFieldValue(RegistroF700.VL_DED_PIS, 123.12);
+        //05
+        line.setFieldValue(RegistroF700.VL_DED_COFINS, 123.12);
+        //06
+        line.setFieldValue(RegistroF700.VL_BC_OPER, 123.12);
+        //07
+        line.setFieldValue(RegistroF700.CNPJ,12345678912345L);
+        //08
+        line.setFieldValue(RegistroF700.INF_COMP, "Informações Complementares do Documento/Operação");
 
-        line.setFieldValue(RegistroF700.REG, "F700");
-        line.setFieldValue(RegistroF700.IND_ORI_DED, rm.GeraLongRandom(2));
-        line.setFieldValue(RegistroF700.IND_NAT_DED, rm.GeraLongRandom(1));
-        line.setFieldValue(RegistroF700.VL_DED_PIS, rm.GeraDoubleRandom(2));
-        line.setFieldValue(RegistroF700.VL_DED_COFINS, rm.GeraDoubleRandom(2));
-        line.setFieldValue(RegistroF700.VL_BC_OPER, rm.GeraDoubleRandom(2));
-        line.setFieldValue(RegistroF700.CNPJ, rm.GeraLongRandom(14));
-        line.setFieldValue(RegistroF700.INF_COMP, rm.GeraStringRandom(90));
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
 
-
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+//        String expected = "|F700|99|1|123,12|123,12|123,12|12345678912345|Informações Complementares do Documento/Operação|";
+//        assertEquals (expected, sb.toString());
 
     }
 }

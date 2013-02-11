@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  *
@@ -40,11 +33,14 @@ public class RegistroM001Test {
         RegistroM001 reg = new RegistroM001();
         LineModel line = reg.createModel();
 
-        line.setFieldValue(RegistroM001.REG, "0100");
+        //02
         line.setFieldValue(RegistroM001.IND_MOV, "1");
             
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+
+        String expected = "|M001|1|";
+        assertEquals (expected, sb.toString());
     }
     
 }

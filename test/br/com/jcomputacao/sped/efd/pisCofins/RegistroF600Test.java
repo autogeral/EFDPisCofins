@@ -5,11 +5,8 @@ import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 
 /**
@@ -44,24 +41,36 @@ public class RegistroF600Test {
 
       RegistroF600 reg = new RegistroF600();
         LineModel line = reg.createModel();
-        Randomize rm = new Randomize();
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
+        Date data = sdf.parse("11022013");
+
+        //02
+        line.setFieldValue(RegistroF600.IND_NAT_RET, 99);
+        //03
+        line.setFieldValue(RegistroF600.DT_RET, data);
+        //04
+        line.setFieldValue(RegistroF600.VL_BC_RET, 123.1234);
+        //05
+        line.setFieldValue(RegistroF600.VL_RET, 123.12);
+        //06
+        line.setFieldValue(RegistroF600.COD_REC, "abcd");
+        //07
+        line.setFieldValue(RegistroF600.IND_NAT_REC, 0);
+        //08
+        line.setFieldValue(RegistroF600.CNPJ, 12345678912345L);
+        //09
+        line.setFieldValue(RegistroF600.VL_RET_PIS, 123.12);
+        //10
+        line.setFieldValue(RegistroF600.VL_RET_COFINS, 123.12);
+        //11
+        line.setFieldValue(RegistroF600.IND_DEC, 0);
 
 
-        line.setFieldValue(RegistroF600.REG, "F600");
-        line.setFieldValue(RegistroF600.IND_NAT_RET, rm.GeraLongRandom(2));
-        line.setFieldValue(RegistroF600.DT_RET, rm.GeraLongRandom(8));
-        line.setFieldValue(RegistroF600.VL_BC_RET, rm.GeraDoubleRandom(4));
-        line.setFieldValue(RegistroF600.VL_RET, rm.GeraDoubleRandom(2));
-        line.setFieldValue(RegistroF600.COD_REC, rm.GeraStringRandom(4));
-        line.setFieldValue(RegistroF600.IND_NAT_REC, rm.GeraLongRandom(1));
-        line.setFieldValue(RegistroF600.CNPJ, rm.GeraLongRandom(1));
-        line.setFieldValue(RegistroF600.VL_RET_PIS, rm.GeraDoubleRandom(2));
-        line.setFieldValue(RegistroF600.VL_RET_COFINS, rm.GeraDoubleRandom(2));
-        line.setFieldValue(RegistroF600.IND_DEC, rm.GeraLongRandom(1));
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
 
-
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+//        String expected = "|F600|99|11022013|123,1234|123,12|abcd|0|12345678912345|123,12|123,12|0|";
+//        assertEquals (expected, sb.toString());
 
     }
 }
