@@ -37,7 +37,7 @@ public class Registro0110Test {
     }
 
     @Test
-    public String linhaRegistro0110Test(){
+    public void Registro0110Test(){
         Registro0110 reg = new Registro0110();
         LineModel line = reg.createModel();
         
@@ -48,13 +48,12 @@ public class Registro0110Test {
         //04
         line.setFieldValue(Registro0110.COD_TIPO_CONT, 2L);
         //05
-        line.setFieldValue(Registro0110.IND_REG_CUM, 2L);
+        line.setFieldValue(Registro0110.IND_REG_CUM, null);
         
        StringBuffer sb = line.getRepresentation();
-       //System.out.print(sb);
-        //String expected = "|0110|2|2|2|2|";
-        //assertEquals (expected, sb.toString());
-       return sb.toString();
+       System.out.print(sb);
+//       String expected = "|0110|2|2|2||";
+//       assertEquals (expected, sb.toString());
     }
 
 }
