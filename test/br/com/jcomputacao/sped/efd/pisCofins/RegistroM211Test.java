@@ -1,16 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 21/11/2011 19:06:25
@@ -45,16 +38,21 @@ public class RegistroM211Test {
         RegistroM211 reg = new RegistroM211();
         LineModel line = reg.createModel();
      
-                
-        line.setFieldValue(RegistroM211.REG, "0100");
-        line.setFieldValue(RegistroM211.IND_TIP_COOP, 12L);
-        line.setFieldValue(RegistroM211.VL_BC_CONT_ANT_EXC_COOP, 2312132.45);
-        line.setFieldValue(RegistroM211.VL_EXC_COOP_GER, 15612348987456.32);        
-        line.setFieldValue(RegistroM211.VL_EXC_ESP_COOP, 12346123456456.66);
-        line.setFieldValue(RegistroM211.VL_BC_CONT, 123456789456123.32);
+        //02
+        line.setFieldValue(RegistroM211.IND_TIP_COOP, 2);
+        //03
+        line.setFieldValue(RegistroM211.VL_BC_CONT_ANT_EXC_COOP, 100000000000.01);
+        //04
+        line.setFieldValue(RegistroM211.VL_EXC_COOP_GER, 100000000000.01);   
+        //05 
+        line.setFieldValue(RegistroM211.VL_EXC_ESP_COOP, 100000000000.01);
+        //06
+        line.setFieldValue(RegistroM211.VL_BC_CONT, 100000000000.01);
         
-        
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+
+//	String expected = "|M211|02|100000000000,01|100000000000,01|100000000000,01|100000000000,01|";
+//	assertEquals (expected, sb.toString());
     }
 }

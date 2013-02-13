@@ -1,16 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 17/11/2011 21:36:53
@@ -45,13 +37,19 @@ public class RegistroM400Test extends Randomize {
         RegistroM400 reg = new RegistroM400();
         LineModel line = reg.createModel();
 
-        line.setFieldValue(RegistroM400.REG, "0100");
+        //02
         line.setFieldValue(RegistroM400.CST_PIS, "12");
-        line.setFieldValue(RegistroM400.VL_TOT_REC, 12345678912345678912.33);
-        line.setFieldValue(RegistroM400.COD_CTA, GeraStringRandom(60));
-        line.setFieldValue(RegistroM400.DESC_COMPL, GeraStringRandom(255));
+        //03
+        line.setFieldValue(RegistroM400.VL_TOT_REC, 100000000000.01);
+        //04
+        line.setFieldValue(RegistroM400.COD_CTA, "Código da conta analítica contábil debitada/creditada.");
+        //05
+        line.setFieldValue(RegistroM400.DESC_COMPL, "Descrição Complementar da Natureza da Receita.");
 
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+
+	String expected = "|M400|12|100000000000,01|Código da conta analítica contábil debitada/creditada.|Descrição Complementar da Natureza da Receita.|";
+	assertEquals (expected, sb.toString());
     }
 }

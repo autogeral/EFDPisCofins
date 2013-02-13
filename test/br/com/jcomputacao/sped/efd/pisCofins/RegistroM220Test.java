@@ -1,18 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 21/11/2011 16:52:03
@@ -47,17 +40,25 @@ public class RegistroM220Test {
         RegistroM220 reg = new RegistroM220();
         LineModel line = reg.createModel();
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
-        Date data = sdf.parse("17121986");
+        Date data = sdf.parse("13022013");
                 
-        line.setFieldValue(RegistroM220.REG, "0100");
+        //02
         line.setFieldValue(RegistroM220.IND_AJ, "1");
-        line.setFieldValue(RegistroM220.VL_AJ, 23123123456789654532.45);
-        line.setFieldValue(RegistroM220.COD_AJ, "23");        
-        line.setFieldValue(RegistroM220.NUM_DOC, "12346......50.......100.....150......200...255");
-        line.setFieldValue(RegistroM220.DESCR_AJ, "++++....Descricao.....+++++");
+        //03
+        line.setFieldValue(RegistroM220.VL_AJ, 100000000000.01);
+        //04
+        line.setFieldValue(RegistroM220.COD_AJ, "23"); 
+        //05
+        line.setFieldValue(RegistroM220.NUM_DOC, "Número do processo, documento ou ato concessório ao qual o ajuste está vinculado, se houver.");
+        //06
+        line.setFieldValue(RegistroM220.DESCR_AJ, "Descrição resumida do ajuste.");
+        //07
         line.setFieldValue(RegistroM220.DT_REF, data);
         
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+
+//	String expected = "|M220|1|100000000000,01|23|Número do processo, documento ou ato concessório ao qual o ajuste está vinculado, se houver.|Descrição resumida do ajuste.|13022013|";
+//	assertEquals (expected, sb.toString());
     }
 }

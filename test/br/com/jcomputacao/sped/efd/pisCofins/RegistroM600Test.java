@@ -1,16 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 17/11/2011 20:00:21
@@ -45,21 +37,35 @@ public class RegistroM600Test {
         RegistroM600 rm = new RegistroM600();
         LineModel line = rm.createModel();
         
-        line.setFieldValue(RegistroM600.REG, "1234");
-        line.setFieldValue(RegistroM600.VL_TOT_CONT_NC_PER, 12304567890123456789.33);
-        line.setFieldValue(RegistroM600.VL_TOT_CRED_DESC, 12345678912345678912.32);
-        line.setFieldValue(RegistroM600.VL_TOT_CRED_DESC_ANT, 12345678901234567890.66);
-        line.setFieldValue(RegistroM600.VL_TOT_CONT_NC_DEV, 12345678.1199);
-        line.setFieldValue(RegistroM600.VL_RET_NC, 123456789012345678999.663);
-        line.setFieldValue(RegistroM600.VL_OUT_DED_NC, 12345678912345678912.3212);
-        line.setFieldValue(RegistroM600.VL_CONT_NC_REC, 12345678901234567890.66);
-        line.setFieldValue(RegistroM600.VL_TOT_CONT_CUM_PER, 12345678901234567809.99);
-        line.setFieldValue(RegistroM600.VL_RET_CUM, 123456789012345678999.66);
-        line.setFieldValue(RegistroM600.VL_OUT_DED_CUM, 12345678912345678912.32);
-        line.setFieldValue(RegistroM600.VL_CONT_CUM_REC, 12345678901234567890.66);
-        line.setFieldValue(RegistroM600.VL_TOT_CONT_REC, 12345678901234567809.99);
+        //02
+        line.setFieldValue(RegistroM600.VL_TOT_CONT_NC_PER, 100000000000.01);
+        //03
+        line.setFieldValue(RegistroM600.VL_TOT_CRED_DESC,100000000000.01);
+        //04
+        line.setFieldValue(RegistroM600.VL_TOT_CRED_DESC_ANT, 300000000000.03);
+        //05
+        line.setFieldValue(RegistroM600.VL_TOT_CONT_NC_DEV, 400000000000.04);
+        //06
+        line.setFieldValue(RegistroM600.VL_RET_NC, 500000000000.05);
+        //07
+        line.setFieldValue(RegistroM600.VL_OUT_DED_NC, 600000000000.06);
+        //08
+        line.setFieldValue(RegistroM600.VL_CONT_NC_REC, 700000000000.07);
+        //09
+        line.setFieldValue(RegistroM600.VL_TOT_CONT_CUM_PER, 900000000000.09);
+        //10
+        line.setFieldValue(RegistroM600.VL_RET_CUM, 100000000000.01);
+        //11
+        line.setFieldValue(RegistroM600.VL_OUT_DED_CUM, 200000000000.02);
+        //12
+        line.setFieldValue(RegistroM600.VL_CONT_CUM_REC, 300000000000.03);
+        //13
+        line.setFieldValue(RegistroM600.VL_TOT_CONT_REC, 400000000000.04);
      
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+
+//	String expected = "|M600|100000000000,01|200000000000,02|300000000000,03|400000000000,04|500000000000,05|600000000000,06|700000000000,07|900000000000,09|100000000000,01|200000000000,02|300000000000,03|400000000000,04|";
+//	assertEquals (expected, sb.toString());
     }
 }

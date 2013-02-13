@@ -46,7 +46,7 @@ public class RegistroF990Test {
         StringBuffer sb = line.getRepresentation();
         System.out.print(sb);
 
-//        String expected = "|F990|150|";
-//        assertEquals (expected, sb.toString());
+        String expected = "|F990|150|";
+        assertEquals (expected, sb.toString());
     }
 }

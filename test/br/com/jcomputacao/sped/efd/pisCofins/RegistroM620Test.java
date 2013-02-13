@@ -1,19 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
+import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 12/11/2011 12:38:11
@@ -48,24 +40,25 @@ public class RegistroM620Test extends Randomize {
         RegistroM620 reg = new RegistroM620();
         LineModel line = reg.createModel();
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
-        Date data = sdf.parse("17121986");
-        line.setFieldValue(RegistroM620.REG, "1234");
-        line.setFieldValue(RegistroM620.IND_AJ, "d");
-        line.setFieldValue(RegistroM620.VL_AJ, 123456789123456789.22);
+        Date data = sdf.parse("13022013");
+        
+        //02
+        line.setFieldValue(RegistroM620.IND_AJ, "0");
+        //03
+        line.setFieldValue(RegistroM620.VL_AJ, 100000000000.01);
+        //04
         line.setFieldValue(RegistroM620.COD_AJ, "12");
-        line.setFieldValue(RegistroM620.NUM_DOC, GeraStringRandom(255));
-        line.setFieldValue(RegistroM620.DESCR_AJ, GeraStringRandom(255));
+        //05
+        line.setFieldValue(RegistroM620.NUM_DOC, "Número do processo, documento ou ato concessório ao qual o ajuste está vinculado, se houver.");
+        //06
+        line.setFieldValue(RegistroM620.DESCR_AJ, "Descrição resumida do ajuste.");
+        //07
         line.setFieldValue(RegistroM620.DT_REF, data);
 
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
 
-
-
-
-
-
-
-
+//	String expected = "|M620|0|100000000000,01|12|Número do processo, documento ou ato concessório ao qual o ajuste está vinculado, se houver.|Descrição resumida do ajuste.|13022013|";
+//	assertEquals (expected, sb.toString());
     }
 }

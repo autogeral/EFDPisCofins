@@ -1,16 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 17/11/2011 19:48:23
@@ -45,21 +37,35 @@ public class RegistroM610Test {
         RegistroM610 rm = new RegistroM610();
         LineModel line = rm.createModel();
         
-        line.setFieldValue(RegistroM610.REG, "1234");
-        line.setFieldValue(RegistroM610.COD_CONT, "12");
-        line.setFieldValue(RegistroM610.VL_REC_BRT, 12345678912345678912.32);
-        line.setFieldValue(RegistroM610.VL_BC_CONT, 12345678901234567890.66);
-        line.setFieldValue(RegistroM610.ALIQ_COFINS, 12345678.1199);
-        line.setFieldValue(RegistroM610.QUANT_BC_COFINS, 123456789012345678999.663);
-        line.setFieldValue(RegistroM610.ALIQ_COFINS_QUANT, 12345678912345678912.3212);
-        line.setFieldValue(RegistroM610.VL_CONT_APUR, 12345678901234567890.66);
-        line.setFieldValue(RegistroM610.VL_AJUS_ACRES, 12345678901234567809.99);
-        line.setFieldValue(RegistroM610.VL_AJUS_REDUC, 123456789012345678999.66);
-        line.setFieldValue(RegistroM610.VL_CONT_DIFER, 12345678912345678912.32);
-        line.setFieldValue(RegistroM610.VL_CONT_DIFER_ANT, 12345678901234567890.66);
-        line.setFieldValue(RegistroM610.VL_CONT_PER, 12345678901234567809.99);
+        //02
+        line.setFieldValue(RegistroM610.COD_CONT, "2");
+        //03
+        line.setFieldValue(RegistroM610.VL_REC_BRT, 200000000000.02);
+        //04
+        line.setFieldValue(RegistroM610.VL_BC_CONT, 300000000000.03);
+        //05
+        line.setFieldValue(RegistroM610.ALIQ_COFINS, 40000000.0004);
+        //06
+        line.setFieldValue(RegistroM610.QUANT_BC_COFINS, 500000000000.005);
+        //07
+        line.setFieldValue(RegistroM610.ALIQ_COFINS_QUANT, 600000000000.0006);
+        //08
+        line.setFieldValue(RegistroM610.VL_CONT_APUR, 700000000000.07);
+        //09
+        line.setFieldValue(RegistroM610.VL_AJUS_ACRES, 800000000000.08);
+        //10
+        line.setFieldValue(RegistroM610.VL_AJUS_REDUC, 900000000000.09);
+        //11
+        line.setFieldValue(RegistroM610.VL_CONT_DIFER, 100000000000.01);
+        //12
+        line.setFieldValue(RegistroM610.VL_CONT_DIFER_ANT, 200000000000.02);
+        //13
+        line.setFieldValue(RegistroM610.VL_CONT_PER, 300000000000.03);
      
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+
+//	String expected = "|M610|2|200000000000,02|300000000000,03|40000000,0004|500000000000,005|600000000000,0006|700000000000,07|800000000000,08|900000000000,09|100000000000,01|200000000000,02|300000000000,03|";
+//	assertEquals (expected, sb.toString());
     }
 }

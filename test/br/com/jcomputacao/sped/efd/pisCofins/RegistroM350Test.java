@@ -1,16 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 17/11/2011 22:18:41
@@ -44,14 +36,22 @@ public class RegistroM350Test {
     public void RegistroM350Test() {
         RegistroM350 reg = new RegistroM350();
         LineModel line = reg.createModel();
-        line.setFieldValue(RegistroM350.REG, "0100");
-        line.setFieldValue(RegistroM350.VL_TOT_FOL, 12345678912345678912.33);
-        line.setFieldValue(RegistroM350.VL_EXC_BC, 12345678912345678912.33);
-        line.setFieldValue(RegistroM350.VL_TOT_BC, 12345678912345678912.33);
-        line.setFieldValue(RegistroM350.ALIQ_PIS_FOL, 123456.33);
-        line.setFieldValue(RegistroM350.VL_TOT_CONT_FOL, 12345678912345678912.33);
+        
+        //02
+        line.setFieldValue(RegistroM350.VL_TOT_FOL, 100000000000.02);
+        //03
+        line.setFieldValue(RegistroM350.VL_EXC_BC, 100000000000.03);
+        //04
+        line.setFieldValue(RegistroM350.VL_TOT_BC, 100000000000.04);
+        //05
+        line.setFieldValue(RegistroM350.ALIQ_PIS_FOL, 100000.05);
+        //06
+        line.setFieldValue(RegistroM350.VL_TOT_CONT_FOL, 100000000000.06);
 
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+
+//	String expected = "|M350|100000000000,02|100000000000,03|100000000000,04|100000,05|100000000000,06|";
+//	assertEquals (expected, sb.toString());
     }
 }

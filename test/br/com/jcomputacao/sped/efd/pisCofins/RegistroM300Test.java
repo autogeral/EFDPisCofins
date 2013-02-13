@@ -1,16 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 17/11/2011 22:35:40
@@ -41,19 +36,33 @@ public class RegistroM300Test {
      * Test of getNome method, of class RegistroM300.
      */
     @Test
-    public void RegistroM300Test() {
+    public void RegistroM300Test() throws ParseException {
         RegistroM300 reg = new RegistroM300();
         LineModel line = reg.createModel();
-        line.setFieldValue(RegistroM300.REG, "0100");
-        line.setFieldValue(RegistroM300.COD_CONT, "fd");
-        line.setFieldValue(RegistroM300.VL_CONT_APUR_DIFER, 12345678912345678912.33);
-        line.setFieldValue(RegistroM300.NAT_CRED_DESC, "vc");
-        line.setFieldValue(RegistroM300.VL_CRED_DESC_DIFER, 12345678912345678912.33);
-        line.setFieldValue(RegistroM300.VL_CONT_DIFER_ANT, 12345678912345678912.33);
-        line.setFieldValue(RegistroM300.PER_APUR, 123456L);
-        line.setFieldValue(RegistroM300.DT_RECEB, 12345678L);
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
+        Date data = sdf.parse ("13022013");
+        SimpleDateFormat sdf1 = new SimpleDateFormat("MMyyyy");
+        Date data1 = sdf1.parse ("022013");
+        
+        //02
+        line.setFieldValue(RegistroM300.COD_CONT, "CD");
+        //03
+        line.setFieldValue(RegistroM300.VL_CONT_APUR_DIFER, 100000000000.01);
+        //04
+        line.setFieldValue(RegistroM300.NAT_CRED_DESC, "01");
+        //05
+        line.setFieldValue(RegistroM300.VL_CRED_DESC_DIFER, 100000000000.01);
+        //06
+        line.setFieldValue(RegistroM300.VL_CONT_DIFER_ANT, 100000000000.01);
+        //07
+        line.setFieldValue(RegistroM300.PER_APUR, data1);
+        //08
+        line.setFieldValue(RegistroM300.DT_RECEB, data);
 
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+
+//	String expected = "|M300|CD|100000000000,01|01|100000000000,01|100000000000,01|022013|13022013|";
+//	assertEquals (expected, sb.toString());
     }
 }

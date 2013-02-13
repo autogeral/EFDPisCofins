@@ -1,16 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 12/11/2011 12:25:12
@@ -45,21 +37,23 @@ public class RegistroM630Test {
         RegistroM630 reg = new RegistroM630();
         LineModel line = reg.createModel();
 
-        line.setFieldValue(RegistroM630.REG, "1234");
+        //02
         line.setFieldValue(RegistroM630.CNPJ, 12345678912345L);
-        line.setFieldValue(RegistroM630.VL_VEND, 123456789123456789.22);
-        line.setFieldValue(RegistroM630.VL_NAO_RECEB, 123456789123456789.22);
-        line.setFieldValue(RegistroM630.VL_CONT_DIF, 123456789123456789.22);
-        line.setFieldValue(RegistroM630.VL_CRED_DIF, 123456789123456789.22);
-        line.setFieldValue(RegistroM630.COD_CRED, "123");
+        //03
+        line.setFieldValue(RegistroM630.VL_VEND, 100000000000.01);
+        //04
+        line.setFieldValue(RegistroM630.VL_NAO_RECEB, 200000000000.02);
+        //05
+        line.setFieldValue(RegistroM630.VL_CONT_DIF, 300000000000.03);
+        //06
+        line.setFieldValue(RegistroM630.VL_CRED_DIF, 400000000000.04);
+        //07
+        line.setFieldValue(RegistroM630.COD_CRED, "COD");
+        
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
 
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
-
-
-
-
-
-
+//	String expected = "|M630|12345678912345|100000000000,01|200000000000,02|300000000000,03|400000000000,04|COD|";
+//	assertEquals (expected, sb.toString());
     }
 }

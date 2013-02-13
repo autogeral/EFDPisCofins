@@ -1,16 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 12/11/2011 11:30:29
@@ -45,12 +37,13 @@ public class RegistroM990Test {
         RegistroM990 reg = new RegistroM990();
         LineModel line = reg.createModel();
         
-        line.setFieldValue(RegistroM990.REG, "1234");
-        line.setFieldValue(RegistroM990.QTD_LIN_M, 1234567891234567891l);
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
+        //02
+        line.setFieldValue(RegistroM990.QTD_LIN_M, 150);
         
-        
-        
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+
+        String expected = "|M990|150|";
+        assertEquals (expected, sb.toString());      
     }
 }
