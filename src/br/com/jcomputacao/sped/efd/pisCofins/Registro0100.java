@@ -54,24 +54,54 @@ public class Registro0100 extends LineArchetype {
         //04
         addFieldArchetype(CRC, new FieldStringMaximumLengthArchetype(15));
         //05
-        addFieldArchetype(CNPJ, new FieldIntegerFixedLengthArchetype(14));
+        FieldIntegerFixedLengthArchetype f05 = new FieldIntegerFixedLengthArchetype(14);
+        f05.setNullableRepresentation("");
+        f05.setFullFillingNullable(false);
+        addFieldArchetype(CNPJ, f05);
         //06
-        addFieldArchetype(CEP, new FieldIntegerFixedLengthArchetype(8));
+        FieldIntegerFixedLengthArchetype f06 = new FieldIntegerFixedLengthArchetype(8);
+        f06.setNullableRepresentation("");
+        f06.setFullFillingNullable(false);
+        addFieldArchetype(CEP, f06);
         //07
-        addFieldArchetype(END, new FieldStringMaximumLengthArchetype(60));
+        FieldStringMaximumLengthArchetype f07 = new FieldStringMaximumLengthArchetype(60);
+        f07.setNullableRepresentation("");
+        f07.setFullFillingNullable(false);
+        addFieldArchetype(END, f07);
         //08
-        addFieldArchetype(NUM, new FieldStringMaximumLengthArchetype(255));
+        FieldStringMaximumLengthArchetype f08 = new FieldStringMaximumLengthArchetype(255);
+        f08.setNullableRepresentation("");
+        f08.setFullFillingNullable(false);
+        addFieldArchetype(NUM, f08);
         //09
-        addFieldArchetype(COMPL, new FieldStringMaximumLengthArchetype(60));
+        FieldStringMaximumLengthArchetype f09 = new FieldStringMaximumLengthArchetype(60);
+        f09.setNullableRepresentation("");
+        f09.setFullFillingNullable(false);
+        addFieldArchetype(COMPL, f09);
         //10
-        addFieldArchetype(BAIRRO, new FieldStringMaximumLengthArchetype(60));
+        FieldStringMaximumLengthArchetype f10 = new FieldStringMaximumLengthArchetype(60);
+        f10.setNullableRepresentation("");
+        f10.setFullFillingNullable(false);
+        addFieldArchetype(BAIRRO, f10);
         //11
-        addFieldArchetype(FONE, new FieldStringFixedLengthArchetype(10));
+        FieldStringFixedLengthArchetype f11 = new FieldStringFixedLengthArchetype(10);
+        f11.setNullableRepresentation("");
+        f11.setFullFillingNullable(false);
+        addFieldArchetype(FONE, f11);
         //12
-        addFieldArchetype(FAX, new FieldStringFixedLengthArchetype(10));
+        FieldStringFixedLengthArchetype f12 = new FieldStringFixedLengthArchetype(10);
+        f12.setNullableRepresentation("");
+        f12.setFullFillingNullable(false);
+        addFieldArchetype(FAX, f12);
         //13
-        addFieldArchetype(EMAIL, new FieldStringMaximumLengthArchetype(255));
+        FieldStringMaximumLengthArchetype f13 = new FieldStringMaximumLengthArchetype(255);
+        f13.setNullableRepresentation("");
+        f13.setFullFillingNullable(false);
+        addFieldArchetype(EMAIL, f13);
         //14
-        addFieldArchetype(COD_MUN, new FieldIntegerFixedLengthArchetype(7));
+        FieldIntegerFixedLengthArchetype f14 = new FieldIntegerFixedLengthArchetype(7);
+        f14.setNullableRepresentation("");
+        f14.setFullFillingNullable(false);
+        addFieldArchetype(COD_MUN, f14);
     }
 }

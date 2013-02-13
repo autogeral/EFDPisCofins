@@ -47,15 +47,19 @@ public class Registro0110 extends LineArchetype {
     public Registro0110() {
         setName("Regimes de apuração da contribuição social e de apropriação de crédito");
         setDelimiter("|");
+        
+        FieldIntegerFixedLengthArchetype fdi = new FieldIntegerFixedLengthArchetype(1);
+        fdi.setNullableRepresentation("");
+        fdi.setFullFillingNullable(false);
         //01
         addFieldArchetype(REG, new FieldDefaultArchetype("0110"));
         //02
         addFieldArchetype(COD_INC_TRIB, new FieldIntegerFixedLengthArchetype(1));
         //03
-        addFieldArchetype(IND_APRO_CRED, new FieldIntegerFixedLengthArchetype(1));
+        addFieldArchetype(IND_APRO_CRED, fdi);
         //04
-        addFieldArchetype(COD_TIPO_CONT, new FieldIntegerFixedLengthArchetype(1));
+        addFieldArchetype(COD_TIPO_CONT, fdi);
         //05
-        addFieldArchetype(IND_REG_CUM, new FieldIntegerFixedLengthArchetype(1));
+        addFieldArchetype(IND_REG_CUM, fdi);
     }
 }
