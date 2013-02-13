@@ -83,9 +83,15 @@ public class Registro0000 extends LineArchetype implements EfdPisCofinsRegistro 
         //03
         addFieldArchetype(TIPO_ESCRIT, new FieldIntegerFixedLengthArchetype(1));
         //04
-        addFieldArchetype(IND_SIT_ESP, new FieldIntegerFixedLengthArchetype(1));
+        FieldIntegerFixedLengthArchetype f04 = new FieldIntegerFixedLengthArchetype(1);
+        f04.setNullableRepresentation("");
+        f04.setFullFillingNullable(false);
+        addFieldArchetype(IND_SIT_ESP, f04);
         //05
-        addFieldArchetype(NUM_REC_ANTERIOR, new FieldStringFixedLengthArchetype(41));
+        FieldStringFixedLengthArchetype f05 = new FieldStringFixedLengthArchetype(41);
+        f05.setNullableRepresentation("");
+        f05.setFullFillingNullable(false);
+        addFieldArchetype(NUM_REC_ANTERIOR, f05);
         //06
         addFieldArchetype(DT_INI, new FieldDateFixedLengthArchetype("ddMMyyyy"));
         //07
@@ -94,15 +100,21 @@ public class Registro0000 extends LineArchetype implements EfdPisCofinsRegistro 
         addFieldArchetype(NOME, new FieldStringMaximumLengthArchetype(100));
         //09
         addFieldArchetype(CNPJ, new FieldIntegerFixedLengthArchetype(14));
-        //09
-        addFieldArchetype(UF, new FieldStringFixedLengthArchetype(2));
         //10
-        addFieldArchetype(COD_MUN, new FieldIntegerFixedLengthArchetype(7));
+        addFieldArchetype(UF, new FieldStringFixedLengthArchetype(2));
         //11
-        addFieldArchetype(SUFRAMA, new FieldStringFixedLengthArchetype(9));
+        addFieldArchetype(COD_MUN, new FieldIntegerFixedLengthArchetype(7));
         //12
-        addFieldArchetype(IND_NAT_PJ, new FieldIntegerFixedLengthArchetype(2));
+        FieldStringFixedLengthArchetype f12 = new FieldStringFixedLengthArchetype(9);
+        f12.setNullableRepresentation("");
+        f12.setFullFillingNullable(false);
+        addFieldArchetype(SUFRAMA, f12);
         //13
+        FieldIntegerFixedLengthArchetype f13 = new FieldIntegerFixedLengthArchetype(2);
+        f13.setNullableRepresentation("");
+        f13.setFullFillingNullable(false);
+        addFieldArchetype(IND_NAT_PJ, f13);
+        //14
         addFieldArchetype(IND_ATIV, new FieldIntegerFixedLengthArchetype(1));
     }
 }

@@ -40,6 +40,12 @@ public class RegistroC381 extends LineArchetype{
         FormatWrapper fw = FormatFactory.getFormat(FormatType.DECIMAL);
         fw.setReplaceComa(false);
         
+        FormatWrapper fw3 = FormatFactory.getDecimalFormatWithPrecision(3);
+        fw3.setReplaceComa(false);
+        
+        FormatWrapper fw4 = FormatFactory.getDecimalFormatWithPrecision(4);
+        fw4.setReplaceComa(false);
+        
         //01
         addFieldArchetype(REG, new FieldDefaultArchetype("C381"));
         //02
@@ -57,20 +63,20 @@ public class RegistroC381 extends LineArchetype{
         f05.setFullFillingNullable(false);
         addFieldArchetype(VL_BC_PIS, f05);
         //06
-        FieldDecimalMaximumLengthArchetype f06 = new FieldDecimalMaximumLengthArchetype(12,4);
-        f06.setFormat(fw);
+        FieldDecimalMaximumLengthArchetype f06 = new FieldDecimalMaximumLengthArchetype(13,4);
+        f06.setFormat(fw4);
         f06.setNullableRepresentation("");
         f06.setFullFillingNullable(false);
         addFieldArchetype(ALIQ_PIS, f06);
         //07
         FieldDecimalMaximumLengthArchetype f07 = new FieldDecimalMaximumLengthArchetype(16,3);
-        f07.setFormat(fw);
+        f07.setFormat(fw3);
         f07.setNullableRepresentation("");
         f07.setFullFillingNullable(false);
         addFieldArchetype(QUANT_BC_PIS, f07);
         //08
-        FieldDecimalMaximumLengthArchetype f08 = new FieldDecimalMaximumLengthArchetype(15,2);
-        f08.setFormat(fw);
+        FieldDecimalMaximumLengthArchetype f08 = new FieldDecimalMaximumLengthArchetype(17,4);
+        f08.setFormat(fw4);
         f08.setNullableRepresentation("");
         f08.setFullFillingNullable(false);
         addFieldArchetype(ALIQ_PIS_QUANT, f08);

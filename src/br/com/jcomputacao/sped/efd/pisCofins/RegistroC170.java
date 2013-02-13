@@ -95,6 +95,15 @@ public class RegistroC170 extends LineArchetype{
         
         FormatWrapper fw = FormatFactory.getFormat(FormatType.DECIMAL);
         fw.setReplaceComa(false);
+        
+        FormatWrapper fw3 = FormatFactory.getDecimalFormatWithPrecision(3);
+        fw3.setReplaceComa(false);
+        
+        FormatWrapper fw4 = FormatFactory.getDecimalFormatWithPrecision(4);
+        fw4.setReplaceComa(false);
+        
+        FormatWrapper fw5 = FormatFactory.getDecimalFormatWithPrecision(5);
+        fw5.setReplaceComa(false);
                 
         setName("Complemento do documento - itens do documento (códigos 01, 1B e 55)");
         setDelimiter("|");
@@ -111,7 +120,7 @@ public class RegistroC170 extends LineArchetype{
         addFieldArchetype(DESCR_COMPL, f04);
         //05
         FieldDecimalMaximumLengthArchetype f05 = new FieldDecimalMaximumLengthArchetype(15,5);
-        f05.setFormat(fw);
+        f05.setFormat(fw5);
         f05.setNullableRepresentation("");
         f05.setFullFillingNullable(false);
         addFieldArchetype(QTD, f05);
@@ -170,7 +179,7 @@ public class RegistroC170 extends LineArchetype{
         f16.setFullFillingNullable(false);
         addFieldArchetype(VL_BC_ICMS_ST, f16);
         //17
-        FieldDecimalMaximumLengthArchetype f17 = new FieldDecimalMaximumLengthArchetype(8,2);
+        FieldDecimalMaximumLengthArchetype f17 = new FieldDecimalMaximumLengthArchetype(9,2);
         f17.setFormat(fw);
         f17.setNullableRepresentation("");
         f17.setFullFillingNullable(false);
@@ -203,7 +212,7 @@ public class RegistroC170 extends LineArchetype{
         f22.setFullFillingNullable(false);
         addFieldArchetype(VL_BC_IPI, f22);
         //23
-        FieldDecimalMaximumLengthArchetype f23 = new FieldDecimalMaximumLengthArchetype(8,2);
+        FieldDecimalMaximumLengthArchetype f23 = new FieldDecimalMaximumLengthArchetype(9,2);
         f23.setFormat(fw);
         f23.setNullableRepresentation("");
         f23.setFullFillingNullable(false);
@@ -223,20 +232,20 @@ public class RegistroC170 extends LineArchetype{
         f26.setFullFillingNullable(false);
         addFieldArchetype(VL_BC_PIS, f26);
         //27
-        FieldDecimalMaximumLengthArchetype f27 = new FieldDecimalMaximumLengthArchetype(12,4);
-        f27.setFormat(fw);
+        FieldDecimalMaximumLengthArchetype f27 = new FieldDecimalMaximumLengthArchetype(13,4);
+        f27.setFormat(fw4);
         f27.setNullableRepresentation("");
         f27.setFullFillingNullable(false);
         addFieldArchetype(ALIQ_PIS, f27);
         //28
-        FieldDecimalMaximumLengthArchetype f28 = new FieldDecimalMaximumLengthArchetype(15,3);
-        f28.setFormat(fw);
+        FieldDecimalMaximumLengthArchetype f28 = new FieldDecimalMaximumLengthArchetype(16,3);
+        f28.setFormat(fw3);
         f28.setNullableRepresentation("");
         f28.setFullFillingNullable(false);
         addFieldArchetype(QUANT_BC_PIS, f28);
         //29
         FieldDecimalMaximumLengthArchetype f29 = new FieldDecimalMaximumLengthArchetype(17,4);
-        f29.setFormat(fw);
+        f29.setFormat(fw4);
         f29.setNullableRepresentation("");
         f29.setFullFillingNullable(false);
         addFieldArchetype(ALIQ_PIS_QUANT, f29);
@@ -256,19 +265,19 @@ public class RegistroC170 extends LineArchetype{
         addFieldArchetype(VL_BC_COFINS, f32);
         //33
         FieldDecimalMaximumLengthArchetype f33 = new FieldDecimalMaximumLengthArchetype(13,4);
-        f33.setFormat(fw);
+        f33.setFormat(fw4);
         f33.setNullableRepresentation("");
         f33.setFullFillingNullable(false);
         addFieldArchetype(ALIQ_COFINS, f33);
         //34
         FieldDecimalMaximumLengthArchetype f34 =  new FieldDecimalMaximumLengthArchetype(16,3);
-        f34.setFormat(fw);
+        f34.setFormat(fw3);
         f34.setNullableRepresentation("");
         f34.setFullFillingNullable(false);
         addFieldArchetype(QUANT_BC_COFINS, f34);
         //35
         FieldDecimalMaximumLengthArchetype f35 = new FieldDecimalMaximumLengthArchetype(17,4);
-        f35.setFormat(fw);
+        f35.setFormat(fw4);
         f35.setNullableRepresentation("");
         f35.setFullFillingNullable(false);
         addFieldArchetype(ALIQ_COFINS_QUANT, f35);

@@ -42,9 +42,12 @@ public class RegistroC185 extends LineArchetype{
        
        FormatWrapper fw = FormatFactory.getFormat(FormatType.DECIMAL);
        fw.setReplaceComa(false);
-//       ((NumberFormat)fw.getInternalFormat()).setMinimumFractionDigits(4);
-//       ((NumberFormat)fw.getInternalFormat()).setMinimumFractionDigits(4);
-       
+
+       FormatWrapper fw3 = FormatFactory.getDecimalFormatWithPrecision(3);
+       fw3.setReplaceComa(false);
+        
+       FormatWrapper fw4 = FormatFactory.getDecimalFormatWithPrecision(4);
+       fw4.setReplaceComa(false);
        
        //01
        addFieldArchetype(REG, new FieldDefaultArchetype("C185"));
@@ -69,20 +72,20 @@ public class RegistroC185 extends LineArchetype{
        f06.setFullFillingNullable(false);
        addFieldArchetype(VL_BC_COFINS, f06);
        //07
-       FieldDecimalMaximumLengthArchetype f07 = new FieldDecimalMaximumLengthArchetype(12,4);
-       f07.setFormat(fw);
+       FieldDecimalMaximumLengthArchetype f07 = new FieldDecimalMaximumLengthArchetype(13,4);
+       f07.setFormat(fw4);
        f07.setNullableRepresentation("");
        f07.setFullFillingNullable(false);
        addFieldArchetype(ALIQ_COFINS, f07);
        //08
        FieldDecimalMaximumLengthArchetype f08 = new FieldDecimalMaximumLengthArchetype(16,3);
-       f08.setFormat(fw);
+       f08.setFormat(fw3);
        f08.setNullableRepresentation("");
        f08.setFullFillingNullable(false);
        addFieldArchetype(QUANT_BC_COFINS, f08);
        //09
        FieldDecimalMaximumLengthArchetype f09 = new FieldDecimalMaximumLengthArchetype(17,4);
-       f09.setFormat(fw);
+       f09.setFormat(fw4);
        f09.setNullableRepresentation("");
        f09.setFullFillingNullable(false);
        addFieldArchetype(ALIQ_COFINS_QUANT, f09);

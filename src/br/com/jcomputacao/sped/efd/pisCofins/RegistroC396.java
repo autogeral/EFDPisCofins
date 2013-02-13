@@ -51,6 +51,8 @@ public class RegistroC396 extends LineArchetype implements EfdPisCofinsRegistro 
         FormatWrapper fw = FormatFactory.getFormat(FormatType.DECIMAL);
         fw.setReplaceComa(false);
         
+        FormatWrapper fw4 = FormatFactory.getDecimalFormatWithPrecision(4);
+        fw4.setReplaceComa(false);
         //01
         addFieldArchetype(REG, new FieldDefaultArchetype("C396"));
         //02
@@ -76,8 +78,8 @@ public class RegistroC396 extends LineArchetype implements EfdPisCofinsRegistro 
         f07.setFullFillingNullable(false);
         addFieldArchetype(VL_BC_PIS, f07);
         //08
-        FieldDecimalFixedLengthArchetype f08 = new FieldDecimalFixedLengthArchetype(12,4);
-        f08.setFormat(fw);
+        FieldDecimalMaximumLengthArchetype f08 = new FieldDecimalMaximumLengthArchetype(13,4);
+        f08.setFormat(fw4);
         f08.setNullableRepresentation("");
         f08.setFullFillingNullable(false);
         addFieldArchetype(ALIQ_PIS, f08);
@@ -96,8 +98,8 @@ public class RegistroC396 extends LineArchetype implements EfdPisCofinsRegistro 
         f11.setFullFillingNullable(false);
         addFieldArchetype(VL_BC_COFINS, f11);
         //12
-        FieldDecimalMaximumLengthArchetype f12 = new FieldDecimalMaximumLengthArchetype(12,4);
-        f12.setFormat(fw);
+        FieldDecimalMaximumLengthArchetype f12 = new FieldDecimalMaximumLengthArchetype(13,4);
+        f12.setFormat(fw4);
         f12.setNullableRepresentation("");
         f12.setFullFillingNullable(false);
         addFieldArchetype(ALIQ_COFINS, f12);

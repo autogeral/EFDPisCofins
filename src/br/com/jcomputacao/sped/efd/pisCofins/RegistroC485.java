@@ -43,6 +43,12 @@ public class RegistroC485 extends LineArchetype{
         FormatWrapper fw = FormatFactory.getFormat(FormatType.DECIMAL);
         fw.setReplaceComa(false);
         
+        FormatWrapper fw3 = FormatFactory.getDecimalFormatWithPrecision(3);
+        fw3.setReplaceComa(false);
+        
+        FormatWrapper fw4 = FormatFactory.getDecimalFormatWithPrecision(4);
+        fw4.setReplaceComa(false);
+        
         //01
         addFieldArchetype(REG, new FieldDefaultArchetype("C485"));
         //02
@@ -58,20 +64,20 @@ public class RegistroC485 extends LineArchetype{
         f04.setFullFillingNullable(false);
         addFieldArchetype(VL_BC_COFINS, f04);
         //05
-        FieldDecimalMaximumLengthArchetype f05 = new FieldDecimalMaximumLengthArchetype(12,4);
-        f05.setFormat(fw);
+        FieldDecimalMaximumLengthArchetype f05 = new FieldDecimalMaximumLengthArchetype(13,4);
+        f05.setFormat(fw4);
         f05.setNullableRepresentation("");
         f05.setFullFillingNullable(false);
         addFieldArchetype(ALIQ_COFINS, f05);
         //06
         FieldDecimalMaximumLengthArchetype f06 = new FieldDecimalMaximumLengthArchetype(16,3);
-        f06.setFormat(fw);
+        f06.setFormat(fw3);
         f06.setNullableRepresentation("");
         f06.setFullFillingNullable(false);
         addFieldArchetype(QUANT_BC_COFINS, f06);
         //07
         FieldDecimalMaximumLengthArchetype f07 = new FieldDecimalMaximumLengthArchetype(17,4);
-        f07.setFormat(fw);
+        f07.setFormat(fw4);
         f07.setNullableRepresentation("");
         f07.setFullFillingNullable(false);
         addFieldArchetype(ALIQ_COFINS_QUANT, f07);

@@ -42,6 +42,13 @@ public class RegistroC191 extends LineArchetype{
         setDelimiter("|");
         FormatWrapper fw = FormatFactory.getFormat(FormatType.DECIMAL);
         fw.setReplaceComa(false);
+        
+        FormatWrapper fw3 = FormatFactory.getDecimalFormatWithPrecision(3);
+        fw3.setReplaceComa(false);
+        
+        FormatWrapper fw4 = FormatFactory.getDecimalFormatWithPrecision(4);
+        fw4.setReplaceComa(false);
+        
         //01
         addFieldArchetype(REG, new FieldDefaultArchetype("C191"));
         //02
@@ -63,16 +70,16 @@ public class RegistroC191 extends LineArchetype{
         f07.setFormat(fw);
         addFieldArchetype(VL_BC_PIS, f07);
         //08
-        FieldDecimalMaximumLengthArchetype f08 = new FieldDecimalMaximumLengthArchetype(12,4);
-        f08.setFormat(fw);
+        FieldDecimalMaximumLengthArchetype f08 = new FieldDecimalMaximumLengthArchetype(13,4);
+        f08.setFormat(fw4);
         addFieldArchetype(ALIQ_PIS, f08);
         //09
         FieldDecimalMaximumLengthArchetype f09 =  new FieldDecimalMaximumLengthArchetype(16,3);
-        f09.setFormat(fw);
+        f09.setFormat(fw3);
         addFieldArchetype(QUANT_BC_PIS, f09);
         //10
         FieldDecimalMaximumLengthArchetype f10 = new FieldDecimalMaximumLengthArchetype(17,4);
-        f10.setFormat(fw);
+        f10.setFormat(fw4);
         addFieldArchetype(ALIQ_PIS_QUANT, f10);
         //11
         FieldDecimalMaximumLengthArchetype f11 = new FieldDecimalMaximumLengthArchetype(17,2);
