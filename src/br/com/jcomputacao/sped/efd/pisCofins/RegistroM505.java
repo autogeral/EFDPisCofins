@@ -1,23 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
-import br.com.jcomputacao.aristoteles.field.FieldDecimalMaximumLengthArchetype;
-import br.com.jcomputacao.aristoteles.field.FieldIntegerMaximumLengthArchetype;
-import br.com.jcomputacao.aristoteles.field.FieldStringMaximumLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.*;
+import br.com.jcomputacao.aristoteles.format.FormatFactory;
+import br.com.jcomputacao.aristoteles.format.FormatType;
+import br.com.jcomputacao.aristoteles.format.FormatWrapper;
 import br.com.jcomputacao.aristoteles.line.LineArchetype;
 
 /**
  * 17/11/2011 20:14:12
  * @author rafael.galvao
  */
-public class RegistroM505 extends LineArchetype implements EfdPisCofinsRegistro {
-
-    public String getNome() {
-     return "DETALHAMENTO DA BASE DE CALCULO DO CRÉDITO APURADO NO PERÍODO – COFINS";
-    }
+public class RegistroM505 extends LineArchetype{
     
     public static String REG = "REG";
     public static String NAT_BC_CRED = "NAT_BC_CRED";
@@ -31,15 +24,45 @@ public class RegistroM505 extends LineArchetype implements EfdPisCofinsRegistro 
     public static String DESC_CRED = "DESC_CRED";
     
     public RegistroM505(){
-        addFieldArchetype(REG, new FieldStringMaximumLengthArchetype(4));
-        addFieldArchetype(NAT_BC_CRED, new FieldStringMaximumLengthArchetype(2));
-        addFieldArchetype(CST_COFINS, new FieldIntegerMaximumLengthArchetype(2));
-        addFieldArchetype(VL_BC_COFINS_TOT, new FieldDecimalMaximumLengthArchetype(20,2));
-        addFieldArchetype(VL_BC_COFINS_CUM, new FieldDecimalMaximumLengthArchetype(20,2));
-        addFieldArchetype(VL_BC_COFINS_NC, new FieldDecimalMaximumLengthArchetype(20,2));
-        addFieldArchetype(VL_BC_COFINS, new FieldDecimalMaximumLengthArchetype(20,2));
-        addFieldArchetype(QUANT_BC_COFINS_TOT, new FieldDecimalMaximumLengthArchetype(20,3));
-        addFieldArchetype(QUANT_BC_COFINS, new FieldDecimalMaximumLengthArchetype(20,3));
-        addFieldArchetype(DESC_CRED, new FieldStringMaximumLengthArchetype(60));
+        setName("Detalhamento da base de cálculo do crédito apurado no período - Cofins");
+        setDelimiter("|");
+        
+        FormatWrapper fw = FormatFactory.getFormat(FormatType.DECIMAL);
+        fw.setReplaceComa(false);
+        
+        FormatWrapper fw3 = FormatFactory.getDecimalFormatWithPrecision(3);
+        fw3.setReplaceComa(false);
+        
+        FieldDecimalMaximumLengthArchetype fdm = new FieldDecimalMaximumLengthArchetype(15,2);
+        fdm.setFormat(fw);
+        fdm.setNullableRepresentation("");
+        fdm.setFullFillingNullable(false);
+        FieldDecimalMaximumLengthArchetype fdm3 = new FieldDecimalMaximumLengthArchetype(16,3);
+        fdm3.setFormat(fw3);
+        fdm3.setNullableRepresentation("");
+        fdm3.setFullFillingNullable(false);
+        //01
+        addFieldArchetype(REG, new FieldDefaultArchetype("M505"));
+        //02
+        addFieldArchetype(NAT_BC_CRED, new FieldStringFixedLengthArchetype(2));
+        //03
+        addFieldArchetype(CST_COFINS, new FieldIntegerFixedLengthArchetype(2));
+        //04
+        addFieldArchetype(VL_BC_COFINS_TOT, fdm);
+        //05
+        addFieldArchetype(VL_BC_COFINS_CUM, fdm);
+        //06
+        addFieldArchetype(VL_BC_COFINS_NC, fdm);
+        //07
+        addFieldArchetype(VL_BC_COFINS, fdm);
+        //08
+        addFieldArchetype(QUANT_BC_COFINS_TOT, fdm3);
+        //09
+        addFieldArchetype(QUANT_BC_COFINS, fdm3);
+        //10
+        FieldStringMaximumLengthArchetype f10 = new FieldStringMaximumLengthArchetype(60);
+        f10.setNullableRepresentation("");
+        f10.setFullFillingNullable(false);
+        addFieldArchetype(DESC_CRED, f10);
     }
 }

@@ -1,9 +1,6 @@
 package br.com.jcomputacao.sped.efd.pisCofins;
 
-import br.com.jcomputacao.aristoteles.field.FieldDecimalMaximumLengthArchetype;
-import br.com.jcomputacao.aristoteles.field.FieldDefaultArchetype;
-import br.com.jcomputacao.aristoteles.field.FieldIntegerFixedLengthArchetype;
-import br.com.jcomputacao.aristoteles.field.FieldStringMaximumLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.*;
 import br.com.jcomputacao.aristoteles.format.FormatFactory;
 import br.com.jcomputacao.aristoteles.format.FormatType;
 import br.com.jcomputacao.aristoteles.format.FormatWrapper;
@@ -75,12 +72,16 @@ public class RegistroM100 extends LineArchetype {
         FormatWrapper fw4 = FormatFactory.getDecimalFormatWithPrecision(4);
         fw4.setReplaceComa(false);
         
+        FieldDecimalMaximumLengthArchetype fdm = new FieldDecimalMaximumLengthArchetype(15,2);
+        fdm.setFormat(fw);
+        
+        
         //01
         addFieldArchetype(REG, new FieldDefaultArchetype("M100"));
         //02
         addFieldArchetype(COD_CRED, new FieldStringMaximumLengthArchetype(3));
         //03
-        addFieldArchetype(COD_CRED, new FieldIntegerFixedLengthArchetype(1));
+        addFieldArchetype(IND_CRED_ORI, new FieldIntegerFixedLengthArchetype(1));
         //04
         FieldDecimalMaximumLengthArchetype f04 = new FieldDecimalMaximumLengthArchetype(15,2);
         f04.setFormat(fw);
@@ -88,7 +89,43 @@ public class RegistroM100 extends LineArchetype {
         f04.setFullFillingNullable(false);
         addFieldArchetype(VL_BC_PIS, f04);
         //05
-        
+        FieldDecimalMaximumLengthArchetype f05 = new FieldDecimalMaximumLengthArchetype(13,4);
+        f05.setFormat(fw4);
+        f05.setNullableRepresentation("");
+        f05.setFullFillingNullable(false);
+        addFieldArchetype(ALIQ_PIS, f05);
+        //06
+        FieldDecimalMaximumLengthArchetype f06 = new FieldDecimalMaximumLengthArchetype(16,3);
+        f06.setFormat(fw3);
+        f06.setNullableRepresentation("");
+        f06.setFullFillingNullable(false);
+        addFieldArchetype(QUANT_BC_PIS, f06);
+        //07
+        FieldDecimalMaximumLengthArchetype f07 = new FieldDecimalMaximumLengthArchetype(17,4);
+        f07.setFormat(fw4);
+        f07.setNullableRepresentation("");
+        f07.setFullFillingNullable(false);
+        addFieldArchetype(ALIQ_PIS_QUANT, f07);
+        //08
+        addFieldArchetype(VL_CRED, fdm);
+        //09
+        addFieldArchetype(VL_AJUS_ACRES, fdm);
+        //10
+        addFieldArchetype(VL_AJUS_REDUC, fdm);
+        //11
+        addFieldArchetype(VL_CRED_DIF, fdm);
+        //12
+        addFieldArchetype(VL_CRED_DISP, fdm);
+        //13
+        addFieldArchetype(IND_DESC_CRED, new FieldStringFixedLengthArchetype(1));
+        //14
+        FieldDecimalMaximumLengthArchetype f14 = new FieldDecimalMaximumLengthArchetype(15,2);
+        f14.setFormat(fw);
+        f14.setNullableRepresentation("");
+        f14.setFullFillingNullable(false);
+        addFieldArchetype(VL_CRED_DESC, f14);
+        //15
+        addFieldArchetype(SLD_CRED, fdm);
     }
     
 }
