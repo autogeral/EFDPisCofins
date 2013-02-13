@@ -57,7 +57,7 @@ public class RegistroC385Test {
 
         StringBuffer sb = line.getRepresentation();
         System.out.println(sb);
-//        String expected = "|C385|45|Código do item (campo 02 do Registro 0200)|0,00||678,1234|8911,111|78911,1221|8911,21|Código da conta analítica contábil debitada/creditada|";
-//        assertEquals (expected, sb.toString());
+        String expected = "|C385|45|Código do item (campo 02 do Registro 0200)|0,00||678,1234|8911,111|78911,1221|8911,21|Código da conta analítica contábil debitada/creditada|";
+        assertEquals (expected, sb.toString());
     }
 }

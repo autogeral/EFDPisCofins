@@ -41,7 +41,7 @@ public class RegistroC485Test {
         //04
         line.setFieldValue(RegistroC485.VL_BC_COFINS, null);
         //05
-        line.setFieldValue(RegistroC485.ALIQ_COFINS, null);
+        line.setFieldValue(RegistroC485.ALIQ_COFINS, 10000000.0001);
         //06
         line.setFieldValue(RegistroC485.QUANT_BC_COFINS, 122.111);
         //07
@@ -55,7 +55,7 @@ public class RegistroC485Test {
         
         StringBuffer sb = line.getRepresentation();
         System.out.print(sb);
-//        String expected = "|C485|99|78911,11|||122,111|21,1111|678911,11|Código do item (campo 02 do Registro 0200)|Código da conta analítica contábil debitada/creditada|";
+//        String expected = "|C485|99|78911,11||10000000,0001|122,111|21,1111|678911,11|Código do item (campo 02 do Registro 0200)|Código da conta analítica contábil debitada/creditada|";
 //        assertEquals (expected, sb.toString());
     }
 }

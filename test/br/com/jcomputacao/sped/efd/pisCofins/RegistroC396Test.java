@@ -51,7 +51,7 @@ public class RegistroC396Test {
         //07
         line.setFieldValue(RegistroC396.VL_BC_PIS,567890.99);
         //08
-        line.setFieldValue(RegistroC396.ALIQ_PIS,12345678.9901);
+        line.setFieldValue(RegistroC396.ALIQ_PIS, 12345678.9901);
         //09
         line.setFieldValue(RegistroC396.VL_PIS,890.91);
         //10
@@ -67,7 +67,8 @@ public class RegistroC396Test {
         
         StringBuffer sb = line.getRepresentation();
         System.out.println(sb);
-//        String expected = "|C396|Código do item (campo 02 do Registro 0200)|67890,99||AA|12|567890,99|012345678,9901|890,91|12|890,99|12345678,9901|12890,99|Código da conta analítica contábil debitada/creditada|";
+//        String expected = "|C396|Código do item (campo 02 do Registro 0200)|67890,99||AA|12|567890,99|12345678,9901|890,91|12|890,99|12345678,9901|12890,99|Código da conta analítica contábil debitada/creditada|";
+//        System.out.println(expected);
 //        assertEquals (expected, sb.toString());
     }   
 }

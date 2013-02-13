@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
@@ -38,7 +34,7 @@ public class Registro0100Test {
     }
 
     @Test
-    public String linhaRegistro0100Test()  throws ParseException {
+    public void Registro0100Test()  throws ParseException {
         Registro0100 reg = new Registro0100();
         LineModel line = reg.createModel();
         
@@ -70,10 +66,9 @@ public class Registro0100Test {
         line.setFieldValue(Registro0100.COD_MUN, 1234576L);
 
         StringBuffer sb = line.getRepresentation();
-        //String expected = "|0100|NOME DO CONTABILISTA|12312312319|aaaaaaaaaaaaaaa|11111111111111|22222222|Rua Doutor Octaviano Pereira Mendes|33|1º andar|Centro|1140237777|1140232777|jennifer.santos@autogeral.com.br|1234576|";
-        //System.out.print(sb);
-        //assertEquals(expected, sb.toString());
-        return sb.toString();
+        String expected = "|0100|NOME DO CONTABILISTA|12312312319|registro no crc|11111111111111|22222222|Rua Doutor Octaviano Pereira Mendes|33|1º andar|Centro|1140237777|1140232777|jennifer.santos@autogeral.com.br|1234576|";
+        System.out.print(sb);
+        assertEquals(expected, sb.toString());
     }
     
 }

@@ -1,19 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  *
@@ -40,7 +32,7 @@ public class Registro0000Test {
     }
 
     @Test
-    public String linhaRegistro0000Test() throws ParseException {
+    public void Registro0000Test() throws ParseException {
         Registro0000 reg = new Registro0000();
         LineModel line = reg.createModel();
         
@@ -74,10 +66,9 @@ public class Registro0000Test {
         //14
         line.setFieldValue(Registro0000.IND_ATIV, 9L);
         StringBuffer sb = line.getRepresentation();
-        //String expected = "|0000|123|1|4|12345678901234567890123456789012345678901|26012013|30012013|ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJ|12345678901234|RJ|1234567|QWERTYUIO|10|9|";
-        //System.out.print(sb+"CRLF");
-        //assertEquals(expected, sb.toString()+"CRLF"); 
-        return sb.toString();
+//        String expected = "|0000|123|1|4|12345678901234567890123456789012345678901|26012013|30012013|ABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJABCDEFGHIJ|12345678901234|RJ|1234567|QWERTYUIO|10|9|";
+//        System.out.print(sb);
+//        assertEquals(expected, sb.toString()); 
     }
 
 }

@@ -61,7 +61,7 @@ public class RegistroC191Test extends Randomize{
         line.setFieldValue(RegistroC191.COD_CTA, "Código da conta analítica contábil debitada/creditada");
 
         StringBuffer sb = line.getRepresentation();
-//        System.out.print(sb);
+        System.out.print(sb);
 //        String expected = "|C191|12345678912345|12|1234|78912,33|78912,33|678912,33|1678,4567|56912,333|1262,3344|1456,33|Código da conta analítica contábil debitada/creditada|";
 //        assertEquals(expected, sb.toString());
     }

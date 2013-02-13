@@ -33,7 +33,7 @@ public class RegistroC170Test {
      * Test of getNome method, of class RegistroC170.
      */
     @Test
-    public String linhaRegistroC170Test() {
+    public void RegistroC170Test() {
         RegistroC170 reg = new RegistroC170();
         LineModel line = reg.createModel();
 
@@ -76,7 +76,7 @@ public class RegistroC170Test {
         //20
         line.setFieldValue(RegistroC170.CST_IPI, "33");
         //21
-        line.setFieldValue(RegistroC170.COD_ENQ, " g ");
+        line.setFieldValue(RegistroC170.COD_ENQ, "123");
         //22
         line.setFieldValue(RegistroC170.VL_BC_IPI, 9612.32);
         //23
@@ -92,7 +92,7 @@ public class RegistroC170Test {
         //28
         line.setFieldValue(RegistroC170.QUANT_BC_PIS, 12345689.133);
         //29
-        line.setFieldValue(RegistroC170.ALIQ_PIS_QUANT, 78945612312345678998.7894);
+        line.setFieldValue(RegistroC170.ALIQ_PIS_QUANT, 312345678998.7894);
         //30
         line.setFieldValue(RegistroC170.VL_PIS, 1256123.33);
         //31
@@ -104,20 +104,16 @@ public class RegistroC170Test {
         //34
         line.setFieldValue(RegistroC170.QUANT_BC_COFINS, 1238932.666);
         //35
-        line.setFieldValue(RegistroC170.ALIQ_COFINS_QUANT, 1234567891238.3611);
+        line.setFieldValue(RegistroC170.ALIQ_COFINS_QUANT, 234567891238.3611);
         //36
         line.setFieldValue(RegistroC170.VL_COFINS, 1234578.66);
         //37
         line.setFieldValue(RegistroC170.COD_CTA, "Código da conta analítica contábil debitada/creditada");
 
-        /**
-         * PROBLEMAS COM O ARREDONDAMENTO DAS CASAS DECIMAIS
-         */
         StringBuffer sb = line.getRepresentation();
-//        System.out.println(sb);
-//        String expected = "|C170|123|Código do item (campo 02 do Registro 0200)|Descrição complementar do item como adotado|4567891,11111|678912,32|456,65|0|123|1234|cod nat opr|889912,22|3221,66|456789,66|78947,66|123456,22|1144,69|1|33|g|9612,32|123456,33|1231234,66|22|12345678978,66|123478,6811|12345689,133|78945612312345678998,7894|1256123,33|12|1211945,33|78945612,2245|1238932,666|1234567891238,3611|1234578,66|Código da conta analítica contábil debitada/creditada|";
-//        System.out.println(expected);
-//        assertEquals (expected, sb.toString());
-        return sb.toString();
+        System.out.println(sb);
+        String expected = "|C170|123|Código do item (campo 02 do Registro 0200)|Descrição complementar do item como adotado|4567891,11111|c20190|678912,32|456,65|0|123|1234|cod nat op|889912,22|3221,66|456789,66|78947,66|123456,22|1144,69|1|33|123|9612,32|123456,33|1231234,66|22|12345678978,66|123478,6811|12345689,133|312345678998,7894|1256123,33|12|1211945,33|78945612,2245|1238932,666|234567891238,3611|1234578,66|Código da conta analítica contábil debitada/creditada|";
+        //System.out.println(expected);
+        assertEquals (expected, sb.toString());
     }   
 }

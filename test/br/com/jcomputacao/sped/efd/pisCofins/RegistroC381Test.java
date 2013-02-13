@@ -50,11 +50,11 @@ public class RegistroC381Test {
         //05
         line.setFieldValue(RegistroC381.VL_BC_PIS, null);
         //06
-        line.setFieldValue(RegistroC381.ALIQ_PIS, null);
+        line.setFieldValue(RegistroC381.ALIQ_PIS, 10000000.0001);
         //07
-        line.setFieldValue(RegistroC381.QUANT_BC_PIS, null);
+        line.setFieldValue(RegistroC381.QUANT_BC_PIS, 200000000000.002);
         //08
-        line.setFieldValue(RegistroC381.ALIQ_PIS_QUANT, null);
+        line.setFieldValue(RegistroC381.ALIQ_PIS_QUANT, 100000000000.0001);
         //09
         line.setFieldValue(RegistroC381.VL_PIS, 8911.11);
         //10
@@ -62,7 +62,7 @@ public class RegistroC381Test {
 
         StringBuffer sb = line.getRepresentation();
         System.out.print(sb);
-        String expected = "|C381|11|Código do item (campo 02 do Registro 0200)|7890,55|||||8911,11||";
+        String expected = "|C381|11|Código do item (campo 02 do Registro 0200)|7890,55||10000000,0001|200000000000,002|100000000000,0001|8911,11||";
         assertEquals (expected, sb.toString());
     }
 }
