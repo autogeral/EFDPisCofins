@@ -1,25 +1,19 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import java.util.Date;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 17/11/2011 21:25:00
  * @author William Antunes
  */
-public class Registro1220Test extends Randomize {
+public class Registro1220Test{
     
-            public Registro1220Test() {
+    public Registro1220Test() {
     }
 
     @BeforeClass
@@ -42,17 +36,23 @@ public class Registro1220Test extends Randomize {
     public void Registro1220Test() throws ParseException{
         Registro1220 reg = new Registro1220();
         LineModel line = reg.createModel();
-
+        SimpleDateFormat sdf = new SimpleDateFormat("MMyyyy");
+        Date data = sdf.parse ("022013");
        
-        line.setFieldValue(Registro1220.REG, GeraStringRandom(4));
-        line.setFieldValue(Registro1220.PER_APU_CRED, GeraLongRandom(6));
-        line.setFieldValue(Registro1220.ORIG_CRED, GeraLongRandom(2));
-        line.setFieldValue(Registro1220.COD_CRED, GeraLongRandom(3));
-        line.setFieldValue(Registro1220.VL_CRED, 11111111111111111111.11);
+        //02
+        line.setFieldValue(Registro1220.PER_APU_CRED, data);
+        //03
+        line.setFieldValue(Registro1220.ORIG_CRED, 1);
+        //04
+        line.setFieldValue(Registro1220.COD_CRED, 123);
+        //05
+        line.setFieldValue(Registro1220.VL_CRED, 100000000000.01);
+        
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
 
-
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
+//	String expected = "|1220|022013|01|123|100000000000,01|";
+//	assertEquals (expected, sb.toString());
     }
     
 }

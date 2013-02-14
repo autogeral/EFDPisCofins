@@ -1,12 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
-import br.com.jcomputacao.aristoteles.field.FieldDecimalFixedLengthArchetype;
-import br.com.jcomputacao.aristoteles.field.FieldIntegerFixedLengthArchetype;
-import br.com.jcomputacao.aristoteles.field.FieldStringFixedLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.*;
+import br.com.jcomputacao.aristoteles.format.FormatFactory;
+import br.com.jcomputacao.aristoteles.format.FormatType;
+import br.com.jcomputacao.aristoteles.format.FormatWrapper;
 import br.com.jcomputacao.aristoteles.line.LineArchetype;
 
 /**
@@ -35,24 +32,59 @@ public class Registro1100 extends LineArchetype {
 
     
     public Registro1100(){
-        addFieldArchetype(REG, new FieldStringFixedLengthArchetype(4));        
-        addFieldArchetype(PER_APU_CRED, new FieldIntegerFixedLengthArchetype(6));
+        setName("");
+        setDelimiter("|");
+        
+        FormatWrapper fw = FormatFactory.getFormat(FormatType.DECIMAL);
+        fw.setReplaceComa(false);
+        
+        FieldDecimalMaximumLengthArchetype fdm = new FieldDecimalMaximumLengthArchetype(15,2);
+        fdm.setFormat(fw);
+        
+        FieldDecimalMaximumLengthArchetype fdm2 = new FieldDecimalMaximumLengthArchetype(15,2);
+        fdm2.setFormat(fw);
+        fdm2.setNullableRepresentation("");
+        fdm2.setFullFillingNullable(false);
+        
+        //01
+        addFieldArchetype(REG, new FieldDefaultArchetype("1100"));        
+        //02
+        addFieldArchetype(PER_APU_CRED, new FieldDateFixedLengthArchetype("MMyyyy"));
+        //03
         addFieldArchetype(ORIG_CRED, new FieldIntegerFixedLengthArchetype(2));
-        addFieldArchetype(CNPJ_SUC, new FieldIntegerFixedLengthArchetype(14));
+        //04
+        FieldIntegerFixedLengthArchetype f04 = new FieldIntegerFixedLengthArchetype(14);
+        f04.setNullableRepresentation("");
+        f04.setFullFillingNullable(false);
+        addFieldArchetype(CNPJ_SUC, f04);
+        //05
         addFieldArchetype(COD_CRED, new FieldIntegerFixedLengthArchetype(3));
-        addFieldArchetype(VL_CRED_APU, new FieldIntegerFixedLengthArchetype(20));
-        addFieldArchetype(VL_CRED_EXT_APU, new FieldDecimalFixedLengthArchetype(20,2));
-        addFieldArchetype(VL_TOT_CRED_APU, new FieldDecimalFixedLengthArchetype(20,2));
-        addFieldArchetype(VL_CRED_DESC_PA_ANT, new FieldDecimalFixedLengthArchetype(20,2));
-        addFieldArchetype(VL_CRED_PER_PA_ANT, new FieldDecimalFixedLengthArchetype(20,2));
-        addFieldArchetype(VL_CRED_DCOMP_PA_ANT, new FieldDecimalFixedLengthArchetype(20,2));
-        addFieldArchetype(SD_CRED_DISP_EFD, new FieldDecimalFixedLengthArchetype(20,2));
-        addFieldArchetype(VL_CRED_DESC_EFD, new FieldDecimalFixedLengthArchetype(20,2));
-        addFieldArchetype(VL_CRED_PER_EFD, new FieldDecimalFixedLengthArchetype(20,2));
-        addFieldArchetype(VL_CRED_DCOMP_EFD, new FieldDecimalFixedLengthArchetype(20,2));
-        addFieldArchetype(VL_CRED_DCOMP_EFD, new FieldDecimalFixedLengthArchetype(20,2));
-        addFieldArchetype(VL_CRED_OUT, new FieldDecimalFixedLengthArchetype(20,2));
-        addFieldArchetype(SLD_CRED_FIM, new FieldDecimalFixedLengthArchetype(20,2));
+        //06
+        addFieldArchetype(VL_CRED_APU, fdm2);
+        //07
+        addFieldArchetype(VL_CRED_EXT_APU, fdm2);
+        //08
+        addFieldArchetype(VL_TOT_CRED_APU, fdm);
+        //09
+        addFieldArchetype(VL_CRED_DESC_PA_ANT, fdm);
+        //10
+        addFieldArchetype(VL_CRED_PER_PA_ANT, fdm2);
+        //11
+        addFieldArchetype(VL_CRED_DCOMP_PA_ANT, fdm2);
+        //12
+        addFieldArchetype(SD_CRED_DISP_EFD, fdm);
+        //13
+        addFieldArchetype(VL_CRED_DESC_EFD, fdm2);
+        //14
+        addFieldArchetype(VL_CRED_PER_EFD, fdm2);
+        //15
+        addFieldArchetype(VL_CRED_DCOMP_EFD, fdm2);
+        //16
+        addFieldArchetype(VL_CRED_DCOMP_EFD, fdm2);
+        //17
+        addFieldArchetype(VL_CRED_OUT, fdm2);
+        //18
+        addFieldArchetype(SLD_CRED_FIM, fdm2);
 
     }
     

@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 17/11/2011 20:30:55
@@ -40,13 +33,19 @@ public class Registro1102Test extends Randomize {
         Registro1102 reg = new Registro1102();
         LineModel line = reg.createModel();
        
-        line.setFieldValue(Registro1102.REG, GeraStringRandom(4));
-        line.setFieldValue(Registro1102.VL_CRED_PIS_TRIB_MI, 11111111111111111111.11);
-        line.setFieldValue(Registro1102.VL_CRED_PIS_NT_MI, 11111111111111111111.11);
-        line.setFieldValue(Registro1102.VL_CRED_PIS_EXP, 11111111111111111111.11);
+        //02
+        line.setFieldValue(Registro1102.VL_CRED_PIS_TRIB_MI, 100000000000.01);
+        //03
+        line.setFieldValue(Registro1102.VL_CRED_PIS_NT_MI, 200000000000.02);
+        //04
+        line.setFieldValue(Registro1102.VL_CRED_PIS_EXP, 300000000000.03);
 
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
+
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+//
+//        String expected = "|1102|100000000000,01|200000000000,02|300000000000,03|";
+//        assertEquals (expected, sb.toString());
     }
     
     

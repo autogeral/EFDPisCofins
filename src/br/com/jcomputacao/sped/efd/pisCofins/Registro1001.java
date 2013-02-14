@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.field.FieldDefaultArchetype;
@@ -29,7 +25,9 @@ public class Registro1001 extends LineArchetype {
     public Registro1001(){
         setName("Processo Referenciado - acao judicial");
         setDelimiter("|");
+        //01
         addFieldArchetype(REG, new FieldDefaultArchetype("1001"));
+        //02
         addFieldArchetype(IND_MOV, new FieldIntegerFixedLengthArchetype(1));
     }
     

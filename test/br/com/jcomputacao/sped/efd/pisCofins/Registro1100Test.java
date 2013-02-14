@@ -1,22 +1,15 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 12/11/2011 11:07:26
  * @author WILL
  */
 public class Registro1100Test extends Randomize {
-                    public Registro1100Test() {
+    public Registro1100Test() {
     }
 
     @BeforeClass
@@ -59,9 +52,11 @@ public class Registro1100Test extends Randomize {
         line.setFieldValue(Registro1100.VL_CRED_OUT , 11111111111111111.11);
         line.setFieldValue(Registro1100.SLD_CRED_FIM, 11111111111111111.11);
 
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
 
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
+	String expected = "";
+	//assertEquals (expected, sb.toString());
     }
     
 }
