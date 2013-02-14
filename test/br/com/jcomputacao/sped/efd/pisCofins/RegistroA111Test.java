@@ -33,7 +33,7 @@ public class RegistroA111Test {
     }
 
     @Test
-    public String linhaRegistroA111Test(){
+    public void RegistroA111Test(){
         RegistroA111 reg = new RegistroA111();
         LineModel line = reg.createModel();
 
@@ -43,10 +43,10 @@ public class RegistroA111Test {
         line.setFieldValue(RegistroA111.IND_PROC, "3");
         
         StringBuffer sb = line.getRepresentation();
-//        System.out.print(sb);
+        System.out.print(sb);
 //        String expected = "|A111|sdsdf234f234125|3|";
 //        assertEquals (expected, sb.toString());
-        return sb.toString();        
+                
     }
     
 }

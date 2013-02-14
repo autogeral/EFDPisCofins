@@ -30,7 +30,7 @@ public class RegistroC001Test {
     }
 
     @Test
-    public String linhaRegistroC001Test(){
+    public void RegistroC001Test(){
         RegistroC001 reg = new RegistroC001();
         LineModel line = reg.createModel();
         
@@ -41,6 +41,6 @@ public class RegistroC001Test {
 //        System.out.print(sb);
 //        String expected = "|C001|0|";
 //        assertEquals (expected, sb.toString());
-        return sb.toString();
+        
     }
 }

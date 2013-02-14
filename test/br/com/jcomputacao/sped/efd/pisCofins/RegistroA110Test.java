@@ -26,7 +26,7 @@ public class RegistroA110Test {
     }
 
     @Test
-    public String linhaRegistroA110Test(){
+    public void RegistroA110Test(){
         
         RegistroA110 reg = new RegistroA110();
         LineModel line = reg.createModel();
@@ -40,7 +40,7 @@ public class RegistroA110Test {
 //        System.out.print(sb);
 //        String expected = "|A110|sdf234|Informação Complementar do Documento Fiscal|";
 //        assertEquals (expected, sb.toString());
-        return sb.toString();
+        
     }
     
     

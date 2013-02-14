@@ -42,6 +42,10 @@ public class RegistroA120 extends LineArchetype {
         FormatWrapper fw = FormatFactory.getFormat(FormatType.DECIMAL);
         fw.setReplaceComa(false);
         fdf.setFormat(fw);
+        FieldDecimalMaximumLengthArchetype fdf2 = new FieldDecimalMaximumLengthArchetype(15,2);
+        fdf2.setFormat(fw);
+        fdf2.setNullableRepresentation("");
+        fdf2.setFullFillingNullable(false);
         //01
         addFieldArchetype(REG, new FieldDefaultArchetype("A120"));
         //02
@@ -49,15 +53,21 @@ public class RegistroA120 extends LineArchetype {
         //03
         addFieldArchetype(VL_BC_PIS, fdf);
         //04
-        addFieldArchetype(VL_PIS_IMP, fdf);
+        addFieldArchetype(VL_PIS_IMP, fdf2);
         //05
-        addFieldArchetype(DT_PAG_PIS, new FieldDateFixedLengthArchetype("ddMMyyyy"));
+        FieldDateFixedLengthArchetype f05 = new FieldDateFixedLengthArchetype("ddMMyyyy");
+        f05.setNullableRepresentation("");
+        f05.setFullFillingNullable(false);
+        addFieldArchetype(DT_PAG_PIS, f05);
         //06
         addFieldArchetype(VL_BC_COFINS, fdf);
         //07
-        addFieldArchetype(VL_COFINS_IMP, fdf);
+        addFieldArchetype(VL_COFINS_IMP, fdf2);
         //08
-        addFieldArchetype(DT_PAG_COFINS, new FieldDateFixedLengthArchetype("ddMMyyyy"));
+        FieldDateFixedLengthArchetype f08 = new FieldDateFixedLengthArchetype("ddMMyyyy");
+        f08.setNullableRepresentation("");
+        f08.setFullFillingNullable(false);
+        addFieldArchetype(DT_PAG_COFINS, f08);
         //09
         addFieldArchetype(LOC_EXE_SERV, new FieldStringFixedLengthArchetype(1));
     }

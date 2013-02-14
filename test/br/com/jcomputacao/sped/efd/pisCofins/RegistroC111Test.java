@@ -33,7 +33,7 @@ public class RegistroC111Test {
     }
 
     @Test
-    public String linhaRegistroC111Test(){
+    public void RegistroC111Test(){
         RegistroC111 reg = new RegistroC111();
         LineModel line = reg.createModel();
         //02
@@ -45,6 +45,6 @@ public class RegistroC111Test {
 //        System.out.print(sb);
 //        String expected = "|C111|Identif do processo|3|";
 //        assertEquals (expected, sb.toString());
-        return sb.toString();
+        
     }
 }

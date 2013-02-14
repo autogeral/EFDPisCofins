@@ -25,6 +25,9 @@ public class RegistroA110 extends LineArchetype{
          //02
          addFieldArchetype(COD_INF, new FieldStringMaximumLengthArchetype(6));
          //03
-         addFieldArchetype(TXT_COMPL, new FieldStringMaximumLengthArchetype(255));
+         FieldStringMaximumLengthArchetype f03 = new FieldStringMaximumLengthArchetype(255);
+         f03.setNullableRepresentation("");
+         f03.setFullFillingNullable(false);
+         addFieldArchetype(TXT_COMPL, f03);
      }
 }

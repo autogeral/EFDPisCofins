@@ -105,7 +105,11 @@ public class RegistroC100 extends LineArchetype {
         FormatWrapper fw = FormatFactory.getFormat(FormatType.DECIMAL);
         fw.setReplaceComa(false);
         FieldDecimalMaximumLengthArchetype fdf = new FieldDecimalMaximumLengthArchetype(15,2);
+        fdf.setNullableRepresentation("");
+        fdf.setFullFillingNullable(false);
         fdf.setFormat(fw);
+        FieldDecimalMaximumLengthArchetype fdf2 = new FieldDecimalMaximumLengthArchetype(15,2);
+        fdf2.setFormat(fw);
         
         //01
         addFieldArchetype(REG, new FieldDefaultArchetype("C100"));
@@ -120,17 +124,26 @@ public class RegistroC100 extends LineArchetype {
         //06
         addFieldArchetype(COD_SIT, new FieldIntegerFixedLengthArchetype(2));
         //07
-        addFieldArchetype(SER, new FieldStringFixedLengthArchetype(3));
+        FieldStringFixedLengthArchetype f03 = new FieldStringFixedLengthArchetype(3);
+        f03.setNullableRepresentation("");
+        f03.setFullFillingNullable(false);
+        addFieldArchetype(SER, f03);
         //08
         addFieldArchetype(NUM_DOC, new FieldIntegerFixedLengthArchetype(9));
         //09
-        addFieldArchetype(CHV_NFE, new FieldStringFixedLengthArchetype(44));
+        FieldStringFixedLengthArchetype f09 = new FieldStringFixedLengthArchetype(44);
+        f09.setNullableRepresentation("");
+        f09.setFullFillingNullable(false);
+        addFieldArchetype(CHV_NFE, f09);
         //10
         addFieldArchetype(DT_DOC, new FieldDateFixedLengthArchetype("ddMMyyyy"));
         //11
-        addFieldArchetype(DT_E_S, new FieldDateFixedLengthArchetype("ddMMyyyy"));
+        FieldDateFixedLengthArchetype f11 = new FieldDateFixedLengthArchetype("ddMMyyyy");
+        f11.setNullableRepresentation("");
+        f11.setFullFillingNullable(false);
+        addFieldArchetype(DT_E_S, f11);
         //12
-        addFieldArchetype(VL_DOC, fdf);
+        addFieldArchetype(VL_DOC, fdf2);
         //13
         addFieldArchetype(IND_PGTO, new FieldStringFixedLengthArchetype(1));
         //14

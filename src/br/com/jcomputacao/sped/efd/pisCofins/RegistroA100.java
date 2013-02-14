@@ -84,6 +84,11 @@ public class RegistroA100 extends LineArchetype {
         fdf.setFormat(fw);
         fw.setReplaceComa(false);
         
+        FieldDecimalMaximumLengthArchetype fdf2 = new FieldDecimalMaximumLengthArchetype(15,2);
+        fdf2.setFormat(fw);
+        fdf2.setNullableRepresentation("");
+        fdf2.setFullFillingNullable(false);
+        
         //01
         addFieldArchetype(REG, new FieldDefaultArchetype("A100"));
         //02
@@ -91,27 +96,42 @@ public class RegistroA100 extends LineArchetype {
         //03
         addFieldArchetype(IND_EMIT, new FieldStringFixedLengthArchetype(1));
         //04
-        addFieldArchetype(COD_PART, new FieldStringMaximumLengthArchetype(60));
+        FieldStringMaximumLengthArchetype f04 = new FieldStringMaximumLengthArchetype(60);
+        f04.setNullableRepresentation("");
+        f04.setFullFillingNullable(false);
+        addFieldArchetype(COD_PART, f04);
         //05
         addFieldArchetype(COD_SIT, new FieldIntegerFixedLengthArchetype(2));
         //06
-        addFieldArchetype(SER, new FieldStringMaximumLengthArchetype(20));
+        FieldStringMaximumLengthArchetype f06 = new FieldStringMaximumLengthArchetype(20);
+        f06.setNullableRepresentation("");
+        f06.setFullFillingNullable(false);
+        addFieldArchetype(SER, f06);
         //07
-        addFieldArchetype(SUB, new FieldStringMaximumLengthArchetype(20));
+        FieldStringMaximumLengthArchetype f07 = new FieldStringMaximumLengthArchetype(20);
+        f07.setNullableRepresentation("");
+        f07.setFullFillingNullable(false);
+        addFieldArchetype(SUB, f07);
         //08
         addFieldArchetype(NUM_DOC, new FieldStringMaximumLengthArchetype(60));
         //09
-        addFieldArchetype(CHV_NFSE, new FieldStringMaximumLengthArchetype(60));
+        FieldStringMaximumLengthArchetype f09 = new FieldStringMaximumLengthArchetype(60);
+        f09.setNullableRepresentation("");
+        f09.setFullFillingNullable(false);
+        addFieldArchetype(CHV_NFSE, f09);
         //10
         addFieldArchetype(DT_DOC, new FieldDateFixedLengthArchetype("ddMMyyyy"));
         //11
-        addFieldArchetype(DT_EXE_SERV, new FieldDateFixedLengthArchetype("ddMMyyyy"));
+        FieldDateFixedLengthArchetype f11 = new FieldDateFixedLengthArchetype("ddMMyyyy");
+        f11.setNullableRepresentation("");
+        f11.setFullFillingNullable(false);
+        addFieldArchetype(DT_EXE_SERV, f11);
         //12
         addFieldArchetype(VL_DOC, fdf);
         //13
         addFieldArchetype(IND_PGTO, new FieldStringFixedLengthArchetype(1));
         //14
-        addFieldArchetype(VL_DESC, fdf);
+        addFieldArchetype(VL_DESC, fdf2);
         //15
         addFieldArchetype(VL_BC_PIS, fdf);
         //16
@@ -121,10 +141,10 @@ public class RegistroA100 extends LineArchetype {
         //18
         addFieldArchetype(VL_COFINS, fdf);
         //19
-        addFieldArchetype(VL_PIS_RET, fdf);
+        addFieldArchetype(VL_PIS_RET, fdf2);
         //20
-        addFieldArchetype(VL_COFINS_RET, fdf);
+        addFieldArchetype(VL_COFINS_RET, fdf2);
         //21
-        addFieldArchetype(VL_ISS, fdf);
+        addFieldArchetype(VL_ISS, fdf2);
     }
 }

@@ -36,7 +36,7 @@ public class RegistroA170Test {
     }
 
     @Test
-    public String linhaRegistroA170Test() throws ParseException {
+    public void RegistroA170Test() throws ParseException {
 
         RegistroA170 reg = new RegistroA170();
         LineModel line = reg.createModel();
@@ -80,7 +80,7 @@ public class RegistroA170Test {
 //        System.out.print(sb);
 //        String expected = "|A170|2132|Código do item (campo 02 do Registro 0200)|Descrição complementar do item como adotado no documento fiscal|2134,12|3,12|21|1|49|4564,54|4564,54|344,12|86|32,12|65428,32|545464,98|Código da conta analítica contábil debitada/creditada|Código do centro de custos|";
 //        assertEquals (expected, sb.toString());
-        return sb.toString();
+        
     }
     
 }

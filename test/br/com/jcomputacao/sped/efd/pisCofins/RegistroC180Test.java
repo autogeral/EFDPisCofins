@@ -34,7 +34,7 @@ public class RegistroC180Test {
      * Test of getNome method, of class RegistroC180.
      */
     @Test
-    public String linhaRegistroC180Test() throws ParseException{
+    public void RegistroC180Test() throws ParseException{
         RegistroC180 reg = new RegistroC180();
         LineModel line = reg.createModel();
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
@@ -59,6 +59,6 @@ public class RegistroC180Test {
 //        String expected = "|C180|55|31012013|31012013|Código do Item (campo 02 do Registro 0200)|12345678|EX3|678912,35|";
 //        System.out.println(expected);
 //        assertEquals (expected, sb.toString()); 
-        return sb.toString();
+        
     }
 }

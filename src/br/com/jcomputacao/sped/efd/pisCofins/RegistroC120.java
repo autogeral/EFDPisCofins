@@ -36,6 +36,8 @@ public class RegistroC120 extends LineArchetype {
         fw.setReplaceComa(false);
         FieldDecimalMaximumLengthArchetype fdf = new FieldDecimalMaximumLengthArchetype(15,2);
         fdf.setFormat(fw);
+        fdf.setNullableRepresentation("");
+        fdf.setFullFillingNullable(false);
         
         setName("Complemento do documento - operações de importação (código 01)");
         setDelimiter("|");
@@ -50,6 +52,9 @@ public class RegistroC120 extends LineArchetype {
         //05
         addFieldArchetype(VL_COFINS_IMP, fdf);
         //06
-        addFieldArchetype(NUM_ACDRAW, new FieldStringMaximumLengthArchetype(20));
+        FieldStringMaximumLengthArchetype f06 = new FieldStringMaximumLengthArchetype(20);
+        f06.setNullableRepresentation("");
+        f06.setFullFillingNullable(false);
+        addFieldArchetype(NUM_ACDRAW, f06);
     }
 }

@@ -28,7 +28,7 @@ public class RegistroA010Test {
     }
 
     @Test
-    public String linhaRegistroA010Test(){
+    public void RegistroA010Test(){
         RegistroA010 reg = new RegistroA010();
         LineModel line = reg.createModel();
         
@@ -39,7 +39,6 @@ public class RegistroA010Test {
 //        System.out.print(sb);
 //        String expected = "|A010|12345678910123|";
 //        assertEquals (expected, sb.toString());
-        return sb.toString();
     }
 
 }

@@ -34,7 +34,7 @@ public class RegistroC010Test {
     }
 
     @Test
-    public String linhaRegistroC010Test(){
+    public void RegistroC010Test(){
         RegistroC010 reg = new RegistroC010();
         LineModel line = reg.createModel();
         //02
@@ -47,6 +47,6 @@ public class RegistroC010Test {
 //        
 //        String expected = "|C010|12345678912345|2|";
 //        assertEquals (expected, sb.toString());
-        return sb.toString();
+        
     }
 }

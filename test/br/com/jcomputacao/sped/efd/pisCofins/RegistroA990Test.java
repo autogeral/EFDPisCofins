@@ -36,7 +36,7 @@ public class RegistroA990Test {
     }
 
     @Test
-    public String linhaRegistroA990Test(int numLinhas) throws ParseException {
+    public void RegistroA990Test(int numLinhas) throws ParseException {
         
         RegistroA990 reg = new RegistroA990();
         LineModel line = reg.createModel();
@@ -44,10 +44,9 @@ public class RegistroA990Test {
         line.setFieldValue(RegistroA990.QTD_LIN_A, numLinhas);
         
         StringBuffer sb = line.getRepresentation();
-//        System.out.print(sb);
+        System.out.print(sb);
 //        String expected = "|A990|213599|";
 //        assertEquals (expected, sb.toString());
-        
-        return sb.toString();
+             
     } 
 }

@@ -36,7 +36,7 @@ public class RegistroC100Test {
     }
 
     @Test
-    public String linhaRegistroC100Test() throws ParseException {
+    public void RegistroC100Test() throws ParseException {
         RegistroC100 reg = new RegistroC100();
         LineModel line = reg.createModel();
         
@@ -110,6 +110,6 @@ public class RegistroC100Test {
 //        System.out.println(sb);
 //        System.out.print(expected);
 //        assertEquals (expected, sb.toString());
-        return sb.toString();
+        
     }
 }

@@ -33,7 +33,7 @@ public class RegistroA100Test {
     }
 
     @Test
-    public String linhaRegistroA100Test() throws ParseException {
+    public void RegistroA100Test() throws ParseException {
         RegistroA100 reg = new RegistroA100();
         LineModel line = reg.createModel();
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
@@ -84,7 +84,7 @@ public class RegistroA100Test {
 //        System.out.print(sb);
 //        String expected = "|A100|0|1|Código do participante (campo 02 do Registro 0150)|00|Série do documento|Subsérie do doc|Número do documento fiscal ou documento internacional|Chave/Código de Verificação da nota fiscal de serv elet|10101987|10101987|100,02|1|99,85|65284,15|212,12|3235,10|2,05|98754,02|9856,56|985,75|";
 //        assertEquals (expected, sb.toString());
-        return sb.toString();
+        
     }
     
 }

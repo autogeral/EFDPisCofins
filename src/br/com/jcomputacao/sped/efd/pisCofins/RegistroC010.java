@@ -29,7 +29,10 @@ public class RegistroC010 extends LineArchetype{
         //02
         addFieldArchetype(CNPJ, new FieldIntegerFixedLengthArchetype(14));
         //03
-        addFieldArchetype(IND_ESCRI, new FieldStringFixedLengthArchetype(1));
+        FieldStringFixedLengthArchetype f03 = new FieldStringFixedLengthArchetype(1);
+        f03.setNullableRepresentation("");
+        f03.setFullFillingNullable(false);
+        addFieldArchetype(IND_ESCRI, f03);
         
         
     }

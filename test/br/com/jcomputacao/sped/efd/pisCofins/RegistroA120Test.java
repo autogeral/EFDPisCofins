@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
  
 import br.com.jcomputacao.aristoteles.line.LineModel;
@@ -39,7 +35,7 @@ public class RegistroA120Test {
     }
 
     @Test
-     public String linhaRegistroA120Test() throws ParseException{
+     public void RegistroA120Test() throws ParseException{
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
         Date data =  sdf.parse("29012013");
         
@@ -63,9 +59,9 @@ public class RegistroA120Test {
         line.setFieldValue(RegistroA120.LOC_EXE_SERV, "0");
         
         StringBuffer sb = line.getRepresentation();
-//        System.out.print(sb);
+        System.out.print(sb);
 //        String expected = "|A120|123,15|23,12|13,15|29012013|3,12|5487,65|29012013|0|";
 //        assertEquals (expected, sb.toString());
-        return sb.toString();
+        
     }
 }
