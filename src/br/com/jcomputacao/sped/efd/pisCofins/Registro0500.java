@@ -58,9 +58,15 @@ public class Registro0500 extends LineArchetype {
         //07
         addFieldArchetype(NOME_CTA, new FieldStringMaximumLengthArchetype(60));
         //08
-        addFieldArchetype(COD_CTA_REF, new FieldStringMaximumLengthArchetype(60));
+        FieldStringMaximumLengthArchetype f08 = new FieldStringMaximumLengthArchetype(60);
+        f08.setNullableRepresentation("");
+        f08.setFullFillingNullable(false);
+        addFieldArchetype(COD_CTA_REF, f08);
         //09
-        addFieldArchetype(CNPJ_EST, new FieldIntegerFixedLengthArchetype(14));
+        FieldIntegerFixedLengthArchetype f09 = new FieldIntegerFixedLengthArchetype(14);
+        f09.setNullableRepresentation("");
+        f09.setFullFillingNullable(false);
+        addFieldArchetype(CNPJ_EST, f09);
             
     }
 }

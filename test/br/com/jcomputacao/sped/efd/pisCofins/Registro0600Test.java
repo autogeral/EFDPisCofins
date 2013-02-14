@@ -31,7 +31,7 @@ public class Registro0600Test {
     }
 
     @Test
-    public String linhaRegistro0600Test() throws ParseException{
+    public void Registro0600Test() throws ParseException{
         Registro0600 reg = new Registro0600();
         LineModel line = reg.createModel();
         
@@ -47,9 +47,8 @@ public class Registro0600Test {
         line.setFieldValue(Registro0600.CCUS, "Nome do centro de custos.");
         
         StringBuffer sb = line.getRepresentation();
-//        System.out.print(sb);
+        System.out.print(sb);
 //        String expected = "|0600|29012013|Código do centro de custos.|Nome do centro de custos.|";
 //        assertEquals (expected, sb.toString());   
-        return sb.toString();
     }
 }

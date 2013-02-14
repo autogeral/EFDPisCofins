@@ -33,7 +33,7 @@ public class Registro0200Test {
     }
 
     @Test
-    public String linhaRegistro0200Test(){
+    public void Registro0200Test(){
         Registro0200 reg = new Registro0200();
         LineModel line = reg.createModel();
         
@@ -64,8 +64,6 @@ public class Registro0200Test {
          //System.out.println(sb);
          //String expected = "|0200|Código do item|Descricao do item|Representação alfanumérico do código de barra do produto, se houver.|Código anterior do item com relação à última informação|UN|02|cod_ncm|abc|13|1234|123456,12|";
          //assertEquals (expected, sb.toString());
-         
-         return sb.toString();
     }
     
 }

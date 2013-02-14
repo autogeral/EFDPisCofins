@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.field.FieldDefaultArchetype;
@@ -55,22 +51,49 @@ public class Registro0150 extends LineArchetype {
         //04
         addFieldArchetype(COD_PAIS, new FieldIntegerFixedLengthArchetype(5));
         //05
-        addFieldArchetype(CNPJ, new FieldIntegerFixedLengthArchetype(14));
+        FieldIntegerFixedLengthArchetype f05 = new FieldIntegerFixedLengthArchetype(14);
+        f05.setNullableRepresentation("");
+        f05.setFullFillingNullable(false);
+        addFieldArchetype(CNPJ, f05);
         //06
-        addFieldArchetype(CPF, new FieldIntegerFixedLengthArchetype(11));
+        FieldIntegerFixedLengthArchetype f06 = new FieldIntegerFixedLengthArchetype(11);
+        f06.setNullableRepresentation("");
+        f06.setFullFillingNullable(false);
+        addFieldArchetype(CPF, f06);
         //07
-        addFieldArchetype(IE, new FieldStringFixedLengthArchetype(14));
+        FieldStringFixedLengthArchetype f07 = new FieldStringFixedLengthArchetype(14);
+        f07.setNullableRepresentation("");
+        f07.setFullFillingNullable(false);
+        addFieldArchetype(IE, f07);
         //08
-        addFieldArchetype(COD_MUN, new FieldIntegerFixedLengthArchetype(7));
+        FieldIntegerFixedLengthArchetype f08 = new FieldIntegerFixedLengthArchetype(7);
+        f08.setNullableRepresentation("");
+        f08.setFullFillingNullable(false);
+        addFieldArchetype(COD_MUN, f08);
         //09
-        addFieldArchetype(SUFRAMA, new FieldStringFixedLengthArchetype(9));
+        FieldStringFixedLengthArchetype f09 = new FieldStringFixedLengthArchetype(9);
+        f09.setNullableRepresentation("");
+        f09.setFullFillingNullable(false);
+        addFieldArchetype(SUFRAMA, f09);
         //10
-        addFieldArchetype(END, new FieldStringMaximumLengthArchetype(60));
+        FieldStringMaximumLengthArchetype f10 = new FieldStringMaximumLengthArchetype(60);
+        f10.setNullableRepresentation("");
+        f10.setFullFillingNullable(false);
+        addFieldArchetype(END, f10);
         //11
-        addFieldArchetype(NUM1, new FieldStringMaximumLengthArchetype(255));
+        FieldStringMaximumLengthArchetype f11 = new FieldStringMaximumLengthArchetype(255);
+        f11.setNullableRepresentation("");
+        f11.setFullFillingNullable(false);
+        addFieldArchetype(NUM1, f11);
         //12
-        addFieldArchetype(COMPL, new FieldStringMaximumLengthArchetype(60));
+        FieldStringMaximumLengthArchetype f12 = new FieldStringMaximumLengthArchetype(60);
+        f12.setNullableRepresentation("");
+        f12.setFullFillingNullable(false);
+        addFieldArchetype(COMPL, f12);
         //13
-        addFieldArchetype(BAIRRO, new FieldStringMaximumLengthArchetype(60));
+        FieldStringMaximumLengthArchetype f13 = new FieldStringMaximumLengthArchetype(60);
+        f13.setNullableRepresentation("");
+        f13.setFullFillingNullable(false);
+        addFieldArchetype(BAIRRO, f13);
     } 
 }

@@ -28,7 +28,7 @@ public class Registro0208Test {
     }
 
     @Test
-    public String linhaRegistro0208Test(){
+    public void Registro0208Test(){
         Registro0208 reg = new Registro0208();
         LineModel line = reg.createModel();
         
@@ -40,9 +40,8 @@ public class Registro0208Test {
         line.setFieldValue(Registro0208.MARCA_COM, "Marca comercial");
        
         StringBuffer sb = line.getRepresentation();
-//        System.out.print(sb);
+        System.out.print(sb);
 //        String expected = "|0208|01|SN|Marca comercial|";
-//        assertEquals (expected, sb.toString());
-        return sb.toString();                
+//        assertEquals (expected, sb.toString());               
     }
 }

@@ -31,7 +31,7 @@ public class Registro0190Test {
     }
 
     @Test
-    public String linhaRegistro0190Test(){
+    public void Registro0190Test(){
         Registro0190 reg = new Registro0190();
         LineModel line = reg.createModel();
         
@@ -45,7 +45,5 @@ public class Registro0190Test {
         //System.out.println(sb);
         //String expected = "|0190|UN|Descrição da unidade de medida|";
         //assertEquals (expected, sb.toString());
-        
-        return sb.toString();
     }
 }

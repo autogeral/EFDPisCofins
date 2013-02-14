@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.field.*;
@@ -30,7 +26,7 @@ public class Registro0111 extends LineArchetype {
 
 
     public Registro0111(){
-        setName(REG);
+        setName("");
         setDelimiter("|");
         
         FieldDecimalMaximumLengthArchetype fdf15 = new FieldDecimalMaximumLengthArchetype(15,2);

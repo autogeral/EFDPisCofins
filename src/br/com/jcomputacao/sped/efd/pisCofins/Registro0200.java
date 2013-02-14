@@ -60,26 +60,49 @@ public class Registro0200 extends LineArchetype {
          //03
          addFieldArchetype(DESCR_ITEM, new FieldStringMaximumLengthArchetype(255));
          //04
-         addFieldArchetype(COD_BARRA, new FieldStringMaximumLengthArchetype(255));
+         FieldStringMaximumLengthArchetype f04 = new FieldStringMaximumLengthArchetype(255);
+         f04.setNullableRepresentation("");
+         f04.setFullFillingNullable(false);
+         addFieldArchetype(COD_BARRA, f04);
          //05
-         addFieldArchetype(COD_ANT_ITEM, new FieldStringMaximumLengthArchetype(60));
+         FieldStringMaximumLengthArchetype f05 = new FieldStringMaximumLengthArchetype(60);
+         f05.setNullableRepresentation("");
+         f05.setFullFillingNullable(false);
+         addFieldArchetype(COD_ANT_ITEM, f05);
          //06
-         addFieldArchetype(UNID_INV, new FieldStringMaximumLengthArchetype(6));
+         FieldStringMaximumLengthArchetype f06 = new FieldStringMaximumLengthArchetype(6);
+         f06.setNullableRepresentation("");
+         f06.setFullFillingNullable(false);
+         addFieldArchetype(UNID_INV, f06);
          //07
          addFieldArchetype(TIPO_ITEM, new FieldIntegerFixedLengthArchetype(2));
          //08
-         addFieldArchetype(COD_NCM, new FieldStringMaximumLengthArchetype(8));
+         FieldStringMaximumLengthArchetype f08 = new FieldStringMaximumLengthArchetype(8);
+         f08.setNullableRepresentation("");
+         f08.setFullFillingNullable(false);
+         addFieldArchetype(COD_NCM, f08);
          //09
-         addFieldArchetype(EX_IPI, new FieldStringMaximumLengthArchetype(3));
+         FieldStringMaximumLengthArchetype f09 = new FieldStringMaximumLengthArchetype(3);
+         f09.setNullableRepresentation("");
+         f09.setFullFillingNullable(false);
+         addFieldArchetype(EX_IPI, f09);
          //10
-         addFieldArchetype(COD_GEN, new FieldIntegerMaximumLengthArchetype(2));
+         FieldIntegerMaximumLengthArchetype f10 = new FieldIntegerMaximumLengthArchetype(2);
+         f10.setNullableRepresentation("");
+         f10.setFullFillingNullable(false);
+         addFieldArchetype(COD_GEN, f10);
          //11
-         addFieldArchetype(COD_LST, new FieldIntegerMaximumLengthArchetype(4));
+         FieldIntegerMaximumLengthArchetype f11 = new FieldIntegerMaximumLengthArchetype(4);
+         f11.setNullableRepresentation("");
+         f11.setFullFillingNullable(false);
+         addFieldArchetype(COD_LST, f11);
          //12
          FieldDecimalMaximumLengthArchetype fdf = new FieldDecimalMaximumLengthArchetype(9,2);
          FormatWrapper fw = FormatFactory.getFormat(FormatType.DECIMAL);
          fw.setReplaceComa(false);
          fdf.setFormat(fw);
+         fdf.setNullableRepresentation("");
+         fdf.setFullFillingNullable(false);
          addFieldArchetype(ALIQ_ICMS, fdf);
      }
 

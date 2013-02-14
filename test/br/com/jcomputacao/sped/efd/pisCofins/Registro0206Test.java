@@ -1,11 +1,7 @@
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import static org.junit.Assert.*;
 
 /**
@@ -33,7 +29,7 @@ public class Registro0206Test {
     }
 
     @Test
-    public String linhaRegistro0206Test(){
+    public void Registro0206Test(){
         Registro0206 reg = new Registro0206();
         LineModel line = reg.createModel();
         
@@ -44,6 +40,5 @@ public class Registro0206Test {
 //        System.out.print(sb);
 //        String expected = "|0206|Código do combustível, conforme tabela publicada pela ANP|";
 //        assertEquals (expected, sb.toString());
-        return sb.toString();
     }
 }

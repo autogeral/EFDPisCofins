@@ -1,10 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
-import br.com.jcomputacao.aristoteles.field.*;
+import br.com.jcomputacao.aristoteles.field.FieldDefaultArchetype;
+import br.com.jcomputacao.aristoteles.field.FieldIntegerFixedLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.FieldStringFixedLengthArchetype;
+import br.com.jcomputacao.aristoteles.field.FieldStringMaximumLengthArchetype;
 import br.com.jcomputacao.aristoteles.line.LineArchetype;
 /**
  * 09/11/2011 09:41:17
@@ -39,7 +38,10 @@ public class Registro0140 extends LineArchetype {
         //01
         addFieldArchetype(REG, new FieldDefaultArchetype("0140"));
         //02
-        addFieldArchetype(COD_EST, new FieldStringMaximumLengthArchetype(60));
+        FieldStringMaximumLengthArchetype f02 = new FieldStringMaximumLengthArchetype(60);
+        f02.setNullableRepresentation("");
+        f02.setFullFillingNullable(false);
+        addFieldArchetype(COD_EST, f02);
         //03
         addFieldArchetype(NOME, new FieldStringMaximumLengthArchetype(100));
         //04
@@ -47,13 +49,22 @@ public class Registro0140 extends LineArchetype {
         //05
         addFieldArchetype(UF, new FieldStringFixedLengthArchetype(2));
         //06
-        addFieldArchetype(IE, new FieldStringMaximumLengthArchetype(14));
+        FieldStringMaximumLengthArchetype f06 = new FieldStringMaximumLengthArchetype(14);
+        f06.setNullableRepresentation("");
+        f06.setFullFillingNullable(false);
+        addFieldArchetype(IE, f06);
         //07
         addFieldArchetype(COD_MUN, new FieldIntegerFixedLengthArchetype(7));
         //08
-        addFieldArchetype(IM, new FieldStringMaximumLengthArchetype(255));
+        FieldStringMaximumLengthArchetype f08 = new FieldStringMaximumLengthArchetype(255);
+        f08.setNullableRepresentation("");
+        f08.setFullFillingNullable(false);
+        addFieldArchetype(IM, f08);
         //09
-        addFieldArchetype(SUFRAMA, new FieldStringFixedLengthArchetype(9));
+        FieldStringFixedLengthArchetype f09 = new FieldStringFixedLengthArchetype(9);
+        f09.setNullableRepresentation("");
+        f09.setFullFillingNullable(false);
+        addFieldArchetype(SUFRAMA, f09);
     }  
     
 }

@@ -7,16 +7,21 @@ import br.com.jcomputacao.aristoteles.line.LineArchetype;
  * 09/11/2011 19:53:19
  * @author João Batista Rodrigues Porfirio
  */
-public class Registro0000 extends LineArchetype implements EfdPisCofinsRegistro {
 
-    public String getNome() {
-        return "ABERTURA DO ARQUIVO DIGITAL E IDENTIFICACAO DA PESSOA JURIDICA";
-    }
+public class Registro0000 extends LineArchetype{
+    //OBRIGATÓRIO
+
     //01 - Texto fixo contendo “0000”.
     public final static String REG = "REG";
     //02
-    /**Código da versão do leiaute conforme a tabela 3.1.1.
-     * 
+    /**Código da versão do leiaute conforme a tabela 3.1.1
+     * Código - Versão - Leiaute Instituído por - Período de Apuração Inicial 
+     *  001    1.00       ADE Cofis nº 31/2010            01/04/2011
+     *  002    1.01       ADE Cofis nº 34/2010,           01/04/2011
+     *                    atualizado pelo ADE 
+     *                     Cofis nº 37/2010
+     *  002    2.00       ADE Cofis nº 20/2012            01/04/2011 
+     *  003    2.01A      ADE Cofis nº 20/2012            01/07/2012
      */
     public final static String COD_VER = "COD_VER";
     //03

@@ -25,12 +25,18 @@ public class Registro0205 extends LineArchetype {
         //01
         addFieldArchetype(REG, new FieldDefaultArchetype("0205"));
         //02
-        addFieldArchetype(DESCR_ANT_ITEM, new FieldStringMaximumLengthArchetype(255));
+        FieldStringMaximumLengthArchetype f02 = new FieldStringMaximumLengthArchetype(255);
+        f02.setNullableRepresentation("");
+        f02.setFullFillingNullable(false);
+        addFieldArchetype(DESCR_ANT_ITEM, f02);
         //03
         addFieldArchetype(DT_INI, new FieldDateFixedLengthArchetype("ddMMyyyy"));
         //04
         addFieldArchetype(DT_FIM, new FieldDateFixedLengthArchetype("ddMMyyyy"));
         //05
-        addFieldArchetype(COD_ANT_ITEM, new FieldStringMaximumLengthArchetype(60));
+        FieldStringMaximumLengthArchetype f05 = new FieldStringMaximumLengthArchetype(60);
+        f05.setNullableRepresentation("");
+        f05.setFullFillingNullable(false);
+        addFieldArchetype(COD_ANT_ITEM, f05);
     }
 }

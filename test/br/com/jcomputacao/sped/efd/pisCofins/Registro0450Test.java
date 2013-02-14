@@ -33,7 +33,7 @@ public class Registro0450Test {
     }
 
     @Test
-    public String linhaRegistro0450Test(){
+    public void Registro0450Test(){
         Registro0450 reg = new Registro0450();
         LineModel line = reg.createModel();
         
@@ -43,9 +43,8 @@ public class Registro0450Test {
         line.setFieldValue(Registro0450.TXT, "Texto livre da informação complementar existente no documento fiscal, inclusive espécie de normas legais, poder normativo, número, capitulação, data e demais referências pertinentes com indicação referentes ao tributo.");
         
         StringBuffer sb = line.getRepresentation();
-//        System.out.print(sb);
+        System.out.print(sb);
 //        String expected = "|0450|123456|Texto livre da informação complementar existente no documento fiscal, inclusive espécie de normas legais, poder normativo, número, capitulação, data e demais referências pertinentes com indicação referentes ao tributo.|";
 //        assertEquals (expected, sb.toString());
-        return sb.toString();
     }
 }

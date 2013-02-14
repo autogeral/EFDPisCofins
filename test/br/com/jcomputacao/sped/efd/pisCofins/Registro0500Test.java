@@ -32,7 +32,7 @@ public class Registro0500Test {
     }
 
     @Test
-    public String linhaRegistro0500Test() throws ParseException{
+    public void Registro0500Test() throws ParseException{
         Registro0500 reg = new Registro0500();
         LineModel line = reg.createModel();
         
@@ -57,9 +57,8 @@ public class Registro0500Test {
         line.setFieldValue(Registro0500.CNPJ_EST, 11111111111111L);
         
         StringBuffer sb = line.getRepresentation();
-//        System.out.print(sb);
+        System.out.print(sb);
 //        String expected = "|0500|14012013|09|A|00004|Código da conta analítica/grupo de contas.|Nome da conta analítica/grupo de contas.|Código da conta correlacionada - Pl. de Contas Referenciado|11111111111111|";
 //        assertEquals (expected, sb.toString());
-        return sb.toString();
     }
 }

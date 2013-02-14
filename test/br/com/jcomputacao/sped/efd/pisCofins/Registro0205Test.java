@@ -34,7 +34,7 @@ public class Registro0205Test {
     }
 
     @Test
-    public String linhaRegistro0205Test() throws ParseException{
+    public void Registro0205Test() throws ParseException{
         Registro0205 reg = new Registro0205();
         LineModel line = reg.createModel();
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
@@ -47,9 +47,8 @@ public class Registro0205Test {
         line.setFieldValue(Registro0205.COD_ANT_ITEM, "Código anterior do item.");
         
         StringBuffer sb = line.getRepresentation();
-        //System.out.print(sb);
+        System.out.print(sb);
         //String expected = "|0205|Descrição anterior do item|29012013|31012013|Código anterior do item.|";
         //assertEquals (expected, sb.toString());
-        return sb.toString();
     }    
 }

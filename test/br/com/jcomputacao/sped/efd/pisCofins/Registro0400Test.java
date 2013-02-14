@@ -29,7 +29,7 @@ public class Registro0400Test {
     }
 
     @Test
-    public String linhaRegistro0400Test(){
+    public void Registro0400Test(){
         Registro0400 reg = new Registro0400();
         LineModel line = reg.createModel();
         
@@ -38,9 +38,8 @@ public class Registro0400Test {
         //03
         line.setFieldValue(Registro0400.DESCR_NAT, "Descrição da natureza da operação/prestação");
         StringBuffer sb = line.getRepresentation();
-//        System.out.print(sb);
+        System.out.print(sb);
 //        String expected = "|0400|CodNatOper|Descrição da natureza da operação/prestação|";
 //        assertEquals (expected, sb.toString());
-        return sb.toString();
     }
 }

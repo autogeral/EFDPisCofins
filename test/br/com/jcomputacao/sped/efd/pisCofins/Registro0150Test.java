@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
@@ -32,7 +28,7 @@ public class Registro0150Test {
     }
 
     @Test
-    public String linhaRegistro0150Test(){
+    public void Registro0150Test(){
         Registro0150 reg = new Registro0150();
         LineModel line = reg.createModel();
         
@@ -65,6 +61,5 @@ public class Registro0150Test {
         //System.out.println(sb);
         //String expected = "|0150|Codigo Participante 007|Nome pessoal ou empresarial do participante|01058|11111111111111|22222222222|33333333333333|1111111|444444444|Av. Dr. Octaviano Pereira Mendes|33|Primeiro Andar|Centro|";
         //assertEquals (expected, sb.toString());
-        return sb.toString();
     }
 }
