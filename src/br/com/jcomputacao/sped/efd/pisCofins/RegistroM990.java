@@ -13,7 +13,7 @@ public class RegistroM990 extends LineArchetype{
     
     //01 - Fixo
     public static String REG = "REG";
-    //02 - Quantidade total de linhas do Bloco F
+    //02 - Quantidade total de linhas do Bloco M
     public static String QTD_LIN_M = "QTD_LIN_M";
     
     public RegistroM990(){
@@ -25,11 +25,5 @@ public class RegistroM990 extends LineArchetype{
         //02
         addFieldArchetype(QTD_LIN_M, new FieldIntegerMaximumLengthArchetype(19));
         
-    }
-    
-    
-    
-    
-    
-    
+    }    
 }
