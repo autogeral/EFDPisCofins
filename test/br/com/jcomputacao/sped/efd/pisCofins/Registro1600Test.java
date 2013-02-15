@@ -3,12 +3,10 @@ package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 26/11/2011 10:25:56
@@ -39,23 +37,37 @@ public class Registro1600Test{
     public void Registro1600Test() throws ParseException{
         Registro1600 reg = new Registro1600();
         LineModel line = reg.createModel();
-        Randomize rm = new Randomize();
+        SimpleDateFormat sdf = new SimpleDateFormat ("MMyyyy");
+        Date data = sdf.parse ("022013");
+        SimpleDateFormat sdf2 = new SimpleDateFormat ("ddMMyyyy");
+        Date data2 = sdf2.parse ("15022013");
+        
+        //02
+        line.setFieldValue(Registro1600.PER_APUR_ANT, data);
+        //03
+        line.setFieldValue(Registro1600.NAT_CONT_REC, "01");
+        //04
+        line.setFieldValue(Registro1600.VL_CONT_APUR, 100000000000.01);
+        //05
+        line.setFieldValue(Registro1600.VL_CRED_COFINS_DESC, 100000000000.02);
+        //06
+        line.setFieldValue(Registro1600.VL_CONT_DEV, 100000000000.03);
+        //07
+        line.setFieldValue(Registro1600.VL_OUT_DED, 100000000000.04);
+        //08
+        line.setFieldValue(Registro1600.VL_CONT_EXT, 100000000000.05);
+        //09
+        line.setFieldValue(Registro1600.VL_MUL, 100000000000.06);        
+        //10
+        line.setFieldValue(Registro1600.VL_JUR, 100000000000.07);
+        //11
+        line.setFieldValue(Registro1600.DT_RECOL, data2);
 
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
 
-        line.setFieldValue(Registro1600.REG, "1600");
-        line.setFieldValue(Registro1600.PER_APUR_ANT, rm.GeraLongRandom(6));
-        line.setFieldValue(Registro1600.NAT_CONT_REC, rm.GeraStringRandom(2));
-        line.setFieldValue(Registro1600.VL_CONT_APUR, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1600.VL_CRED_COFINS_DESC, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1600.VL_CONT_DEV, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1600.VL_OUT_DED, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1600.VL_CONT_EXT, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1600.VL_MUL, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1600.VL_JUR, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1600.DT_RECOL, rm.GeraLongRandom(8));
-
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
+//	String expected = "|1600|022013|01|100000000000,01|100000000000,02|100000000000,03|100000000000,04|100000000000,05|100000000000,06|100000000000,07|15022013|";
+//        assertEquals (expected, sb.toString());
     }
 
 }

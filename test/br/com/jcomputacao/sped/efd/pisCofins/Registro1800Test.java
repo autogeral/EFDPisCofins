@@ -3,11 +3,10 @@ package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 26/11/2011 11:37:15
@@ -38,22 +37,31 @@ public class Registro1800Test{
     public void Registro1800Test() throws ParseException{
         Registro1800 reg = new Registro1800();
         LineModel line = reg.createModel();
-        Randomize rm = new Randomize();
+        SimpleDateFormat sdf = new SimpleDateFormat ("ddMMyyyy");
+        Date data = sdf.parse ("15022013");
+        //02
+        line.setFieldValue(Registro1800.INC_IMOB, "Empreendimento objeto de Incorporação Imobiliária, optantepelo RET.");
+        //03
+        line.setFieldValue(Registro1800.REC_RECEB_RET, 100000000000.01);
+        //04
+        line.setFieldValue(Registro1800.REC_FIN_RET, 100000000000.02);
+        //05
+        line.setFieldValue(Registro1800.BC_RET, 100000000000.03);
+        //06
+        line.setFieldValue(Registro1800.ALIQ_RET, 100000.04);
+        //70
+        line.setFieldValue(Registro1800.VL_REC_UNI, 100000000000.05);
+        //08
+        line.setFieldValue(Registro1800.DT_REC_UNI, data);
+        //09
+        line.setFieldValue(Registro1800.COD_REC, "CDRC");
 
 
-        line.setFieldValue(Registro1800.REG, "1809");
-        line.setFieldValue(Registro1800.INC_IMOB, rm.GeraStringRandom(90));
-        line.setFieldValue(Registro1800.REC_RECEB_RET, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1800.REC_FIN_RET, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1800.BC_RET, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1800.ALIQ_RET, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1800.VL_REC_UNI, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1800.DT_REC_UNI, rm.GeraLongRandom(8));
-        line.setFieldValue(Registro1800.COD_REC, rm.GeraStringRandom(4));
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
 
-
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
+//	String expected = "|1800|Empreendimento objeto de Incorporação Imobiliária, optantepelo RET.|100000000000,01|100000000000,02|100000000000,03|100000,04|100000000000,05|15022013|CDRC|";
+//	assertEquals (expected, sb.toString());
     }
 
 }

@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 12/11/2011 09:51:37
@@ -40,11 +33,13 @@ public class Registro9001Test {
         Registro9001 reg = new Registro9001();
         LineModel line = reg.createModel();
         
-        line.setFieldValue(Registro9001.REG, "9001");
-        line.setFieldValue(Registro9001.IND_MOV, 1l);
+        //02
+        line.setFieldValue(Registro9001.IND_MOV, "0");
         
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+        String expected = "|9001|0|";
+        assertEquals (expected, sb.toString());
         
     }
 

@@ -3,11 +3,8 @@ package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 
 /**
@@ -39,16 +36,19 @@ public class Registro1502Test{
     public void Registro1502Test() throws ParseException{
         Registro1502 reg = new Registro1502();
         LineModel line = reg.createModel();
-        Randomize rm = new Randomize();
 
+        //02
+        line.setFieldValue(Registro1502.VL_CRED_COFINS_TRIB_MI, 100000000000.01);
+        //03
+        line.setFieldValue(Registro1502.VL_CRED_COFINS_NT_MI, 100000000000.02);
+        //04
+        line.setFieldValue(Registro1502.VL_CRED_COFINS_EXP, 10000000000.03);
 
-        line.setFieldValue(Registro1502.REG, "1502");
-        line.setFieldValue(Registro1502.VL_CRED_COFINS_TRIB_MI, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1502.VL_CRED_COFINS_NT_MI, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1502.VL_CRED_COFINS_EXP, rm.GeraDoubleRandom(2));
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
 
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
+//	String expected = "|1502|100000000000,01|100000000000,02|10000000000,03|";
+//	assertEquals (expected, sb.toString());
     }
 
 }

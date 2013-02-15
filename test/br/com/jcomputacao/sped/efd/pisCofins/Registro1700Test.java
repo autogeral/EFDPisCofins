@@ -3,11 +3,10 @@ package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 26/11/2011 11:24:13
@@ -38,20 +37,30 @@ public class Registro1700Test{
     public void Registro1700Test() throws ParseException{
         Registro1700 reg = new Registro1700();
         LineModel line = reg.createModel();
-        Randomize rm = new Randomize();
+        
+        SimpleDateFormat sdf = new SimpleDateFormat ("MMyyyy");
+        Date data = sdf.parse ("022013");
+        
+        //02
+        line.setFieldValue(Registro1700.IND_NAT_RET, 99);
+        //03
+        line.setFieldValue(Registro1700.PR_REC_RET, data);
+        //04
+        line.setFieldValue(Registro1700.VL_RET_APU, 100000000000.01);
+        //05
+        line.setFieldValue(Registro1700.VL_RET_DED, 100000000000.02);
+        //06
+        line.setFieldValue(Registro1700.VL_RET_PER, 100000000000.03);
+        //07
+        line.setFieldValue(Registro1700.VL_RET_DCOMP, 100000000000.04);
+        //08
+        line.setFieldValue(Registro1700.SLD_RET, 100000000000.05);
 
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
 
-        line.setFieldValue(Registro1700.REG, "1700");
-        line.setFieldValue(Registro1700.IND_NAT_RET, rm.GeraLongRandom(2));
-        line.setFieldValue(Registro1700.PR_REC_RET, rm.GeraLongRandom(6));
-        line.setFieldValue(Registro1700.VL_RET_APU, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1700.VL_RET_DED, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1700.VL_RET_PER, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1700.VL_RET_DCOMP, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1700.SLD_RET, rm.GeraDoubleRandom(2));
-
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
+//	String expected = "|1700|99|022013|100000000000,01|100000000000,02|100000000000,03|100000000000,04|100000000000,05|";
+//	assertEquals (expected, sb.toString());
     }
 
 }

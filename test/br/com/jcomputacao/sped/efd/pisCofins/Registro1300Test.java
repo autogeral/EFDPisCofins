@@ -3,11 +3,9 @@ package br.com.jcomputacao.sped.efd.pisCofins;
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import java.util.Date;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 25/11/2011 09:40:34
@@ -38,20 +36,29 @@ public class Registro1300Test{
     public void Registro1300Test() throws ParseException{
         Registro1300 reg = new Registro1300();
         LineModel line = reg.createModel();
-        Randomize rm = new Randomize();
+        SimpleDateFormat sdf = new SimpleDateFormat ("MMyyyy");
+        Date data = sdf.parse ("022013");
+ 
+        //02
+        line.setFieldValue(Registro1300.IND_NAT_RET, 1);
+        //03
+        line.setFieldValue(Registro1300.PR_REC_RET, data);
+        //04
+        line.setFieldValue(Registro1300.VL_RET_APU, 100000000000.01);
+        //05
+        line.setFieldValue(Registro1300.VL_RET_DED, 200000000000.02);
+        //06
+        line.setFieldValue(Registro1300.VL_RET_PER, 300000000000.03);
+        //07
+        line.setFieldValue(Registro1300.VL_RET_DCOMP, 400000000000.04);
+        //08
+        line.setFieldValue(Registro1300.SLD_RET, 500000000000.05);
 
-       
-        line.setFieldValue(Registro1300.REG, "1300");
-        line.setFieldValue(Registro1300.IND_NAT_RET, rm.GeraLongRandom(2));
-        line.setFieldValue(Registro1300.PR_REC_RET, rm.GeraLongRandom(6));
-        line.setFieldValue(Registro1300.VL_RET_APU, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1300.VL_RET_DED, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1300.VL_RET_PER, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1300.VL_RET_DCOMP, rm.GeraDoubleRandom(2));
-        line.setFieldValue(Registro1300.SLD_RET, rm.GeraDoubleRandom(2));
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
 
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
+	String expected = "";
+//	assertEquals (expected, sb.toString());
     }
 
 }

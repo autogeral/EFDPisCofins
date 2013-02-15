@@ -3,11 +3,10 @@ package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 26/11/2011 11:07:33
@@ -38,17 +37,23 @@ public class Registro1620Test{
     public void Registro1620Test() throws ParseException{
         Registro1620 reg = new Registro1620();
         LineModel line = reg.createModel();
-        Randomize rm = new Randomize();
+        SimpleDateFormat sdf = new SimpleDateFormat ("ddMMyyyy");
+        Date data = sdf.parse ("15022013");
+        
+        //02
+        line.setFieldValue(Registro1620.PER_APU_CRED, data);
+        //03
+        line.setFieldValue(Registro1620.ORIG_CRED, 01);
+        //04
+        line.setFieldValue(Registro1620.COD_CRED, 123);
+        //05
+        line.setFieldValue(Registro1620.VL_CRED, 100000000000.01);
 
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
 
-        line.setFieldValue(Registro1620.REG, "1620");
-        line.setFieldValue(Registro1620.PER_APU_CRED, rm.GeraLongRandom(6));
-        line.setFieldValue(Registro1620.ORIG_CRED, rm.GeraLongRandom(2));
-        line.setFieldValue(Registro1620.COD_CRED, rm.GeraLongRandom(3));
-        line.setFieldValue(Registro1620.VL_CRED, rm.GeraDoubleRandom(2));
-
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
+//	String expected = "|1620|022013|01|123|100000000000,01|";
+//	assertEquals (expected, sb.toString());
     }
 
 }

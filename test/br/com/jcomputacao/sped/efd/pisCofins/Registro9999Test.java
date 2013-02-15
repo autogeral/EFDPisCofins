@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 12/11/2011 10:31:26
@@ -41,15 +34,14 @@ public class Registro9999Test extends Randomize {
         Registro9999 reg = new Registro9999();
         LineModel line = reg.createModel();
         
-        line.setFieldValue(Registro9999.REG, GeraStringRandom(4));
-        line.setFieldValue(Registro9999.QTD_LIN,1111111111111111111l );
+        //02
+        line.setFieldValue(Registro9999.QTD_LIN, 1000);
      
-        
-        
-        
-        StringBuffer r = line.getRepresentation();
-        System.out.print(r);
-        
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+
+	String expected = "|9999|1000|";
+	assertEquals (expected, sb.toString());
     }
     
 }

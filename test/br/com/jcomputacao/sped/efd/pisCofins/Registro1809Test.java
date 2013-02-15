@@ -3,11 +3,8 @@ package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 /**
  * 26/11/2011 11:46:16
@@ -38,15 +35,16 @@ public class Registro1809Test{
     public void Registro1809Test() throws ParseException{
         Registro1809 reg = new Registro1809();
         LineModel line = reg.createModel();
-        Randomize rm = new Randomize();
 
-
-        line.setFieldValue(Registro1809.REG, "1809");
-        line.setFieldValue(Registro1809.NUM_PROC, rm.GeraStringRandom(20));
-        line.setFieldValue(Registro1809.IND_PROC, rm.GeraStringRandom(1));
-
-
-        StringBuffer a = line.getRepresentation();
-        System.out.print(a);
+        //02
+        line.setFieldValue(Registro1809.NUM_PROC, "Identif do process");
+        //03
+        line.setFieldValue(Registro1809.IND_PROC, "9");
+        
+        StringBuffer sb = line.getRepresentation();
+        System.out.print(sb);
+        
+//        String expected = "|F1809|Identif do process|9|";
+//        assertEquals(expected, sb.toString());
     }
 }
