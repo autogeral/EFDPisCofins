@@ -19,6 +19,11 @@ import java.util.List;
 public class ArquivoEfdPisCofins {
 
     private final EmpresaEfdPisCofins empresa;
+    
+    //Jennifer Santos
+    //Inicio
+    private final ContabilistaEfdPisCofins contabilista = null;
+    //Fim
     private final Date inicio;
     private final Date fim;
     private List<TNFe> nfes;
@@ -79,7 +84,9 @@ public class ArquivoEfdPisCofins {
     public StringBuilder getRepresentation() {
         StringBuilder sb = new StringBuilder();
         sb.append(criaRegistro0000());
-
+        //Jennifer Santos
+        sb.append(criaRegistro0001());
+        
         for (TNFe nfe : nfes) {
             List<Det> dets = nfe.getInfNFe().getDet();
             boolean saida = ehSaida(nfe);
@@ -115,6 +122,39 @@ public class ArquivoEfdPisCofins {
         lm.setFieldValue(Registro0000.UF, empresa.getUf());
         return lm.getRepresentation();
     }
+    //Testes - Jennifer Santos
+    //Início
+    
+    //REGISTRO 0001: ABERTURA DO BLOCO 0
+    private StringBuffer criaRegistro0001() {
+        //Restistro ocorre uma única vez
+        Registro0001 reg = new Registro0001();
+        LineModel line = reg.createModel();
+        /* 
+         * 0 - Bloco com dados informados;
+         * 1 – Bloco sem dados informados.
+         */
+        line.setFieldValue(Registro0001.IND_MOV, 0);
+        return line.getRepresentation();
+    }
+    //REGISTRO 0110: REGIMES DE APURAÇÃO DA CONTRIBUIÇÃO SOCIAL E DE APROPRIAÇÃO DE CRÉDITO
+    private StringBuffer criaRegistro0110() {
+        //Restistro ocorre uma única vez
+        Registro0110 reg = new Registro0110();
+        LineModel line = reg.createModel();
+        //02
+        line.setFieldValue(Registro0110.COD_INC_TRIB, 2L);
+        //03
+        line.setFieldValue(Registro0110.IND_APRO_CRED, 2L);
+        //04
+        line.setFieldValue(Registro0110.COD_TIPO_CONT, 2L);
+        //05
+        line.setFieldValue(Registro0110.IND_REG_CUM, null);
+        
+        return line.getRepresentation();
+    }
+    //Testes Jennifer Santos
+    //Término
 
     /**
      * Redebe como parametro o detalhamento de 
