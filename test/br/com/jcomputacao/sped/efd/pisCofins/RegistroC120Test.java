@@ -34,7 +34,7 @@ public class RegistroC120Test  {
     }
 
     @Test
-    public String linhaRegistroC120Test(){
+    public void RegistroC120Test(){
         RegistroC120 reg = new RegistroC120();
         LineModel line = reg.createModel();
         //02
@@ -52,6 +52,6 @@ public class RegistroC120Test  {
 //        System.out.print(sb);
 //        String expected = "|C120|1|1548711|78978,12|7893,23|56648115|";
 //        assertEquals (expected, sb.toString());
-        return sb.toString();
+        
     }
 }
