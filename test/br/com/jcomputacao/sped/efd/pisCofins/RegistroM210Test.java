@@ -36,9 +36,10 @@ public class RegistroM210Test {
     public void RegistroM210Test()  {
         RegistroM210 reg = new RegistroM210();
         LineModel line = reg.createModel();
-                 
+        
+        //Teste usando a classe ContribuicaoSocialApurada
         //02
-        line.setFieldValue(RegistroM210.COD_CONT, "01");
+        line.setFieldValue(RegistroM210.COD_CONT, String.valueOf(ContribuicaoSocialApurada.Contribuicao_cumulativa_apurada_a_aliquota_basica_Atividade_Imobiliaria.getCodigo()));
         //03
         line.setFieldValue(RegistroM210.VL_REC_BRT, 100000000000.01);
         //04
@@ -65,7 +66,7 @@ public class RegistroM210Test {
         StringBuffer sb = line.getRepresentation();
         System.out.print(sb);
 
-	String expected = "|M210|01|100000000000,01|100000000000,01|100000000000,0001|100000000000,001|100000000000,0001|100000000000,01|100000000000,01|100000000000,01|100000000000,01|100000000000,01|100000000000,01|";
+	String expected = "|M210|54|100000000000,01|100000000000,01|100000000000,0001|100000000000,001|100000000000,0001|100000000000,01|100000000000,01|100000000000,01|100000000000,01|100000000000,01|100000000000,01|";
 	assertEquals (expected, sb.toString());
     }
 }

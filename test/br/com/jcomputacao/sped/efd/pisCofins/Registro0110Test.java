@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
@@ -42,17 +38,17 @@ public class Registro0110Test {
         LineModel line = reg.createModel();
         
         //02
-        line.setFieldValue(Registro0110.COD_INC_TRIB, 2L);
+        line.setFieldValue(Registro0110.COD_INC_TRIB, 2);
         //03
-        line.setFieldValue(Registro0110.IND_APRO_CRED, 2L);
+        line.setFieldValue(Registro0110.IND_APRO_CRED, null);
         //04
-        line.setFieldValue(Registro0110.COD_TIPO_CONT, 2L);
+        line.setFieldValue(Registro0110.COD_TIPO_CONT, null);
         //05
-        line.setFieldValue(Registro0110.IND_REG_CUM, null);
+        line.setFieldValue(Registro0110.IND_REG_CUM, 2);
         
        StringBuffer sb = line.getRepresentation();
        System.out.print(sb);
-//       String expected = "|0110|2|2|2||";
+//       String expected = "|0110|2|||2|";
 //       assertEquals (expected, sb.toString());
     }
 

@@ -37,33 +37,33 @@ public class Registro0140Test {
     }
 
     @Test
-    public String linhaRegistro0140Test() throws ParseException{
+    public void Registro0140Test() throws ParseException{
         Registro0140 reg = new Registro0140();
         LineModel line = reg.createModel();
         
         //02
-        line.setFieldValue(Registro0140.COD_EST, "Código de identificação do estabelecimento");
+        /**Baseado nos exemplos existentes no site da receita federal*/
+        line.setFieldValue(Registro0140.COD_EST, "1");
         //03
-        line.setFieldValue(Registro0140.NOME, "Nome empresarial do estabelecimento");
+        line.setFieldValue(Registro0140.NOME, "CONVIVERE EMPREENDIMENTOS IMOBILIÁRIOS LTDA");
         //04
-        line.setFieldValue(Registro0140.CNPJ, 11111111111111L);
+        line.setFieldValue(Registro0140.CNPJ, 10276553000125L);
         //05
         line.setFieldValue(Registro0140.UF, "SP");
         //06
-        line.setFieldValue(Registro0140.IE, "11111111111111");
+        line.setFieldValue(Registro0140.IE, null);
         //07
-        line.setFieldValue(Registro0140.COD_MUN, 1111111L);
+        line.setFieldValue(Registro0140.COD_MUN, 3523909L);
         //08
-        line.setFieldValue(Registro0140.IM, "Inscrição Municipal do estabelecimento, se contribuinte do ISS.");
+        line.setFieldValue(Registro0140.IM, null);
         //09
-        line.setFieldValue(Registro0140.SUFRAMA, "111111111");
+        line.setFieldValue(Registro0140.SUFRAMA, null);
         
         
         StringBuffer sb = line.getRepresentation();
-        //String expected = "|0140|Código de identificação do estabelecimento|Nome empresarial do estabelecimento|11111111111111|SP|11111111111111|1111111|Inscrição Municipal do estabelecimento, se contribuinte do ISS.|111111111|";
-        //System.out.println(sb);
+        //String expected = "|0140|1|CONVIVERE EMPREENDIMENTOS IMOBILIÁRIOS LTDA|10276553000125|SP||3523909|||";
+        System.out.println(sb);
         //System.out.print(expected);
         //assertEquals (expected, sb.toString());
-        return sb.toString();
     }
 }

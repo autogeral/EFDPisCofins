@@ -36,9 +36,9 @@ public class Registro0190Test {
         LineModel line = reg.createModel();
         
         //02
-        line.setFieldValue(Registro0190.UNID, "UN");
+        line.setFieldValue(Registro0190.UNID, "M2");
         //03
-        line.setFieldValue(Registro0190.DESCR, "Descrição da unidade de medida");
+        line.setFieldValue(Registro0190.DESCR, "METROS QUADRADOS");
 
         
         StringBuffer sb = line.getRepresentation();

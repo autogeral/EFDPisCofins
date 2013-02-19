@@ -34,12 +34,12 @@ public class RegistroD990Test {
         LineModel line = reg.createModel();
 
         //02
-        line.setFieldValue(RegistroD990.QTD_LIN_D, 450L);
+        line.setFieldValue(RegistroD990.QTD_LIN_D, 2);
     
         StringBuffer sb = line.getRepresentation();
         System.out.print(sb);
         
-//        String expected = "|D990|450|";
+//        String expected = "|D990|2|";
 //        assertEquals (expected, sb.toString());
     }
 }

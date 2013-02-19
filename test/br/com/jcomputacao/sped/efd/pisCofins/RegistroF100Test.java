@@ -41,6 +41,14 @@ public class RegistroF100Test {
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
         Date data = sdf.parse("08022013");
 
+        //PIS
+        double campo08 = 12345678.1234;
+        double campo09 = 1.6500;
+        double campo10;
+        //COFINS
+        double campo12 = 12345678.1234;
+        double campo13 = 7.6000;
+        double campo14;
         //02
         line.setFieldValue(RegistroF100.IND_OPER, "1");
         //03
@@ -54,19 +62,21 @@ public class RegistroF100Test {
         //07
         line.setFieldValue(RegistroF100.CST_PIS, 12);
         //08
-        line.setFieldValue(RegistroF100.VL_BC_PIS, 12345678.1234);
+        line.setFieldValue(RegistroF100.VL_BC_PIS, campo08);
         //09
-        line.setFieldValue(RegistroF100.ALIQ_PIS, 12345678.1234);
+        line.setFieldValue(RegistroF100.ALIQ_PIS, campo09);
         //10
-        line.setFieldValue(RegistroF100.VL_PIS, 12345678.12);
+        campo10 = campo08*campo09/100;
+        line.setFieldValue(RegistroF100.VL_PIS, campo10);
         //11
         line.setFieldValue(RegistroF100.CST_COFINS, 12);
         //12
-        line.setFieldValue(RegistroF100.VL_BC_COFINS, 12345678.1234);
+        line.setFieldValue(RegistroF100.VL_BC_COFINS, campo12);
         //13
-        line.setFieldValue(RegistroF100.ALIQ_COFINS, 12345678.1234);
+        line.setFieldValue(RegistroF100.ALIQ_COFINS, campo13);
         //14
-        line.setFieldValue(RegistroF100.VL_COFINS, 12345678.12);
+        campo14 = campo12*campo13/100;
+        line.setFieldValue(RegistroF100.VL_COFINS, campo14);
         //15
         line.setFieldValue(RegistroF100.NAT_BC_CRED, "12");
         //16
@@ -81,7 +91,7 @@ public class RegistroF100Test {
         StringBuffer sb = line.getRepresentation();
                 System.out.print(sb);
 
-//        String expected = "|F100|1|(Campo 02 do Registro 0150)|Código do item (campo 02 do Registro 0200)|08022013|12345678,12|12|12345678,1234|12345678,1234|12345678,12|12|12345678,1234|12345678,1234|12345678,12|12|0|Código da conta analítica contábil debitada/creditada|Código do Centro de Custos|Descrição do Documento/Operação|";
+//        String expected = "|F100|1|(Campo 02 do Registro 0150)|Código do item (campo 02 do Registro 0200)|08022013|12345678,12|12|12345678,1234|1,6500|203703,69|12|12345678,1234|7,6000|938271,54|12|0|Código da conta analítica contábil debitada/creditada|Código do Centro de Custos|Descrição do Documento/Operação|";
 //        assertEquals (expected, sb.toString());
     }
 }

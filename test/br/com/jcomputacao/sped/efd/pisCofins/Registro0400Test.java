@@ -34,9 +34,10 @@ public class Registro0400Test {
         LineModel line = reg.createModel();
         
         //02
-        line.setFieldValue(Registro0400.COD_NAT, "CodNatOper");
+        line.setFieldValue(Registro0400.COD_NAT, "001");
         //03
-        line.setFieldValue(Registro0400.DESCR_NAT, "Descrição da natureza da operação/prestação");
+        line.setFieldValue(Registro0400.DESCR_NAT, "VENDA DE IMÓVEL");
+        //VENDA OU LOCAÇÃO DE IMÓVEL
         StringBuffer sb = line.getRepresentation();
         System.out.print(sb);
 //        String expected = "|0400|CodNatOper|Descrição da natureza da operação/prestação|";

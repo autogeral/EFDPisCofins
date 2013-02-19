@@ -44,8 +44,13 @@ public class RegistroF200Test {
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
         Date data = sdf.parse("08022013");
         
+        double campo09 = 53000.00;
+        double campo10 = 11000.00;
+        double campo11 = 2000.00;
+        double campo20;
+        
         //02
-        line.setFieldValue(RegistroF200.IND_OPER, 4);
+        line.setFieldValue(RegistroF200.IND_OPER, 02);
         //03
         line.setFieldValue(RegistroF200.UNID_IMOB, 5);
         //04
@@ -59,11 +64,11 @@ public class RegistroF200Test {
         //08
         line.setFieldValue(RegistroF200.DT_OPER, data);
         //09
-        line.setFieldValue(RegistroF200.VL_TOT_VEND, 53000.00);
+        line.setFieldValue(RegistroF200.VL_TOT_VEND, campo09);
         //10
-        line.setFieldValue(RegistroF200.VL_REC_ACUM, 11000.00);
+        line.setFieldValue(RegistroF200.VL_REC_ACUM, campo10);
         //11
-        line.setFieldValue(RegistroF200.VL_TOT_REC, 112000.00);
+        line.setFieldValue(RegistroF200.VL_TOT_REC, campo11);
         //12
         line.setFieldValue(RegistroF200.CST_PIS, 12);
         //13
@@ -81,7 +86,8 @@ public class RegistroF200Test {
         //19
         line.setFieldValue(RegistroF200.VL_COFINS, 123456.12);
         //20
-        line.setFieldValue(RegistroF200.PERC_REC_RECEB, 123456.12);
+        campo20 = (campo10+campo11)/campo09;
+        line.setFieldValue(RegistroF200.PERC_REC_RECEB, campo20);
         //21
         line.setFieldValue(RegistroF200.IND_NAT_EMP, 1);
         //21
@@ -90,7 +96,7 @@ public class RegistroF200Test {
         StringBuffer sb = line.getRepresentation();
         System.out.print(sb);
 
-//        String expected = "|F200|04|05|Identificação/Nome do Empreendimento|Descrição resumida da unidade imobiliária vendida|Número do Contrato/Documento que formaliza a Venda da Unidade Imobiliária|12345678911111|08022013|53000,00|11000,00|112000,00|12|1,99|123456,1234|123456,12|13|123456,12|123456,1234|123456,12|123456,|1|Informações Complementares|";
+//        String expected = "|F200|04|05|Identificação/Nome do Empreendimento|Descrição resumida da unidade imobiliária vendida|Número do Contrato/Documento que formaliza a Venda da Unidade Imobiliária|12345678911111|08022013|53000,00|11000,00|2000,00|12|1,99|123456,1234|123456,12|13|123456,12|123456,1234|123456,12|0,25|1|Informações Complementares|";
 //        assertEquals (expected, sb.toString());
 
     }

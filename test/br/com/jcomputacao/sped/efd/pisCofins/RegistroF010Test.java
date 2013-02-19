@@ -35,12 +35,12 @@ public class RegistroF010Test {
          RegistroF010 reg = new RegistroF010();
         LineModel line = reg.createModel();
         //02
-        line.setFieldValue(RegistroF010.CNPJ, 12345678910111L);
+        line.setFieldValue(RegistroF010.CNPJ, 10276553000125l);
         
         StringBuffer sb = line.getRepresentation();
         System.out.print(sb);
 
-//        String expected = "|F010|12345678910111|";
+//        String expected = "|F010|10276553000125|";
 //        assertEquals (expected, sb.toString());
     }
     

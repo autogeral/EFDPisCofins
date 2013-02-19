@@ -37,7 +37,7 @@ public class RegistroI990Test {
         LineModel line = reg.createModel();
         
         //02
-        line.setFieldValue(RegistroI990.QTD_LIN_I, 150);
+        line.setFieldValue(RegistroI990.QTD_LIN_I, 2);
         
         StringBuffer sb = line.getRepresentation();
         System.out.print(sb);

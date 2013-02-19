@@ -50,8 +50,6 @@ public class RegistroC100Test {
         //04
         line.setFieldValue(RegistroC100.COD_PART, "Código do participante (campo 02 do Registro 0150)");
         //05
-        line.setFieldValue(RegistroC100.COD_MOD, "11");
-        //06
         line.setFieldValue(RegistroC100.COD_SIT, 12);
         //07
         line.setFieldValue(RegistroC100.SER, "100");

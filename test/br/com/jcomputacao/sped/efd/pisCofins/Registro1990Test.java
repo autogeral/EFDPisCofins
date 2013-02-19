@@ -32,11 +32,11 @@ public class Registro1990Test {
         Registro1990 reg = new Registro1990();
         LineModel line = reg.createModel();
         //02
-        line.setFieldValue(Registro1990.QTD_LIN_1, 150);
+        line.setFieldValue(Registro1990.QTD_LIN_1, 2);
         StringBuffer sb = line.getRepresentation();
         System.out.print(sb);
         
-//        String expected = "|1990|150|";
+//        String expected = "|1990|2|";
 //        assertEquals (expected, sb.toString());
     }
 }

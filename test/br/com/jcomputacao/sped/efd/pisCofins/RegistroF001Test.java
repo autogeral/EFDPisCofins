@@ -34,12 +34,12 @@ public class RegistroF001Test {
          RegistroF001 reg = new RegistroF001();
         LineModel line = reg.createModel();
         //02
-        line.setFieldValue(RegistroF001.IND_MOV, "1");
+        line.setFieldValue(RegistroF001.IND_MOV, "0");
         
         StringBuffer sb = line.getRepresentation();
         System.out.print(sb);
 
-        String expected = "|F001|1|";
+        String expected = "|F001|0|";
         assertEquals (expected, sb.toString());
     }
         
