@@ -37,12 +37,12 @@ public class RegistroP990Test {
         LineModel line = reg.createModel();
         
         //02
-        line.setFieldValue(RegistroP990.QTD_LIN_P, 150);
+        line.setFieldValue(RegistroP990.QTD_LIN_P, 2);
         
         StringBuffer sb = line.getRepresentation();
         System.out.print(sb);
 
-//        String expected = "|P990|150|";
+//        String expected = "|P990|0|";
 //        assertEquals (expected, sb.toString());      
     }
 }
