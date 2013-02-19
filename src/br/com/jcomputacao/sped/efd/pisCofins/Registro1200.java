@@ -17,6 +17,26 @@ public class Registro1200 extends LineArchetype {
         //02 - Período de Apuração da Contribuição Social Extemporânea (MMAAAA).
         public static String PER_APUR_ANT = "PER_APUR_ANT";
         //03 - Natureza da Contribuição a Recolher, conforme Tabela 4.3.5.
+        /**
+        * Tabela 4.3.5
+        * <table>
+        * <tr><th colspan="2">4.3.5 – Tabela Código de Contribuição Social Apurada</th></tr>
+        * <tr><th>Codigo</th><th>Descricao</th></tr>
+        * <tr><td>01</td><td>Contribuição não-cumulativa apurada a alíquota básica</td></tr>
+        * <tr><td>02</td><td>Contribuição não-cumulativa apurada a alíquotas diferenciadas</td></tr>
+        * <tr><td>03</td><td>Contribuição não-cumulativa apurada a alíquota por unidade de medida de produto</td></tr>
+        * <tr><td>04</td><td>Contribuição não-cumulativa apurada a alíquota básica – Atividade Imobiliária</td></tr>
+        * <tr><td>31</td><td>Contribuição apurada por substituição tributária</td></tr> 
+        * <tr><td>32</td><td>Contribuição apurada por substituição tributária – Vendas à Zona Franca de Manaus</td></tr>
+        * <tr><td>51</td><td>Contribuição cumulativa apurada a alíquota básica</td></tr>
+        * <tr><td>53</td><td>Contribuição cumulativa apurada a alíquota por unidade de medida de produto</td></tr>
+        * <tr><td>54</td><td>Contribuição cumulativa apurada a alíquota básica – Atividade Imobiliária</td></tr>
+        * <tr><td>70</td><td>Contribuição apurada da Atividade Imobiliária - RET</td></tr>
+        * <tr><td>71</td><td>Contribuição apurada de SCP – Incidência Não Cumulativa</td></tr>
+        * <tr><td>72</td><td>Contribuição apurada de SCP – Incidência Cumulativa</td></tr>
+        * <tr><td>99</td><td>Contribuição para o PIS/Pasep – Folha de Salários</td></tr>
+        * </table>
+        */
         public static String NAT_CONT_REC = "NAT_CONT_REC";
         //04 - alor da Contribuição Apurada.
         public static String VL_CONT_APUR = "VL_CONT_APUR";
