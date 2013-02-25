@@ -6,7 +6,7 @@ package br.com.jcomputacao.sped.efd.pisCofins;
  */
 public interface EmpresaEfdPisCofins {
 
-    public String getCNPJ();
+    public Long getCNPJ();
     public String getNome();
     public int getCodigoMunicipio();
     public String getUf();

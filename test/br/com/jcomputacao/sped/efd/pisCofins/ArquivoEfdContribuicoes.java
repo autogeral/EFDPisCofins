@@ -3,8 +3,10 @@ package br.com.jcomputacao.sped.efd.pisCofins;
 import br.com.jcomputacao.aristoteles.line.LineModel;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  *
@@ -12,16 +14,44 @@ import java.util.List;
  */
 public class ArquivoEfdContribuicoes {
     
+    //Empresa cuja escrituração é feita
     private final EmpresaEfdPisCofins empresa;
-    private final ContabilistaEfdPisCofins contabilista=null;
-    private final ContratoEfdPisCofins contrato = null;
     
-    /**Futuramente, creio que as informações do contabilista tenham 
-     * origem do banco de dados. É possível ter vários contabilistas.
-     */
-    //ArrayList <ContabilistaEfdPisCofins> contabilistas = new ArrayList<ContabilistaEfdPisCofins>();
+    ArrayList <ContabilistaEfdPisCofins> contabilistas = new ArrayList<ContabilistaEfdPisCofins>();
+    ArrayList <ContratoEfdPisCofins> contratos = new ArrayList<ContratoEfdPisCofins>();
+    ArrayList<ImoveEfdlPisConfins> imoveis = new ArrayList<ImoveEfdlPisConfins>();
+    ArrayList<ContratoImovelEfdPisCofins> contratosImoveis = new ArrayList<ContratoImovelEfdPisCofins>();
+    
+    ImoveEfdlPisConfins imovel;
+    
+    //Período de apuraçaão
     private final Date inicio;
     private final Date fim;
+    
+    //Alíquotas
+    double aliquotaPis    = 0.65;
+    double aliquotaCofins = 3.00;
+    
+    //Receita bruta
+    private double receitaBruta = 0;
+    
+    //Contadores
+    int registro0=0;
+    int registroA=0;
+    int registroC=0;
+    int registroD=0;
+    int registroF=0;
+    int registroI=0;
+    int registroM=0;
+    int registroP=0;
+    int registro1=0;
+    int registro9=0;
+    
+    //Relação entre o registro e o número de vezes que ele aparece
+    private Map<String, Integer> contador = new TreeMap<String, Integer>();
+    
+    //Relação entre um imóvel (se dá pelo código) e o objeto Imóvel
+    private Map<Integer, ImoveEfdlPisConfins> objContratoImovel = new TreeMap<Integer, ImoveEfdlPisConfins>();
     
     public ArquivoEfdContribuicoes(EmpresaEfdPisCofins empresa, Date inicio, Date fim){
         this.empresa = empresa;
@@ -29,17 +59,158 @@ public class ArquivoEfdContribuicoes {
         this.fim = fim;
     }
     
-    public StringBuilder getRepresentation() {
-        StringBuilder sb = new StringBuilder();
+    //Contadores responsáveis pelo aquivo
+    public void addContator (ContabilistaEfdPisCofins contabilista) throws EfdPisCofinsException{
+        
+        if (contabilista.getNome() == null)
+            throw new EfdPisCofinsException("Contabilista sem nome");
+        
+        if (contabilista.getCpf() == 0)
+            throw new EfdPisCofinsException("Contabilista sem CPF");
+        
+        if (contabilista.getCrc() == null)
+            throw new EfdPisCofinsException("Contabilista sem inscrição no Conselho Regional de Contabilidade");
+        
+        contabilistas.add(contabilista);
+    }
+    //Contratos a serem escriturados
+    public void addContrato (ContratoEfdPisCofins contrato){
+        contratos.add(contrato);
+    }
+    
+    //Imóveis a serem escriturados
+    public void addImovel (ImoveEfdlPisConfins imovel){
+        imoveis.add(imovel);
+    }
+    //Relação entre contratos e imóveis
+    public void addContratoImovel (ContratoImovelEfdPisCofins contratoImovel){
+        contratosImoveis.add(contratoImovel);
+    }
+
+    public void criaBloco1(StringBuilder sb) {
+        sb.append(criaRegistro1001());
+        sb.append(criaRegistro1990());
+    }
+
+    public void criaBloco9(StringBuilder sb) {
+        sb.append(criaRegistro9001());
+        
+        //Considerando que estes registros são encontrados no final do arquivo e que são necessários no Registro 9900
+        //para serem contabilizados, são adicionados antecipadamente
+        adicionar ("9900");
+        adicionar ("9990");
+        adicionar ("9999");
+        
+        for(String key:contador.keySet()) {
+            Integer registros = contador.get(key);
+             sb.append(criaRegistro9900(key, registros));
+        }
+        sb.append(criaRegistro9990());
+        sb.append(criaRegistro9999());
+    }
+
+    public void criaBlocoM(StringBuilder sb) {
+        sb.append(criaRegistroM001());
+        sb.append(criaRegistroM990());
+    }
+
+    public void criaBlocoP(StringBuilder sb) {
+        sb.append(criaRegistroP001());
+        sb.append(criaRegistroP990());
+    }
+    
+    //Para cada contrato relaciona a um imóvel
+    public void setObjImovelContrato (ContratoImovelEfdPisCofins contratoImovel){
+        for (int i = 0; i<contratos.size(); i++){
+           for (int j = 0; j<imoveis.size(); j++){
+               if (contratos.get(i).getContratoCodigo().intValue() == contratoImovel.getContratoCodigo()
+                       && imoveis.get(j).getImovelCodigo() == contratoImovel.getImovelCodigo()){
+                   objContratoImovel.put(i, imoveis.get(j));
+                   break;
+               }
+           }        
+        }
+    }
+    
+
+    public void criaBloco0(StringBuilder sb) {
         sb.append(criaRegistro0000());
         sb.append(criaRegistro0001()); 
-        return sb;
+        for (int i = 0; i<contabilistas.size(); i++){
+            sb.append(criaRegistro0100(contabilistas.get(i)));
+        }
+        sb.append(criaRegistro0110());
+        sb.append(criaRegistro0140());
+        sb.append(criaRegistro0990());
     }
-     //REGISTRO 0000: ABERTURA DO ARQUIVO DIGITAL E IDENTIFICAÇÃO DA PESSOA JURÍDICA
-     private StringBuffer criaRegistro0000() {
+
+    public void criaBlocoA(StringBuilder sb) {
+        sb.append(criaRegistroA001());
+        sb.append(criaRegistroA990());
+    }
+
+    public void criaBlocoC(StringBuilder sb) {
+        sb.append(criaRegistroC001());
+        sb.append(criaRegistroC990());
+    }
+
+    public void criaBlocoD(StringBuilder sb) {
+        sb.append(criaRegistroD001());
+        sb.append(criaRegistroD990());
+    }
+
+    public void criaBlocoF(StringBuilder sb) throws ParseException {
+        for (int i = 0; i<contratosImoveis.size(); i++){
+            setObjImovelContrato(contratosImoveis.get(i));
+        }
+        sb.append(criaRegistroF001());
+        sb.append(criaRegistroF010());
+        for (int i=0; i<contratos.size(); i++){
+            if(objContratoImovel.containsKey(i)){
+                imovel = objContratoImovel.get(i);
+                sb.append(criaRegistroF200(contratos.get(i), imovel));
+            }
+        }
+        sb.append(criaRegistroF990());
+    }
+    
+    //Método que adiciona uma relação entre um registro e a quantidade de vezes que ele aparece
+    //Utilizado no Registro 9900
+     private void adicionar(String registro) {
+        if(contador.containsKey(registro)) {
+            
+            Integer valor = this.contador.get(registro);
+            valor++;
+            this.contador.put(registro, valor);
+        } else {
+            this.contador.put(registro, 1);
+        }
+    }
+    
+     //Criação dos blocos
+    public StringBuilder getRepresentation() throws ParseException {
+        StringBuilder sb = new StringBuilder();
+        
+        criaBloco0(sb);
+        criaBlocoA(sb);
+        criaBlocoC(sb);
+        criaBlocoD(sb);
+        criaBlocoF(sb);
+        criaBlocoM(sb);
+        criaBlocoP(sb);
+        criaBloco1(sb);
+        criaBloco9(sb);
+        
+        return sb.append("\n");
+    }
+    
+    //REGISTRO 0000: ABERTURA DO ARQUIVO DIGITAL E IDENTIFICAÇÃO DA PESSOA JURÍDICA
+    private StringBuffer criaRegistro0000() {
          
         Registro0000 r = new Registro0000();
         LineModel line = r.createModel();
+        
+        
         //Versão do leiaute
         line.setFieldValue(Registro0000.COD_VER, 003);
         //Tipo de escrituração
@@ -58,12 +229,16 @@ public class ArquivoEfdContribuicoes {
         line.setFieldValue(Registro0000.DT_FIN, fim);
         line.setFieldValue(Registro0000.NOME, empresa.getNome());
         line.setFieldValue(Registro0000.CNPJ, empresa.getCNPJ());
-        line.setFieldValue(Registro0000.COD_MUN, empresa.getCodigoMunicipio());
         line.setFieldValue(Registro0000.UF, empresa.getUf());
+        line.setFieldValue(Registro0000.COD_MUN, empresa.getCodigoMunicipio());
+        line.setFieldValue(Registro0000.SUFRAMA, null);
+        line.setFieldValue(Registro0000.IND_NAT_PJ, 00);
+        line.setFieldValue(Registro0000.IND_ATIV, 4);
         
         StringBuffer sb = line.getRepresentation();
-        
-        return sb;
+        registro0++;
+        adicionar("0000");
+        return sb.append("\n");
     }
     //REGISTRO 0001: ABERTURA DO BLOCO 0
     private StringBuffer criaRegistro0001() {
@@ -78,15 +253,16 @@ public class ArquivoEfdContribuicoes {
         line.setFieldValue(Registro0001.IND_MOV, 0);
         
         StringBuffer sb = line.getRepresentation();
-        
-        return sb;
+        registro0++;
+        adicionar("0001");
+        return sb.append("\n");
     }
     //REGISTRO 0100: DADOS DO CONTABILISTA
-    private StringBuffer criaRegistro0100(){
+    private StringBuffer criaRegistro0100(ContabilistaEfdPisCofins contabilista){
         
         Registro0100 reg = new Registro0100();
         LineModel line = reg.createModel();
-        
+
         //02
         line.setFieldValue(Registro0100.NOME, contabilista.getNome());
         //03
@@ -94,7 +270,10 @@ public class ArquivoEfdContribuicoes {
         //04
         line.setFieldValue(Registro0100.CRC, contabilista.getCrc());
         //05
-        line.setFieldValue(Registro0100.CNPJ, contabilista.getCnpj());
+        if (contabilista.getCnpj()==0)
+            line.setFieldValue(Registro0100.CNPJ, null);
+        else
+            line.setFieldValue(Registro0100.CNPJ, contabilista.getCnpj());
         //06
         line.setFieldValue(Registro0100.CEP, contabilista.getCep());
         //07
@@ -115,8 +294,9 @@ public class ArquivoEfdContribuicoes {
         line.setFieldValue(Registro0100.COD_MUN, contabilista.getCodigoMunicipio());
 
         StringBuffer sb = line.getRepresentation();
-        
-        return sb;
+        registro0++;
+        adicionar("0100");
+        return sb.append("\n");
     }
     //REGISTRO 0110: REGIMES DE APURAÇÃO DA CONTRIBUIÇÃO SOCIAL E DE APROPRIAÇÃO DE CRÉDITO
     private StringBuffer criaRegistro0110() {
@@ -132,7 +312,10 @@ public class ArquivoEfdContribuicoes {
         //05
         line.setFieldValue(Registro0110.IND_REG_CUM, 1);
         
-        return line.getRepresentation();
+        StringBuffer sb = line.getRepresentation();
+        registro0++;
+        adicionar("0110");
+        return sb.append("\n");
     }
     //REGISTRO 0140: TABELA DE CADASTRO DE ESTABELECIMENTO
     private StringBuffer criaRegistro0140(){
@@ -163,22 +346,22 @@ public class ArquivoEfdContribuicoes {
         line.setFieldValue(Registro0140.SUFRAMA, null);
 
         StringBuffer sb = line.getRepresentation();
-        
-        return sb;
+        registro0++;
+        adicionar("0140");
+        return sb.append("\n");
     }
     //REGISTRO 0990: ENCERRAMENTO DO BLOCO 0
-    /**Verificar o contador de blocos
-     */
     private StringBuffer criaRegistro0990 (){
         Registro0990 reg = new Registro0990();
         LineModel line = reg.createModel();
-        
+        registro0++;
         //02
-        line.setFieldValue(Registro0990.QTD_LIN_0, 6);
+        line.setFieldValue(Registro0990.QTD_LIN_0, registro0);
         StringBuffer sb = line.getRepresentation();
-        
-        return sb;
+        adicionar("0990");
+        return sb.append("\n");
     }
+    
     //REGISTRO A001: ABERTURA DO BLOCO A
     private StringBuffer criaRegistroA001(){
         RegistroA001 reg = new RegistroA001();
@@ -188,22 +371,24 @@ public class ArquivoEfdContribuicoes {
         line.setFieldValue(RegistroA001.IND_MOV, "1");
         
         StringBuffer sb = line.getRepresentation();
-        
-        return sb;
+        registroA++;
+        adicionar("A001");
+        return sb.append("\n");
     }
     //REGISTRO A990: ENCERRAMENTO DO BLOCO A
-    /**Verificar o contador de blocos
-     */
     private StringBuffer criaRegistroA990(){
         RegistroA990 reg = new RegistroA990();
         LineModel line = reg.createModel();
+        
+        registroA++;
         //02
-        line.setFieldValue(RegistroA990.QTD_LIN_A, 2);
+        line.setFieldValue(RegistroA990.QTD_LIN_A, registroA);
         
         StringBuffer sb = line.getRepresentation();
-        
-        return sb;
+        adicionar("A990");
+        return sb.append("\n");
     }
+   
     //REGISTRO C001: ABERTURA DO BLOCO C
     private StringBuffer criaRegistroC001 (){
         RegistroC001 reg = new RegistroC001();
@@ -213,20 +398,21 @@ public class ArquivoEfdContribuicoes {
         line.setFieldValue(RegistroC001.IND_MOV, "1");
         
         StringBuffer sb = line.getRepresentation();
-        
-        return sb;
+        registroC++;
+        adicionar("C001");
+        return sb.append("\n");
     }
     //REGISTRO C990: ENCERRAMENTO DO BLOCO C
     private StringBuffer criaRegistroC990(){
         RegistroC990 reg = new RegistroC990();
         LineModel line = reg.createModel();
-
+        registroC++;
         //02
-        line.setFieldValue(RegistroC990.QTD_LIN_C, 2);
+        line.setFieldValue(RegistroC990.QTD_LIN_C, registroC);
     
         StringBuffer sb = line.getRepresentation();
-        
-        return sb;
+        adicionar("C990");
+        return sb.append("\n");
     }
     //REGISTRO D001: ABERTURA DO BLOCO D
     private StringBuffer criaRegistroD001(){
@@ -237,22 +423,22 @@ public class ArquivoEfdContribuicoes {
         line.setFieldValue(RegistroD001.IND_MOV, "1");
 
         StringBuffer sb = line.getRepresentation();
-
-        return sb;
+        registroD++;
+        adicionar("D001");
+        return sb.append("\n");
     }
     //REGISTRO D990: ENCERRAMENTO DO BLOCO D
-    /**Verificar o contador de blocos
-     */
     private StringBuffer criaRegistroD990(){
         RegistroD990 reg = new RegistroD990();
         LineModel line = reg.createModel();
 
+        registroD++;
         //02
-        line.setFieldValue(RegistroD990.QTD_LIN_D, 2);
+        line.setFieldValue(RegistroD990.QTD_LIN_D, registroD);
     
         StringBuffer sb = line.getRepresentation();
-        
-        return sb;
+        adicionar("D990");
+        return sb.append("\n");
     }
     //REGISTRO F001: ABERTURA DO BLOCO F
     private StringBuffer criaRegistroF001(){
@@ -263,8 +449,9 @@ public class ArquivoEfdContribuicoes {
         line.setFieldValue(RegistroF001.IND_MOV, "0");
         
         StringBuffer sb = line.getRepresentation();
-        
-        return sb;
+        registroF++;
+        adicionar("F001");
+        return sb.append("\n");
     }
     //REGISTRO F010: IDENTIFICAÇÃO DO ESTABELECIMENTO
     private StringBuffer criaRegistroF010(){
@@ -275,38 +462,47 @@ public class ArquivoEfdContribuicoes {
         line.setFieldValue(RegistroF010.CNPJ, empresa.getCNPJ());
         
         StringBuffer sb = line.getRepresentation();
-        
-        return sb;
+        registroF++;
+        adicionar("F010");
+        return sb.append("\n");
     }
-    private StringBuffer criaRegistroF200() throws ParseException{
+    private StringBuffer criaRegistroF200(ContratoEfdPisCofins contrato, ImoveEfdlPisConfins imovel) throws ParseException{
         RegistroF200 reg = new RegistroF200();
         LineModel line = reg.createModel();
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
         Date data = sdf.parse("24012013");
-        
-        double aliquotaPis    = 0.65;
-        double aliquotaCofins = 3.00;
+   
+        double valorRecebido;
         
         //02
         line.setFieldValue(RegistroF200.IND_OPER, 02);
         //03
         line.setFieldValue(RegistroF200.UNID_IMOB, 02);
         //04
-        line.setFieldValue(RegistroF200.IDENT_EMP, "Identificação/Nome do Empreendimento");
+        line.setFieldValue(RegistroF200.IDENT_EMP, "CONVÍVIO DO SANTO");
         //05
-        line.setFieldValue(RegistroF200.DESC_UNID_IMOB, "Descrição resumida da unidade imobiliária vendida");
+        line.setFieldValue(RegistroF200.DESC_UNID_IMOB, imovel.getDescricao()+" - "+String.valueOf(imovel.getAreaTerreno()+"M2"));
         //06
-        line.setFieldValue(RegistroF200.NUM_CONT, "Número do Contrato/Documento que formaliza a Venda da Unidade Imobiliária");
+        line.setFieldValue(RegistroF200.NUM_CONT, contrato.getContratoCodigo().toString());
         //07
+        /**
+         * Proveniente da tabela de Cadastros
+         */
         line.setFieldValue(RegistroF200.CPF_CNPJ_ADQU, "12345678911111");
         //08
         line.setFieldValue(RegistroF200.DT_OPER, contrato.getData());
         //09
+        /**Este valor dever ser reajustado - verificar a periodicidade e o percentual de reajuste
+         */
         line.setFieldValue(RegistroF200.VL_TOT_VEND, contrato.getValor());
         //10
-        line.setFieldValue(RegistroF200.VL_REC_ACUM, 0);
+        /**Não creio q sejam somente para os contratos assinados no período, mas sim para os recebimentos no período apurado
+         */
+        line.setFieldValue(RegistroF200.VL_REC_ACUM, 0.00);
         //11
-        line.setFieldValue(RegistroF200.VL_TOT_REC, contrato.getValorEntrada());
+        valorRecebido = contrato.getValorEntrada();
+        receitaBruta = receitaBruta + valorRecebido;
+        line.setFieldValue(RegistroF200.VL_TOT_REC, valorRecebido);
         //12
         line.setFieldValue(RegistroF200.CST_PIS, 01);
         //13
@@ -314,39 +510,186 @@ public class ArquivoEfdContribuicoes {
         //14
         line.setFieldValue(RegistroF200.ALIQ_PIS, aliquotaPis);
         //15
+        /**Não creio q sejam somente para os contratos assinados no período, mas sim para os recebimentos no período apurado
+         */
         line.setFieldValue(RegistroF200.VL_PIS, aliquotaPis*contrato.getValorEntrada()/100);
         //16
         line.setFieldValue(RegistroF200.CST_COFINS, 01);
         //17
+        /**
+         * Creio que aqui entre o valor recebido no período/mês da escrituração
+         */
         line.setFieldValue(RegistroF200.VL_BC_COFINS, contrato.getValorEntrada());
         //18
         line.setFieldValue(RegistroF200.ALIQ_COFINS, aliquotaCofins);
         //19
+        /**Não creio q sejam somente para os contratos assinados no período, mas sim para os recebimentos no período apurado
+         */
         line.setFieldValue(RegistroF200.VL_COFINS, aliquotaCofins*contrato.getValorEntrada()/100);
         //20
+        /**Não creio q sejam somente para os contratos assinados no período, mas sim para os recebimentos no período apurado
+         */
         line.setFieldValue(RegistroF200.PERC_REC_RECEB, (contrato.getValorEntrada()+0)/contrato.getValor());
         //21
         line.setFieldValue(RegistroF200.IND_NAT_EMP, 3);
         //21
         line.setFieldValue(RegistroF200.INF_COMP, null);
 
+        receitaBruta = 0;
         StringBuffer sb = line.getRepresentation();
-        
-        return sb;
+        registroF++;
+        adicionar("F200");
+        return sb.append("\n");
     }
     
     //REGISTRO F990: ENCERRAMENTO DO BLOCO F
-    /**Verificar o contador de blocos
-      */
     private StringBuffer criaRegistroF990(){
         RegistroF990 reg = new RegistroF990();
         LineModel line = reg.createModel();
         
+        registroF++;
         //02
-        line.setFieldValue(RegistroF990.QTD_LIN_F, 7);
+        line.setFieldValue(RegistroF990.QTD_LIN_F, registroF);
         
         StringBuffer sb = line.getRepresentation();
-        
-        return sb;
+        adicionar("F990");
+        return sb.append("\n");
     }
+    
+    //REGISTRO M001: ABERTURA DO BLOCO M
+    private StringBuffer criaRegistroM001(){
+        RegistroM001 reg = new RegistroM001();
+        LineModel line = reg.createModel();
+
+        //02
+        line.setFieldValue(RegistroM001.IND_MOV, "0");
+            
+        StringBuffer sb = line.getRepresentation();
+        registroM++;
+        adicionar("M001");
+        return sb.append("\n");
+    }
+    
+    //REGISTRO M990: ENCERRAMENTO DO BLOCO M
+    private StringBuffer criaRegistroM990(){
+        RegistroM990 reg = new RegistroM990();
+        LineModel line = reg.createModel();
+        
+        registroM++;
+        //02
+        line.setFieldValue(RegistroM990.QTD_LIN_M, registroM);
+        
+        StringBuffer sb = line.getRepresentation();
+        adicionar("M990");
+        return sb.append("\n");
+    }
+    
+    //REGISTRO P001: ABERTURA DO BLOCO P
+    private StringBuffer criaRegistroP001(){
+        RegistroP001 reg = new RegistroP001();
+        LineModel line = reg.createModel();
+
+        //02
+        line.setFieldValue(RegistroP001.IND_MOV, "1");
+            
+        StringBuffer sb = line.getRepresentation();
+        registroP++;
+        adicionar("P001");
+        return sb.append("\n");
+    }
+    //REGISTRO P990: ENCERRAMENTO DO BLOCO P
+    private StringBuffer criaRegistroP990(){
+        RegistroP990 reg = new RegistroP990();
+        LineModel line = reg.createModel();
+        
+        registroP++;
+        //02
+        line.setFieldValue(RegistroP990.QTD_LIN_P, registroP);
+        
+        StringBuffer sb = line.getRepresentation();
+        adicionar("P990");
+        return sb.append("\n");
+    }
+    //REGISTRO 1001: ABERTURA DO BLOCO 1
+    private StringBuffer criaRegistro1001 (){
+        Registro1001 reg = new Registro1001();
+        LineModel line = reg.createModel();    
+        
+        //02
+        line.setFieldValue(Registro1001.IND_MOV, 1);
+        
+        StringBuffer sb = line.getRepresentation();
+        registro1++;
+        adicionar("1001");
+        return sb.append("\n");
+    }
+    //REGISTRO 1990: ENCERRAMENTO DO BLOCO 1
+    private StringBuffer criaRegistro1990 (){
+        Registro1990 reg = new Registro1990();
+        LineModel line = reg.createModel();
+        
+        registro1++;
+        //02
+        line.setFieldValue(Registro1990.QTD_LIN_1, registro1);
+        StringBuffer sb = line.getRepresentation();
+        adicionar("1990");
+        return sb.append("\n");
+    }
+    //REGISTRO 9001: ABERTURA DO BLOCO 9
+    private StringBuffer criaRegistro9001 (){
+        Registro9001 reg = new Registro9001();
+        LineModel line = reg.createModel();
+        
+        //02
+        line.setFieldValue(Registro9001.IND_MOV, "0");
+        
+        StringBuffer sb = line.getRepresentation();
+        registro9++;
+        adicionar("9001");
+        return sb.append("\n");
+    }
+    //REGISTRO 9900: REGISTROS DO ARQUIVO
+    private StringBuffer criaRegistro9900(String key, Integer registros){
+               
+        Registro9900 reg = new Registro9900();
+        LineModel line = reg.createModel();
+                
+        registro9++;
+                //02
+                line.setFieldValue(Registro9900.REG_BLC, key);
+                //03
+                line.setFieldValue(Registro9900.QTD_REG_BLC, registros);
+
+                StringBuffer sb = line.getRepresentation();
+                
+        return sb.append("\n");
+    }
+    
+    //REGISTRO 9990: ENCERRAMENTO DO BLOCO 9
+    private StringBuffer criaRegistro9990(){
+        Registro9990 reg = new Registro9990();
+        LineModel line = reg.createModel();
+        
+        registro9++;
+        //02
+        line.setFieldValue(Registro9990.QTD_LIN_9, registro9);
+
+        StringBuffer sb = line.getRepresentation();
+        return sb.append("\n");
+    }
+    
+    //REGISTRO 9999: ENCERRAMENTO DO ARQUIVO DIGITAL
+    private StringBuffer criaRegistro9999(){
+        Registro9999 reg = new Registro9999();
+        LineModel line = reg.createModel();
+        
+        //02
+        line.setFieldValue
+        (Registro9999.QTD_LIN, registro0+registroA+registroC+registroD+registroF+registroI+registroM+registroP+registro1+registro9+1);
+     
+        StringBuffer sb = line.getRepresentation();
+        
+        return sb.append("\n");
+    }
+    
 }
