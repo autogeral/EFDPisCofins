@@ -69,6 +69,22 @@ public class RegistroD100 extends LineArchetype {
     */
     public static String COD_MOD = "COD_MOD";
     //06 - Código da situação do documento fiscal, conforme a Tabela 4.1.2
+    /**
+     * Tabela 4.1.2
+     * <table>
+     * <tr><th colspan="2">4.1.2- Tabela Situacao do Documento</th></tr>
+     * <tr><th>Codigo</th><th>Descricao</th></tr>
+     * <tr><td>00</td><td>Documento regular</td></tr>
+     * <tr><td>01</td><td>Documento regular extemporaneo</td></tr>
+     * <tr><td>02</td><td>Documento cancelado</td></tr>
+     * <tr><td>03</td><td>Documento cancelado extemporaneo</td></tr>
+     * <tr><td>04</td><td>NFe denegada</td></tr>
+     * <tr><td>05</td><td>Nfe Numeracao inutilizada</td></tr
+     * <tr><td>06</td><td>Documento Fiscal Complementar</td></tr>
+     * <tr><td>07</td><td>Documento Fiscal Complementar extemporaneo.</td></tr>
+     * <tr><td>08</td><td>Documento Fiscal emitido com base em Regime Especial ou Norma Especifica</td></tr>
+     * </table>
+     */
     public static String COD_SIT = "COD_SIT";
     //07 - Série do documento fiscal
     public static String SER = "SER";
