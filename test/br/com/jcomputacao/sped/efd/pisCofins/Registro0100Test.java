@@ -37,7 +37,7 @@ public class Registro0100Test {
     public void Registro0100Test()  throws ParseException {
         Registro0100 reg = new Registro0100();
         LineModel line = reg.createModel();
-//|0100|VANESSA REGINA GAVIOLI|27859578816|ASP199019/O||13300190|RUA PADRE BARTOLOMEU TADEI|268||CENTRO|1140231678|1140231678|officecont@uol.com.br|3523909|        
+       
         //02
         line.setFieldValue(Registro0100.NOME, "VANESSA REGINA GAVIOLI");
         //03

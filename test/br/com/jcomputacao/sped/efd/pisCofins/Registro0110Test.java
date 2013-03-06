@@ -42,13 +42,13 @@ public class Registro0110Test {
         //03
         line.setFieldValue(Registro0110.IND_APRO_CRED, null);
         //04
-        line.setFieldValue(Registro0110.COD_TIPO_CONT, null);
+        line.setFieldValue(Registro0110.COD_TIPO_CONT, 1);
         //05
         line.setFieldValue(Registro0110.IND_REG_CUM, 2);
         
        StringBuffer sb = line.getRepresentation();
        System.out.print(sb);
-//       String expected = "|0110|2|||2|";
+//       String expected = "|0110|2||1|2|";
 //       assertEquals (expected, sb.toString());
     }
 

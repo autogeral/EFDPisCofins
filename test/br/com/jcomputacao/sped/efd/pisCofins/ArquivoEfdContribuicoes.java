@@ -7,12 +7,24 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 import java.util.TreeMap;
+import org.junit.BeforeClass;
 
 /**
  *
  * @author Jennifer
  */
 public class ArquivoEfdContribuicoes {
+    
+    @BeforeClass
+    public static void preparaAmbiente() {
+        System.getProperties().put("sgbd", "mysql");
+        System.getProperties().put("desktop", "true");
+        System.getProperties().put("host", "localhost");
+        System.getProperties().put("user", "root");
+        System.getProperties().put("schema", "convivere");
+        System.getProperties().put("password", "root");
+        System.getProperties().put("database", "convivere");
+    }
     
     //Empresa cuja escrituração é feita
     private final EmpresaEfdPisCofins empresa;
@@ -222,7 +234,7 @@ public class ArquivoEfdContribuicoes {
             /**Teste!
              * Verificar onde o número do recebimento da escrituração anterior será armazenado
              */
-             line.setFieldValue(Registro0000.NUM_REC_ANTERIOR, "11111111112222222222333333333344444444441");
+             line.setFieldValue(Registro0000.NUM_REC_ANTERIOR, "");
         else
              line.setFieldValue(Registro0000.NUM_REC_ANTERIOR, null); 
         line.setFieldValue(Registro0000.DT_INI, inicio);
@@ -414,6 +426,7 @@ public class ArquivoEfdContribuicoes {
         adicionar("C990");
         return sb.append("\n");
     }
+    
     //REGISTRO D001: ABERTURA DO BLOCO D
     private StringBuffer criaRegistroD001(){
         RegistroD001 reg = new RegistroD001();
@@ -440,6 +453,7 @@ public class ArquivoEfdContribuicoes {
         adicionar("D990");
         return sb.append("\n");
     }
+    
     //REGISTRO F001: ABERTURA DO BLOCO F
     private StringBuffer criaRegistroF001(){
         RegistroF001 reg = new RegistroF001();
@@ -466,6 +480,8 @@ public class ArquivoEfdContribuicoes {
         adicionar("F010");
         return sb.append("\n");
     }
+    //REGISTRO F200: OPERAÇÕES DA ATIVIDADE IMOBILIÁRIA - UNIDADE IMOBILIÁRIA VENDIDA
+    
     private StringBuffer criaRegistroF200(ContratoEfdPisCofins contrato, ImoveEfdlPisConfins imovel) throws ParseException{
         RegistroF200 reg = new RegistroF200();
         LineModel line = reg.createModel();
@@ -488,7 +504,7 @@ public class ArquivoEfdContribuicoes {
         /**
          * Proveniente da tabela de Cadastros
          */
-        line.setFieldValue(RegistroF200.CPF_CNPJ_ADQU, "12345678911111");
+        line.setFieldValue(RegistroF200.CPF_CNPJ_ADQU, "10276553000125");
         //08
         line.setFieldValue(RegistroF200.DT_OPER, contrato.getData());
         //09
@@ -529,7 +545,7 @@ public class ArquivoEfdContribuicoes {
         //20
         /**Não creio q sejam somente para os contratos assinados no período, mas sim para os recebimentos no período apurado
          */
-        line.setFieldValue(RegistroF200.PERC_REC_RECEB, (contrato.getValorEntrada()+0)/contrato.getValor());
+        line.setFieldValue(RegistroF200.PERC_REC_RECEB, (contrato.getValorEntrada()+0)/contrato.getValor()*100);
         //21
         line.setFieldValue(RegistroF200.IND_NAT_EMP, 3);
         //21
@@ -562,7 +578,7 @@ public class ArquivoEfdContribuicoes {
         LineModel line = reg.createModel();
 
         //02
-        line.setFieldValue(RegistroM001.IND_MOV, "0");
+        line.setFieldValue(RegistroM001.IND_MOV, "1");
             
         StringBuffer sb = line.getRepresentation();
         registroM++;
@@ -672,7 +688,7 @@ public class ArquivoEfdContribuicoes {
         
         registro9++;
         //02
-        line.setFieldValue(Registro9990.QTD_LIN_9, registro9);
+        line.setFieldValue(Registro9990.QTD_LIN_9, registro9+1);
 
         StringBuffer sb = line.getRepresentation();
         return sb.append("\n");

@@ -1,6 +1,8 @@
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.sped.efd.pisCofins.geracao.*;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,7 +16,7 @@ public class GerarArquivoEfd {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws ParseException, EfdPisCofinsException {
+    public static void main(String[] args) throws ParseException, EfdPisCofinsException, IOException {
         
         
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -25,9 +27,9 @@ public class GerarArquivoEfd {
             
         EmpresaEfdPisCofinsImpl empresa = new EmpresaEfdPisCofinsImpl(10276553000125L, "CONVIVERE EMPREENDIMENTOS IMOBILIÁRIOS LTDA", 3523909,"SP");
         ContabilistaEfdPisCofinsImpl contabilista = new ContabilistaEfdPisCofinsImpl();
-            contabilista.setNome("VANESSA REGINA GAVIOLI");
-            contabilista.setCpf(27859578816L);
-            contabilista.setCrc("ASP199019/O");
+            contabilista.setNome("VALDAIR GAVIOLI");
+            contabilista.setCpf(58865896868L);
+            contabilista.setCrc("1-SP.076427/O-2");
             contabilista.setCep(13300190);
             contabilista.setEndereco("RUA PADRE BARTOLOMEU TADEI");
             contabilista.setNumero("268");
@@ -67,7 +69,18 @@ public class GerarArquivoEfd {
         arq.addImovel(imovel);
         arq.addContratoImovel(contratoImovel);
         
+        //Gerar o arquivo em txt
+        String local = "\\Users\\Cesário\\Desktop\\Sped\\EFDContribuições_arquivos\\";
+        String nomeArquivo = "EDFPisCofinsTest";
+        String extensaoArquivo = ".txt";
+        FileWriter fileWriter = new FileWriter(local+nomeArquivo+extensaoArquivo);
+        
         StringBuilder sb = arq.getRepresentation();
+        
+        fileWriter.write(sb.toString());
+        fileWriter.flush();
+        fileWriter.close();
+            
         System.out.print(sb);
     }
 }

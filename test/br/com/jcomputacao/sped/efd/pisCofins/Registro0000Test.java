@@ -40,13 +40,18 @@ public class Registro0000Test {
         Date dataInicio = sdf.parse("01012013");
         Date dataFim = sdf.parse("31012013");
         //02
-        line.setFieldValue(Registro0000.COD_VER, 002L);
+        line.setFieldValue(Registro0000.COD_VER, 003L);
         //03
-        line.setFieldValue(Registro0000.TIPO_ESCRIT, 0L);
+        line.setFieldValue(Registro0000.TIPO_ESCRIT, 1);
         //04
         line.setFieldValue(Registro0000.IND_SIT_ESP, null);
         //05
-        line.setFieldValue(Registro0000.NUM_REC_ANTERIOR, null);
+        /**estas alterações não foram feitas na String expected
+         */
+        if (line.getFieldValueNumber(Registro0000.TIPO_ESCRIT).intValue()==1)
+            line.setFieldValue(Registro0000.NUM_REC_ANTERIOR, "11111111112222222222333333333344444444441");
+        else
+            line.setFieldValue(Registro0000.NUM_REC_ANTERIOR, null);
         //06
         line.setFieldValue(Registro0000.DT_INI, dataInicio);
         //07
@@ -67,7 +72,7 @@ public class Registro0000Test {
         //14
         line.setFieldValue(Registro0000.IND_ATIV, 4);
         StringBuffer sb = line.getRepresentation();
-//        String expected = "|0000|002|0|||01012013|31012013|CONVIVERE EMPREENDIMENTOS IMOBILIÁRIOS LTDA|10276553000125|SP|3523909||00|4|";
+//        String expected = "|0000|003|0|||01012013|31012013|CONVIVERE EMPREENDIMENTOS IMOBILIÁRIOS LTDA|10276553000125|SP|3523909||00|4|";
         System.out.print(sb);
 //        assertEquals(expected, sb.toString()); 
     }

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
@@ -42,8 +38,7 @@ public class Registro0140Test {
         LineModel line = reg.createModel();
         
         //02
-        /**Baseado nos exemplos existentes no site da receita federal*/
-        line.setFieldValue(Registro0140.COD_EST, "1");
+        line.setFieldValue(Registro0140.COD_EST, null);
         //03
         line.setFieldValue(Registro0140.NOME, "CONVIVERE EMPREENDIMENTOS IMOBILIÁRIOS LTDA");
         //04
@@ -61,7 +56,7 @@ public class Registro0140Test {
         
         
         StringBuffer sb = line.getRepresentation();
-        //String expected = "|0140|1|CONVIVERE EMPREENDIMENTOS IMOBILIÁRIOS LTDA|10276553000125|SP||3523909|||";
+        //String expected = "|0140||CONVIVERE EMPREENDIMENTOS IMOBILIÁRIOS LTDA|10276553000125|SP||3523909|||";
         System.out.println(sb);
         //System.out.print(expected);
         //assertEquals (expected, sb.toString());
