@@ -7,19 +7,19 @@ import br.com.jcomputacao.sped.efd.pisCofins.EmpresaEfdPisCofins;
  * @author Murilo
  */
 public class EmpresaEfdPisCofinsImpl implements EmpresaEfdPisCofins {
-    private final String cnpj;
+    private final Long cnpj;
     private final String nome;
     private final int codigoMunicipio;
     private final String uf;
 
-    public EmpresaEfdPisCofinsImpl(String cnpj, String nome, int codigoMunicipio, String uf) {
+    public EmpresaEfdPisCofinsImpl(Long cnpj, String nome, int codigoMunicipio, String uf) {
         this.cnpj = cnpj;
         this.nome = nome;
         this.codigoMunicipio = codigoMunicipio;
         this.uf = uf;
     }
 
-    public String getCNPJ() {
+    public Long getCNPJ() {
         return this.cnpj;
     }
 
