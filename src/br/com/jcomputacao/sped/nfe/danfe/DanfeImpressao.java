@@ -4,13 +4,13 @@
  */
 package br.com.jcomputacao.sped.nfe.danfe;
 
-import br.inf.portalfiscal.nfe.TEndereco;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Imposto;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Ide;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Transp.Vol;
-import br.inf.portalfiscal.nfe.TNfeProc;
+import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TEndereco;
+import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe;
+import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe.Det;
+import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe.Det.Imposto;
+import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe.Ide;
+import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe.Transp.Vol;
+import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNfeProc;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
