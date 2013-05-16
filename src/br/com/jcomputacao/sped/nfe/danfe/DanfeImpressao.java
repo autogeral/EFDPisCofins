@@ -4,28 +4,16 @@
  */
 package br.com.jcomputacao.sped.nfe.danfe;
 
-import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TEndereco;
-import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe;
-import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe.Det;
-import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe.Det.Imposto;
-import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe.Ide;
-import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe.Transp.Vol;
-import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNfeProc;
-import com.itextpdf.text.Chunk;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
+import br.inf.portalfiscal.nfe.TEndereco;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Imposto;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Ide;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Transp.Vol;
+import br.inf.portalfiscal.nfe.TNfeProc;
 import com.itextpdf.text.Font.FontFamily;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.Barcode;
-import com.itextpdf.text.pdf.Barcode128;
-import com.itextpdf.text.pdf.PdfContentByte;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -904,7 +892,7 @@ public class DanfeImpressao {
 
     public String getEnderecoDest() {
         TEndereco endDest = getInfNFe().getDest().getEnderDest();
-        return endDest.getXLgr() + (endDest.getNro() != null ? ", " + endDest.getNro() : "");
+        return endDest.getXLgr() + (endDest.getNro() != 0 ? ", " + endDest.getNro() : "");
     }
 
     public String getEnderecoTransporta() {

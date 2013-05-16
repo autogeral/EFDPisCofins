@@ -1,11 +1,11 @@
 package br.com.jcomputacao.sped.efd.pisCofins;
 
 import br.com.jcomputacao.aristoteles.line.LineModel;
-import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe;
-import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe.Det;
-import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe.Det.Imposto.COFINS;
-import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe.Det.Imposto.PIS;
-import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe.Det.Prod;
+import br.inf.portalfiscal.nfe.TNFe;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Imposto.COFINS;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Imposto.PIS;
+import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Prod;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

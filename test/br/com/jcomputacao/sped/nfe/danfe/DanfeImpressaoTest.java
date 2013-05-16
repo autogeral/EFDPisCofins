@@ -1,6 +1,6 @@
 package br.com.jcomputacao.sped.nfe.danfe;
 
-import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNfeProc;
+import br.inf.portalfiscal.nfe.TNfeProc;
 import com.itextpdf.text.DocumentException;
 import java.io.*;
 import java.util.ArrayList;
