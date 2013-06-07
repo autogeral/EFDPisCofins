@@ -4,13 +4,13 @@
  */
 package br.com.jcomputacao.sped.nfe.danfe;
 
-import br.inf.portalfiscal.nfe.TEndereco;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Det.Imposto;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Ide;
-import br.inf.portalfiscal.nfe.TNFe.InfNFe.Transp.Vol;
-import br.inf.portalfiscal.nfe.TNfeProc;
+import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TEndereco;
+import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe;
+import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe.Det;
+import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe.Det.Imposto;
+import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe.Ide;
+import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNFe.InfNFe.Transp.Vol;
+import br.inf.portalfiscal.nfe.xml.pl006q.nfes.TNfeProc;
 import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
@@ -892,7 +892,7 @@ public class DanfeImpressao {
 
     public String getEnderecoDest() {
         TEndereco endDest = getInfNFe().getDest().getEnderDest();
-        return endDest.getXLgr() + (endDest.getNro() != 0 ? ", " + endDest.getNro() : "");
+        return endDest.getXLgr() + (!"0".equals(endDest.getNro()) ? ", " + endDest.getNro() : "");
     }
 
     public String getEnderecoTransporta() {
