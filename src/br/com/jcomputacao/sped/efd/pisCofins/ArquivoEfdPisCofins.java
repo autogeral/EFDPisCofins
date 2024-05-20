@@ -172,14 +172,14 @@ public class ArquivoEfdPisCofins {
 
         Prod prod = det.getProd();
         LineModel lm = registroA170.createModel();
-        lm.setFieldValue(RegistroA170.NUM_ITEM, new Integer(det.getNItem()));
+        lm.setFieldValue(RegistroA170.NUM_ITEM, Integer.valueOf(det.getNItem()));
         lm.setFieldValue(RegistroA170.COD_ITEM, prod.getCProd());
         lm.setFieldValue(RegistroA170.DESCR_COMPL, prod.getXProd());
-        lm.setFieldValue(RegistroA170.VL_ITEM, new Double(prod.getVProd()));
+        lm.setFieldValue(RegistroA170.VL_ITEM, Double.valueOf(prod.getVProd()));
         //Pode nao haver desconto logo a tag no XML
         //estara nula consequentemente o atributo do obj tambem.
         if (prod.getVDesc() != null) {
-            lm.setFieldValue(RegistroA170.VL_DESC, new Double(prod.getVDesc()));
+            lm.setFieldValue(RegistroA170.VL_DESC, Double.valueOf(prod.getVDesc()));
         }
 
         //se eh nota de saida entao nao tem credito de imposto
@@ -198,18 +198,18 @@ public class ArquivoEfdPisCofins {
                 lm.setFieldValue(RegistroA170.CST_PIS, pis.getPISNT().getCST());
             } else if (pis.getPISAliq() != null) {
                 lm.setFieldValue(RegistroA170.CST_PIS, pis.getPISAliq().getCST());
-                lm.setFieldValue(RegistroA170.VL_BC_PIS, new Double(pis.getPISAliq().getVBC()));
-                lm.setFieldValue(RegistroA170.ALIQ_PIS, new Double(pis.getPISAliq().getPPIS()));
-                lm.setFieldValue(RegistroA170.VL_PIS, new Double(pis.getPISAliq().getVPIS()));
+                lm.setFieldValue(RegistroA170.VL_BC_PIS, Double.valueOf(pis.getPISAliq().getVBC()));
+                lm.setFieldValue(RegistroA170.ALIQ_PIS, Double.valueOf(pis.getPISAliq().getPPIS()));
+                lm.setFieldValue(RegistroA170.VL_PIS, Double.valueOf(pis.getPISAliq().getVPIS()));
             } else if (pis.getPISOutr() != null) {
                 lm.setFieldValue(RegistroA170.CST_PIS, pis.getPISOutr().getCST());
-                lm.setFieldValue(RegistroA170.VL_BC_PIS, new Double(pis.getPISOutr().getVBC()));
-                lm.setFieldValue(RegistroA170.ALIQ_PIS, new Double(pis.getPISOutr().getPPIS()));
-                lm.setFieldValue(RegistroA170.VL_PIS, new Double(pis.getPISOutr().getVPIS()));
+                lm.setFieldValue(RegistroA170.VL_BC_PIS, Double.valueOf(pis.getPISOutr().getVBC()));
+                lm.setFieldValue(RegistroA170.ALIQ_PIS, Double.valueOf(pis.getPISOutr().getPPIS()));
+                lm.setFieldValue(RegistroA170.VL_PIS, Double.valueOf(pis.getPISOutr().getVPIS()));
             } else if (pis.getPISQtde() != null) {
                 lm.setFieldValue(RegistroA170.CST_PIS, pis.getPISQtde().getCST());
-                lm.setFieldValue(RegistroA170.ALIQ_PIS, new Double(pis.getPISQtde().getVAliqProd()));
-                lm.setFieldValue(RegistroA170.VL_PIS, new Double(pis.getPISQtde().getVPIS()));
+                lm.setFieldValue(RegistroA170.ALIQ_PIS, Double.valueOf(pis.getPISQtde().getVAliqProd()));
+                lm.setFieldValue(RegistroA170.VL_PIS, Double.valueOf(pis.getPISQtde().getVPIS()));
             }
         }
         
@@ -221,18 +221,18 @@ public class ArquivoEfdPisCofins {
                 lm.setFieldValue(RegistroA170.CST_COFINS, cofins.getCOFINSNT().getCST());
             } else if (cofins.getCOFINSAliq() != null) {
                 lm.setFieldValue(RegistroA170.CST_COFINS, cofins.getCOFINSAliq().getCST());
-                lm.setFieldValue(RegistroA170.VL_BC_COFINS, new Double(cofins.getCOFINSAliq().getVBC()));
-                lm.setFieldValue(RegistroA170.ALIQ_COFINS, new Double(cofins.getCOFINSAliq().getPCOFINS()));
-                lm.setFieldValue(RegistroA170.VL_COFINS, new Double(cofins.getCOFINSAliq().getVCOFINS()));
+                lm.setFieldValue(RegistroA170.VL_BC_COFINS, Double.valueOf(cofins.getCOFINSAliq().getVBC()));
+                lm.setFieldValue(RegistroA170.ALIQ_COFINS, Double.valueOf(cofins.getCOFINSAliq().getPCOFINS()));
+                lm.setFieldValue(RegistroA170.VL_COFINS, Double.valueOf(cofins.getCOFINSAliq().getVCOFINS()));
             } else if (cofins.getCOFINSOutr() != null) {
                 lm.setFieldValue(RegistroA170.CST_COFINS, cofins.getCOFINSOutr().getCST());
-                lm.setFieldValue(RegistroA170.VL_BC_COFINS, new Double(cofins.getCOFINSOutr().getVBC()));
-                lm.setFieldValue(RegistroA170.ALIQ_COFINS, new Double(cofins.getCOFINSOutr().getPCOFINS()));
-                lm.setFieldValue(RegistroA170.VL_COFINS, new Double(cofins.getCOFINSOutr().getVCOFINS()));
+                lm.setFieldValue(RegistroA170.VL_BC_COFINS, Double.valueOf(cofins.getCOFINSOutr().getVBC()));
+                lm.setFieldValue(RegistroA170.ALIQ_COFINS, Double.valueOf(cofins.getCOFINSOutr().getPCOFINS()));
+                lm.setFieldValue(RegistroA170.VL_COFINS, Double.valueOf(cofins.getCOFINSOutr().getVCOFINS()));
             } else if (cofins.getCOFINSQtde() != null) {
                 lm.setFieldValue(RegistroA170.CST_COFINS, cofins.getCOFINSQtde().getCST());
-                lm.setFieldValue(RegistroA170.ALIQ_COFINS, new Double(cofins.getCOFINSQtde().getVAliqProd()));
-                lm.setFieldValue(RegistroA170.VL_COFINS, new Double(cofins.getCOFINSQtde().getVCOFINS()));
+                lm.setFieldValue(RegistroA170.ALIQ_COFINS, Double.valueOf(cofins.getCOFINSQtde().getVAliqProd()));
+                lm.setFieldValue(RegistroA170.VL_COFINS, Double.valueOf(cofins.getCOFINSQtde().getVCOFINS()));
             }
         }
         
